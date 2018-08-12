@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="global.sesoc.fairytales.dao.TestMapper">
+	<insert id="join" parameterType="User">
+		INSERT INTO VOCA_USER
+		(
+			  EMAIL
+			, USERNAME
+			, PASSWORD
+		) VALUES(
+			  #{email}
+			, #{username}
+			, #{password}
+		)
+	</insert>
+	
+	<select id="userGet" parameterType="String" resultType="User">
+		SELECT * FROM
+		VOCA_USER 
+		WHERE EMAIL = #{email}
+		<if test="password != null">
+		AND PASSWORD = #{password}
+		</if>
+	</select>
+	
+	<insert id="insert" parameterType="VocaWord">
+	INSERT INTO VOCA (
+	     VOCANUM
+	    ,MAINWORD
+	    ,SUBWORD
+	    ,WORDINFO
+	    ,IMGURL
+	    ,LINKURL
+	    ,INDATE
+	    ,EMAIL
+	) VALUES (
+		 VOCA_PK_SEQ.NEXTVAL
+	    ,#{mainword}
+	    ,#{subword}
+	    ,#{wordinfo}
+	    ,#{imgurl}
+	    ,#{linkurl}
+	    ,SYSDATE
+	    ,#{email}
+	)
+	</insert>
+	
+	<update id="update" parameterType="VocaWord">
+	UPDATE VOCA 
+	   SET MAINWORD	= #{mainword}
+	      ,SUBWORD	= #{subword}
+	      ,WORDINFO	= #{wordinfo}
+	      ,IMGURL	= #{imgurl}
+	      ,LINKURL	= #{linkurl}
+	 WHERE EMAIL = #{email}
+	   AND VOCANUM = #{vocanum}
+ 	</update>
+ 	
+ 	<delete id="delete" parameterType="int">
+ 	DELETE FROM VOCA  WHERE VOCANUM = #{vocanum}
+ 	</delete>
+ 	
+	<select id="getDayWord" parameterType="VocaWord" resultType="VocaWord" >
+	SELECT 	
+		 VOCANUM
+	    ,MAINWORD
+	    ,SUBWORD
+	    ,WORDINFO
+	    ,IMGURL
+	    ,LINKURL
+	    ,TO_CHAR(INDATE,'YYYY-MM-DD') AS INDATE
+	    ,EMAIL
+	  FROM VOCA
+	  WHERE EMAIL = #{email}
+	  <choose>
+	  	<when test="indate != null"></when>
+			AND TO_CHAR(INDATE,'YYYY-MM-DD') = #{indate}
+	  	<when test="vocanum != null"></when>
+	  		AND VOCANUM = #{vocanum}
+	  	<otherwise>
+	  		AND 1 = 1
+	  	</otherwise>
+	  </choose>
+	</select>
+	
+	<select id="getWordCount" parameterType="Calendar" resultType="Calendar" >
+	SELECT
+		 '학습한 단어 : '||count(*) AS TITLE
+		,TO_CHAR(INDATE,'YYYY-MM-DD') AS "START"
+		,'javascript:viewWord(''' || TO_CHAR(INDATE,'YYYY-MM-DD') || ''');' AS "URL"
+	FROM VOCA
+	  WHERE EMAIL = #{email}
+	    AND INDATE between TO_DATE(#{start},'YYYY-MM-DD') and TO_DATE(#{end},'YYYY-MM-DD')
+	GROUP BY EMAIL, TO_CHAR(INDATE,'YYYY-MM-DD') 
+	</select>
+	
+</mapper>

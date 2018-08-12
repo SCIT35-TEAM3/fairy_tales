@@ -1,0 +1,11 @@
+@Repository
+public class ProjectRepository {
+	@Autowired
+	SqlSession session;
+	// 예시
+	public int test(String a){
+		ProjectMapper mapper = session.getMapper(ProjectMapper.class);
+		int result = mapper.test(a);
+		return result;
+	}
+}
