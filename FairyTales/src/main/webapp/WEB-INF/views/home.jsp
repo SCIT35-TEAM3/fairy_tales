@@ -46,6 +46,6 @@
 	</c:otherwise>
 </c:choose>
 <div id="ajaxView"></div>
-test2
+test3
 </body>
 </html>
