@@ -135,11 +135,7 @@
 			</connections>
 			<display>false</display>
 			<creation_date>2018-08-13 19:27:55</creation_date>
-<<<<<<< HEAD
-			<updated_date>2018-08-16 14:15:31</updated_date>
-=======
-			<updated_date>2018-08-16 14:19:32</updated_date>
->>>>>>> branch 'master' of https://github.com/SCIT35-TEAM3/fairy_tales.git
+			<updated_date>2018-08-16 14:44:22</updated_date>
 			<model_property>
 				<name>프로젝트명</name>
 				<value></value>
@@ -200,7 +196,7 @@
 			<args></args>
 			<char_semantics>false</char_semantics>
 			<description></description>
-			<logical_name>1대1 게시 글 번호</logical_name>
+			<logical_name>board_num</logical_name>
 			<physical_name>board_num</physical_name>
 			<type>decimal</type>
 		</word>
@@ -222,22 +218,6 @@
 		</word>
 		<word>
 			<id>3</id>
-			<length>null</length>
-			<decimal>null</decimal>
-			<array>false</array>
-			<array_dimension>null</array_dimension>
-			<unsigned>false</unsigned>
-			<zerofill>false</zerofill>
-			<binary>false</binary>
-			<args></args>
-			<char_semantics>false</char_semantics>
-			<description></description>
-			<logical_name>boar_num</logical_name>
-			<physical_name>boar_num</physical_name>
-			<type>decimal</type>
-		</word>
-		<word>
-			<id>4</id>
 			<length>2000</length>
 			<decimal>null</decimal>
 			<array>false</array>
@@ -253,8 +233,6 @@
 			<type>varchar(n)</type>
 		</word>
 		<word>
-<<<<<<< HEAD
-=======
 			<id>4</id>
 			<length>null</length>
 			<decimal>null</decimal>
@@ -266,12 +244,11 @@
 			<args></args>
 			<char_semantics>false</char_semantics>
 			<description></description>
-			<logical_name>1대1 게시 글 생성일</logical_name>
-			<physical_name>date</physical_name>
-			<type>date</type>
+			<logical_name>조회수</logical_name>
+			<physical_name>hitcount</physical_name>
+			<type>tinyint</type>
 		</word>
 		<word>
->>>>>>> branch 'master' of https://github.com/SCIT35-TEAM3/fairy_tales.git
 			<id>5</id>
 			<length>null</length>
 			<decimal>null</decimal>
@@ -283,79 +260,12 @@
 			<args></args>
 			<char_semantics>false</char_semantics>
 			<description></description>
-<<<<<<< HEAD
-=======
-			<logical_name>가입일</logical_name>
-			<physical_name>date</physical_name>
-			<type>date</type>
-		</word>
-		<word>
-			<id>6</id>
-			<length>null</length>
-			<decimal>null</decimal>
-			<array>false</array>
-			<array_dimension>null</array_dimension>
-			<unsigned>false</unsigned>
-			<zerofill>false</zerofill>
-			<binary>false</binary>
-			<args></args>
-			<char_semantics>false</char_semantics>
-			<description></description>
-			<logical_name>날짜</logical_name>
-			<physical_name>date</physical_name>
-			<type>date</type>
-		</word>
-		<word>
-			<id>7</id>
-			<length>null</length>
-			<decimal>null</decimal>
-			<array>false</array>
-			<array_dimension>null</array_dimension>
-			<unsigned>false</unsigned>
-			<zerofill>false</zerofill>
-			<binary>false</binary>
-			<args></args>
-			<char_semantics>false</char_semantics>
-			<description></description>
-			<logical_name>답글 생성일</logical_name>
-			<physical_name>date</physical_name>
-			<type>date</type>
-		</word>
-		<word>
-			<id>8</id>
-			<length>null</length>
-			<decimal>null</decimal>
-			<array>false</array>
-			<array_dimension>null</array_dimension>
-			<unsigned>false</unsigned>
-			<zerofill>false</zerofill>
-			<binary>false</binary>
-			<args></args>
-			<char_semantics>false</char_semantics>
-			<description></description>
->>>>>>> branch 'master' of https://github.com/SCIT35-TEAM3/fairy_tales.git
-			<logical_name>조회수</logical_name>
-			<physical_name>hitcount</physical_name>
-			<type>tinyint</type>
-		</word>
-		<word>
-			<id>6</id>
-			<length>null</length>
-			<decimal>null</decimal>
-			<array>false</array>
-			<array_dimension>null</array_dimension>
-			<unsigned>false</unsigned>
-			<zerofill>false</zerofill>
-			<binary>false</binary>
-			<args></args>
-			<char_semantics>false</char_semantics>
-			<description></description>
-			<logical_name>1대1 게시 글 조회 수</logical_name>
+			<logical_name>hitcount </logical_name>
 			<physical_name>hitcount </physical_name>
 			<type>decimal</type>
 		</word>
 		<word>
-			<id>7</id>
+			<id>6</id>
 			<length>null</length>
 			<decimal>null</decimal>
 			<array>false</array>
@@ -371,7 +281,7 @@
 			<type>date</type>
 		</word>
 		<word>
-			<id>8</id>
+			<id>7</id>
 			<length>null</length>
 			<decimal>null</decimal>
 			<array>false</array>
@@ -387,7 +297,7 @@
 			<type>date</type>
 		</word>
 		<word>
-			<id>9</id>
+			<id>8</id>
 			<length>null</length>
 			<decimal>null</decimal>
 			<array>false</array>
@@ -403,7 +313,7 @@
 			<type>date</type>
 		</word>
 		<word>
-			<id>10</id>
+			<id>9</id>
 			<length>20</length>
 			<decimal>null</decimal>
 			<array>false</array>
@@ -419,7 +329,7 @@
 			<type>varchar(n)</type>
 		</word>
 		<word>
-			<id>11</id>
+			<id>10</id>
 			<length>2000</length>
 			<decimal>null</decimal>
 			<array>false</array>
@@ -430,12 +340,12 @@
 			<args></args>
 			<char_semantics>false</char_semantics>
 			<description></description>
-			<logical_name>원본파일명</logical_name>
+			<logical_name>origin_file_name</logical_name>
 			<physical_name>origin_file_name</physical_name>
 			<type>varchar(n)</type>
 		</word>
 		<word>
-			<id>12</id>
+			<id>11</id>
 			<length>null</length>
 			<decimal>null</decimal>
 			<array>false</array>
@@ -451,7 +361,7 @@
 			<type>integer</type>
 		</word>
 		<word>
-			<id>13</id>
+			<id>12</id>
 			<length>null</length>
 			<decimal>null</decimal>
 			<array>false</array>
@@ -462,12 +372,12 @@
 			<args></args>
 			<char_semantics>false</char_semantics>
 			<description></description>
-			<logical_name>답글 번호</logical_name>
+			<logical_name>reply_num</logical_name>
 			<physical_name>reply_num</physical_name>
 			<type>decimal</type>
 		</word>
 		<word>
-			<id>14</id>
+			<id>13</id>
 			<length>2000</length>
 			<decimal>null</decimal>
 			<array>false</array>
@@ -478,12 +388,12 @@
 			<args></args>
 			<char_semantics>false</char_semantics>
 			<description></description>
-			<logical_name>저장파일명</logical_name>
+			<logical_name>save_file_name</logical_name>
 			<physical_name>save_file_name</physical_name>
 			<type>varchar(n)</type>
 		</word>
 		<word>
-			<id>15</id>
+			<id>14</id>
 			<length>20</length>
 			<decimal>null</decimal>
 			<array>false</array>
@@ -494,12 +404,12 @@
 			<args></args>
 			<char_semantics>false</char_semantics>
 			<description></description>
-			<logical_name>게시글 비밀 여부</logical_name>
+			<logical_name>secret</logical_name>
 			<physical_name>secret</physical_name>
 			<type>varchar(n)</type>
 		</word>
 		<word>
-			<id>16</id>
+			<id>15</id>
 			<length>20</length>
 			<decimal>null</decimal>
 			<array>false</array>
@@ -515,6 +425,22 @@
 			<type>varchar(n)</type>
 		</word>
 		<word>
+			<id>16</id>
+			<length>2000</length>
+			<decimal>null</decimal>
+			<array>false</array>
+			<array_dimension>null</array_dimension>
+			<unsigned>false</unsigned>
+			<zerofill>false</zerofill>
+			<binary>false</binary>
+			<args></args>
+			<char_semantics>false</char_semantics>
+			<description></description>
+			<logical_name>text</logical_name>
+			<physical_name>text</physical_name>
+			<type>varchar(n)</type>
+		</word>
+		<word>
 			<id>17</id>
 			<length>2000</length>
 			<decimal>null</decimal>
@@ -526,28 +452,12 @@
 			<args></args>
 			<char_semantics>false</char_semantics>
 			<description></description>
-			<logical_name>답글 제목</logical_name>
-			<physical_name>text</physical_name>
-			<type>varchar(n)</type>
-		</word>
-		<word>
-			<id>18</id>
-			<length>2000</length>
-			<decimal>null</decimal>
-			<array>false</array>
-			<array_dimension>null</array_dimension>
-			<unsigned>false</unsigned>
-			<zerofill>false</zerofill>
-			<binary>false</binary>
-			<args></args>
-			<char_semantics>false</char_semantics>
-			<description></description>
-			<logical_name>1대1 게시 글 제목</logical_name>
+			<logical_name>title</logical_name>
 			<physical_name>title</physical_name>
 			<type>varchar(n)</type>
 		</word>
 		<word>
-			<id>19</id>
+			<id>18</id>
 			<length>100</length>
 			<decimal>null</decimal>
 			<array>false</array>
@@ -563,7 +473,7 @@
 			<type>varchar(n)</type>
 		</word>
 		<word>
-			<id>20</id>
+			<id>19</id>
 			<length>null</length>
 			<decimal>null</decimal>
 			<array>false</array>
@@ -579,7 +489,7 @@
 			<type>year(2)</type>
 		</word>
 		<word>
-			<id>21</id>
+			<id>20</id>
 			<length>30</length>
 			<decimal>null</decimal>
 			<array>false</array>
@@ -595,7 +505,7 @@
 			<type>varchar(n)</type>
 		</word>
 		<word>
-			<id>22</id>
+			<id>21</id>
 			<length>50</length>
 			<decimal>null</decimal>
 			<array>false</array>
@@ -606,12 +516,12 @@
 			<args></args>
 			<char_semantics>false</char_semantics>
 			<description></description>
-			<logical_name>회원 아이디</logical_name>
+			<logical_name>user_id </logical_name>
 			<physical_name>user_id </physical_name>
 			<type>varchar(n)</type>
 		</word>
 		<word>
-			<id>23</id>
+			<id>22</id>
 			<length>null</length>
 			<decimal>null</decimal>
 			<array>false</array>
@@ -627,7 +537,7 @@
 			<type>year(2)</type>
 		</word>
 		<word>
-			<id>24</id>
+			<id>23</id>
 			<length>30</length>
 			<decimal>null</decimal>
 			<array>false</array>
@@ -648,120 +558,34 @@
 	<contents>
 		<table>
 			<id>0</id>
-<<<<<<< HEAD
-			<height>149</height>
-			<width>211</width>
-=======
 			<height>75</height>
 			<width>120</width>
->>>>>>> branch 'master' of https://github.com/SCIT35-TEAM3/fairy_tales.git
 				<font_name>맑은 고딕</font_name>
 				<font_size>9</font_size>
 			<x>96</x>
-<<<<<<< HEAD
-			<y>547</y>
-=======
 			<y>96</y>
->>>>>>> branch 'master' of https://github.com/SCIT35-TEAM3/fairy_tales.git
 			<color>
 				<r>128</r>
 				<g>128</g>
 				<b>192</b>
 			</color>
 			<connections>
-<<<<<<< HEAD
-				<relation>
-					<id>0</id>
-					<source>3</source>
-					<target>0</target>
-						<source_xp>-1</source_xp>
-						<source_yp>-1</source_yp>
-						<target_xp>-1</target_xp>
-						<target_yp>-1</target_yp>
-						<color>
-							<r>0</r>
-							<g>0</g>
-							<b>0</b>
-						</color>
-					<child_cardinality>1..n</child_cardinality>
-					<parent_cardinality>1</parent_cardinality>
-					<reference_for_pk>true</reference_for_pk>
-					<name></name>
-					<on_delete_action>RESTRICT</on_delete_action>
-					<on_update_action>RESTRICT</on_update_action>
-					<referenced_column>null</referenced_column>
-					<referenced_complex_unique_key>null</referenced_complex_unique_key>
-				</relation>
-=======
->>>>>>> branch 'master' of https://github.com/SCIT35-TEAM3/fairy_tales.git
 			</connections>
-<<<<<<< HEAD
-			<physical_name>reply_1to1</physical_name>
-			<logical_name>고객게시판 댓글</logical_name>
-=======
 			<physical_name>member</physical_name>
 			<logical_name>회원</logical_name>
->>>>>>> branch 'master' of https://github.com/SCIT35-TEAM3/fairy_tales.git
 			<description></description>
 			<constraint></constraint>
 			<primary_key_name></primary_key_name>
 			<option></option>
 			<columns>
 				<normal_column>
-<<<<<<< HEAD
-					<word_id>13</word_id>
-=======
-					<word_id>11</word_id>
->>>>>>> branch 'master' of https://github.com/SCIT35-TEAM3/fairy_tales.git
+					<word_id>9</word_id>
 					<id>0</id>
-<<<<<<< HEAD
 					<description></description>
 					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>decimal</type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>false</foreign_key>
-					<not_null>true</not_null>
-					<primary_key>true</primary_key>
-					<unique_key>false</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<id>1</id>
-					<referenced_column>21</referenced_column>
-					<relation>0</relation>
-=======
->>>>>>> branch 'master' of https://github.com/SCIT35-TEAM3/fairy_tales.git
-					<description></description>
-					<unique_key_name></unique_key_name>
-<<<<<<< HEAD
-					<logical_name>boar_num</logical_name>
-					<physical_name>boar_num</physical_name>
-					<type>decimal</type>
-=======
 					<logical_name></logical_name>
 					<physical_name></physical_name>
 					<type>varchar(n)</type>
->>>>>>> branch 'master' of https://github.com/SCIT35-TEAM3/fairy_tales.git
 					<constraint></constraint>
 					<default_value></default_value>
 					<auto_increment>false</auto_increment>
@@ -788,22 +612,13 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-<<<<<<< HEAD
-					<word_id>3</word_id>
-					<id>2</id>
-=======
-					<word_id>22</word_id>
+					<word_id>20</word_id>
 					<id>1</id>
->>>>>>> branch 'master' of https://github.com/SCIT35-TEAM3/fairy_tales.git
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
 					<physical_name></physical_name>
-<<<<<<< HEAD
-					<type>decimal</type>
-=======
 					<type>varchar(n)</type>
->>>>>>> branch 'master' of https://github.com/SCIT35-TEAM3/fairy_tales.git
 					<constraint></constraint>
 					<default_value></default_value>
 					<auto_increment>false</auto_increment>
@@ -830,7 +645,7 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>24</word_id>
+					<word_id>23</word_id>
 					<id>2</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
@@ -863,11 +678,7 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-<<<<<<< HEAD
-					<word_id>22</word_id>
-					<id>3</id>
-=======
-					<word_id>21</word_id>
+					<word_id>19</word_id>
 					<id>3</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
@@ -900,7 +711,7 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>13</word_id>
+					<word_id>11</word_id>
 					<id>4</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
@@ -935,7 +746,6 @@
 				<normal_column>
 					<word_id>0</word_id>
 					<id>5</id>
->>>>>>> branch 'master' of https://github.com/SCIT35-TEAM3/fairy_tales.git
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -945,7 +755,7 @@
 					<default_value></default_value>
 					<auto_increment>false</auto_increment>
 					<foreign_key>false</foreign_key>
-					<not_null>true</not_null>
+					<not_null>false</not_null>
 					<primary_key>false</primary_key>
 					<unique_key>false</unique_key>
 					<character_set></character_set>
@@ -967,11 +777,7 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-<<<<<<< HEAD
-					<word_id>17</word_id>
-					<id>4</id>
-=======
-					<word_id>10</word_id>
+					<word_id>22</word_id>
 					<id>6</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
@@ -1004,15 +810,12 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>5</word_id>
+					<word_id>7</word_id>
 					<id>7</id>
->>>>>>> branch 'master' of https://github.com/SCIT35-TEAM3/fairy_tales.git
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
 					<physical_name></physical_name>
-<<<<<<< HEAD
-=======
 					<type>date</type>
 					<constraint></constraint>
 					<default_value>sysdate</default_value>
@@ -1040,13 +843,12 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>17</word_id>
+					<word_id>15</word_id>
 					<id>8</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
 					<physical_name></physical_name>
->>>>>>> branch 'master' of https://github.com/SCIT35-TEAM3/fairy_tales.git
 					<type>varchar(n)</type>
 					<constraint></constraint>
 					<default_value></default_value>
@@ -1084,12 +886,12 @@
 		</table>
 		<table>
 			<id>1</id>
-			<height>301</height>
-			<width>454</width>
+			<height>170</height>
+			<width>200</width>
 				<font_name>맑은 고딕</font_name>
 				<font_size>9</font_size>
-			<x>66</x>
-			<y>528</y>
+			<x>504</x>
+			<y>128</y>
 			<color>
 				<r>128</r>
 				<g>128</g>
@@ -1119,189 +921,20 @@
 					<referenced_complex_unique_key>null</referenced_complex_unique_key>
 				</relation>
 			</connections>
-			<physical_name>board_1to1</physical_name>
-			<logical_name>새 테이블</logical_name>
+			<physical_name>notice</physical_name>
+			<logical_name>공지사항</logical_name>
 			<description></description>
 			<constraint></constraint>
 			<primary_key_name></primary_key_name>
 			<option></option>
 			<columns>
 				<normal_column>
-<<<<<<< HEAD
-					<word_id>10</word_id>
-					<id>5</id>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>varchar(n)</type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>false</foreign_key>
-					<not_null>true</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>false</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<word_id>21</word_id>
-					<id>6</id>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>varchar(n)</type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>false</foreign_key>
-					<not_null>true</not_null>
-					<primary_key>true</primary_key>
-					<unique_key>false</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<word_id>24</word_id>
-					<id>7</id>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>varchar(n)</type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>false</foreign_key>
-					<not_null>true</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>false</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<word_id>20</word_id>
-					<id>8</id>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>year(2)</type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>false</foreign_key>
-					<not_null>true</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>false</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<word_id>12</word_id>
-					<id>9</id>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>integer</type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>false</foreign_key>
-					<not_null>true</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>false</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<word_id>0</word_id>
-					<id>10</id>
-=======
 					<id>9</id>
 					<referenced_column>1</referenced_column>
 					<relation>0</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
-					<logical_name>회원 아이디</logical_name>
+					<logical_name>관리자ID</logical_name>
 					<physical_name></physical_name>
 					<type>varchar(n)</type>
 					<constraint></constraint>
@@ -1330,47 +963,13 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>1</word_id>
+					<word_id>2</word_id>
 					<id>10</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
 					<physical_name></physical_name>
-					<type>decimal</type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>false</foreign_key>
-					<not_null>true</not_null>
-					<primary_key>true</primary_key>
-					<unique_key>false</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<word_id>9</word_id>
-					<id>11</id>
->>>>>>> branch 'master' of https://github.com/SCIT35-TEAM3/fairy_tales.git
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>decimal</type>
+					<type>tinyint</type>
 					<constraint></constraint>
 					<default_value></default_value>
 					<auto_increment>false</auto_increment>
@@ -1397,24 +996,51 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-<<<<<<< HEAD
-					<word_id>23</word_id>
+					<word_id>18</word_id>
 					<id>11</id>
-=======
-					<word_id>4</word_id>
-					<id>12</id>
->>>>>>> branch 'master' of https://github.com/SCIT35-TEAM3/fairy_tales.git
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
 					<physical_name></physical_name>
-<<<<<<< HEAD
-					<type>year(2)</type>
+					<type>varchar(n)</type>
 					<constraint></constraint>
 					<default_value></default_value>
 					<auto_increment>false</auto_increment>
 					<foreign_key>false</foreign_key>
-					<not_null>true</not_null>
+					<not_null>false</not_null>
+					<primary_key>false</primary_key>
+					<unique_key>false</unique_key>
+					<character_set></character_set>
+					<collation></collation>
+					<sequence>
+						<name></name>
+						<schema></schema>
+						<increment></increment>
+						<min_value></min_value>
+						<max_value></max_value>
+						<start></start>
+						<cache></cache>
+						<nocache>false</nocache>
+						<cycle>false</cycle>
+						<order>false</order>
+						<description></description>
+						<data_type></data_type>
+						<decimal_size>0</decimal_size>
+					</sequence>
+				</normal_column>
+				<normal_column>
+					<word_id>4</word_id>
+					<id>12</id>
+					<description></description>
+					<unique_key_name></unique_key_name>
+					<logical_name></logical_name>
+					<physical_name></physical_name>
+					<type>tinyint</type>
+					<constraint></constraint>
+					<default_value></default_value>
+					<auto_increment>false</auto_increment>
+					<foreign_key>false</foreign_key>
+					<not_null>false</not_null>
 					<primary_key>false</primary_key>
 					<unique_key>false</unique_key>
 					<character_set></character_set>
@@ -1437,51 +1063,16 @@
 				</normal_column>
 				<normal_column>
 					<word_id>8</word_id>
-					<id>12</id>
+					<id>13</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
 					<physical_name></physical_name>
-=======
->>>>>>> branch 'master' of https://github.com/SCIT35-TEAM3/fairy_tales.git
 					<type>date</type>
 					<constraint></constraint>
 					<default_value>sysdate</default_value>
 					<auto_increment>false</auto_increment>
 					<foreign_key>false</foreign_key>
-					<not_null>true</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>false</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<word_id>19</word_id>
-					<id>13</id>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>varchar(n)</type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>false</foreign_key>
 					<not_null>false</not_null>
 					<primary_key>false</primary_key>
 					<unique_key>false</unique_key>
@@ -1504,78 +1095,8 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>16</word_id>
-<<<<<<< HEAD
-					<id>13</id>
-=======
+					<word_id>3</word_id>
 					<id>14</id>
->>>>>>> branch 'master' of https://github.com/SCIT35-TEAM3/fairy_tales.git
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>varchar(n)</type>
-					<constraint></constraint>
-					<default_value>no</default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>false</foreign_key>
-					<not_null>false</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>false</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<word_id>12</word_id>
-					<id>15</id>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>varchar(n)</type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>false</foreign_key>
-					<not_null>false</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>false</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<word_id>15</word_id>
-					<id>16</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -1617,265 +1138,8 @@
 		</table>
 		<table>
 			<id>2</id>
-<<<<<<< HEAD
-			<height>170</height>
-			<width>200</width>
-				<font_name>맑은 고딕</font_name>
-				<font_size>9</font_size>
-			<x>504</x>
-			<y>128</y>
-			<color>
-				<r>128</r>
-				<g>128</g>
-				<b>192</b>
-			</color>
-			<connections>
-				<relation>
-					<id>1</id>
-					<source>1</source>
-					<target>2</target>
-						<source_xp>-1</source_xp>
-						<source_yp>-1</source_yp>
-						<target_xp>-1</target_xp>
-						<target_yp>-1</target_yp>
-						<color>
-							<r>0</r>
-							<g>0</g>
-							<b>0</b>
-						</color>
-					<child_cardinality>1..n</child_cardinality>
-					<parent_cardinality>1</parent_cardinality>
-					<reference_for_pk>true</reference_for_pk>
-					<name></name>
-					<on_delete_action>RESTRICT</on_delete_action>
-					<on_update_action>RESTRICT</on_update_action>
-					<referenced_column>null</referenced_column>
-					<referenced_complex_unique_key>null</referenced_complex_unique_key>
-				</relation>
-			</connections>
-			<physical_name>notice</physical_name>
-			<logical_name>공지사항</logical_name>
-			<description></description>
-			<constraint></constraint>
-			<primary_key_name></primary_key_name>
-			<option></option>
-			<columns>
-				<normal_column>
-					<id>14</id>
-					<referenced_column>6</referenced_column>
-					<relation>1</relation>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name>관리자ID</logical_name>
-					<physical_name></physical_name>
-					<type>varchar(n)</type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>true</foreign_key>
-					<not_null>true</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>false</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<word_id>2</word_id>
-					<id>15</id>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>tinyint</type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>false</foreign_key>
-					<not_null>false</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>false</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<word_id>19</word_id>
-					<id>16</id>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>varchar(n)</type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>false</foreign_key>
-					<not_null>false</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>false</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<word_id>5</word_id>
-					<id>17</id>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>tinyint</type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>false</foreign_key>
-					<not_null>false</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>false</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<word_id>9</word_id>
-					<id>18</id>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>date</type>
-					<constraint></constraint>
-					<default_value>sysdate</default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>false</foreign_key>
-					<not_null>false</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>false</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<word_id>4</word_id>
-					<id>19</id>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>varchar(n)</type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>false</foreign_key>
-					<not_null>false</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>false</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-			</columns>
-			<indexes>
-			</indexes>
-			<complex_unique_key_list>
-			</complex_unique_key_list>
-			<table_properties>
-				<schema></schema>
-			</table_properties>
-		</table>
-		<table>
-			<id>3</id>
 			<height>84</height>
 			<width>222</width>
-=======
-			<height>208</height>
-			<width>349</width>
->>>>>>> branch 'master' of https://github.com/SCIT35-TEAM3/fairy_tales.git
 				<font_name>맑은 고딕</font_name>
 				<font_size>9</font_size>
 			<x>552</x>
@@ -1887,15 +1151,9 @@
 			</color>
 			<connections>
 				<relation>
-<<<<<<< HEAD
-					<id>2</id>
-					<source>1</source>
-					<target>3</target>
-=======
 					<id>1</id>
-					<source>1</source>
+					<source>0</source>
 					<target>2</target>
->>>>>>> branch 'master' of https://github.com/SCIT35-TEAM3/fairy_tales.git
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
 						<target_xp>-1</target_xp>
@@ -1923,10 +1181,9 @@
 			<option></option>
 			<columns>
 				<normal_column>
-<<<<<<< HEAD
-					<id>20</id>
-					<referenced_column>6</referenced_column>
-					<relation>2</relation>
+					<id>15</id>
+					<referenced_column>1</referenced_column>
+					<relation>1</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name>user_id</logical_name>
@@ -1959,11 +1216,7 @@
 				</normal_column>
 				<normal_column>
 					<word_id>1</word_id>
-					<id>21</id>
-=======
-					<word_id>14</word_id>
-					<id>17</id>
->>>>>>> branch 'master' of https://github.com/SCIT35-TEAM3/fairy_tales.git
+					<id>16</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -1995,14 +1248,8 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-<<<<<<< HEAD
-					<word_id>6</word_id>
-					<id>22</id>
-=======
-					<id>18</id>
-					<referenced_column>10</referenced_column>
-					<relation>1</relation>
->>>>>>> branch 'master' of https://github.com/SCIT35-TEAM3/fairy_tales.git
+					<word_id>5</word_id>
+					<id>17</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -2034,13 +1281,8 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-<<<<<<< HEAD
-					<word_id>7</word_id>
-					<id>23</id>
-=======
-					<word_id>23</word_id>
-					<id>19</id>
->>>>>>> branch 'master' of https://github.com/SCIT35-TEAM3/fairy_tales.git
+					<word_id>6</word_id>
+					<id>18</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -2072,9 +1314,8 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>18</word_id>
-<<<<<<< HEAD
-					<id>24</id>
+					<word_id>17</word_id>
+					<id>19</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -2106,8 +1347,8 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>15</word_id>
-					<id>25</id>
+					<word_id>14</word_id>
+					<id>20</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -2139,11 +1380,8 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>11</word_id>
-					<id>26</id>
-=======
-					<id>20</id>
->>>>>>> branch 'master' of https://github.com/SCIT35-TEAM3/fairy_tales.git
+					<word_id>10</word_id>
+					<id>21</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -2175,13 +1413,8 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-<<<<<<< HEAD
-					<word_id>14</word_id>
-					<id>27</id>
-=======
-					<word_id>7</word_id>
-					<id>21</id>
->>>>>>> branch 'master' of https://github.com/SCIT35-TEAM3/fairy_tales.git
+					<word_id>13</word_id>
+					<id>22</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -2223,12 +1456,12 @@
 		</table>
 		<table>
 			<id>3</id>
-			<height>239</height>
-			<width>353</width>
+			<height>149</height>
+			<width>211</width>
 				<font_name>맑은 고딕</font_name>
 				<font_size>9</font_size>
-			<x>648</x>
-			<y>142</y>
+			<x>96</x>
+			<y>547</y>
 			<color>
 				<r>128</r>
 				<g>128</g>
@@ -2237,7 +1470,7 @@
 			<connections>
 				<relation>
 					<id>2</id>
-					<source>0</source>
+					<source>2</source>
 					<target>3</target>
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
@@ -2258,22 +1491,55 @@
 					<referenced_complex_unique_key>null</referenced_complex_unique_key>
 				</relation>
 			</connections>
-			<physical_name>notice</physical_name>
-			<logical_name>공지사항</logical_name>
+			<physical_name>reply_1to1</physical_name>
+			<logical_name>고객게시판 댓글</logical_name>
 			<description></description>
 			<constraint></constraint>
 			<primary_key_name></primary_key_name>
 			<option></option>
 			<columns>
 				<normal_column>
-					<id>22</id>
-					<referenced_column>1</referenced_column>
+					<word_id>12</word_id>
+					<id>23</id>
+					<description></description>
+					<unique_key_name></unique_key_name>
+					<logical_name></logical_name>
+					<physical_name></physical_name>
+					<type>decimal</type>
+					<constraint></constraint>
+					<default_value></default_value>
+					<auto_increment>false</auto_increment>
+					<foreign_key>false</foreign_key>
+					<not_null>true</not_null>
+					<primary_key>true</primary_key>
+					<unique_key>false</unique_key>
+					<character_set></character_set>
+					<collation></collation>
+					<sequence>
+						<name></name>
+						<schema></schema>
+						<increment></increment>
+						<min_value></min_value>
+						<max_value></max_value>
+						<start></start>
+						<cache></cache>
+						<nocache>false</nocache>
+						<cycle>false</cycle>
+						<order>false</order>
+						<description></description>
+						<data_type></data_type>
+						<decimal_size>0</decimal_size>
+					</sequence>
+				</normal_column>
+				<normal_column>
+					<id>24</id>
+					<referenced_column>16</referenced_column>
 					<relation>2</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
-					<logical_name>관리자ID</logical_name>
+					<logical_name></logical_name>
 					<physical_name></physical_name>
-					<type>varchar(n)</type>
+					<type>decimal</type>
 					<constraint></constraint>
 					<default_value></default_value>
 					<auto_increment>false</auto_increment>
@@ -2300,41 +1566,8 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>2</word_id>
-					<id>23</id>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>tinyint</type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>false</foreign_key>
-					<not_null>false</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>false</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<word_id>20</word_id>
-					<id>24</id>
+					<word_id>21</word_id>
+					<id>25</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -2344,7 +1577,7 @@
 					<default_value></default_value>
 					<auto_increment>false</auto_increment>
 					<foreign_key>false</foreign_key>
-					<not_null>false</not_null>
+					<not_null>true</not_null>
 					<primary_key>false</primary_key>
 					<unique_key>false</unique_key>
 					<character_set></character_set>
@@ -2366,74 +1599,8 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>8</word_id>
-					<id>25</id>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>tinyint</type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>false</foreign_key>
-					<not_null>false</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>false</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<word_id>6</word_id>
+					<word_id>16</word_id>
 					<id>26</id>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>date</type>
-					<constraint></constraint>
-					<default_value>sysdate</default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>false</foreign_key>
-					<not_null>false</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>false</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<word_id>3</word_id>
-					<id>27</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
