@@ -10,11 +10,15 @@ DROP TABLE FAIRYTALES CASCADE CONSTRAINTS;
 DROP TABLE notice CASCADE CONSTRAINTS;
 DROP TABLE member CASCADE CONSTRAINTS;
 
-
-
+DROP sequence board_1to1_seq;
+DROP sequence notice_seq;
+DROP sequence Question_seq;
+DROP sequence reply_1to1_seq;
+DROP sequence Wrong_seq;
 
 /* Create Tables */
 
+--고객게시판
 CREATE TABLE board_1to1
 (
 	user_id varchar2(30) NOT NULL,
@@ -28,6 +32,9 @@ CREATE TABLE board_1to1
 	PRIMARY KEY (board_num)
 );
 
+create sequence board_1to1_seq;
+
+
 
 CREATE TABLE FAIRYTALES
 (
@@ -39,7 +46,7 @@ CREATE TABLE FAIRYTALES
 	PRIMARY KEY (fairy_pk)
 );
 
-
+--회원
 CREATE TABLE member
 (
 	nser_name varchar2(20) NOT NULL,
@@ -70,7 +77,7 @@ CREATE TABLE Member_Fairy
 	PRIMARY KEY (mf_pk)
 );
 
-
+--공지사항
 CREATE TABLE notice
 (
 	user_id varchar2(30) NOT NULL,
@@ -81,7 +88,9 @@ CREATE TABLE notice
 	content varchar2(2000)
 );
 
+create sequence notice_seq;
 
+--문제
 CREATE TABLE Question
 (
 	question_pk number  NOT NULL,
@@ -94,7 +103,9 @@ CREATE TABLE Question
 	PRIMARY KEY (question_pk)
 );
 
+create sequence Question_seq;
 
+--고객게시판 댓글
 CREATE TABLE reply_1to1
 (
 	reply_num number NOT NULL,
@@ -105,7 +116,9 @@ CREATE TABLE reply_1to1
 	PRIMARY KEY (reply_num)
 );
 
+create sequence reply_1to1_seq;
 
+--틀린문제
 CREATE TABLE Wrong
 (
 	wrong_pk number NOT NULL,
@@ -114,7 +127,7 @@ CREATE TABLE Wrong
 	PRIMARY KEY (wrong_pk)
 );
 
-
+create sequence Wrong_seq;
 
 /* Create Foreign Keys */
 
