@@ -12,7 +12,7 @@
 	<category_index>0</category_index>
 	<zoom>0.75</zoom>
 	<x>0</x>
-	<y>54</y>
+	<y>0</y>
 	<default_color>
 		<r>128</r>
 		<g>128</g>
@@ -32,7 +32,7 @@
 		<notation></notation>
 		<notation_level>0</notation_level>
 		<notation_expand_group>true</notation_expand_group>
-		<view_mode>0</view_mode>
+		<view_mode>2</view_mode>
 		<outline_view_mode>1</outline_view_mode>
 		<view_order_by>1</view_order_by>
 		<auto_ime_change>false</auto_ime_change>
@@ -135,7 +135,7 @@
 			</connections>
 			<display>false</display>
 			<creation_date>2018-08-13 14:39:43</creation_date>
-			<updated_date>2018-08-14 18:45:45</updated_date>
+			<updated_date>2018-08-16 13:41:54</updated_date>
 			<model_property>
 				<name>프로젝트명</name>
 				<value></value>
@@ -275,13 +275,29 @@
 			<binary>false</binary>
 			<args></args>
 			<char_semantics>false</char_semantics>
+			<description>해당 동화를 마지막으로 접속한 날짜(통계)</description>
+			<logical_name>마지막 접속날짜</logical_name>
+			<physical_name>last_date</physical_name>
+			<type>date</type>
+		</word>
+		<word>
+			<id>7</id>
+			<length>null</length>
+			<decimal>null</decimal>
+			<array>false</array>
+			<array_dimension>null</array_dimension>
+			<unsigned>false</unsigned>
+			<zerofill>false</zerofill>
+			<binary>false</binary>
+			<args></args>
+			<char_semantics>false</char_semantics>
 			<description></description>
 			<logical_name>회원동화PK</logical_name>
 			<physical_name>mf_pk</physical_name>
 			<type>decimal</type>
 		</word>
 		<word>
-			<id>7</id>
+			<id>8</id>
 			<length>null</length>
 			<decimal>null</decimal>
 			<array>false</array>
@@ -297,7 +313,7 @@
 			<type>decimal</type>
 		</word>
 		<word>
-			<id>8</id>
+			<id>9</id>
 			<length>null</length>
 			<decimal>null</decimal>
 			<array>false</array>
@@ -311,22 +327,6 @@
 			<logical_name>문제 PK</logical_name>
 			<physical_name>question_pk</physical_name>
 			<type></type>
-		</word>
-		<word>
-			<id>9</id>
-			<length>null</length>
-			<decimal>null</decimal>
-			<array>false</array>
-			<array_dimension>null</array_dimension>
-			<unsigned>false</unsigned>
-			<zerofill>false</zerofill>
-			<binary>false</binary>
-			<args></args>
-			<char_semantics>false</char_semantics>
-			<description>해당 동화를 마지막으로 접속한 날짜(통계)</description>
-			<logical_name>마지막 접속날짜</logical_name>
-			<physical_name>rast_date</physical_name>
-			<type>date</type>
 		</word>
 		<word>
 			<id>10</id>
@@ -382,12 +382,12 @@
 	<contents>
 		<table>
 			<id>0</id>
-			<height>177</height>
+			<height>208</height>
 			<width>313</width>
 				<font_name>맑은 고딕</font_name>
 				<font_size>9</font_size>
-			<x>729</x>
-			<y>756</y>
+			<x>720</x>
+			<y>564</y>
 			<color>
 				<r>128</r>
 				<g>128</g>
@@ -425,7 +425,7 @@
 			<option></option>
 			<columns>
 				<normal_column>
-					<word_id>8</word_id>
+					<word_id>9</word_id>
 					<id>0</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
@@ -602,11 +602,11 @@
 		<table>
 			<id>1</id>
 			<height>84</height>
-			<width>266</width>
+			<width>330</width>
 				<font_name>맑은 고딕</font_name>
 				<font_size>9</font_size>
-			<x>307</x>
-			<y>321</y>
+			<x>240</x>
+			<y>144</y>
 			<color>
 				<r>128</r>
 				<g>128</g>
@@ -666,11 +666,11 @@
 		<table>
 			<id>2</id>
 			<height>146</height>
-			<width>253</width>
+			<width>353</width>
 				<font_name>맑은 고딕</font_name>
 				<font_size>9</font_size>
-			<x>313</x>
-			<y>777</y>
+			<x>246</x>
+			<y>600</y>
 			<color>
 				<r>128</r>
 				<g>128</g>
@@ -842,11 +842,11 @@
 		<table>
 			<id>3</id>
 			<height>146</height>
-			<width>306</width>
+			<width>385</width>
 				<font_name>맑은 고딕</font_name>
 				<font_size>9</font_size>
-			<x>733</x>
-			<y>516</y>
+			<x>684</x>
+			<y>324</y>
 			<color>
 				<r>128</r>
 				<g>128</g>
@@ -972,11 +972,11 @@
 		<table>
 			<id>4</id>
 			<height>239</height>
-			<width>299</width>
+			<width>363</width>
 				<font_name>맑은 고딕</font_name>
 				<font_size>9</font_size>
-			<x>297</x>
-			<y>456</y>
+			<x>230</x>
+			<y>279</y>
 			<color>
 				<r>128</r>
 				<g>128</g>
@@ -1036,7 +1036,7 @@
 			<option></option>
 			<columns>
 				<normal_column>
-					<word_id>6</word_id>
+					<word_id>7</word_id>
 					<id>12</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
@@ -1170,7 +1170,7 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>9</word_id>
+					<word_id>6</word_id>
 					<id>16</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
@@ -1203,7 +1203,7 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>7</word_id>
+					<word_id>8</word_id>
 					<id>17</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
