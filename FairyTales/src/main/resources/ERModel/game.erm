@@ -135,7 +135,7 @@
 			</connections>
 			<display>false</display>
 			<creation_date>2018-08-13 14:39:43</creation_date>
-			<updated_date>2018-08-16 14:39:05</updated_date>
+			<updated_date>2018-08-17 14:10:36</updated_date>
 			<model_property>
 				<name>프로젝트명</name>
 				<value></value>
@@ -1145,7 +1145,7 @@
 					<physical_name></physical_name>
 					<type>date</type>
 					<constraint></constraint>
-					<default_value></default_value>
+					<default_value>sysdate</default_value>
 					<auto_increment>false</auto_increment>
 					<foreign_key>false</foreign_key>
 					<not_null>true</not_null>
@@ -1178,7 +1178,7 @@
 					<physical_name></physical_name>
 					<type>date</type>
 					<constraint></constraint>
-					<default_value></default_value>
+					<default_value>sysdate</default_value>
 					<auto_increment>false</auto_increment>
 					<foreign_key>false</foreign_key>
 					<not_null>true</not_null>
