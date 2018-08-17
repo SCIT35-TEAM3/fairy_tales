@@ -1,4 +1,4 @@
-
+﻿
 /* Drop Tables */
 
 DROP TABLE reply_1to1 CASCADE CONSTRAINTS;
@@ -69,9 +69,9 @@ CREATE TABLE Member_Fairy
 	mf_pk number NOT NULL,
 	fairy_pk number NOT NULL,
 	-- 해당 동화를 처음 접속한 날짜(통계)
-	in_date date NOT NULL,
+	in_date date DEFAULT sysdate NOT NULL,
 	-- 해당 동화를 마지막으로 접속한 날짜(통계)
-	last_date date NOT NULL,
+	last_date date DEFAULT sysdate NOT NULL,
 	progress number DEFAULT 0 NOT NULL,
 	user_id varchar2(30) NOT NULL,
 	PRIMARY KEY (mf_pk)
