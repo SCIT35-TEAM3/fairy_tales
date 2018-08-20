@@ -1,4 +1,4 @@
-﻿
+
 /* Drop Tables */
 
 DROP TABLE reply_1to1 CASCADE CONSTRAINTS;
@@ -10,16 +10,11 @@ DROP TABLE FAIRYTALES CASCADE CONSTRAINTS;
 DROP TABLE notice CASCADE CONSTRAINTS;
 DROP TABLE member CASCADE CONSTRAINTS;
 
---sequence
-DROP sequence board_1to1_seq;
-DROP sequence notice_seq;
-DROP sequence Question_seq;
-DROP sequence reply_1to1_seq;
-DROP sequence Wrong_seq;
+
+
 
 /* Create Tables */
 
---고객게시판
 CREATE TABLE board_1to1
 (
 	user_id varchar2(30) NOT NULL,
@@ -33,11 +28,7 @@ CREATE TABLE board_1to1
 	PRIMARY KEY (board_num)
 );
 
---고객게시판 시퀀스 생성
-create sequence board_1to1_seq;
 
-
---동화 
 CREATE TABLE FAIRYTALES
 (
 	fairy_pk number NOT NULL,
@@ -48,38 +39,38 @@ CREATE TABLE FAIRYTALES
 	PRIMARY KEY (fairy_pk)
 );
 
--- 회원
+
 CREATE TABLE member
 (
-	nser_name varchar2(20) NOT NULL,
+	user_name varchar2(20) NOT NULL,
 	user_id varchar2(30) NOT NULL,
 	user_pwd varchar2(30) NOT NULL,
 	user_age number(2,0) NOT NULL,
-	phone_num number(10,0) NOT NULL,
-	address varchar2(200),
-	-- 관리자 or 사용자 선택
-	user_level number(2,0) NOT NULL,
+	phone_num varchar2(20) NOT NULL,
+	address varchar2(200) NOT NULL,
+	-- 관리자(1) or 사용자(2) 선택
+	user_level number(2,0) DEFAULT 2,
 	new_date date DEFAULT sysdate,
 	-- 일어동화, 퍼즐코딩
 	subject varchar2(20),
 	PRIMARY KEY (user_id)
 );
 
--- 회원 동화
+
 CREATE TABLE Member_Fairy
 (
 	mf_pk number NOT NULL,
 	fairy_pk number NOT NULL,
 	-- 해당 동화를 처음 접속한 날짜(통계)
-	in_date date DEFAULT sysdate NOT NULL,
+	in_date date NOT NULL,
 	-- 해당 동화를 마지막으로 접속한 날짜(통계)
-	last_date date DEFAULT sysdate NOT NULL,
+	last_date date NOT NULL,
 	progress number DEFAULT 0 NOT NULL,
 	user_id varchar2(30) NOT NULL,
 	PRIMARY KEY (mf_pk)
 );
 
---공지사항
+
 CREATE TABLE notice
 (
 	user_id varchar2(30) NOT NULL,
@@ -90,13 +81,10 @@ CREATE TABLE notice
 	content varchar2(2000)
 );
 
---공지사항 시퀀스 생성
-create sequence notice_seq;
 
---문제
 CREATE TABLE Question
 (
-	question_pk number  NOT NULL,
+	question_pk number NOT NULL,
 	fairy_pk number NOT NULL,
 	-- 문제의 답
 	answer varchar2(200) NOT NULL,
@@ -106,10 +94,7 @@ CREATE TABLE Question
 	PRIMARY KEY (question_pk)
 );
 
---문제 시퀀스 생성
-create sequence Question_seq;
 
---고객게시판 댓글
 CREATE TABLE reply_1to1
 (
 	reply_num number NOT NULL,
@@ -121,21 +106,14 @@ CREATE TABLE reply_1to1
 );
 
 
---댓글 시퀀스 생성
-create sequence reply_1to1_seq;
-
-
---틀린문제
 CREATE TABLE Wrong
 (
 	wrong_pk number NOT NULL,
 	mf_pk number NOT NULL,
-	question_pk number  NOT NULL,
+	question_pk number NOT NULL,
 	PRIMARY KEY (wrong_pk)
 );
 
---틀린문제 시퀀스 생성
-create sequence Wrong_seq;
 
 
 /* Create Foreign Keys */
@@ -193,7 +171,7 @@ ALTER TABLE Wrong
 
 COMMENT ON COLUMN FAIRYTALES.fairy_code IS '01 : IT
 02 : 일본어';
-COMMENT ON COLUMN member.user_level IS '관리자 or 사용자 선택';
+COMMENT ON COLUMN member.user_level IS '관리자(1) or 사용자(2) 선택';
 COMMENT ON COLUMN member.subject IS '일어동화, 퍼즐코딩';
 COMMENT ON COLUMN Member_Fairy.in_date IS '해당 동화를 처음 접속한 날짜(통계)';
 COMMENT ON COLUMN Member_Fairy.last_date IS '해당 동화를 마지막으로 접속한 날짜(통계)';
