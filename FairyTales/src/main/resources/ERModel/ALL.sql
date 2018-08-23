@@ -67,6 +67,7 @@ CREATE TABLE Member_Fairy
 	-- 해당 동화를 마지막으로 접속한 날짜(통계)
 	last_date date NOT NULL,
 	progress number DEFAULT 0 NOT NULL,
+	chapter number DEFAULT 0 NOT NULL,
 	user_id varchar2(30) NOT NULL,
 	PRIMARY KEY (mf_pk)
 );
