@@ -25,8 +25,9 @@ CREATE TABLE board_1to1
 	user_id varchar2(30) NOT NULL,
 	board_num number NOT NULL,
 	hitcount  number,
-	new_date date DEFAULT sysdate NOT NULL,
-	title varchar2(2000),
+	new_date date DEFAULT sysdate,
+	title varchar2(200),
+             text varchar2(4000),
 	secret varchar2(20) DEFAULT 'no',
 	origin_file_name varchar2(2000),
 	save_file_name varchar2(2000),
@@ -113,12 +114,12 @@ create sequence Question_seq;
 --고객게시판 댓글
 CREATE TABLE reply_1to1
 (
-	reply_num number NOT NULL,
-	board_num number,
-	user_id  varchar2(50) NOT NULL,
-	text varchar2(2000),
-	new_date date DEFAULT sysdate NOT NULL,
-	PRIMARY KEY (reply_num)
+           reply_num number PRIMARY KEY ,
+           board_num number not null,
+           user_id VARCHAR2(50) not null,
+           reply_title VARCHAR2(200) not null,
+           text VARCHAR2(2000),
+           new_date date DEFAULT sysdate
 );
 
 
