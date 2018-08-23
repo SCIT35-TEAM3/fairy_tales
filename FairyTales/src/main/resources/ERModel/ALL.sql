@@ -10,7 +10,7 @@ DROP TABLE FAIRYTALES CASCADE CONSTRAINTS;
 DROP TABLE notice CASCADE CONSTRAINTS;
 DROP TABLE member CASCADE CONSTRAINTS;
 
---sequence
+-- Drop sequence
 DROP sequence board_1to1_seq;
 DROP sequence notice_seq;
 DROP sequence Question_seq;
