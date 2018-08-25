@@ -1,4 +1,4 @@
-﻿
+
 /* Drop Tables */
 
 DROP TABLE reply_1to1 CASCADE CONSTRAINTS;
@@ -52,7 +52,7 @@ CREATE TABLE FAIRYTALES
 -- 회원
 CREATE TABLE member
 (
-	nser_name varchar2(20) NOT NULL,
+	user_name varchar2(20) NOT NULL,
 	user_id varchar2(30) NOT NULL,
 	user_pwd varchar2(30) NOT NULL,
 	user_age number(2,0) NOT NULL,
@@ -60,7 +60,7 @@ CREATE TABLE member
 	user_email varchar2(30) NOT NULL,
 	address varchar2(200),
 	-- 관리자 or 사용자 선택
-	user_level number(2,0),
+	user_level number(2,0) DEFAULT 2,
 	new_date date DEFAULT sysdate,
 	-- 일어동화, 퍼즐코딩
 	subject varchar2(20),
@@ -77,7 +77,6 @@ CREATE TABLE Member_Fairy
 	-- 해당 동화를 마지막으로 접속한 날짜(통계)
 	last_date date DEFAULT sysdate NOT NULL,
 	progress number DEFAULT 0 NOT NULL,
-	chapter number DEFAULT 0 NOT NULL,
 	user_id varchar2(30) NOT NULL,
 	PRIMARY KEY (mf_pk)
 );
@@ -202,6 +201,3 @@ COMMENT ON COLUMN Member_Fairy.in_date IS '해당 동화를 처음 접속한 날
 COMMENT ON COLUMN Member_Fairy.last_date IS '해당 동화를 마지막으로 접속한 날짜(통계)';
 COMMENT ON COLUMN Question.answer IS '문제의 답';
 COMMENT ON COLUMN Question.screen IS '챕터의 몇번째 화면';
-
-
-
