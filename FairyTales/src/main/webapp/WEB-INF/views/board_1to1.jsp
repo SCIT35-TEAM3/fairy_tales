@@ -53,7 +53,7 @@
 							<td>${board.user_id}</td>
 							<td class="align_left01">비밀글 입니다.</td>
 							<td>${board.hitcount}</td>
-							<td></td>
+						
 							<c:if test="${sessionScope.login_id=='admin'}">
 								<td><a href="#" onclick=""><img
 										src="http://image.kyobobook.co.kr/newimages/apps/b2c/myroom/Btn_ViewAnswer2.gif"
@@ -76,7 +76,7 @@
 							<td class="align_left01"><a
 								href="post?board_num=${board.board_num}" onclick="">${board.title}</a></td>
 							<td>${board.hitcount}</td>
-							<td></td>
+						
 							<c:if test="${sessionScope.login_id=='admin'}">
 								<td><a href="#" onclick=""><img
 										src="http://image.kyobobook.co.kr/newimages/apps/b2c/myroom/Btn_ViewAnswer2.gif"

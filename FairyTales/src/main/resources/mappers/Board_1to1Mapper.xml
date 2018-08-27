@@ -24,7 +24,8 @@
 		user_id,
 		board_num,
 		hitcount,
-		to_char(new_date,'yyyy-mm-dd') as new_date,
+		to_char(new_date,'yyyy-mm-dd') as
+		new_date,
 		title,
 		secret
 
@@ -61,37 +62,48 @@
 		board_num=#{board_num}
 	</update>
 	<delete id="delete_board_1to1" parameterType="int">
-		delete from board_1to1
+		delete from
+		board_1to1
 		where
 		board_num=#{board_num}
 
 	</delete>
-	
+
 	<!-- 페이징 -->
 	<select id="getTotalBoard" resultType="int" parameterType="map">
 		SELECT COUNT(*) FROM BOARD_1TO1
 
 	</select>
-	
+
 	<select id="select" resultType="board" parameterType="map">
 
 		select
 		board_num
 		, user_id
 		, hitcount
-		, to_char(new_date, 'YYYY-MM-DD') as new_date
+		, to_char(new_date, 'YYYY-MM-DD') as
+		new_date
 		, title
 		, text
 		, secret
 		, origin_file_name
 		, save_file_name
-		
+
 		from board_1to1
 		where
 		${searchItem} like '%' || #{searchWord} || '%'
 
 
 	</select>
+	
+	<!-- 조회수  -->
+	<update id="hitcount" parameterType="int">
+		update board_1to1
+		set
+		hitcount = hitcount+1
+		where board_num=#{board_num}
+
+	</update>
 
 
 

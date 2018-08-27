@@ -2,12 +2,16 @@ package global.sesoc.fairytales.controllers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import global.sesoc.fairytales.dao.Board_1to1_Repository;
@@ -66,9 +70,19 @@ public class Board_1to1_controller {
 
 	// 글 등록
 	@RequestMapping(value = "/write", method = RequestMethod.POST)
-	public String write(Model model, Board_1to1 board_1to1) {
-		board_1to1.setUser_id("aa");
-		System.out.println(board_1to1);
+	public String write(Model model, Board_1to1 board_1to1, HttpSession session, MultipartFile upload) {
+
+		board_1to1.setUser_id("aa"); // ■■■■■■■■■■■■ 임시 ■■■■■■■■■■■■
+		// board_1to1.setUser_id(String.valueOf(session.getAttribute("login_id")));
+		String user_id = (String) session.getAttribute("login_id");
+
+		String origin_file_name = upload.getOriginalFilename();
+		String save_file = FileService.saveFile(upload, UPLOADPATH);
+		// board_1to1.setUser_id(user_id);
+		board_1to1.setOrigin_file_name(origin_file_name);
+		board_1to1.setSave_file_name(save_file);
+
+		System.out.println("글쓰기>>>>>>>>>>>" + board_1to1);
 
 		int result = board_repository.insert_board_1to1(board_1to1);
 
@@ -77,14 +91,14 @@ public class Board_1to1_controller {
 	}
 
 	// 상세글 진입
+	@Transactional
 	@RequestMapping(value = "/post")
 	public String post(Model model, int board_num) {
 		model.addAttribute("login_id", "aa"); // 시험용
-		System.out.println("board_num>>>>>" + board_num);
 		Board_1to1 board_1to1 = new Board_1to1();
+		board_repository.hitcount(board_num);
 		board_1to1.setBoard_num(board_num);
 		Board_1to1 board_1to12 = board_repository.select_one_board_1to1(board_1to1);
-		System.out.println(board_1to12);
 		model.addAttribute("board_1to1", board_1to12);
 		return "post";
 	}
@@ -124,7 +138,7 @@ public class Board_1to1_controller {
 
 	}
 
-	// 파일 삭제 . 
+	// 파일 삭제 .
 	@RequestMapping(value = "/delete_file", method = RequestMethod.GET)
 	public String deleteFile(int board_num, RedirectAttributes red) {
 

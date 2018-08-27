@@ -53,7 +53,7 @@
 
 				<tr>
 					<th scope="row">첨부파일</th>
-					<td><input type="file" id="file" name="origin_file_name"
+					<td><input type="file" id="file" name="upload"
 						style="width: 400px;" class="ver_top"
 						onchange="fileCheck(this.form.files[0], 1 )"> <a
 						href="javascript:fileReset('file1');" class="btn_small">삭제</a>
