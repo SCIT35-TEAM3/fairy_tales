@@ -3,12 +3,30 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+	<settings>
+		<setting name="cacheEnabled" value="false" />
+		<setting name="jdbcTypeForNull" value="NULL" />
+	</settings>
+
 	<typeAliases>
+
+		<!-- <typeAlias type="global.sesoc.fairytales.dto.??" alias="??"/> -->
+		<typeAlias
+			type="global.sesoc.fairytales.dto.Board_1to1Mapper" alias="board" />
+		<typeAlias
+			type="global.sesoc.fairytales.dto.Reply_1to1Mapper" alias="reply" />	
 		<typeAlias type="global.sesoc.fairytales.dto.Member" alias="Member" /><!-- Member vo에 대한 타입이랑 alias맞춘다. -->
 		<typeAlias type="global.sesoc.fairytales.dto.Board" alias="Board" />
+			
 	</typeAliases>
 	<mappers>
+
+
+		<!-- <mapper resource="mappers/??.xml" /> -->
+		<mapper resource="mappers/Board_1to1Mapper.xml" />
+		<mapper resource="mappers/Reply_1to1Mapper.xml" />
 		<mapper resource="mappers/memberMapper.xml" />
 		<mapper resource="mappers/boardMapper.xml" />
+
 	</mappers>
 </configuration>
