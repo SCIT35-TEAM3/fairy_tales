@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="ra.ra.ra.repository.Board_1to1Mapper">
+<mapper namespace="global.sesoc.fairytales.dao.Board_1to1Mapper">
 	<insert id="insert_board_1to1" parameterType="board">
 		insert into board_1to1 values(
 		#{user_id},

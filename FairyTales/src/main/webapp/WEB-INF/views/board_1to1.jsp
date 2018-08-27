@@ -35,24 +35,70 @@
 				<th scope="col">작성자</th>
 				<th scope="col">제목</th>
 				<th scope="col">조회수</th>
-				
-			</tr>
-			<c:forEach var="board" items="${board_list}" varStatus="s">
-				<tr>
-					<td class="first">${board.new_date}</td>
-					<td>${board.user_id}</td>
-					<td class="align_left01"><a
-						href="post?board_num=${board.board_num}" onclick="">${board.title}</a></td>
-					<td></td>
-				
-				</tr>
 
+			</tr>
+			
+			
+			<!-- 1대1 게시판  루프문-->
+			<c:forEach var="board" items="${board_list}" varStatus="s">
+
+
+				<c:choose>
+					<c:when
+						test="${sessionScope.login_id!=board.user_id and board.secret!=null}">
+
+						<tr>
+
+							<td class="first">${board.new_date}</td>
+							<td>${board.user_id}</td>
+							<td class="align_left01">비밀글 입니다.</td>
+							<td>${board.hitcount}</td>
+							<td></td>
+							<c:if test="${sessionScope.login_id=='admin'}">
+								<td><a href="#" onclick=""><img
+										src="http://image.kyobobook.co.kr/newimages/apps/b2c/myroom/Btn_ViewAnswer2.gif"
+										alt="답변보기"> </a></td>
+
+								<td><a href="javascript:deleteQnAView('1653509',' ');">
+										<img class="margin_top5"
+										src="http://image.kyobobook.co.kr/newimages/apps/b2c/myroom/Btn_Delet_1.gif"
+										alt="삭제하기">
+								</a></td>
+							</c:if>
+						</tr>
+
+					</c:when>
+					<c:otherwise>
+						<tr>
+
+							<td class="first">${board.new_date}</td>
+							<td>${board.user_id}</td>
+							<td class="align_left01"><a
+								href="post?board_num=${board.board_num}" onclick="">${board.title}</a></td>
+							<td>${board.hitcount}</td>
+							<td></td>
+							<c:if test="${sessionScope.login_id=='admin'}">
+								<td><a href="#" onclick=""><img
+										src="http://image.kyobobook.co.kr/newimages/apps/b2c/myroom/Btn_ViewAnswer2.gif"
+										alt="답변보기"> </a></td>
+
+								<td><a href="javascript:deleteQnAView('1653509',' ');">
+										<img class="margin_top5"
+										src="http://image.kyobobook.co.kr/newimages/apps/b2c/myroom/Btn_Delet_1.gif"
+										alt="삭제하기">
+								</a></td>
+							</c:if>
+						</tr>
+					</c:otherwise>
+				</c:choose>
 			</c:forEach>
 
 		</tbody>
 
 	</table>
-<a href="write">글쓰기</a>
+	
+	<!-- 1대1 게시판  검색 -->
+	<a href="write">글쓰기</a>
 	<form class="right" action="board_1to1" method="get">
 		<select name="searchItem">
 			<option value="user_id" ${searchItem=='user_id'?'selected':''}>작성자</option>
@@ -61,6 +107,10 @@
 		</select> <input type="text" name="searchWord" value="${searchWord}" /> <input
 			type="submit" value="검색" />
 	</form>
+
+
+<!-- 1대1 게시판  페이징-->
+
 
 	<div class="boardfooter">
 		<a

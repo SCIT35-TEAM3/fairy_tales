@@ -179,7 +179,6 @@ function reply_update() {
 				id="board_num"> <input type="hidden"
 				value="${sessionScope.login_id}" name="user_id" id="user_id">
 				
-				<input type="text" value="" name="reply_num" id="reply_num">
 
 			<table>
 				<tr>
