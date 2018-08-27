@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ra.ra.ra.repository.Board_1to1Mapper">
+	<insert id="insert_board_1to1" parameterType="board">
+		insert into board_1to1 values(
+		#{user_id},
+		board_1to1_seq.nextVal,
+		0,
+		sysdate,
+		#{title},
+		#{text},
+		#{secret}
+		<if test="origin_file_name!=null">
+			,#{origin_file_name},
+			#{save_file_name}
+		</if>
+		)
+	</insert>
+
+	<select id="select_all_board_1to1" resultType="board">
+		select
+		user_id,
+		board_num,
+		hitcount,
+		to_char(new_date,'yyyy-mm-dd') as new_date,
+		title,
+		secret
+
+		<if test="origin_file_name!=null">
+
+		</if>
+
+		from
+		board_1to1
+
+
+	</select>
+
+	<select id="select_one_board_1to1" parameterType="board"
+		resultType="board">
+		select*from board_1to1
+		where
+		board_num=#{board_num}
+
+	</select>
+
+	<update id="update_board_1to1" parameterType="board">
+		update board_1to1
+		set
+		title=#{title},
+		text=#{text},
+		new_date=sysdate,
+		secret=#{secret}
+		<if test="origin_file_name!=null">
+			,origin_file_name=#{origin_file_name},
+			save_file_name=#{save_file_name}
+		</if>
+		where
+		board_num=#{board_num}
+	</update>
+	<delete id="delete_board_1to1" parameterType="int">
+		delete from board_1to1
+		where
+		board_num=#{board_num}
+
+	</delete>
+	
+	<!-- 페이징 -->
+	<select id="getTotalBoard" resultType="int" parameterType="map">
+		SELECT COUNT(*) FROM BOARD_1TO1
+
+	</select>
+	
+	<select id="select" resultType="board" parameterType="map">
+
+		select
+		board_num
+		, user_id
+		, hitcount
+		, to_char(new_date, 'YYYY-MM-DD') as new_date
+		, title
+		, text
+		, secret
+		, origin_file_name
+		, save_file_name
+		
+		from board_1to1
+		where
+		${searchItem} like '%' || #{searchWord} || '%'
+
+
+	</select>
+
+
+
+</mapper>

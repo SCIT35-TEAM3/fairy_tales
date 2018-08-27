@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ra.ra.ra.repository.Reply_1to1Mapper">
+
+<select id="reply_list" resultType="reply" parameterType="int">
+select
+reply_num,
+board_num, 
+user_id,
+reply_title,
+text,
+new_date
+from reply_1to1
+where
+board_num=#{board_num}
+</select>
+
+<insert id="insert_reply_1to1" parameterType="reply">
+insert into reply_1to1(
+
+reply_num,
+board_num,
+user_id,
+reply_title,
+text,
+new_date
+
+)values(
+
+reply_1to1_seq.nextVal,
+#{board_num},
+#{user_id},
+#{reply_title},
+#{text},
+sysdate
+
+)
+
+</insert>
+
+<update id="update_reply_1to1" parameterType="reply">
+update reply_1to1 set
+
+
+reply_title=#{reply_title},
+text=#{text},
+new_date=sysdate
+
+where 
+reply_num=#{reply_num}
+
+</update>
+
+<delete id="delete_reply_1to1" parameterType="reply">
+DELETE FROM reply_1to1
+WHERE reply_num=#{reply_num}
+
+</delete>
+
+
+	
+</mapper>
