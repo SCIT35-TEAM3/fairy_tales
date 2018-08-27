@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="global.sesoc.fairytales.dao.BoardMapper">
+
+	<!-- 게시판 목록 -->
+	<select id="selectAll" resultType="Board">
+		select * from notice 
+		order by
+		board_num
+	</select>
+	
+    <!-- 게시글 선택 -->
+	<select id="selectOne" parameterType="int" resultType="Board">
+		select
+		board_num
+		, user_id
+		, title
+		, content
+		, to_char(new_date, 'YYYY-MM-DD') as new_date
+		, hitcount
+		from notice 
+		where 
+		board_num = #{board_num}
+	</select>
+
+	 <!-- 게시글 등록 -->
+	<insert id="insert" parameterType="Board">
+		insert into notice
+		(
+		board_num
+		, user_id
+		, title
+		, content
+		)
+		values
+		(
+		notice_seq.nextval
+		, #{user_id}
+		, #{title}
+		, #{content}
+		)
+	</insert>
+	
+	<delete id="delete" parameterType="int">
+		delete from notice
+		where 
+		board_num=#{board_num}
+	</delete>
+
+		 
+	<update id="update" parameterType="Board">
+		update notice
+		set
+		board_num = #{board_num},
+		title = #{title},
+		content = #{content}
+		where board_num = #{board_num}
+	</update>
+
+	 
+	<update id="updateHitcount" parameterType="Board">
+      UPDATE notice
+      SET
+      hitcount = hitcount+1
+      WHERE
+      board_num = #{board_num}
+   </update>
+   
+   <select id="getTotalBoard" resultType="int">
+		select count(*) from notice
+
+		where
+		<choose>
+			<when test="searchItem=='userid'">user_id</when>
+			<when test="searchItem=='title'">title</when>
+			<when test="searchItem=='content'">content</when>
+		</choose>
+
+		like '%' || #{searchWord} || '%'
+
+	</select>
+
+</mapper>

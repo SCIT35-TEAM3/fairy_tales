@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="global.sesoc.fairytales.dao.MemberMapper">
+
+	<insert id="insert" parameterType="Member">
+		insert into member
+		(user_id,
+		user_pwd,
+		user_name,
+		user_age,
+		phone_num,
+		user_email,
+		address,
+		subject)
+		values(
+		#{user_id}
+		,#{user_pwd}
+		,#{user_name}
+		,#{user_age}
+		,#{phone_num}
+		,#{user_email}
+		,#{address}
+		,#{subject}
+		)
+	</insert>
+
+ 	<!-- 회원정보 수정 -->
+	<update id="update" parameterType="Member">
+		update member
+		set
+		user_pwd = #{user_pwd}
+		,phone_num = #{phone_num}
+		,user_email = #{user_email}
+		,address = #{address}
+		where
+		user_id = #{user_id} and user_pwd=#{oldpwd}
+	</update> 
+
+	<!-- 로그인, 아이디 중복확인 -->
+	<!-- DB타입과 vo 타입을 맞춰주려면 as를 통하여 매칭 시켜줘야함 -->
+	<select id="selectOne" resultType="Member" parameterType="Member">
+		select
+		*
+		from member
+		where
+		user_id = #{user_id}
+		<if test="user_pwd !=null">
+			and
+			user_pwd = #{user_pwd}
+		</if>
+	</select>
+	
+	
+	<!-- 
+	 email중복체크
+    <select id="emailcheck" resultType="String">
+        SELECT user_email
+         FROM member WHERE user_email = #{user_email}
+    </select>
+ -->
+
+</mapper>

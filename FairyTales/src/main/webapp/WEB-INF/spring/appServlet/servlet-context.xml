@@ -37,6 +37,6 @@
 	-->
 	<!-- /인터셉터 등록 -->
 	
-	<context:component-scan base-package="global.sesoc.fairytales.controllers" />
+	<context:component-scan base-package="global.sesoc.fairytales" />
 	
 </beans:beans>

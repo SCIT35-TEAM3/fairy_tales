@@ -69,6 +69,7 @@ public class HomeController {
 		return word + " OK";
 	}
 	
+	
 	/**
 	 * 화면을 거치지 않고 다른 컨트롤러에 존재하는 RequestMapping으로 이동시
 		RedirectAttributes를 이용해 속성을 만들어 값을 넘겨주기
@@ -85,5 +86,13 @@ public class HomeController {
 		return "redirect:/detail";
 	}
 	
+	
 	/* 셈플입니다 새로운 Controller를 만들어 사용해주세요 !! */
+	
+	//남정임
+		@RequestMapping(value = "/index", method = RequestMethod.GET)
+		public String index() {
+		
+			return "/index";
+		}
 }

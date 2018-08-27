@@ -4,9 +4,11 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<!-- <typeAlias type="global.sesoc.fairytales.dto.??" alias="??"/> -->
+		<typeAlias type="global.sesoc.fairytales.dto.Member" alias="Member" /><!-- Member vo에 대한 타입이랑 alias맞춘다. -->
+		<typeAlias type="global.sesoc.fairytales.dto.Board" alias="Board" />
 	</typeAliases>
 	<mappers>
-		 <!-- <mapper resource="mappers/??.xml" /> -->
+		<mapper resource="mappers/memberMapper.xml" />
+		<mapper resource="mappers/boardMapper.xml" />
 	</mappers>
 </configuration>

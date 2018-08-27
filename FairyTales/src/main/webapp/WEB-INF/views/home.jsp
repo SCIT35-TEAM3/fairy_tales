@@ -47,5 +47,7 @@
 </c:choose>
 <div id="ajaxView"></div>
 
+<a href = "index">남정임</a>
+	
 </body>
 </html>
