@@ -35,7 +35,7 @@ public class HomeController {
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
-	 */
+	 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model, HttpServletRequest request, HttpSession session) {
 		logger.info("Welcome home! The client locale is {}.", locale);
@@ -56,7 +56,7 @@ public class HomeController {
 		
 		return "home";
 	}
-	
+	*/
 	/**
 	 * Ajax
 	 * @param word
@@ -89,6 +89,22 @@ public class HomeController {
 	
 	/* 셈플입니다 새로운 Controller를 만들어 사용해주세요 !! */
 	
+	/*** bootstrap 입니다. ****/
+	
+	/*bootstrap 적용한 메인*/
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String home(Locale locale, Model model, HttpServletRequest request, HttpSession session) {
+		
+		return "home";
+	}
+	
+	/*bootstrap 도움말*/
+	@RequestMapping(value = "/bootstrap", method = RequestMethod.GET)
+	public String bootstrap(Locale locale, Model model, HttpServletRequest request, HttpSession session) {
+		
+		return "bootstrap";
+	}
+	/*************************/
 	//남정임
 		@RequestMapping(value = "/index", method = RequestMethod.GET)
 		public String index() {
