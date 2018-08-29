@@ -11,12 +11,10 @@
 	<typeAliases>
 
 		<!-- <typeAlias type="global.sesoc.fairytales.dto.??" alias="??"/> -->
-		<typeAlias
-			type="global.sesoc.fairytales.dto.Board_1to1Mapper" alias="board" />
-		<typeAlias
-			type="global.sesoc.fairytales.dto.Reply_1to1Mapper" alias="reply" />	
-		<typeAlias type="global.sesoc.fairytales.dto.Member" alias="Member" /><!-- Member vo에 대한 타입이랑 alias맞춘다. -->
-		<typeAlias type="global.sesoc.fairytales.dto.Board" alias="Board" />
+		<typeAlias type="global.sesoc.fairytales.dto.Board_1to1" alias="board_1to1"/>
+		<typeAlias type="global.sesoc.fairytales.dto.Reply_1to1" alias="Reply_1to1"/>	
+		<typeAlias type="global.sesoc.fairytales.dto.Member" alias="Member"/>
+		<typeAlias type="global.sesoc.fairytales.dto.Board" alias="Board"/>
 			
 	</typeAliases>
 	<mappers>

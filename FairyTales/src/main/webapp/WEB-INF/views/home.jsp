@@ -48,6 +48,7 @@
 <div id="ajaxView"></div>
 
 <a href = "index">남정임</a>
+<a href="board_1to1">1:1게시판</a>
 	
 </body>
 </html>

@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="global.sesoc.fairytales.dao.Board_1to1Mapper">
-	<insert id="insert_board_1to1" parameterType="board">
+	<insert id="insert_board_1to1" parameterType="board_1to1">
 		insert into board_1to1 values(
 		#{user_id},
 		board_1to1_seq.nextVal,
@@ -19,7 +19,7 @@
 		)
 	</insert>
 
-	<select id="select_all_board_1to1" resultType="board">
+	<select id="select_all_board_1to1" resultType="board_1to1">
 		select
 		user_id,
 		board_num,
@@ -39,15 +39,14 @@
 
 	</select>
 
-	<select id="select_one_board_1to1" parameterType="board"
-		resultType="board">
+	<select id="select_one_board_1to1" parameterType="board_1to1" resultType="board_1to1">
 		select*from board_1to1
 		where
 		board_num=#{board_num}
 
 	</select>
 
-	<update id="update_board_1to1" parameterType="board">
+	<update id="update_board_1to1" parameterType="board_1to1">
 		update board_1to1
 		set
 		title=#{title},
@@ -75,7 +74,7 @@
 
 	</select>
 
-	<select id="select" resultType="board" parameterType="map">
+	<select id="select" resultType="board_1to1" parameterType="map">
 
 		select
 		board_num

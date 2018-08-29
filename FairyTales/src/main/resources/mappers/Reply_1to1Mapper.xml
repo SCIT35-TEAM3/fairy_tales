@@ -4,61 +4,61 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="global.sesoc.fairytales.dao.Reply_1to1Mapper">
 
-<select id="reply_list" resultType="reply" parameterType="int">
-select
-reply_num,
-board_num, 
-user_id,
-reply_title,
-text,
-new_date
-from reply_1to1
-where
-board_num=#{board_num}
-</select>
+	<select id="reply_list" resultType="Reply_1to1" parameterType="int">
+		select
+		reply_num,
+		board_num,
+		user_id,
+		reply_title,
+		text,
+		new_date
+		from reply_1to1
+		where
+		board_num=#{board_num}
+	</select>
 
-<insert id="insert_reply_1to1" parameterType="reply">
-insert into reply_1to1(
+	<insert id="insert_reply_1to1" parameterType="Reply_1to1">
+		insert into reply_1to1(
 
-reply_num,
-board_num,
-user_id,
-reply_title,
-text,
-new_date
+		reply_num,
+		board_num,
+		user_id,
+		reply_title,
+		text,
+		new_date
 
-)values(
+		)values(
 
-reply_1to1_seq.nextVal,
-#{board_num},
-#{user_id},
-#{reply_title},
-#{text},
-sysdate
+		reply_1to1_seq.nextVal,
+		#{board_num},
+		#{user_id},
+		#{reply_title},
+		#{text},
+		sysdate
 
-)
+		)
 
-</insert>
+	</insert>
 
-<update id="update_reply_1to1" parameterType="reply">
-update reply_1to1 set
-
-
-reply_title=#{reply_title},
-text=#{text},
-new_date=sysdate
-
-where 
-reply_num=#{reply_num}
-
-</update>
-
-<delete id="delete_reply_1to1" parameterType="reply">
-DELETE FROM reply_1to1
-WHERE reply_num=#{reply_num}
-
-</delete>
+	<update id="update_reply_1to1" parameterType="Reply_1to1">
+		update reply_1to1 set
 
 
-	
+		reply_title=#{reply_title},
+		text=#{text},
+		new_date=sysdate
+
+		where
+		reply_num=#{reply_num}
+
+	</update>
+
+	<delete id="delete_reply_1to1" parameterType="Reply_1to1">
+		DELETE FROM reply_1to1
+		WHERE reply_num=#{reply_num}
+
+	</delete>
+
+
+
 </mapper>
