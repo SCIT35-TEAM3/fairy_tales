@@ -98,7 +98,7 @@ public class MemberController {
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
 		session.invalidate();
-		return "index";
+		return "home";
 	}
 
 	// 마이페이지 요청

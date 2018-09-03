@@ -87,7 +87,7 @@ CREATE TABLE notice
 	user_id varchar2(30) NOT NULL,
 	board_num number(3,0),
 	title varchar2(100),
-	hitcount number(3,0),
+	hitcount number DEFAULT 0,
 	new_date date DEFAULT sysdate,
 	content varchar2(2000)
 );
@@ -201,3 +201,9 @@ COMMENT ON COLUMN Member_Fairy.in_date IS '해당 동화를 처음 접속한 날
 COMMENT ON COLUMN Member_Fairy.last_date IS '해당 동화를 마지막으로 접속한 날짜(통계)';
 COMMENT ON COLUMN Question.answer IS '문제의 답';
 COMMENT ON COLUMN Question.screen IS '챕터의 몇번째 화면';
+
+insert into member (user_id,user_pwd,user_name,	user_age,phone_num	,user_email,address,user_level)
+		values('manager','1234'	,'관리자1',33,'010-1111-1111','nam7318@naver.com','서울시 삼성동 scit master',1);
+
+commit;
+        

@@ -1,6 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
+<style type="text/css">
+.nav>li>div {
+    position: relative;
+    padding: 10px 15px;
+}
+
+</style>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,6 +37,7 @@
 </head><!--/head-->
 
 <body>
+<!--header-->
 	<header id="header">      
         <div class="container">
             <div class="row">
@@ -52,48 +64,46 @@
                         <span class="icon-bar"></span>
                     </button>
 
-                    <a class="navbar-brand" href="index.html">
-                    	<h1><img src="images/logo.png" alt="logo"></h1>
+                    <a class="navbar-brand" href="./">
+                    	<h1><img src="images/logo(ex).png" alt="logo"></h1>
                     </a>
                     
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="active"><a href="index.html">Home</a></li>
-                        <li class="dropdown"><a href="#">Pages <i class="fa fa-angle-down"></i></a>
+                        <li><a href="./">Home</a></li>
+                        <li class="dropdown"><a href="#">Page <i class="fa fa-angle-down"></i></a>
                             <ul role="menu" class="sub-menu">
-                                <li><a href="aboutus.html">About</a></li>
-                                <li><a href="aboutus2.html">About 2</a></li>
-                                <li><a href="service.html">Services</a></li>
-                                <li><a href="pricing.html">Pricing</a></li>
-                                <li><a href="contact.html">Contact us</a></li>
-                                <li><a href="contact2.html">Contact us 2</a></li>
-                                <li><a href="404.html">404 error</a></li>
-                                <li><a href="coming-soon.html">Coming Soon</a></li>
+                            
+                            	<li><a href="japanese_fairy">Japanese Fairy</a></li>
+                                <li><a href="aboutus.html">Codding Puzzle</a></li>
                             </ul>
                         </li>                  
-                        <li class="dropdown"><a href="blog.html">Blog <i class="fa fa-angle-down"></i></a>
+                        <li class="dropdown"><a href="#">Board<i class="fa fa-angle-down"></i></a>
                             <ul role="menu" class="sub-menu">
-                                <li><a href="blog.html">Blog Default</a></li>
-                                <li><a href="blogtwo.html">Timeline Blog</a></li>
-                                <li><a href="blogone.html">2 Columns + Right Sidebar</a></li>
-                                <li><a href="blogthree.html">1 Column + Left Sidebar</a></li>
-                                <li><a href="blogfour.html">Blog Masonary</a></li>
-                                <li><a href="blogdetails.html">Blog Details</a></li>
+                                <li><a href="board_list">Notice</a></li>
+                                <li><a href="blogtwo.html">1:1 CustomerBoard</a></li>
                             </ul>
                         </li>
-                        <li class="dropdown"><a href="portfolio.html">Portfolio <i class="fa fa-angle-down"></i></a>
+                        <!-- 회원 로그인 후-->
+						<c:if test="${sessionScope.loginid != null}">
+						
+                        <li class="dropdown"><a href="#">MyPage <i class="fa fa-angle-down"></i></a>
                             <ul role="menu" class="sub-menu">
-                                <li><a href="portfolio.html">Portfolio Default</a></li>
-                                <li><a href="portfoliofour.html">Isotope 3 Columns + Right Sidebar</a></li>
-                                <li><a href="portfolioone.html">3 Columns + Right Sidebar</a></li>
-                                <li><a href="portfoliotwo.html">3 Columns + Left Sidebar</a></li>
-                                <li><a href="portfoliothree.html">2 Columns</a></li>
-                                <li><a href="portfolio-details.html">Portfolio Details</a></li>
+                                <li><a href="my_info_detail">My Infomation</a></li>
+                                <li><a href="portfoliofour.html">Learning Page</a></li>
                             </ul>
-                        </li>                         
-                        <li><a href="shortcodes.html ">Shortcodes</a></li>                    
-                    </ul>
+                        </li>
+                        <li><div>${sessionScope.loginid}</div></li>
+                        <li><a href="logout">Logout</a></li>
+						</c:if>
+						<!-- 로그인 전  -->
+						<c:if test="${sessionScope.loginid == null}">
+							<li><a href="login ">Login</a></li>
+							<li><a href="join ">Join</a></li>
+						</c:if>
+
+					</ul>
                 </div>
                 <div class="search">
                     <form role="form">
@@ -130,40 +140,70 @@
     </section>
     <!--/#home-slider-->
 
-    <section id="services">
+   <section id="blog" class="padding-bottom">
         <div class="container">
             <div class="row">
-                <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="300ms">
-                    <div class="single-service">
-                        <div class="wow scaleIn" data-wow-duration="500ms" data-wow-delay="300ms">
-                            <img src="images/home/icon1.png" alt="">
+                <div class="timeline-blog overflow padding-top">
+                    <div class="timeline-date text-center">
+                        <a href="#japanese_Fairy" class="btn btn-common uppercase">LEARNING</a>
+                    </div>
+                    <div class="timeline-divider overflow padding-bottom">
+                        <div class="col-sm-6 padding-right arrow-right wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="300ms">
+                            <div class="single-blog timeline">
+                                <div class="single-blog-wrapper">
+                                    <div class="post-thumb">
+                                        <img src="images/마차.png" class="img-responsive" alt="">
+                                        <div class="post-overlay">
+                                           <span class="uppercase"><a href="#">Go<br><small>Fairy</small></a></span>
+                                       </div>
+                                    </div>
+                                </div>
+                                <div id ="japanese_Fairy" class="post-content overflow">
+                                    <h2 class="post-title bold"><a href="blogdetails.html">Japanese Fairy</a></h2>
+                                    <h3 class="post-author"><a href="#">Posted by micron News</a></h3>
+                                    <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber [...]</p>
+                                    <a href="#" class="read-more">View More</a>
+                                    <div class="post-bottom overflow">
+                                        <span class="post-date pull-left">February 11, 2014</span>
+                                        <span class="comments-number pull-right"><a href="#">3 comments</a></span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <h2>Incredibly Responsive</h2>
-                        <p>Ground round tenderloin flank shank ribeye. Hamkevin meatball swine. Cow shankle beef sirloin chicken ground round.</p>
+                        <div class="col-sm-6 padding-left padding-top arrow-left wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="300ms">
+                            <div class="single-blog timeline">
+                                <div class="single-blog-wrapper">
+                                    <div class="post-thumb">
+                                        <img src="images/blog/timeline/2.jpg" class="img-responsive" alt="">
+                                        <div class="post-overlay">
+                                           <span class="uppercase"><a href="#">Go<br><small>Puzzle</small></a></span>
+                                       </div>
+                                    </div>
+                                </div>
+                                <div class="post-content overflow">
+                                    <h2 class="post-title bold"><a href="blogdetails.html#">Codding Puzzle</a></h2>
+                                    <h3 class="post-author"><a href="#">Posted by micron News</a></h3>
+                                    <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber [...]</p>
+                                    <a href="#" class="read-more">View More</a>
+                                    <div class="post-bottom overflow">
+                                        <span class="post-date pull-left">February 11, 2014</span>
+                                        <span class="comments-number pull-right"><a href="#">3 comments</a></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>
-                <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="600ms">
-                    <div class="single-service">
-                        <div class="wow scaleIn" data-wow-duration="500ms" data-wow-delay="600ms">
-                            <img src="images/home/icon2.png" alt="">
-                        </div>
-                        <h2>Superior Typography</h2>
-                        <p>Hamburger ribeye drumstick turkey, strip steak sausage ground round shank pastrami beef brisket pancetta venison.</p>
-                    </div>
-                </div>
-                <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="900ms">
-                    <div class="single-service">
-                        <div class="wow scaleIn" data-wow-duration="500ms" data-wow-delay="900ms">
-                            <img src="images/home/icon3.png" alt="">
-                        </div>
-                        <h2>Swift Page Builder</h2>
-                        <p>Venison tongue, salami corned beef ball tip meatloaf bacon. Fatback pork belly bresaola tenderloin bone pork kevin shankle.</p>
+                <div class="timeline-blog overflow">
+                    <div class="timeline-date text-center">
+                        <a href="#" class="btn btn-common">See More</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!--/#services-->
+    <!--/#blog-->
 
     <section id="action" class="responsive">
         <div class="vertical-center">

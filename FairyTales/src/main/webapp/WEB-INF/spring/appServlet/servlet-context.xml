@@ -21,7 +21,30 @@
 	<resources mapping="/images/**"		location="/resources/images/"	/>
 	<resources mapping="/js/**"			location="/resources/js/"		/>
 	<resources mapping="/resources/**"	location="/resources/"			/>
-
+	
+			<!-- NJI(남정임) -->
+	
+	
+	<resources mapping="/fonts/codropsicons/**" location="/resources/fonts/codropsicons/" />
+	<resources mapping="/images/aboutus/**" location="/resources/images/aboutus/" />
+	
+	<resources mapping="/images/blog/**" location="/resources/images/blog/" />
+	<resources mapping="/images/blog/masonary/**" location="/resources/images/blog/masonary/" />
+	<resources mapping="/images/blog/timeline/**" location="/resources/images/blog/timeline/" />
+	
+	<resources mapping="/images/blogdetails/**" location="/resources/images/blogdetails/" />
+	
+	<resources mapping="/images/home/**" location="/resources/images/home/" />
+	<resources mapping="/images/home/slider/**" location="/resources/images/home/slider/" />
+	<resources mapping="/images/home/slider/slide1/**" location="/resources/images/home/slider/slide1/" />
+	<resources mapping="/images/ico/**" location="/resources/images/ico/" />
+	<resources mapping="/images/img/**" location="/resources/images/img/" />
+	<resources mapping="/images/lightbox/**" location="/resources/images/lightbox/" />
+	<resources mapping="/images/portfolio/**" location="/resources/images/portfolio/" />
+	<resources mapping="/images/portfolio-details/**" location="/resources/images/portfolio-details/" />
+	<resources mapping="/images/services/**" location="/resources/images/services/" />
+	
+	
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />

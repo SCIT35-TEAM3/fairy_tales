@@ -25,7 +25,7 @@
 		board_num = #{board_num}
 	</select>
 
-	 <!-- 게시글 등록 -->
+		 <!-- 게시글 등록 -->
 	<insert id="insert" parameterType="Board">
 		insert into notice
 		(
@@ -33,6 +33,7 @@
 		, user_id
 		, title
 		, content
+		, hitcount
 		)
 		values
 		(
@@ -40,6 +41,7 @@
 		, #{user_id}
 		, #{title}
 		, #{content}
+		, 0
 		)
 	</insert>
 	
