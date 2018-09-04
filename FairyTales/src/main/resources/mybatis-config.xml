@@ -11,7 +11,7 @@
 	<typeAliases>
 
 		<!-- <typeAlias type="global.sesoc.fairytales.dto.??" alias="??"/> -->
-		<typeAlias type="global.sesoc.fairytales.dto.Board_1to1" alias="board_1to1"/>
+		<typeAlias type="global.sesoc.fairytales.dto.Board_1to1" alias="Board_1to1"/>
 		<typeAlias type="global.sesoc.fairytales.dto.Reply_1to1" alias="Reply_1to1"/>	
 		<typeAlias type="global.sesoc.fairytales.dto.Member" alias="Member"/>
 		<typeAlias type="global.sesoc.fairytales.dto.Board" alias="Board"/>

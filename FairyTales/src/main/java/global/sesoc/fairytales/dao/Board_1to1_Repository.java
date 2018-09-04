@@ -42,7 +42,6 @@ public class Board_1to1_Repository {
 	// 글 선택
 	public Board_1to1 select_one_board_1to1(Board_1to1 board_1to1) {
 		Board_1to1Mapper mapper = session.getMapper(Board_1to1Mapper.class);
-		System.out.println(">>>>>>>>>>>>>>>mapper>>>>>>" + board_1to1);
 		return mapper.select_one_board_1to1(board_1to1);
 	}
 
@@ -80,7 +79,6 @@ public class Board_1to1_Repository {
 	// 페이징을 위한 전체 리스트
 	public List<Board_1to1> select(String searchItem, String searchWord, int startRecord, int countPerPage) {
 		RowBounds rb = new RowBounds(startRecord, countPerPage);
-		System.out.println(searchItem + "," + searchWord + "," + startRecord + "," + countPerPage);
 		Board_1to1Mapper mapper = session.getMapper(Board_1to1Mapper.class);
 
 		Map<String, String> map = new HashMap<>();

@@ -1,13 +1,22 @@
 package global.sesoc.fairytales.controllers;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -72,13 +81,12 @@ public class Board_1to1_controller {
 	@RequestMapping(value = "/write", method = RequestMethod.POST)
 	public String write(Model model, Board_1to1 board_1to1, HttpSession session, MultipartFile upload) {
 
-		board_1to1.setUser_id("aa"); // ■■■■■■■■■■■■ 임시 ■■■■■■■■■■■■
-		// board_1to1.setUser_id(String.valueOf(session.getAttribute("login_id")));
-		String user_id = (String) session.getAttribute("login_id");
-
+		board_1to1.setUser_id(String.valueOf(session.getAttribute("loginid")));
+		String user_id = (String) session.getAttribute("loginid");
+		System.out.println("▶▶▶▶▶ 글쓰기▶▶▶▶▶" +board_1to1+"▶▶▶▶upload▶▶▶▶"+ upload);
 		String origin_file_name = upload.getOriginalFilename();
 		String save_file = FileService.saveFile(upload, UPLOADPATH);
-		// board_1to1.setUser_id(user_id);
+		
 		board_1to1.setOrigin_file_name(origin_file_name);
 		board_1to1.setSave_file_name(save_file);
 
@@ -94,12 +102,33 @@ public class Board_1to1_controller {
 	@Transactional
 	@RequestMapping(value = "/post")
 	public String post(Model model, int board_num) {
+		
+		
 		model.addAttribute("login_id", "aa"); // 시험용
+		
 		Board_1to1 board_1to1 = new Board_1to1();
-		board_repository.hitcount(board_num);
 		board_1to1.setBoard_num(board_num);
 		Board_1to1 board_1to12 = board_repository.select_one_board_1to1(board_1to1);
+
 		model.addAttribute("board_1to1", board_1to12);
+
+		String full_path = null;
+
+		try {
+
+			full_path = UPLOADPATH + "/" + board_1to12.getSave_file_name();
+
+			String type = Files.probeContentType(Paths.get(full_path));
+			System.out.println(type);
+
+			if (type != null && type.contains("image")) {
+				model.addAttribute("type", type);
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
 		return "post";
 	}
 
@@ -107,7 +136,6 @@ public class Board_1to1_controller {
 	@RequestMapping(value = "board_update")
 	public String update(Board_1to1 board_1to1, Model model, int board_num) {
 
-		System.out.println(">>>>>>>>>>>>>>>>>>>" + board_num);
 		Board_1to1 board_1to11 = new Board_1to1();
 		board_1to11.setBoard_num(board_num);
 
@@ -121,19 +149,14 @@ public class Board_1to1_controller {
 	@RequestMapping(value = "board_update", method = RequestMethod.POST)
 	public String update(Board_1to1 board_1to1) {
 		System.out.println(board_1to1);
-		board_1to1.setUser_id("aa");// 임시용
 		board_repository.update_board_1to1(board_1to1);
-
 		return "redirect:board_1to1";
 	}
 
 	// 글 삭제
 	@RequestMapping(value = "board_delete")
 	public String delete(int board_num) {
-		System.out.println("삭제" + board_num);
-
 		int result = board_repository.delete_board_1to1(board_num);
-
 		return "redirect:board_1to1";
 
 	}
@@ -156,13 +179,55 @@ public class Board_1to1_controller {
 		board_1to12.setOrigin_file_name("");
 		board_1to12.setSave_file_name("");
 
-		// repository.update(board);
-
 		red.addAttribute("board_num", board_num);
 		red.addAttribute("user_id", board_1to12.getUser_id());
 
 		return "redirect:/update";
 
 	}
+	// 파일 다운로드
+	@RequestMapping(value = "/download", method = RequestMethod.GET)
+	public String download(Board_1to1 board_1to1, Model model, int board_num, HttpServletResponse rep) {
+
+		Board_1to1 board_1to11 = new Board_1to1();
+		board_1to11.setBoard_num(board_num);
+
+		Board_1to1 board_1to12 = board_repository.select_one_board_1to1(board_1to11);
+
+		String origin_file = board_1to12.getOrigin_file_name();
+		String save_file = board_1to12.getSave_file_name();
+		String full_path = UPLOADPATH + "/" + save_file;
+
+		try {
+
+			rep.setHeader("Content-Disposition", " attachment;filename=" + URLEncoder.encode(origin_file, "utf-8"));
+
+		} catch (UnsupportedEncodingException e1) {
+			e1.printStackTrace();
+		}
+
+		FileInputStream fin = null;
+		ServletOutputStream fout = null;
+
+		try {
+
+			fin = new FileInputStream(full_path);
+			fout = rep.getOutputStream();
+			FileCopyUtils.copy(fin, fout);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+
+		} finally {
+			try {
+				fin.close();
+				fout.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		return null; // return 할게 없다
+	}
+	
 
 }

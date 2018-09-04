@@ -4,10 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>글 수정</title>
+<title>Insert title here</title>
 </head>
 <body>
-<h2>글 수정</h2>
 	<form action="board_update" method="post" id="form">
 	<input type="hidden" name="board_num" value="${board_1to1.board_num}">
 		<div>
