@@ -155,6 +155,15 @@ public class MemberController {
 		//비번 불일치
 		return "false";
 	}
+	
+	//통계 페이지로 이동
+	@RequestMapping(value="/my_chart_page", method = RequestMethod.GET)
+	public String my_chart_page() {
+		
+		return "member/my_chart_page";
+	}
+	
+	
 
 	/*
 	 * // 중복확인(이메일)

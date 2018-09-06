@@ -142,13 +142,11 @@
 
     <section id="blog" class="padding-top">
         <div class="container">
-          
 				<div class="col-md-9 col-sm-7">
 					<div class="row">
 						<!-- Notice Board -->
 						<div class="col-sm-12 col-md-12">
 							<div class="user-data m-b-30">
-
 								<div class="sidebar blog-sidebar">
 									<div class="sidebar-item  recent">
 										<h3>Notice</h3>
