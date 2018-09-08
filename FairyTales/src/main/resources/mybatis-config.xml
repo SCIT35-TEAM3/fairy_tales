@@ -25,6 +25,7 @@
 		<mapper resource="mappers/Reply_1to1Mapper.xml" />
 		<mapper resource="mappers/memberMapper.xml" />
 		<mapper resource="mappers/boardMapper.xml" />
+		<mapper resource="mappers/chartMapper.xml"/>
 
 	</mappers>
 </configuration>

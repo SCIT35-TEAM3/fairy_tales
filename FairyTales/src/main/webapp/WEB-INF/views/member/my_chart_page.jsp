@@ -163,24 +163,24 @@
 													<h3>Chart</h3>
 
 													<!-- 진행도 -->
-													<div
-														style="position: relative; height: 700px; width: 700px">
+													<div style="position: relative; height: 900px; width: 700px">
+														<br> <br> <br>
 														<canvas id="allChart"></canvas>
-														<br> <br> <br>
+														<br> <br> <br> <br> <br> <br>
 														<canvas id="levelChart"></canvas>
-														<br> <br> <br>
+														<br> <br> <br> <br> <br> <br>
 														<canvas id="fairyChart"></canvas>
+														<br> <br> <br> <br> <br> <br>
 
 														<!-- 오답률 -->
-														<br> <br> <br>
 														<canvas id="allWorngChart"></canvas>
-														<br> <br> <br>
+														<br> <br> <br> <br> <br> <br>
 														<canvas id="levelWorngChart"></canvas>
-														<br> <br> <br>
-														
+														<br> <br> <br> <br> <br> <br>
+
 														<!-- 출석률 -->
-														<br> <br> <br>
 														<canvas id="attendChart"></canvas>
+														<br> <br> <br> <br> <br> <br>
 													</div>
 												</div>
 											</div>
@@ -195,6 +195,100 @@
 		</div>
 	</section>
 	<!--/#blog-->
+
+	<!-- <footer id="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 text-center bottom-separator">
+					<img src="images/home/under.png" class="img-responsive inline" alt="">
+				</div>
+				<div class="col-md-4 col-sm-6">
+					<div class="testimonial bottom">
+						<h2>Testimonial</h2>
+						<div class="media">
+							<div class="pull-left">
+								<a href="#"><img src="images/home/profile1.png" alt=""></a>
+							</div>
+							<div class="media-body">
+								<blockquote>Nisi commodo bresaola, leberkas venison
+									eiusmod bacon occaecat labore tail.</blockquote>
+								<h3>
+									<a href="#">- Jhon Kalis</a>
+								</h3>
+							</div>
+						</div>
+						<div class="media">
+							<div class="pull-left">
+								<a href="#"><img src="images/home/profile2.png" alt=""></a>
+							</div>
+							<div class="media-body">
+								<blockquote>Capicola nisi flank sed minim sunt
+									aliqua rump pancetta leberkas venison eiusmod.</blockquote>
+								<h3>
+									<a href="">- Abraham Josef</a>
+								</h3>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-6">
+					<div class="contact-info bottom">
+						<h2>Contacts</h2>
+						<address>
+							E-mail: <a href="mailto:someone@example.com">email@email.com</a>
+							<br> Phone: +1 (123) 456 7890 <br> Fax: +1 (123) 456
+							7891 <br>
+						</address>
+
+						<h2>Address</h2>
+						<address>
+							Unit C2, St.Vincent's Trading Est., <br> Feeder Road, <br>
+							Bristol, BS2 0UY <br> United Kingdom <br>
+						</address>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-12">
+					<div class="contact-form bottom">
+						<h2>Send a message</h2>
+						<form id="main-contact-form" name="contact-form" method="post"
+							action="sendemail.php">
+							<div class="form-group">
+								<input type="text" name="name" class="form-control"
+									required="required" placeholder="Name">
+							</div>
+							<div class="form-group">
+								<input type="email" name="email" class="form-control"
+									required="required" placeholder="Email Id">
+							</div>
+							<div class="form-group">
+								<textarea name="message" id="message" required="required"
+									class="form-control" rows="8" placeholder="Your text here"></textarea>
+							</div>
+							<div class="form-group">
+								<input type="submit" name="submit" class="btn btn-submit"
+									value="Submit">
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="col-sm-12">
+					<div class="copyright-text text-center">
+						<p>&copy; Your Company 2014. All Rights Reserved.</p>
+						<p>
+							Designed by <a target="_blank" href="http://www.themeum.com">Themeum</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer> -->
+	<!--/#footer-->
+
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/lightbox.min.js"></script>
+	<script type="text/javascript" src="js/wow.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+
 
 </body>
 <script>
@@ -381,8 +475,8 @@
 			}
 		}
 	});
-	
-//레벨별 오답률
+
+	//레벨별 오답률
 	var ctx = document.getElementById("levelWorngChart");
 	var levelWorngChart = new Chart(ctx, {
 		type : 'horizontalBar',
@@ -425,21 +519,21 @@
 			}
 		}
 	});
-	
-//레벨별 오답률
+
+	//월별 출석률
 	var ctx = document.getElementById("attendChart");
 	var attendChart = new Chart(ctx, {
 		type : 'line',
 		data : {
 			labels : [ "1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월",
-						"10월", "11월", "12월"],
+					"10월", "11월", "12월" ],
 			datasets : [ {
 				label : '출석일',
 				backgroundColor : 'rgba(153, 102, 255, 0.2)',
 				borderColor : 'rgba(153, 102, 255, 1)',
 				borderWidth : 1,
 				data : [ 15, 16, 17, 14, 5, 20, 18, 10, 7, 30, 17, 12 ]
-			}]
+			} ]
 		},
 		options : {
 			title : {
@@ -455,7 +549,7 @@
 				}
 			},
 			scales : {
-				xAxes : [ {
+				yAxes : [ {
 					ticks : {
 						beginAtZero : true
 					//true로 해야 0부터 시작

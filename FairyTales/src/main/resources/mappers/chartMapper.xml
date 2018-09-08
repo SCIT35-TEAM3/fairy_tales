@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="global.sesoc.fairytales.dao.ChartMapper">
+	
+	<!-- 전체 진행율 -->
+	<select id="allProgress" parameterType="String" resultType="int">
+	SELECT 
+		m.user_id
+		, mf.user_id
+		, mf.fairy_pk
+		, mf.chapter
+		, f.fairy_pk
+		, f.fairy_chapter
+	FROM 
+		member m
+		, member_fairy mf
+		, fairytales f
+	WHERE 
+		m.user_id = #{user_id}
+		, m.user_id = mf.user_id
+		, mf.fairy_pk = f.fairy_pk
+	</select>
+	
+	
+	<!-- 레벨별 진행도 -->
+	<select id="levelProgress" parameterType="String" resultType="int">
+	SELECT
+		f.fairy_level
+		, SUM(f.fairy_chapter) AS fairy_chapter
+		, SUM(mf.chapter) AS chapter
+	FROM
+		member m
+		, member_fairy mf
+		, fairytales f
+	WHERE 
+		m.user_id = #{user_id}
+		, m.user_id = mf.user_id
+		, mf.fairy_pk = f.fairy_pk
+		GROUP BY f.fairy_level
+	</select>
+
+	<!-- 동화별 진행도 -->
+	<select id="fairyProgress" parameterType="String" resultType="int">
+	SELECT 
+		f.fairy_pk
+		, SUM(f.fairy_chapter) AS fairy_chapter
+		, SUM(mf.chapter) AS chapter
+	FROM 
+		fairytales f LEFT OUTER JOIN member_fairy mf
+			ON f.fairy_pk = mf.fairy_pk
+		member_fairy mf INNER JOIN member m
+			ON mf.user_id = m.user_id
+	WHERE 
+		m.user_id GROUP BY f.fairy_pk
+	</select>
+	<!-- NULL이 치환이 안되서 오류나면 CASE 써볼것 -->
+	
+	
+	<!-- 전체문제수 -->
+	<select id="allQuestion" parameterType="String" resultType="int">
+	SELECT 
+		m.user_id.count(*) AS allQuestion
+	FROM
+		member m
+		, member_fairy mf
+		, question q
+	WHERE
+		m.user_id = #{user_id}
+		, m.user_id = mf.user_id
+		, mf.fairy_pk  = q.fairy_pk
+		, <![CDATA[q.chapter <= mf.chapter]]>
+		GROUP BY m.user_id
+	</select>
+	<!-- <쓸 때  <![CDATA[조건식]]>이런 식으로 써야함 -->
+
+	<!-- 오답수 -->
+	<select id="wrongQuestion" parameterType="String" resultType="int">
+	SELECT 
+		m.user_id.count(*) AS wrongQuestion
+	FROM
+		member m
+		, member_fairy mf
+		, question q
+		, wrong w
+	WHERE
+		m.user_id = #{user_id}
+		, m.user_id = mf.user_id
+		, mf.fairy_pk  = q.fairy_pk
+		, q.question_pk = w.question_pk
+		, <![CDATA[q.chapter <= mf.chapter]]>
+		GROUP BY m.user_id
+	</select>
+	
+	<!-- 출석률 -->
+	<select id="attend" parameterType="String" resultType="int">
+	SELECT 
+		m.user_id, ml.member_access
+	FROM
+		member m
+		, member_log ml
+	WHERE
+		m.user_id = ml.user_id
+		, ml.member_access BETWEEN TRUNC(SYSDATE, 'MM') AND LAST_DAY(SYSDATE)
+	</select>
+	<!-- 디벨로퍼에서 dual써서 가상 정보 확인하기 -->
+
+</mapper>
