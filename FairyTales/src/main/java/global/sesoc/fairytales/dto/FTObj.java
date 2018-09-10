@@ -3,7 +3,10 @@ package global.sesoc.fairytales.dto;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.databind.ser.std.SerializableSerializer;
-
+/***
+ *  사용안하면 지우도록하자
+ * 
+ */
 public class FTObj extends SerializableSerializer {
 	
 	/**

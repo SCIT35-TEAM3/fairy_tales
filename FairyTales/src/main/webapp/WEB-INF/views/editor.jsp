@@ -618,85 +618,42 @@
 		
 		//image file push
 		function imgFilePut(files){
-			addImgObject($(files).get(0));
+			//새 이미지
+			var formData = new FormData();
+			formData.append("file",$(files).get(0));
+			//이미지 업로드
+			$.ajax({
+					  url		: "./editdata"
+					, type		: "post"			
+					, processData: false
+					, contentType: false
+					, data		: formData
+					, dataType	: 'text'
+					, success	: function (response) {
+						alert("./image?tmpImg="+response);
+						addImgObject("./image?tmpImg="+response);
+						$("input[type=file]").val("");
+						console.error("여기 좀 생각해보자구");
+						/*
+						if ($.browser.msie) { 
+							$("input[type=file]").replaceWith( $("input[type=file]").clone(true) );
+						} else {
+							$("input[type=file]").val("");
+						}
+						*/
+					}
+			});
 		};
 		
 		//add image
 		function addImgObject (file,objId,scene){
-			//console.warn("오류 : 파일 선택후 다시 파일창을 열고 취소하면 오류 아마도 type='file'에 기본적인 동작에서 오류가 나는듯");
-			//console.error("할일 : --- Screen List --- 구현하기");
 			
-			//FileReader
-			var fr = new FileReader();
-			fr.onload = function(event){
-				var image = new Image();
-				image.src = event.target.result;
-				image.onload = function(){
-					//image size set
-					
-					if(scene == null){
-						while(true){
-							if((this.width > $(".fairyTale").width()) || (this.height > $(".fairyTale").height())){
-								//50%
-								this.width = this.width * 0.5;
-								this.height = this.height * 0.5;
-							}else{
-								break;
-							}
-						}
-					}else{
-						var ftWidth		= $(".fairyTale").width();
-						var ftHeigth	= $(".fairyTale").height();
-						$(this).css(
-							{
-								  "width"	: ftWidth	* scene.width
-								, "height"	: ftHeigth	* scene.height
-								, "left"	: ftWidth	* scene.left
-								, "top"		: ftHeigth	* scene.top
-								, "position" : "absolute"
-							}
-						);
-					}
-					$(this).data("objId", objId == null ? objMaxNum() : objId ).css("position", "absolute");
-					var layerGroupNum = scene == null ? layerSelector() : scene.layerNum;
-					//console.log("layerGroupNum : " + layerGroupNum);
-					if(objId == null){
-						//objList push image
-						objId = objPush("img",file);
-					};
-					var sceneNum
-					//처음 들어가는 것 Scene 만들기
-					if(scene == null){
-						//초기화playAnimateSet(target,screenNum,objId,layerNum,animate,time,latency)
-						//appear 첫번째는 나타나는 이벤트만
-						//두번째 scene에는 이동및 없어지는 이벤트만
-						sceneNum = playAnimateSet(this,screenSelector(),objId,layerGroupNum,"fadeIn",0,0);
-					}else{
-						//복사해온 것 sceneNum 지정
-						sceneNum = scene.sceneNum;
-					}
-					$(this).data("sceneNum", sceneNum);
-					
-					$(".move.group"+layerGroupNum).append(this);
-					//객체 선택
-					selectTarget = this;
-					//green box
-					greenBox(this);
-					//scene view
-					sceneViewList();
-					//object view
-					objViewList();
-				};
-			};
-			fr.readAsDataURL(file);
-			
-			/**********
-			var fr = new FileReader();
-			fr.onload = function(event){
-				var image = new Image();
-				image.src = event.target.result;
-				image.onload = function(){
-					//image size set
+			var image = new Image();
+			image.src = file;
+			image.onload = function(){
+				//image size set
+				
+				if(scene == null){
 					while(true){
 						if((this.width > $(".fairyTale").width()) || (this.height > $(".fairyTale").height())){
 							//50%
@@ -706,31 +663,49 @@
 							break;
 						}
 					}
-					
-					$(this).data("objId", objId==null ? objMaxNum() : objId ).css("position", "absolute");
-					var layerGroupNum = layerSelector();
-					console.log("layerGroupNum : " + layerGroupNum);
-					$(".move.group"+layerGroupNum).append(this);
-					if(objId == null){
-						//objList push image
-						objId = objPush("img",file);
-					};
-					
+				}else{
+					var ftWidth		= $(".fairyTale").width();
+					var ftHeigth	= $(".fairyTale").height();
+					$(this).css(
+						{
+							  "width"	: ftWidth	* scene.width
+							, "height"	: ftHeigth	* scene.height
+							, "left"	: ftWidth	* scene.left
+							, "top"		: ftHeigth	* scene.top
+							, "position" : "absolute"
+						}
+					);
+				}
+				$(this).data("objId", objId == null ? objMaxNum() : objId ).css("position", "absolute");
+				var layerGroupNum = scene == null ? layerSelector() : scene.layerNum;
+				//console.log("layerGroupNum : " + layerGroupNum);
+				if(objId == null){
+					objId = objPush("img",file);
+				};
+				var sceneNum
+				//처음 들어가는 것 Scene 만들기
+				if(scene == null){
 					//초기화playAnimateSet(target,screenNum,objId,layerNum,animate,time,latency)
 					//appear 첫번째는 나타나는 이벤트만
 					//두번째 scene에는 이동및 없어지는 이벤트만
-					playAnimateSet(this,screenSelector(),objId,layerGroupNum,"appear",0,0);
-					
-					//scene view
-					sceneViewList();
-					//object view
-					objViewList();	
-					//green box
-					greenBox(this);
-				};
+					sceneNum = playAnimateSet(this,screenSelector(),objId,layerGroupNum,"fadeIn",0,0);
+				}else{
+					//복사해온 것 sceneNum 지정
+					sceneNum = scene.sceneNum;
+				}
+				$(this).data("sceneNum", sceneNum);
+				
+				$(".move.group"+layerGroupNum).append(this);
+				//객체 선택
+				selectTarget = this;
+				//green box
+				greenBox(this);
+				//scene view
+				sceneViewList();
+				//object view
+				objViewList();
 			};
-			fr.readAsDataURL(file);
-			************/
+		
 		};
 		
 		//object push objList
@@ -738,7 +713,6 @@
 		  마지막에 실행하던가 검증하여 정확히 입력하도록하자 !!*/
 		function objPush(objNm,obj){
 			var objId = objMaxNum();
-			
 			objList.push({
 							  "objId"	: objId
 							// 오브젝트 이름
@@ -1095,11 +1069,8 @@
 			return returnScene;
 		}
 		
-		
-		
-		
+		/*
 		function editdata(){
-			
 			//$("#chapter").val(JSON.stringify(chapter));
 			$("#objList").val(objList[0]);
 			console.log("objList[0] : " + JSON.stringify(objList[0]));
@@ -1108,11 +1079,8 @@
 			$.ajax({
 						  url		: "./editdata"
 						, method	: "post"
-						
 						, processData: false
-						/* 
-						, contentType: false
-						*/
+						//, contentType: false
 						, type		: "multipart/mixed"
 						, data		: form
 						//, dataType	: 'text'
@@ -1128,6 +1096,7 @@
 			$("#chapter").val(JSON.stringify(chapter));
 			//$("#objList").val(objList);
 		}
+		*/
 	</script>
 	<style>
 		.fairyTale{
@@ -1266,18 +1235,12 @@
 	</div>
 	<input type="text" id="objText"/>
 	<input type="button" id="addObjTxtBtn" value="새 텍스트 추가"/>
-	<input type="file" onchange="imgFilePut(this.files)" >새 이미지 추가</input>
+	<!-- file  -->
+	<form action="#" method="post" id="editForm" enctype="multipart/mixed">
+		<input type="file" onchange="imgFilePut(this.files)" >새 이미지 추가</input>
+	</form>
+	<!-- file  -->
 	<input type="button" id="addObjectBtn" value="기존 오브젝트 추가"/>
 	<input type="button" id="objCheckBtn" value="오브젝트 삭제"/>
-	
-	<br><br>
-	<form action="/editdata" method="post" id="editForm" enctype="multipart/mixed">
-		<input type="hidden" id="objList" name="objList"/>
-		<input type="button" onclick="editdata()" value="전송"/>
-		<!-- 
-		<input type="hidden" id="chapter" name="chapter"/>
-		<input type="submit" onsubmit="" value="전송"/>
-		 -->
-	<form>
 </body>
 </html>
