@@ -91,7 +91,7 @@
                         <li class="dropdown"><a href="#">MyPage <i class="fa fa-angle-down"></i></a>
                             <ul role="menu" class="sub-menu">
                                 <li><a href="my_info_detail">My Infomation</a></li>
-                                <li><a href="portfoliofour.html">Learning Page</a></li>
+                                <li><a href="#">Learning Page</a></li>
                                 <li><a href="my_chart_page">My Chart</a></li>
                             </ul>
                         </li>

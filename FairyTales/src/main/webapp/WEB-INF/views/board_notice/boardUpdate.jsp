@@ -239,28 +239,7 @@ function formCheck(){
                                 <li><a href="#">Veniam, quis nostrud <span class="pull-right">(8)</span></a></li>
                             </ul>
                         </div>
-                        <div class="sidebar-item tag-cloud">
-                            <h3>Tag Cloud</h3>
-                            <ul class="nav nav-pills">
-                                <li><a href="#">Corporate</a></li>
-                                <li><a href="#">Joomla</a></li>
-                                <li><a href="#">Abstract</a></li>
-                                <li><a href="#">Creative</a></li>
-                                <li><a href="#">Business</a></li>
-                                <li><a href="#">Product</a></li>
-                            </ul>
-                        </div>
-                        <div class="sidebar-item popular">
-                            <h3>Latest Photos</h3>
-                            <ul class="gallery">
-                                <li><a href="#"><img src="images/portfolio/popular1.jpg" alt=""></a></li>
-                                <li><a href="#"><img src="images/portfolio/popular2.jpg" alt=""></a></li>
-                                <li><a href="#"><img src="images/portfolio/popular3.jpg" alt=""></a></li>
-                                <li><a href="#"><img src="images/portfolio/popular4.jpg" alt=""></a></li>
-                                <li><a href="#"><img src="images/portfolio/popular5.jpg" alt=""></a></li>
-                                <li><a href="#"><img src="images/portfolio/popular1.jpg" alt=""></a></li>
-                            </ul>
-                        </div>
+                      
                     </div>
                 </div>
             </div>

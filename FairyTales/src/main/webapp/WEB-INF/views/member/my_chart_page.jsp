@@ -86,7 +86,7 @@
                         <li class="dropdown"><a href="#">MyPage <i class="fa fa-angle-down"></i></a>
                             <ul role="menu" class="sub-menu">
                                 <li><a href="my_info_detail">My Infomation</a></li>
-                                <li><a href="portfoliofour.html">Learning Page</a></li>
+                                <li><a href="#">Learning Page</a></li>
                                 <li><a href="my_chart_page">My Chart</a></li>
                             </ul>
                         </li>
@@ -130,7 +130,7 @@
 				<div class="col-md-3 col-sm-5">
 					<div class="sidebar blog-sidebar w3-sidebar">
 						<!-- 고정시켜서 쓸 수 있는 사이드바 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 붙여서 쓰시면 됩니다!-->
-						<div class="sidebar-item categories">
+						<div class="sidebar-item categories" >
 							<h3>나의 학습 진행 현황</h3>
 							<ul class="nav navbar-stacked">
 								<li><a href="#allChart">학습진행도</a></li>
@@ -153,21 +153,31 @@
 													<h3>Chart</h3>
 
 													<!-- 진행도 -->
-													<div style="position: relative; height: 900px; width: 700px">
+													
+													<!-- 차트 2개 넓이는 1000px -->
+													<div style="position: relative; height: 1000px; width: 700px">
 														<br> <br> <br>
 														<canvas id="allChart"></canvas>
 														<br> <br> <br> <br> <br> <br>
 														<canvas id="levelChart"></canvas>
-														<br> <br> <br> <br> <br> <br>
+													</div>
+													<!-- /차트 2개 -->
+													
+													<!-- 차트 1개 넓이는 450px -->
+													<div style="position: relative; height: 450px; width: 700px">
+													
 														<canvas id="fairyChart"></canvas>
 														<br> <br> <br> <br> <br> <br>
-
+													</div>
+													<!-- /차트 1개 -->
+													
+													<div style="position: relative; height: 1000px; width: 700px">
 														<!-- 오답률 -->
 														<canvas id="allWorngChart"></canvas>
 														<br> <br> <br> <br> <br> <br>
 														<canvas id="levelWorngChart"></canvas>
-														<br> <br> <br> <br> <br> <br>
-
+													</div>
+													<div style="position: relative; height: 450px; width: 700px">
 														<!-- 출석률 -->
 														<canvas id="attendChart"></canvas>
 														<br> <br> <br> <br> <br> <br>
@@ -186,94 +196,80 @@
 	</section>
 	<!--/#blog-->
 
-	<!-- <footer id="footer">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-12 text-center bottom-separator">
-					<img src="images/home/under.png" class="img-responsive inline" alt="">
-				</div>
-				<div class="col-md-4 col-sm-6">
-					<div class="testimonial bottom">
-						<h2>Testimonial</h2>
-						<div class="media">
-							<div class="pull-left">
-								<a href="#"><img src="images/home/profile1.png" alt=""></a>
-							</div>
-							<div class="media-body">
-								<blockquote>Nisi commodo bresaola, leberkas venison
-									eiusmod bacon occaecat labore tail.</blockquote>
-								<h3>
-									<a href="#">- Jhon Kalis</a>
-								</h3>
-							</div>
-						</div>
-						<div class="media">
-							<div class="pull-left">
-								<a href="#"><img src="images/home/profile2.png" alt=""></a>
-							</div>
-							<div class="media-body">
-								<blockquote>Capicola nisi flank sed minim sunt
-									aliqua rump pancetta leberkas venison eiusmod.</blockquote>
-								<h3>
-									<a href="">- Abraham Josef</a>
-								</h3>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 col-sm-6">
+    <footer id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center bottom-separator">
+                    <img src="images/home/under.png" class="img-responsive inline" alt="">
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="contact-info bottom">
+                        <h2>Contacts</h2>
+                        <address>
+                        E-mail: <a href="mailto:jungim0547@gmail.com">jungim0547@gmail.com</a> <br> 
+                        Phone: 1566-5114 <br> 
+                        </address>
+
+                        <h2>Address</h2>
+                        <address>
+                        513 COEX office<br>
+                        Korea International Trade Association, <br> 
+                        Yeongdong-daero, <br> 
+                        Gangnam-gu, <br> 
+                        Seoul <br> 
+                        </address>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+				<!-- <div class="col-md-12 col-sm-12"> -->
 					<div class="contact-info bottom">
-						<h2>Contacts</h2>
-						<address>
-							E-mail: <a href="mailto:someone@example.com">email@email.com</a>
-							<br> Phone: +1 (123) 456 7890 <br> Fax: +1 (123) 456
-							7891 <br>
-						</address>
+						<div class="map">
+							<iframe width="120%" height="300" frameborder="0" scrolling="no"
+								marginheight="0"
+								src="https://maps.google.com/maps?q=coex&t=&z=13&ie=UTF8&iwloc=&output=embed"
+								marginwidth="0">
+								<a class="addmaps" href="http://www.embedgooglemap.net"
+									id="get-map-data"
+									mce_href="http://maps.google.com/maps/api/js?sensor=false">embedgooglemap.net</a>
 
-						<h2>Address</h2>
-						<address>
-							Unit C2, St.Vincent's Trading Est., <br> Feeder Road, <br>
-							Bristol, BS2 0UY <br> United Kingdom <br>
-						</address>
-					</div>
-				</div>
-				<div class="col-md-4 col-sm-12">
-					<div class="contact-form bottom">
-						<h2>Send a message</h2>
-						<form id="main-contact-form" name="contact-form" method="post"
-							action="sendemail.php">
-							<div class="form-group">
-								<input type="text" name="name" class="form-control"
-									required="required" placeholder="Name">
-							</div>
-							<div class="form-group">
-								<input type="email" name="email" class="form-control"
-									required="required" placeholder="Email Id">
-							</div>
-							<div class="form-group">
-								<textarea name="message" id="message" required="required"
-									class="form-control" rows="8" placeholder="Your text here"></textarea>
-							</div>
-							<div class="form-group">
-								<input type="submit" name="submit" class="btn btn-submit"
-									value="Submit">
-							</div>
-						</form>
-					</div>
-				</div>
-				<div class="col-sm-12">
-					<div class="copyright-text text-center">
-						<p>&copy; Your Company 2014. All Rights Reserved.</p>
-						<p>
-							Designed by <a target="_blank" href="http://www.themeum.com">Themeum</a>
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</footer> -->
-	<!--/#footer-->
 
+
+							</iframe>
+						</div>
+
+					</div>
+				</div>
+                <!-- <div class="col-md-4 col-sm-12">
+                    <div class="contact-form bottom">
+                        <h2>Send a message</h2>
+                        <form id="main-contact-form" name="contact-form" method="post" action="sendemail.php">
+                            <div class="form-group">
+                                <input type="text" name="name" class="form-control" required="required" placeholder="Name">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="email" class="form-control" required="required" placeholder="Email Id">
+                            </div>
+                            <div class="form-group">
+                                <textarea name="message" id="message" required="required" class="form-control" rows="8" placeholder="Your text here"></textarea>
+                            </div>                        
+                            <div class="form-group">
+                                <input type="submit" name="submit" class="btn btn-submit" value="Submit">
+                            </div>
+                        </form>
+                    </div>
+                </div> -->
+                <div class="col-sm-12">
+                    <div class="copyright-text text-center">
+                        <p>&copy; Your Company 2014. All Rights Reserved.</p>
+                        <p>Designed by <a target="_blank" href="http://www.themeum.com">Themeum</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--/#footer-->
+
+	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/lightbox.min.js"></script>
 	<script type="text/javascript" src="js/wow.min.js"></script>
