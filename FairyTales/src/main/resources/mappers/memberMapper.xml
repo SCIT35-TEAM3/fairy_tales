@@ -52,13 +52,19 @@
 		</if>
 	</select>
 	
-	
-	<!-- 
-	 email중복체크
-    <select id="emailcheck" resultType="String">
-        SELECT user_email
-         FROM member WHERE user_email = #{user_email}
-    </select>
- -->
+	<!--  -->
+	<insert id="insert_access" parameterType="Member">
+		insert into member_log
+		(
+		user_id,
+		member_access
+		)
+		values
+		(
+		#{user_id},
+		sysdate
+		)
+	</insert>
+
 
 </mapper>
