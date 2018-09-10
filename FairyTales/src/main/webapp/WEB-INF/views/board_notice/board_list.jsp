@@ -34,13 +34,13 @@
             <div class="row">
                 <div class="col-sm-12 overflow">
                    <div class="social-icons pull-right">
-                        <ul class="nav nav-pills">
+                        <!-- <ul class="nav nav-pills">
                             <li><a href=""><i class="fa fa-facebook"></i></a></li>
                             <li><a href=""><i class="fa fa-twitter"></i></a></li>
                             <li><a href=""><i class="fa fa-google-plus"></i></a></li>
                             <li><a href=""><i class="fa fa-dribbble"></i></a></li>
                             <li><a href=""><i class="fa fa-linkedin"></i></a></li>
-                        </ul>
+                        </ul> -->
                     </div> 
                 </div>
              </div>
@@ -56,7 +56,7 @@
                     </button>
 
                     <a class="navbar-brand" href="./">
-                    	<h1><img src="images/logo(ex).png" alt="logo"></h1>
+                    	<h1><img src="images/로고.png" alt="logo"></h1>
                     </a>
                     
                 </div>
@@ -67,13 +67,13 @@
                             <ul role="menu" class="sub-menu">
                             
                             	<li><a href="japanese_fairy">Japanese Fairy</a></li>
-                                <li><a href="aboutus.html">Codding Puzzle</a></li>
+                                <li><a href="coding_puzzle">Coding Puzzle</a></li>
                             </ul>
-                        </li>                  
+                        </li>                    
                         <li class="dropdown"><a href="#">Board<i class="fa fa-angle-down"></i></a>
                             <ul role="menu" class="sub-menu">
                                 <li><a href="board_list">Notice</a></li>
-                                <li><a href="blogtwo.html">1:1 CustomerBoard</a></li>
+                                <li><a href="board_1to1">1:1 CustomerBoard</a></li>
                             </ul>
                         </li>
                         <!-- 회원 로그인 후-->
@@ -83,6 +83,7 @@
                             <ul role="menu" class="sub-menu">
                                 <li><a href="my_info_detail">My Infomation</a></li>
                                 <li><a href="portfoliofour.html">Learning Page</a></li>
+                                <li><a href="my_chart_page">My Chart</a></li>
                             </ul>
                         </li>
                         <li><div>${sessionScope.loginid}</div></li>
@@ -94,29 +95,9 @@
 							<li><a href="join ">Join</a></li>
 						</c:if>
 
-						<!-- 회원 로그인 후-->
-						
-							
-						
-						
-				<%-- 				<br />
-							<a href="my_info_detail">마이페이지</a>
-							<br />
-							<a href="board_list">공지사항</a>
-						</c:if> --%>
-
-
-
 					</ul>
                 </div>
-                <div class="search">
-                    <form role="form">
-                        <i class="fa fa-search"></i>
-                        <div class="field-toggle">
-                            <input type="text" class="search-form" autocomplete="off" placeholder="Search">
-                        </div>
-                    </form>
-                </div>
+                
             </div>
         </div>
     </header>
@@ -140,160 +121,117 @@
    
     <!--/#page-breadcrumb-->
 
+<!-- board list -->
     <section id="blog" class="padding-top">
-        <div class="container">
-				<div class="col-md-9 col-sm-7">
-					<div class="row">
-						<!-- Notice Board -->
-						<div class="col-sm-12 col-md-12">
-							<div class="user-data m-b-30">
-								<div class="sidebar blog-sidebar">
-									<div class="sidebar-item  recent">
-										<h3>Notice</h3>
+		<div class="container">
 
-									
-											<table class="table">
+			<div class="col-md-9 col-sm-7">
+				<div class="row">
+					<!-- Notice Board -->
+					<div class="col-sm-12 col-md-12">
+						<div class="user-data m-b-30">
 
-												<thead>
-													<tr>
-														<td>NO.</td>
-														<td>ID</td>
-														<td>글 제목</td>
-														<td>날짜</td>
-														<td>조회수</td>
-													</tr>
-												</thead>
+							<div class="sidebar blog-sidebar">
+								<div class="sidebar-item  recent">
+									<h3>Notice</h3>
 
-												<tbody>
-													<c:forEach var="board" items="${list}">
-														<%-- <c:if test="${sessionScope.loginid != null}">  --%>
-															<tr>
-																<td>${board.board_num}</td>
-																<td>${board.user_id}</td>
-																<td><a href="boardDetail?board_num=${board.board_num}">${board.title}</a></td>
-																<td>${board.new_date}</td>
-																<td>${board.hitcount}</td>
-															</tr>
 
-													<%-- 	</c:if>--%>
-													
-													
-													</c:forEach> 
-												</tbody>
-											</table>
-							
+									<table class="table">
+
+										<thead>
+											<tr align="center">
+												<td>NO.</td>
+												<td>작성자</td>
+												<td>글 제목</td>
+												<td>날짜</td>
+												<td>조회수</td>
+											</tr>
+										</thead>
+
+										<tbody>
+											<c:forEach var="board" items="${list}">
+												<%-- <c:if test="${sessionScope.loginid != null}">  --%>
+												<tr align="center">
+													<td>${board.board_num}</td>
+													<td>${board.user_id}</td>
+													<td width="300px"><a
+														href="boardDetail?board_num=${board.board_num}">${board.title}</a></td>
+													<td width="150px">${board.new_date}</td>
+													<td width="100px">${board.hitcount}</td>
+												</tr>
+
+												<%-- 	</c:if>--%>
+
+
+											</c:forEach>
+										</tbody>
+									</table>
+
 
 									<!-- 페이징  -->
 									<div class="blog-pagination">
 										<ul class="pagination">
-											<li><a href="board_list?currentPage=${navi.currentPage - navi.pagePerGroup}&searchItem=${searchItem}&searchWord=${searchWord}">◀◀</a></li>
-											<li><a href="board_list?currentPage=${navi.currentPage - 1}&searchItem=${searchItem}&searchWord=${searchWord}">◁</a></li>
+											<li><a
+												href="board_list?currentPage=${navi.currentPage - navi.pagePerGroup}&searchItem=${searchItem}&searchWord=${searchWord}">◀◀</a></li>
+											<li><a
+												href="board_list?currentPage=${navi.currentPage - 1}&searchItem=${searchItem}&searchWord=${searchWord}">◁</a></li>
 											<li>&nbsp;&nbsp;</li>
 
-											<c:forEach var="page" begin="${navi.startPageGroup}" end="${navi.endPageGroup}">
+											<c:forEach var="page" begin="${navi.startPageGroup}"
+												end="${navi.endPageGroup}">
 												<c:if test="${page == currentPage}">
-													<li><span>${page}</span></li><li> &nbsp;</li>
+													<li><span>${page}</span></li>
+													<li>&nbsp;</li>
 												</c:if>
 												<c:if test="${page != currentPage}">
 
 
 													<!-- listboard를 누르면 페이지를 요청하는데, 링크건 ${page}값을 받아온다. -->
-													<li><a href="board_list?currentPage=${page}&searchItem=${searchItem}&searchWord=${searchWord}">${page}</a></li>
-														<!-- 한칸 띄우기 -->
+													<li><a
+														href="board_list?currentPage=${page}&searchItem=${searchItem}&searchWord=${searchWord}">${page}</a></li>
+													<!-- 한칸 띄우기 -->
 												</c:if>
 											</c:forEach>
 											<li>&nbsp;&nbsp;</li>
-											<li><a href="board_list?currentPage=${navi.currentPage + 1}&searchItem=${searchItem}&searchWord=${searchWord}">▷</a></li>
-											<li><a href="board_list?currentPage=${navi.currentPage + navi.pagePerGroup}&searchItem=${searchItem}&searchWord=${searchWord}">▶▶</a></li>
+											<li><a
+												href="board_list?currentPage=${navi.currentPage + 1}&searchItem=${searchItem}&searchWord=${searchWord}">▷</a></li>
+											<li><a
+												href="board_list?currentPage=${navi.currentPage + navi.pagePerGroup}&searchItem=${searchItem}&searchWord=${searchWord}">▶▶</a></li>
 										</ul>
 									</div>
 									<!-- /페이징  -->
 									<c:if test="${sessionScope.user_level eq '1'}">
-											<div class="user-data__footer" align="center">
-												<button type="button" class="btn btn-submit" onclick="location.href='boardWrite' ">Write</button>
-											</div>
-										</c:if>
+										<div class="user-data__footer" align="center">
+											<button type="button" class="btn btn-submit"
+												onclick="location.href='boardWrite' ">Write</button>
+										</div>
+									</c:if>
 								</div>
-							 </div>
+							</div>
 						</div>
-						 <!-- /Notice Board -->
+						<!-- /Notice Board -->
 					</div>
 				</div>
 			</div>
-				<div class="col-md-3 col-sm-5">
-                    <div class="sidebar blog-sidebar">
-                        <div class="sidebar-item  recent">
-                            <h3>Comments</h3>
-                            <div class="media">
-                                <div class="pull-left">
-                                    <a href="#"><img src="images/portfolio/project1.jpg" alt=""></a>
-                                </div>
-                                <div class="media-body">
-                                    <h4><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit,</a></h4>
-                                    <p>posted on  07 March 2014</p>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <div class="pull-left">
-                                    <a href="#"><img src="images/portfolio/project2.jpg" alt=""></a>
-                                </div>
-                                <div class="media-body">
-                                    <h4><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit,</a></h4>
-                                    <p>posted on  07 March 2014</p>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <div class="pull-left">
-                                    <a href="#"><img src="images/portfolio/project3.jpg" alt=""></a>
-                                </div>
-                                <div class="media-body">
-                                    <h4><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit,</a></h4>
-                                    <p>posted on  07 March 2014</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="sidebar-item categories">
-                            <h3>Categories</h3>
-                            <ul class="nav navbar-stacked">
-                                <li><a href="#">Lorem ipsum<span class="pull-right">(1)</span></a></li>
-                                <li class="active"><a href="#">Dolor sit amet<span class="pull-right">(8)</span></a></li>
-                                <li><a href="#">Adipisicing elit<span class="pull-right">(4)</span></a></li>
-                                <li><a href="#">Sed do<span class="pull-right">(9)</span></a></li>
-                                <li><a href="#">Eiusmod<span class="pull-right">(3)</span></a></li>
-                                <li><a href="#">Mockup<span class="pull-right">(4)</span></a></li>
-                                <li><a href="#">Ut enim ad minim <span class="pull-right">(2)</span></a></li>
-                                <li><a href="#">Veniam, quis nostrud <span class="pull-right">(8)</span></a></li>
-                            </ul>
-                        </div>
-                        <div class="sidebar-item tag-cloud">
-                            <h3>Tag Cloud</h3>
-                            <ul class="nav nav-pills">
-                                <li><a href="#">Corporate</a></li>
-                                <li><a href="#">Joomla</a></li>
-                                <li><a href="#">Abstract</a></li>
-                                <li><a href="#">Creative</a></li>
-                                <li><a href="#">Business</a></li>
-                                <li><a href="#">Product</a></li>
-                            </ul>
-                        </div>
-                        <div class="sidebar-item popular">
-                            <h3>Latest Photos</h3>
-                            <ul class="gallery">
-                                <li><a href="#"><img src="images/portfolio/popular1.jpg" alt=""></a></li>
-                                <li><a href="#"><img src="images/portfolio/popular2.jpg" alt=""></a></li>
-                                <li><a href="#"><img src="images/portfolio/popular3.jpg" alt=""></a></li>
-                                <li><a href="#"><img src="images/portfolio/popular4.jpg" alt=""></a></li>
-                                <li><a href="#"><img src="images/portfolio/popular5.jpg" alt=""></a></li>
-                                <li><a href="#"><img src="images/portfolio/popular1.jpg" alt=""></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-    </section>
-    <!--/#blog-->
+			<div class="col-md-3 col-sm-5">
+				<div class="sidebar-item popular">
+					<ul>
+						<li><iframe
+								src="https://customer.happytalk.io/public_v1/chat_v4/public_point?go=C&is_login=N&uid=&site_id=4000000706&category_id=81095&division_id=81096&usergb=W&title=%5B%ED%85%8C%EC%8A%A4%ED%8A%B8+%EC%83%81%EB%8B%B4%EC%B0%BD%5D"
+								target="_blank" style="width: 350px" height="500px">
+								<img src="//happytalk.io/assets/main/img/btn-chat.png" style="width: 30px">
+							</iframe></li>
 
+					</ul>
+				</div>
+			</div>
+		</div>
+
+
+	</section>
+   <!-- /board list -->
+
+<!-- footer -->
     <footer id="footer">
         <div class="container">
             <div class="row">
@@ -301,69 +239,76 @@
                     <img src="images/home/under.png" class="img-responsive inline" alt="">
                 </div>
                 <div class="col-md-4 col-sm-6">
-                    <div class="testimonial bottom">
-                        <h2>Testimonial</h2>
-                        <div class="media">
-                            <div class="pull-left">
-                                <a href="#"><img src="images/home/profile1.png" alt=""></a>
-                            </div>
-                            <div class="media-body">
-                                <blockquote>Nisi commodo bresaola, leberkas venison eiusmod bacon occaecat labore tail.</blockquote>
-                                <h3><a href="#">- Jhon Kalis</a></h3>
-                            </div>
-                         </div>
-                        <div class="media">
-                            <div class="pull-left">
-                                <a href="#"><img src="images/home/profile2.png" alt=""></a>
-                            </div>
-                            <div class="media-body">
-                                <blockquote>Capicola nisi flank sed minim sunt aliqua rump pancetta leberkas venison eiusmod.</blockquote>
-                                <h3><a href="">- Abraham Josef</a></h3>
-                            </div>
-                        </div>   
-                    </div> 
-                </div>
-                <div class="col-md-3 col-sm-6">
                     <div class="contact-info bottom">
                         <h2>Contacts</h2>
                         <address>
-                        E-mail: <a href="mailto:someone@example.com">email@email.com</a> <br> 
-                        Phone: +1 (123) 456 7890 <br> 
-                        Fax: +1 (123) 456 7891 <br> 
+                        E-mail: <a href="mailto:jungim0547@gmail.com">jungim0547@gmail.com</a> <br> 
+                        Phone: 1566-5114 <br> 
                         </address>
 
                         <h2>Address</h2>
                         <address>
-                        Unit C2, St.Vincent's Trading Est., <br> 
-                        Feeder Road, <br> 
-                        Bristol, BS2 0UY <br> 
-                        United Kingdom <br> 
+                        513 COEX office<br>
+                        Korea International Trade Association, <br> 
+                        Yeongdong-daero, <br> 
+                        Gangnam-gu, <br> 
+                        Seoul <br> 
                         </address>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-12">
-                    <div class="contact-form bottom">
-                        <h2>Send a message</h2>
-                        <form id="main-contact-form" name="contact-form" method="post" action="sendemail.php">
-                            <div class="form-group">
-                                <input type="text" name="name" class="form-control" required="required" placeholder="Name">
-                            </div>
-                            <div class="form-group">
-                                <input type="email" name="email" class="form-control" required="required" placeholder="Email Id">
-                            </div>
-                            <div class="form-group">
-                                <textarea name="message" id="message" required="required" class="form-control" rows="8" placeholder="Your text here"></textarea>
-                            </div>                        
-                            <div class="form-group">
-                                <input type="submit" name="submit" class="btn btn-submit" value="Submit">
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="col-sm-12">
+				<div class="col-md-6 col-sm-12">
+				<!-- <div class="col-md-12 col-sm-12"> -->
+					<div class="contact-info bottom">
+						<div class="map">
+							<iframe width="100%" height="300" frameborder="0" scrolling="no"
+								marginheight="0"
+								src="https://maps.google.com/maps?q=coex&t=&z=13&ie=UTF8&iwloc=&output=embed"
+								marginwidth="0">
+								<a class="addmaps" href="http://www.embedgooglemap.net"
+									id="get-map-data"
+									mce_href="http://maps.google.com/maps/api/js?sensor=false">embedgooglemap.net</a>
+
+
+
+							</iframe>
+						</div>
+
+					</div>
+				</div>
+				<!-- <div class="col-md-4 col-sm-12">
+					<div class="contact-form bottom">
+						<h2>Send a message</h2>
+						<form id="main-contact-form" name="contact-form" method="post"
+							action="MAILTO:jungim0547@gmail.com">
+							<div class="form-group">
+								<input type="text" name="name" class="form-control"
+									required="required" placeholder="Name">
+							</div>
+							<div class="form-group">
+								<input type="email" name="email" class="form-control"
+									required="required" placeholder="Email Id">
+							</div>
+							<div class="form-group">
+								<textarea name="message" id="message" required="required"
+									class="form-control" rows="8" placeholder="Your text here"></textarea>
+							</div>
+							<div class="form-group">
+								<input type="submit" name="submit" class="btn btn-submit"
+									value="Submit">
+							</div>
+						</form>
+					</div>
+						<div id="map-container">
+						<h2 class="page-header">Google Map</h2>
+						<div id="gmap"></div>
+					</div>
+					/#map-container
+				</div> -->
+				<div class="col-sm-12">
                     <div class="copyright-text text-center">
-                        <p>&copy; Your Company 2014. All Rights Reserved.</p>
-                        <p>Designed by <a target="_blank" href="http://www.themeum.com">Themeum</a></p>
+                   
+                        <p>Copyright &copy; SC IT MASTER </p>
+                        <p>Designed by C class 3Group</a></p>
                     </div>
                 </div>
             </div>

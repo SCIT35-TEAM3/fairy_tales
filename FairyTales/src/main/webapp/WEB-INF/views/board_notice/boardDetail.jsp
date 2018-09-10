@@ -27,6 +27,7 @@
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
 </head><!--/head-->
 
+
 <body>
 <!--header-->
 	<header id="header">      
@@ -34,13 +35,13 @@
             <div class="row">
                 <div class="col-sm-12 overflow">
                    <div class="social-icons pull-right">
-                        <ul class="nav nav-pills">
+                        <!-- <ul class="nav nav-pills">
                             <li><a href=""><i class="fa fa-facebook"></i></a></li>
                             <li><a href=""><i class="fa fa-twitter"></i></a></li>
                             <li><a href=""><i class="fa fa-google-plus"></i></a></li>
                             <li><a href=""><i class="fa fa-dribbble"></i></a></li>
                             <li><a href=""><i class="fa fa-linkedin"></i></a></li>
-                        </ul>
+                        </ul> -->
                     </div> 
                 </div>
              </div>
@@ -56,7 +57,7 @@
                     </button>
 
                     <a class="navbar-brand" href="./">
-                    	<h1><img src="images/logo(ex).png" alt="logo"></h1>
+                    	<h1><img src="images/로고.png" alt="logo"></h1>
                     </a>
                     
                 </div>
@@ -67,13 +68,13 @@
                             <ul role="menu" class="sub-menu">
                             
                             	<li><a href="japanese_fairy">Japanese Fairy</a></li>
-                                <li><a href="aboutus.html">Codding Puzzle</a></li>
+                                <li><a href="coding_puzzle">Coding Puzzle</a></li>
                             </ul>
-                        </li>                  
+                        </li>                    
                         <li class="dropdown"><a href="#">Board<i class="fa fa-angle-down"></i></a>
                             <ul role="menu" class="sub-menu">
                                 <li><a href="board_list">Notice</a></li>
-                                <li><a href="blogtwo.html">1:1 CustomerBoard</a></li>
+                                <li><a href="board_1to1">1:1 CustomerBoard</a></li>
                             </ul>
                         </li>
                         <!-- 회원 로그인 후-->
@@ -83,6 +84,7 @@
                             <ul role="menu" class="sub-menu">
                                 <li><a href="my_info_detail">My Infomation</a></li>
                                 <li><a href="portfoliofour.html">Learning Page</a></li>
+                                <li><a href="my_chart_page">My Chart</a></li>
                             </ul>
                         </li>
                         <li><div>${sessionScope.loginid}</div></li>
@@ -94,29 +96,9 @@
 							<li><a href="join ">Join</a></li>
 						</c:if>
 
-						<!-- 회원 로그인 후-->
-						
-							
-						
-						
-				<%-- 				<br />
-							<a href="my_info_detail">마이페이지</a>
-							<br />
-							<a href="board_list">공지사항</a>
-						</c:if> --%>
-
-
-
 					</ul>
                 </div>
-                <div class="search">
-                    <form role="form">
-                        <i class="fa fa-search"></i>
-                        <div class="field-toggle">
-                            <input type="text" class="search-form" autocomplete="off" placeholder="Search">
-                        </div>
-                    </form>
-                </div>
+                
             </div>
         </div>
     </header>
@@ -139,7 +121,7 @@
    </section>
    
     <!--/#page-breadcrumb-->
-
+<!-- 글읽기 -->
     <section id="blog" class="padding-top">
         <div class="container">
             <div class="row">
@@ -158,59 +140,62 @@
 										<div class="table-responsive table-data">
 											<table class="table">
 
-												<thead>
+												<thead align="center">
 													<tr>
-														<td>NO.</td>
+														<td width="100px">NO.</td>
 														<td>${boarddetail.board_num}</td>
-														<td>글쓴이</td>
+														<td width="100px">작성자</td>
 														<td>${boarddetail.user_id}</td>
-														<td>날짜</td>
-														<td>${boarddetail.new_date}</td>
-														<td>조회수</td>
-														<td>${boarddetail.hitcount}</td>
+														<td width="100px">날짜</td>
+														<td width="150px">${boarddetail.new_date}</td>
+														<td width="100px">조회수</td>
+														<td width="100px">${boarddetail.hitcount}</td>
 													</tr>
 												</thead>
 
 												<tbody>
 													<tr>
-														<th width="70px">글제목</th>
+														<td width="100px" align="center">글제목</td>
 														<td colspan="7">${boarddetail.title}</td>
 													</tr>
 												</tbody>
 												<tbody>
-													<tr>
-														<th width="70px">글내용</th>
-														<td colspan="7">${boarddetail.content}</td>
-												
+													<tr >
+														<td width="100px" align="center">글내용</td>
+														<td colspan="8">
+														<div class="form-control" name="content" id="content">${boarddetail.content}</div>
+														</td>
+
 													</tr>
 												</tbody>
-											</table>
-										
-                            
-										</div>
-										<div class="form-group">
-										<div align="center">
-											<c:if test="${sessionScope.loginid ne boarddetail.user_id}">
-											<button type="button" class="btn btn-submit" onclick="location.href='board_list' ">Board List</button>
-									
-											</c:if>
 
-											<c:if test="${sessionScope.loginid eq boarddetail.user_id}">
-												<button type="button" class="btn btn-submit" onclick="location.href='board_list' ">Board List</button>
-												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												<button type="button" class="btn btn-submit" onclick="location.href='boardUpdate?board_num=${boarddetail.board_num}' ">Update</button>
-												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												<button type="button" class="btn btn-submit" onclick="location.href='boardDelete?board_num=${boarddetail.board_num}' ">Delete</button>
-											
-											</c:if>
+												<tr>
+													<td colspan="8">
+														<div class="form-group">
+															<div align="center">
 
-										</div>
-									</div>
-									
+																<c:if test="${sessionScope.loginid ne boarddetail.user_id}">
+																	<button type="button" class="btn btn-submit" onclick="location.href='board_list' ">Board List</button>
+
+																</c:if>
+																<c:if test="${sessionScope.loginid eq boarddetail.user_id}">
+																	<button type="button" class="btn btn-submit" onclick="location.href='board_list' ">Board List</button>
+																	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+																	<button type="button" class="btn btn-submit" onclick="location.href='boardUpdate?board_num=${boarddetail.board_num}' ">Update</button>
+																	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+																	<button type="button" class="btn btn-submit" onclick="location.href='boardDelete?board_num=${boarddetail.board_num}' ">Delete</button>
+																</c:if>
+															</div>
+														</div>
+													</td>
+												</tr>
+									</table>
 								</div>
+
 							</div>
 						</div>
-						 <!-- /Notice Board -->
+					</div>
+					<!-- /Notice Board -->
 					</div>
 				</div>
 				</div>
@@ -286,7 +271,7 @@
             </div>
         </div>
     </section>
-    <!--/#blog-->
+   <!-- /글읽기 -->
 
     <footer id="footer">
         <div class="container">
@@ -295,47 +280,43 @@
                     <img src="images/home/under.png" class="img-responsive inline" alt="">
                 </div>
                 <div class="col-md-4 col-sm-6">
-                    <div class="testimonial bottom">
-                        <h2>Testimonial</h2>
-                        <div class="media">
-                            <div class="pull-left">
-                                <a href="#"><img src="images/home/profile1.png" alt=""></a>
-                            </div>
-                            <div class="media-body">
-                                <blockquote>Nisi commodo bresaola, leberkas venison eiusmod bacon occaecat labore tail.</blockquote>
-                                <h3><a href="#">- Jhon Kalis</a></h3>
-                            </div>
-                         </div>
-                        <div class="media">
-                            <div class="pull-left">
-                                <a href="#"><img src="images/home/profile2.png" alt=""></a>
-                            </div>
-                            <div class="media-body">
-                                <blockquote>Capicola nisi flank sed minim sunt aliqua rump pancetta leberkas venison eiusmod.</blockquote>
-                                <h3><a href="">- Abraham Josef</a></h3>
-                            </div>
-                        </div>   
-                    </div> 
-                </div>
-                <div class="col-md-3 col-sm-6">
                     <div class="contact-info bottom">
                         <h2>Contacts</h2>
                         <address>
-                        E-mail: <a href="mailto:someone@example.com">email@email.com</a> <br> 
-                        Phone: +1 (123) 456 7890 <br> 
-                        Fax: +1 (123) 456 7891 <br> 
+                        E-mail: <a href="mailto:jungim0547@gmail.com">jungim0547@gmail.com</a> <br> 
+                        Phone: 1566-5114 <br> 
                         </address>
 
                         <h2>Address</h2>
                         <address>
-                        Unit C2, St.Vincent's Trading Est., <br> 
-                        Feeder Road, <br> 
-                        Bristol, BS2 0UY <br> 
-                        United Kingdom <br> 
+                        513 COEX office<br>
+                        Korea International Trade Association, <br> 
+                        Yeongdong-daero, <br> 
+                        Gangnam-gu, <br> 
+                        Seoul <br> 
                         </address>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-12">
+                <div class="col-md-6 col-sm-12">
+				<!-- <div class="col-md-12 col-sm-12"> -->
+					<div class="contact-info bottom">
+						<div class="map">
+							<iframe width="120%" height="300" frameborder="0" scrolling="no"
+								marginheight="0"
+								src="https://maps.google.com/maps?q=coex&t=&z=13&ie=UTF8&iwloc=&output=embed"
+								marginwidth="0">
+								<a class="addmaps" href="http://www.embedgooglemap.net"
+									id="get-map-data"
+									mce_href="http://maps.google.com/maps/api/js?sensor=false">embedgooglemap.net</a>
+
+
+
+							</iframe>
+						</div>
+
+					</div>
+				</div>
+                <!-- <div class="col-md-4 col-sm-12">
                     <div class="contact-form bottom">
                         <h2>Send a message</h2>
                         <form id="main-contact-form" name="contact-form" method="post" action="sendemail.php">
@@ -353,7 +334,7 @@
                             </div>
                         </form>
                     </div>
-                </div>
+                </div> -->
                 <div class="col-sm-12">
                     <div class="copyright-text text-center">
                         <p>&copy; Your Company 2014. All Rights Reserved.</p>

@@ -1,33 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Coding Puzzle</title>
+
+<meta name="description" content="" />
+<meta name="keywords" content="" />
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Blog Masonry | Triangle</title>
+<link rel="shortcut icon" href="../favicon.ico">
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/font-awesome.min.css" rel="stylesheet">
-<link href="css/lightbox.css" rel="stylesheet">
 <link href="css/animate.min.css" rel="stylesheet">
+<link href="css/lightbox.css" rel="stylesheet">
 <link href="css/main.css" rel="stylesheet">
 <link href="css/responsive.css" rel="stylesheet">
-<link href="css/component.css" rel="stylesheet">
-<!-- <link href="css/demo.css" rel="stylesheet"> -->
-<link href="css/normalize.css" rel="stylesheet">
-<link href="css/animate.min.css" rel="stylesheet">
-<script type="text/javascript" src="js/snap.svg-min.js"></script>
-<script type="text/javascript" src="js/anime.min.js"></script>
-<script src="http://code.jquery.com/jquery-1.10.2.js"></script> 
-
-
-<!--[if lt IE 9]>
-	    <script src="js/html5shiv.js"></script>
-	    <script src="js/respond.min.js"></script>
-    <![endif]-->
+<link rel="stylesheet" type="text/css" href="css/default.css" />
+<link rel="stylesheet" type="text/css" href="css/default_puzzle.css" />
+<link rel="stylesheet" type="text/css" href="css/component.css" />
+<link rel="stylesheet" type="text/css" href="css/component_puzzle.css" />
 <link rel="shortcut icon" href="images/ico/favicon.ico">
 <link rel="apple-touch-icon-precomposed" sizes="144x144"
 	href="images/ico/apple-touch-icon-144-precomposed.png">
@@ -38,38 +36,14 @@
 <link rel="apple-touch-icon-precomposed"
 	href="images/ico/apple-touch-icon-57-precomposed.png">
 
-<!-- 팝업창 css -->
-<style>
-#popupDiv { /* 팝업창 css */
-	top: 0px;
-	position: absolute;
-	background-image: url("resources/images/배경.png");
-	width: 1200px;
-	height: 800px;
-	display: none;
-}
-
-#popup_mask { /* 팝업 배경 css */
-	position: fixed;
-	width: 100%;
-	height: 1000px;
-	top: 0px;
-	right: 0px;
-	display: none;
-	background-color: #000;
-	opacity: 0.8;	
-}
-
-#popCloseBtn{
-
-}
-</style>
-<!-- /팝업창 css -->
+<script src="js/modernizr.custom.js"></script>
+<script type="text/javascript" src="js/snap.svg-min.js"></script>
+<script type="text/javascript" src="js/anime.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script> 
 
 </head>
-<!--/head-->
-
 <body>
+
 <!--header-->
 	<header id="header">      
         <div class="container">
@@ -144,15 +118,14 @@
         </div>
     </header>
     <!--/#header-->
-
-
+	
 	<section id="page-breadcrumb">
 		<div class="vertical-center sun">
 			<div class="container">
 				<div class="row">
 					<div class="action">
 						<div class="col-sm-12">
-							<h1 class="title">Japanese Fairy</h1>
+							<h1 class="title">Coding Puzzle</h1>
 
 						</div>
 					</div>
@@ -162,68 +135,47 @@
 	</section>
 	<!--/#action-->
 
-<!-- 팝업창  -->
-	<div>
-	<!-- 	<button id="popOpenBtn">Popup Open</button>-->
-		<div id="popup_mask"></div>
-		<!-- 팝업 배경 DIV -->
-
-		<div id="popupDiv" align="right">
-			<!-- 팝업창 -->
-			<button id="popCloseBtn">close</button>
-		</div>
+<div class="container demo-3">	
+		<ul class="grid cs-style-4" style="width: 1400px;">
+			<li>
+				<figure>
+					<div>
+						<img src="images/1.png" alt="img05">
+					</div>
+					<figcaption>
+						<h3>초급</h3>
+						<span>Jacob Cummings</span> <a href="#">Take a look</a>
+					</figcaption>
+				</figure>
+			</li>
+			<li>
+				<figure>
+					<div>
+						<img src="images/3.png" alt="img06">
+					</div>
+					<figcaption>
+						<h3>중급</h3>
+						<span>Jacob Cummings</span> <a href="#">Take a look</a>
+					</figcaption>
+				</figure>
+			</li>
+			<li>
+				<figure>
+					<div>
+						<img src="images/2.png" alt="img02">
+					</div>
+					<figcaption>
+						<h3>고급</h3>
+						<span>Jacob Cummings</span> <a href="#">Take a look</a>
+					</figcaption>
+				</figure>
+			</li>
+		</ul>
 	</div>
-	<!-- /팝업창  -->
 
-	<section id="grid" class="grid clearfix cross-1">
-	<!-- 초급 -->
-		<a href="#" data-path-hover="m 180,34.57627 -180,0 L 0,0 180,0 z" class="popOpen">
-			<figure>
-				<img src="images/img/1.png" />
-				<svg viewBox="0 0 180 320" preserveAspectRatio="none">
-					<path d="M 180,160 0,218 0,0 180,0 z" /></svg>
-				<figcaption>
-					<h2>초급</h2>
-					<p>장갑</p>
-					<button >View</button>
-				</figcaption>
-			</figure>
-		</a> <!-- /초급 -->
-
-		<!-- 중급 -->
-		<a href="#" data-path-hover="m 180,34.57627 -180,0 L 0,0 180,0 z" class="popOpen">
-			<figure>
-				<img src="images/img/2.png" />
-				<svg viewBox="0 0 180 320" preserveAspectRatio="none">
-					<path d="M 180,160 0,218 0,0 180,0 z" /></svg>
-				<figcaption>
-					<h2>중급</h2>
-					<p>신데렐라</p>
-					<button>View</button>
-				</figcaption>
-			</figure>
-		</a><!-- /중급 -->
-
-		<!-- 고급 -->			
-		<a href="#" data-path-hover="m 180,34.57627 -180,0 L 0,0 180,0 z" class="popOpen">
-			<figure>
-				<img src="images/img/1.png" />
-				<svg viewBox="0 0 180 320" preserveAspectRatio="none">
-					<path d="M 180,160 0,218 0,0 180,0 z" /></svg>
-				<figcaption>
-					<h2>고급</h2>
-					<p>장화신은 고양이</p>
-					<button>View</button>
-				</figcaption>
-			</figure>
-		</a><!-- /고급 -->	
-		
-	</section>
-	<!--/#blog-->
-	
+	  <!--#related-work-->	
 	<section id="related-work" class="padding-top padding-bottom">
-    
-        <div class="container">
+      <div class="container">
             <div class="row">
                 <h1 class="title text-center">Related Work</h1>
                 <div class="col-sm-3">
@@ -298,8 +250,8 @@
         </div>
     </section>
     <!--/#related-work-->
-
-<!-- footer -->
+    
+	<!-- footer -->
     <footer id="footer">
         <div class="container">
             <div class="row">
@@ -372,87 +324,12 @@
         </div>
     </footer>
     <!--/#footer-->
-
-
+	<!-- /container -->
+	<script src="js/toucheffects.js"></script>
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/lightbox.min.js"></script>
 	<script type="text/javascript" src="js/wow.min.js"></script>
-	<script type="text/javascript" src="js/audio.min.js"></script>
-	<script>
-		audiojs.events.ready(function() {
-			var as = audiojs.createAll();
-		});
-	</script>
-	<script type="text/javascript" src="js/masonry.min.js"></script>
-	<script type="text/javascript" src="js/hovers.js"></script>
-	<script type="text/javascript" src="js/main1.js"></script>
-
-	<script>
-		(function() {
-
-			function init() {
-				var speed = 250, easing = mina.easeinout;
-
-				[].slice.call(document.querySelectorAll('#grid > a')).forEach(
-						function(el) {
-							var s = Snap(el.querySelector('svg')), path = s
-									.select('path'), pathConfig = {
-								from : path.attr('d'),
-								to : el.getAttribute('data-path-hover')
-							};
-
-							el.addEventListener('mouseenter', function() {
-								path.animate({
-									'path' : pathConfig.to
-								}, speed, easing);
-							});
-
-							el.addEventListener('mouseleave', function() {
-								path.animate({
-									'path' : pathConfig.from
-								}, speed, easing);
-							});
-						});
-			}
-
-			init();
-
-		})();
-	</script>
-	
-	<!-- 팝업창 스크립트 -->
-	 <script>
-    
-    $(document).ready(function(){
-        
-        $(".popOpen").click(function(event){  //팝업 Open 버튼 클릭 시 
- 
-             $("#popupDiv").css({
-                "top": (($(window).height()-$("#popupDiv").outerHeight())/2+$(window).scrollTop())+"px",
-                "left": (($(window).width()-$("#popupDiv").outerWidth())/2+$(window).scrollLeft())+"px"
-                //팝업창을 가운데로 띄우기 위해 현재 화면의 가운데 값과 스크롤 값을 계산하여 팝업창 CSS 설정
-             
-             }); 
-             $("#popupDiv").css({"zIndex":13});
-
-            $("#popup_mask").css("display","block"); //팝업 뒷배경 display block
-            $("#popupDiv").css("display","block"); //팝업창 display block
-            
-            $("body").css("overflow","hidden");//body 스크롤바 없애기
-        });
-        
-        //
-        $("#popCloseBtn").click(function(event){
-            $("#popup_mask").css("display","none"); //팝업창 뒷배경 display none
-            $("#popupDiv").css("display","none"); //팝업창 display none
-            $("body").css("overflow","auto");//body 스크롤바 생성
-
-        });
-    });
- 
- 
-    </script><!-- /팝업창 스크립트 -->
-
+	<script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>

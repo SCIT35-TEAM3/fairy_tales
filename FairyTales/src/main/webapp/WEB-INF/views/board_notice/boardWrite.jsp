@@ -55,13 +55,13 @@ function formCheck(){
             <div class="row">
                 <div class="col-sm-12 overflow">
                    <div class="social-icons pull-right">
-                        <ul class="nav nav-pills">
+                        <!-- <ul class="nav nav-pills">
                             <li><a href=""><i class="fa fa-facebook"></i></a></li>
                             <li><a href=""><i class="fa fa-twitter"></i></a></li>
                             <li><a href=""><i class="fa fa-google-plus"></i></a></li>
                             <li><a href=""><i class="fa fa-dribbble"></i></a></li>
                             <li><a href=""><i class="fa fa-linkedin"></i></a></li>
-                        </ul>
+                        </ul> -->
                     </div> 
                 </div>
              </div>
@@ -77,7 +77,7 @@ function formCheck(){
                     </button>
 
                     <a class="navbar-brand" href="./">
-                    	<h1><img src="images/logo(ex).png" alt="logo"></h1>
+                    	<h1><img src="images/로고.png" alt="logo"></h1>
                     </a>
                     
                 </div>
@@ -88,13 +88,13 @@ function formCheck(){
                             <ul role="menu" class="sub-menu">
                             
                             	<li><a href="japanese_fairy">Japanese Fairy</a></li>
-                                <li><a href="aboutus.html">Codding Puzzle</a></li>
+                                <li><a href="coding_puzzle">Coding Puzzle</a></li>
                             </ul>
-                        </li>                  
+                        </li>                    
                         <li class="dropdown"><a href="#">Board<i class="fa fa-angle-down"></i></a>
                             <ul role="menu" class="sub-menu">
                                 <li><a href="board_list">Notice</a></li>
-                                <li><a href="blogtwo.html">1:1 CustomerBoard</a></li>
+                                <li><a href="board_1to1">1:1 CustomerBoard</a></li>
                             </ul>
                         </li>
                         <!-- 회원 로그인 후-->
@@ -104,6 +104,7 @@ function formCheck(){
                             <ul role="menu" class="sub-menu">
                                 <li><a href="my_info_detail">My Infomation</a></li>
                                 <li><a href="portfoliofour.html">Learning Page</a></li>
+                                <li><a href="my_chart_page">My Chart</a></li>
                             </ul>
                         </li>
                         <li><div>${sessionScope.loginid}</div></li>
@@ -115,29 +116,9 @@ function formCheck(){
 							<li><a href="join ">Join</a></li>
 						</c:if>
 
-						<!-- 회원 로그인 후-->
-						
-							
-						
-						
-				<%-- 				<br />
-							<a href="my_info_detail">마이페이지</a>
-							<br />
-							<a href="board_list">공지사항</a>
-						</c:if> --%>
-
-
-
 					</ul>
                 </div>
-                <div class="search">
-                    <form role="form">
-                        <i class="fa fa-search"></i>
-                        <div class="field-toggle">
-                            <input type="text" class="search-form" autocomplete="off" placeholder="Search">
-                        </div>
-                    </form>
-                </div>
+                
             </div>
         </div>
     </header>
@@ -160,7 +141,8 @@ function formCheck(){
    </section>
    
     <!--/#page-breadcrumb-->
-
+    
+<!-- 글쓰기 폼 -->
     <section id="blog" class="padding-top">
         <div class="container">
           
@@ -177,26 +159,29 @@ function formCheck(){
 											<input type="hidden" name="user_id" value="${sessionScope.loginid}" id="user_id">
 											<table class="table">
 												<thead>
-													<tr>
-														<td>글 제목</td>
+													<tr align="center">
+														<td width="100px">글 제목</td>
 														<td><input type="text" name="title" class="form-control" id="title"></td>
 													</tr>
 												</thead>
 
-												<tbody>
+												<tbody align="center">
 													 	<td>내용</td>
 													 	<td><textarea rows="15" cols="80" class="form-control" name="content" id="content" ></textarea></td>
 												</tbody>
-											</table>
-							
+											
+							<tr>
+												<td colspan="8">
 									<c:if test="${sessionScope.user_level eq '1'}">
 											<div class="user-data__footer" align="center">
 												<button type="submit" class="btn btn-submit" onclick="return formCheck()">Ok</button>
 												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												<button type="reset" class="btn btn-submit">Cancel</button>
 											</div>
-										</c:if>
-										</form>
+													</c:if></td>
+											</tr>
+										</table>
+									</form>
 								</div>
 							 </div>
 						</div>
@@ -277,7 +262,7 @@ function formCheck(){
                 </div>
             </div>
     </section>
-    <!--/#blog-->
+    <!-- /글쓰기 폼 -->
 
     <footer id="footer">
         <div class="container">
