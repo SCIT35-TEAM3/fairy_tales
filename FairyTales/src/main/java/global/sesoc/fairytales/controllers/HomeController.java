@@ -116,15 +116,19 @@ public class HomeController {
 			@RequestParam(value = "searchWord", defaultValue = "") String searchWord) {
 
 		int totalRecordCount = noticeRepository.getTotalBoard(searchItem, searchWord);
+		int board_1to1_totalRecordCount=board_1to1_Repository.getTotalBoard(searchItem, searchWord);
 		PageNavigatorForMainNotice navi = new PageNavigatorForMainNotice(currentPage, totalRecordCount);
+		PageNavigatorForMainBoard navi2 = new PageNavigatorForMainBoard(currentPage, board_1to1_totalRecordCount);
 		List<Board> list = noticeRepository.selectAll(searchItem, searchWord, navi.getStartRecord(), navi.getCountPerPage());
-
+		List<Board_1to1> board_1to1 = board_1to1_Repository.select("user_id", searchWord, navi2.getStartRecord(), navi2.getCountPerPage());
 		System.out.println(list.size());
 		model.addAttribute("list", list);
+		model.addAttribute("board_1to1", board_1to1);
 		model.addAttribute("searchItem", searchItem);
 		model.addAttribute("searchWord", searchWord);
 		model.addAttribute("currentPage", currentPage);
 		model.addAttribute("navi", navi);
+		model.addAttribute("navi2", navi2);
 		
 		return "home";
 	}
