@@ -119,7 +119,7 @@
                     <h1>おはようございます。</h1>
                     <p>어떤 멘트가 좋을까....</p>      
                 </div>
-                <img src="images/castle.png" class="img-responsive slider-house" alt="slider image">
+                <img src="images/hill.png" class="img-responsive slider-house" alt="slider image">
                 <!-- <img src="images/home/slider/slide1/circle1.png" class="slider-circle1" alt="slider image">
                 <img src="images/home/slider/slide1/circle2.png" class="slider-circle2" alt="slider image"> 
                 <img src="images/home/slider/slide1/cloud1.png" class="slider-cloud1" alt="slider image">-->
@@ -132,6 +132,67 @@
         <div class="preloader"><i class="fa fa-sun-o fa-spin"></i></div>
     </section>
     <!--/#home-slider-->
+
+	<section id="blog-details" class="padding-top">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 col-sm-5">
+					<div class="sidebar blog-sidebar">
+
+						<div class="sidebar-item categories">
+							<h3>Notice<a href="#"><i class="fa fa-tag"></i>more</a></h3> 
+							<ul class="nav navbar-stacked">
+								<li><a href="#">Lorem ipsum<span class="pull-right">(1)</span></a></li>
+								<li class="active"><a href="#">Dolor sit amet<span
+										class="pull-right">(8)</span></a></li>
+								<li><a href="#">Adipisicing elit<span
+										class="pull-right">(4)</span></a></li>
+								<li><a href="#">Sed do<span class="pull-right">(9)</span></a></li>
+								<li><a href="#">Eiusmod<span class="pull-right">(3)</span></a></li>
+
+							</ul>
+						</div>
+						<div class="sidebar-item categories">
+							<h3>1:1 Board<a href="#"><i class="fa fa-tag"></i>more</a></h3> 
+							<ul class="nav navbar-stacked">
+								<li><a href="#">Lorem ipsum<span class="pull-right">(1)</span></a></li>
+								<li class="active"><a href="#">Dolor sit amet<span
+										class="pull-right">(8)</span></a></li>
+								<li><a href="#">Adipisicing elit<span
+										class="pull-right">(4)</span></a></li>
+								<li><a href="#">Sed do<span class="pull-right">(9)</span></a></li>
+								<li><a href="#">Eiusmod<span class="pull-right">(3)</span></a></li>
+
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--/#blog-->
+
+
+	<section id="action" class="responsive">
+        <div class="vertical-center">
+             <div class="container">
+                <div class="row">
+                    <div class="action take-tour">
+                        <div class="col-sm-7 wow fadeInLeft" data-wow-duration="500ms" data-wow-delay="300ms">
+                            <h1 class="title">로고이름 넣기</h1>
+                            <p>A responsive, retina-ready &amp; wide multipurpose template.</p>
+                        </div>
+                        <div class="col-sm-5 text-center wow fadeInRight" data-wow-duration="500ms" data-wow-delay="300ms">
+                            <div class="tour-button">
+                                
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+   </section>
+    <!--/#action-->
 
    <section id="blog" class="padding-bottom">
         <div class="container">
@@ -198,28 +259,7 @@
     </section>
     <!--/#blog-->
 
-    <section id="action" class="responsive">
-        <div class="vertical-center">
-             <div class="container">
-                <div class="row">
-                    <div class="action take-tour">
-                        <div class="col-sm-7 wow fadeInLeft" data-wow-duration="500ms" data-wow-delay="300ms">
-                            <h1 class="title">로고이름 넣기</h1>
-                            <p>A responsive, retina-ready &amp; wide multipurpose template.</p>
-                        </div>
-                        <div class="col-sm-5 text-center wow fadeInRight" data-wow-duration="500ms" data-wow-delay="300ms">
-                            <div class="tour-button">
-                                
-                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-   </section>
-    <!--/#action-->
-
-    <section id="features">
+<!--     <section id="features">
         <div class="container">
             <div class="row">
                 <div class="single-features">
@@ -252,7 +292,7 @@
             </div>
         </div>
     </section>
-     <!--/#features-->
+     /#features -->
 
     <!-- <section id="clients">
         <div class="container">
