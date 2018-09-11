@@ -152,16 +152,11 @@
 							<h3>
 								Notice<a href="#"><i class="fa fa-plus"></i>more</a>
 							</h3>
+							<c:forEach var="board" items="${list}">
 							<ul class="nav navbar-stacked">
-								<li><a href="#">Lorem ipsum<span class="pull-right">(1)</span></a></li>
-								<li class="active"><a href="#">Dolor sit amet<span
-										class="pull-right">(8)</span></a></li>
-								<li><a href="#">Adipisicing elit<span
-										class="pull-right">(4)</span></a></li>
-								<li><a href="#">Sed do<span class="pull-right">(9)</span></a></li>
-								<li><a href="#">Eiusmod<span class="pull-right">(3)</span></a></li>
-
+								<li><a href="boardDetail?board_num=${board.board_num}">${board.title}<span class="pull-right">(1)</span></a></li>
 							</ul>
+							</c:forEach>
 						</div>
 						<div class="sidebar-item categories">
 							<h3>

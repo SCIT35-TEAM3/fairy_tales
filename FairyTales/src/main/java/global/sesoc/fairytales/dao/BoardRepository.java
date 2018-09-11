@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import global.sesoc.fairytales.dto.Board;
+import global.sesoc.fairytales.dto.Board_1to1;
 
 
 
@@ -74,6 +75,35 @@ public class BoardRepository {
 			int Count = mapper.getTotalBoard(map);
 			return Count;
 		}
+		
+		
+		// 메인 페이징을 위한 전체 리스트
+		public int main_getTotalBoard(String searchItem, String searchWord) {
+
+			BoardMapper mapper = session.getMapper(BoardMapper.class);
+			Map<String, String> map = new HashMap<>();
+			map.put("searchItem", searchItem);
+			map.put("searchWord", searchWord);
+
+			return mapper.getTotalBoard(map);
+
+		}
+
+		// 메인 페이징을 위한 전체 리스트
+		public List<Board> mainSelect(String searchItem, String searchWord, int startRecord, int countPerPage) {
+			RowBounds rb = new RowBounds(startRecord, countPerPage);
+			BoardMapper mapper = session.getMapper(BoardMapper.class);
+
+			Map<String, String> map = new HashMap<>();
+
+			map.put("searchItem", searchItem);
+			map.put("searchWord", searchWord);
+
+			return mapper.mainSelect(map, rb);
+		}
+
+		
+		
 
 }
 

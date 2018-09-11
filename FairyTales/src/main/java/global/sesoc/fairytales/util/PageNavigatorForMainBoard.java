@@ -1,6 +1,6 @@
 package global.sesoc.fairytales.util;
 
-public class PageNavigatorForMain {
+public class PageNavigatorForMainBoard {
 	// 멤버
 	private final int countPerPage = 5;	// 한 페이지당 글개수
 	private final int pagePerGroup = 5;		// 페이지 그룹
@@ -15,7 +15,7 @@ public class PageNavigatorForMain {
 	// srow, erow 계산하지 않고, mybatis의 기능의 RowBounds 사용
 	
 	// 생성자
-	public PageNavigatorForMain(int currentPage, int totalRecordCount) {
+	public PageNavigatorForMainBoard(int currentPage, int totalRecordCount) {
 		this.totalRecordCount =  totalRecordCount;
 		
 		// 전체 글개수 152개라면 ? 총 페이지 16페이지

@@ -20,10 +20,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import global.sesoc.fairytales.dao.BoardRepository;
 import global.sesoc.fairytales.dao.Board_1to1_Repository;
+import global.sesoc.fairytales.dto.Board;
 import global.sesoc.fairytales.dto.Board_1to1;
 import global.sesoc.fairytales.util.PageNavigator;
-import global.sesoc.fairytales.util.PageNavigatorForMain;
+import global.sesoc.fairytales.util.PageNavigatorForMainBoard;
+import global.sesoc.fairytales.util.PageNavigatorForMainNotice;
 
 /**
  * Handles requests for the application home page.
@@ -37,6 +40,10 @@ public class HomeController {
 	*/
 	@Autowired
 	Board_1to1_Repository board_1to1_Repository;
+	
+
+	@Autowired
+	BoardRepository noticeRepository;
 	
 	/* 셈플입니다 새로운 Controller를 만들어 사용해주세요 !! */
 	
@@ -102,26 +109,28 @@ public class HomeController {
 	
 	/*bootstrap 적용한 메인*/
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale,HttpServletRequest request, HttpSession session,
-			@RequestParam(value = "searchItem", defaultValue = "user_id") String searchItem,
-			@RequestParam(value = "searchWord", defaultValue = "") String searchWord, Model model,
-			@RequestParam(value = "currentPage", defaultValue = "0") int currentPage) {
-		
-		// 1:1 
-		int board_1to1_totalRecordCount = board_1to1_Repository.getTotalBoard(searchItem, searchWord);
-		
-		PageNavigatorForMain navi = new PageNavigatorForMain(currentPage, board_1to1_totalRecordCount);
-		List<Board_1to1> board_1to1_list = board_1to1_Repository.select(searchItem, searchWord, navi.getStartRecord(),
-				navi.getCountPerPage());
+	public String home(Model model, @RequestParam(value = "currentPage", defaultValue = "1") int currentPage,
+			// null값 자동 생성, 데이터가 안들어 왔을 경우 기본값 userid
+			@RequestParam(value = "searchItem", defaultValue = "userid") String searchItem,
+			// null값 자동 생성, 데이터가 안들어 왔을 경우 기본값 ""
+			@RequestParam(value = "searchWord", defaultValue = "") String searchWord) {
 
-		model.addAttribute("board_1to1_list", board_1to1_list);
+		int totalRecordCount = noticeRepository.getTotalBoard(searchItem, searchWord);
+		PageNavigatorForMainNotice navi = new PageNavigatorForMainNotice(currentPage, totalRecordCount);
+		List<Board> list = noticeRepository.selectAll(searchItem, searchWord, navi.getStartRecord(), navi.getCountPerPage());
+
+		System.out.println(list.size());
+		model.addAttribute("list", list);
 		model.addAttribute("searchItem", searchItem);
 		model.addAttribute("searchWord", searchWord);
-		model.addAttribute("navi", navi);
 		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("navi", navi);
 		
 		return "home";
 	}
+
+	
+	
 	
 	/*bootstrap 도움말*/
 	@RequestMapping(value = "/bootstrap", method = RequestMethod.GET)
