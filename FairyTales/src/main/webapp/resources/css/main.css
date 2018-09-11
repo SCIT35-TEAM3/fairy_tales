@@ -2573,3 +2573,19 @@ span.stMainServices, span.stButton_gradient, .stButton .chicklets {
 	border-radius: 100%;
 	margin: 10px 0;
 }
+
+.table_1{
+    float: left;
+    width: 45%;
+}
+
+.table_2{
+	float: right;
+	width: 45%;
+}
+.more_icon1{
+	float: left;
+}
+.more_icon2{
+	float: right;
+}

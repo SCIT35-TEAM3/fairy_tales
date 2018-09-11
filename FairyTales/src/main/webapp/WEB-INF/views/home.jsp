@@ -132,7 +132,7 @@
 					<h1>おはようございます。</h1>
 					<p>어떤 멘트가 좋을까....</p>
 				</div>
-				<img src="images/hill.png" class="img-responsive slider-house"
+				<img src="images/castle1.png" class="img-responsive slider-house"
 					alt="slider image">
 				<!-- <img src="images/home/slider/slide1/circle1.png" class="slider-circle1" alt="slider image">
                 <img src="images/home/slider/slide1/circle2.png" class="slider-circle2" alt="slider image"> 
@@ -152,28 +152,27 @@
 	<section id="blog-details" class="padding-top">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-6 col-sm-5">
+				<div class="col-md-12 col-sm-5">
 					<div class="sidebar blog-sidebar">
 						<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
-						<div class="sidebar-item categories">
-							<h3>Notice <a href="board_list"><i class="fa fa-plus"></i>more</a>
+						<div class="sidebar-item categories table_1">
+							<h3>Notice <a style="float: right;" href="board_list"><i class="fa fa-plus"></i>&nbsp;more</a>
 							</h3>
 							<c:forEach var="board" items="${list}">
 							<ul class="nav navbar-stacked">
-								<li class="active"><a href="boardDetail?board_num=${board.board_num}">${board.title}<span class="pull-right">(1)</span></a></li>
+								<li class="active"><a href="boardDetail?board_num=${board.board_num}">${board.title}</a></li>
 							</ul>
 							</c:forEach>
 						</div>
-						<div class="sidebar-item categories">
-							<h3>
-								1:1 Board<a href="board_1to1"><i class="fa fa-tag"></i>more</a>
+						<div class="sidebar-item categories table_2">
+							<h3>1:1 Board<a style="float: right;" href="board_1to1"><i class="fa fa-plus"></i>&nbsp;more</a>
 							</h3>
 							<ul class="nav navbar-stacked">
 								<c:forEach items="${board_1to1_list}" var="board_1to1">
 									<c:choose>
 										<c:when
 											test="${sessionScope.loginid!=board.user_id and board.secret!=null}">
-											<li><a href="#">Eiusmod<span class="pull-right">(3)</span></a></li>
+											<li class="active"><a href="#">Eiusmod<span class="pull-right">(3)</span></a></li>
 										</c:when>
 										<c:otherwise>
 											<li><a href="#">비밀글 입니다.<span
