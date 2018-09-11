@@ -101,9 +101,5 @@ public class BoardRepository {
 
 			return mapper.mainSelect(map, rb);
 		}
-
-		
-		
-
 }
 

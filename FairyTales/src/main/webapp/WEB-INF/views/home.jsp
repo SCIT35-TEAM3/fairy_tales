@@ -37,8 +37,15 @@
 	href="images/ico/apple-touch-icon-72-precomposed.png">
 <link rel="apple-touch-icon-precomposed"
 	href="images/ico/apple-touch-icon-57-precomposed.png">
+<style type="text/css">
+ .space {
+        word-spacing: 30px;
+      }
+</style>
 </head>
+
 <!--/head-->
+
 
 <body>
 	<!--header-->
@@ -149,12 +156,11 @@
 					<div class="sidebar blog-sidebar">
 						<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
 						<div class="sidebar-item categories">
-							<h3>
-								Notice<a href="#"><i class="fa fa-plus"></i>more</a>
+							<h3>Notice <a href="board_list"><i class="fa fa-plus"></i>more</a>
 							</h3>
 							<c:forEach var="board" items="${list}">
 							<ul class="nav navbar-stacked">
-								<li><a href="boardDetail?board_num=${board.board_num}">${board.title}<span class="pull-right">(1)</span></a></li>
+								<li class="active"><a href="boardDetail?board_num=${board.board_num}">${board.title}<span class="pull-right">(1)</span></a></li>
 							</ul>
 							</c:forEach>
 						</div>
