@@ -6,97 +6,103 @@
 
 <style type="text/css">
 .nav>li>div {
-    position: relative;
-    padding: 10px 15px;
+	position: relative;
+	padding: 10px 15px;
 }
-
 </style>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>Home | Triangle</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/animate.min.css" rel="stylesheet"> 
-    <link href="css/lightbox.css" rel="stylesheet"> 
-	<link href="css/main.css" rel="stylesheet">
-	<link href="css/responsive.css" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>Home | Triangle</title>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/font-awesome.min.css" rel="stylesheet">
+<link href="css/animate.min.css" rel="stylesheet">
+<link href="css/lightbox.css" rel="stylesheet">
+<link href="css/main.css" rel="stylesheet">
+<link href="css/responsive.css" rel="stylesheet">
 
-    <!--[if lt IE 9]>
+<!--[if lt IE 9]>
 	    <script src="js/html5shiv.js"></script>
 	    <script src="js/respond.min.js"></script>
-    <![endif]-->       
-    <link rel="shortcut icon" href="images/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
-</head><!--/head-->
+    <![endif]-->
+<link rel="shortcut icon" href="images/ico/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="144x144"
+	href="images/ico/apple-touch-icon-144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114"
+	href="images/ico/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72"
+	href="images/ico/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed"
+	href="images/ico/apple-touch-icon-57-precomposed.png">
+</head>
+<!--/head-->
 
 <body>
-<!--header-->
-	<header id="header">      
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12 overflow">
-                   <div class="social-icons pull-right">
-                        <!-- <ul class="nav nav-pills">
+	<!--header-->
+	<header id="header">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 overflow">
+					<div class="social-icons pull-right">
+						<!-- <ul class="nav nav-pills">
                             <li><a href=""><i class="fa fa-facebook"></i></a></li>
                             <li><a href=""><i class="fa fa-twitter"></i></a></li>
                             <li><a href=""><i class="fa fa-google-plus"></i></a></li>
                             <li><a href=""><i class="fa fa-dribbble"></i></a></li>
                             <li><a href=""><i class="fa fa-linkedin"></i></a></li>
                         </ul> -->
-                    </div> 
-                </div>
-             </div>
-        </div>
-        <div class="navbar navbar-inverse" role="banner">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="navbar navbar-inverse" role="banner">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+						data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
 
-                    <a class="navbar-brand" href="./">
-                    	<h1><img src="images/로고.png" alt="logo"></h1>
-                    </a>
-                    
-                </div>
-                <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="./">Home</a></li>
-                        <li class="dropdown"><a href="#">Page <i class="fa fa-angle-down"></i></a>
-                            <ul role="menu" class="sub-menu">
-                            
-                            	<li><a href="japanese_fairy">Japanese Fairy</a></li>
-                                <li><a href="coding_puzzle">Coding Puzzle</a></li>
-                            </ul>
-                        </li>                    
-                        <li class="dropdown"><a href="#">Board<i class="fa fa-angle-down"></i></a>
-                            <ul role="menu" class="sub-menu">
-                                <li><a href="board_list">Notice</a></li>
-                                <li><a href="board_1to1">1:1 CustomerBoard</a></li>
-                            </ul>
-                        </li>
-                        <!-- 회원 로그인 후-->
+					<a class="navbar-brand" href="./">
+						<h1>
+							<img src="images/로고.png" alt="logo">
+						</h1>
+					</a>
+
+				</div>
+				<div class="collapse navbar-collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="./">Home</a></li>
+						<li class="dropdown"><a href="#">Page <i
+								class="fa fa-angle-down"></i></a>
+							<ul role="menu" class="sub-menu">
+
+								<li><a href="japanese_fairy">Japanese Fairy</a></li>
+								<li><a href="coding_puzzle">Coding Puzzle</a></li>
+							</ul></li>
+						<li class="dropdown"><a href="#">Board<i
+								class="fa fa-angle-down"></i></a>
+							<ul role="menu" class="sub-menu">
+								<li><a href="board_list">Notice</a></li>
+								<li><a href="board_1to1">1:1 CustomerBoard</a></li>
+							</ul></li>
+						<!-- 회원 로그인 후-->
 						<c:if test="${sessionScope.loginid != null}">
-						
-                        <li class="dropdown"><a href="#">MyPage <i class="fa fa-angle-down"></i></a>
-                            <ul role="menu" class="sub-menu">
-                                <li><a href="my_info_detail">My Infomation</a></li>
-                                <li><a href="#">Learning Page</a></li>
-                                <li><a href="my_chart_page">My Chart</a></li>
-                            </ul>
-                        </li>
-                        <li><div>${sessionScope.loginid}</div></li>
-                        <li><a href="logout">Logout</a></li>
+
+							<li class="dropdown"><a href="#">MyPage <i
+									class="fa fa-angle-down"></i></a>
+								<ul role="menu" class="sub-menu">
+									<li><a href="my_info_detail">My Infomation</a></li>
+									<li><a href="#">Learning Page</a></li>
+									<li><a href="my_chart_page">My Chart</a></li>
+								</ul></li>
+							<li><div>${sessionScope.loginid}</div></li>
+							<li><a href="logout">Logout</a></li>
 						</c:if>
 						<!-- 로그인 전  -->
 						<c:if test="${sessionScope.loginid == null}">
@@ -105,42 +111,47 @@
 						</c:if>
 
 					</ul>
-                </div>
-                
-            </div>
-        </div>
-    </header>
-    <!--/#header-->
+				</div>
 
-    <section id="home-slider">
-        <div class="container">
-            <div class="main-slider">
-                <div class="slide-text">
-                    <h1>おはようございます。</h1>
-                    <p>어떤 멘트가 좋을까....</p>      
-                </div>
-                <img src="images/hill.png" class="img-responsive slider-house" alt="slider image">
-                <!-- <img src="images/home/slider/slide1/circle1.png" class="slider-circle1" alt="slider image">
+			</div>
+		</div>
+	</header>
+	<!--/#header-->
+
+	<section id="home-slider">
+		<div class="container">
+			<div class="main-slider">
+				<div class="slide-text">
+					<h1>おはようございます。</h1>
+					<p>어떤 멘트가 좋을까....</p>
+				</div>
+				<img src="images/hill.png" class="img-responsive slider-house"
+					alt="slider image">
+				<!-- <img src="images/home/slider/slide1/circle1.png" class="slider-circle1" alt="slider image">
                 <img src="images/home/slider/slide1/circle2.png" class="slider-circle2" alt="slider image"> 
                 <img src="images/home/slider/slide1/cloud1.png" class="slider-cloud1" alt="slider image">-->
-                <img src="images/구름1.png" class="slider-cloud2" alt="slider image">
-                <img src="images/구름2.png" class="slider-cloud3" alt="slider image">
-                <img src="images/main_sun.png" class="slider-sun" alt="slider image">
-                <img src="images/마차_main.png" class="slider-cycle" alt="">
-            </div>
-        </div>
-        <div class="preloader"><i class="fa fa-sun-o fa-spin"></i></div>
-    </section>
-    <!--/#home-slider-->
+				<img src="images/구름1.png" class="slider-cloud2" alt="slider image">
+				<img src="images/구름2.png" class="slider-cloud3" alt="slider image">
+				<img src="images/main_sun.png" class="slider-sun" alt="slider image">
+				<img src="images/마차_main.png" class="slider-cycle" alt="">
+			</div>
+		</div>
+		<div class="preloader">
+			<i class="fa fa-sun-o fa-spin"></i>
+		</div>
+	</section>
+	<!--/#home-slider-->
 
 	<section id="blog-details" class="padding-top">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6 col-sm-5">
 					<div class="sidebar blog-sidebar">
-
+						<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
 						<div class="sidebar-item categories">
-							<h3>Notice<a href="#"><i class="fa fa-tag"></i>more</a></h3> 
+							<h3>
+								Notice<a href="#"><i class="fa fa-plus"></i>more</a>
+							</h3>
 							<ul class="nav navbar-stacked">
 								<li><a href="#">Lorem ipsum<span class="pull-right">(1)</span></a></li>
 								<li class="active"><a href="#">Dolor sit amet<span
@@ -153,18 +164,25 @@
 							</ul>
 						</div>
 						<div class="sidebar-item categories">
-							<h3>1:1 Board<a href="#"><i class="fa fa-tag"></i>more</a></h3> 
+							<h3>
+								1:1 Board<a href="board_1to1"><i class="fa fa-tag"></i>more</a>
+							</h3>
 							<ul class="nav navbar-stacked">
-								<li><a href="#">Lorem ipsum<span class="pull-right">(1)</span></a></li>
-								<li class="active"><a href="#">Dolor sit amet<span
-										class="pull-right">(8)</span></a></li>
-								<li><a href="#">Adipisicing elit<span
-										class="pull-right">(4)</span></a></li>
-								<li><a href="#">Sed do<span class="pull-right">(9)</span></a></li>
-								<li><a href="#">Eiusmod<span class="pull-right">(3)</span></a></li>
-
+								<c:forEach items="${board_1to1_list}" var="board_1to1">
+									<c:choose>
+										<c:when
+											test="${sessionScope.loginid!=board.user_id and board.secret!=null}">
+											<li><a href="#">Eiusmod<span class="pull-right">(3)</span></a></li>
+										</c:when>
+										<c:otherwise>
+											<li><a href="#">비밀글 입니다.<span
+													class="pull-right"></span></a></li>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
 							</ul>
 						</div>
+						<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
 					</div>
 				</div>
 			</div>
@@ -174,92 +192,105 @@
 
 
 	<section id="action" class="responsive">
-        <div class="vertical-center">
-             <div class="container">
-                <div class="row">
-                    <div class="action take-tour">
-                        <div class="col-sm-7 wow fadeInLeft" data-wow-duration="500ms" data-wow-delay="300ms">
-                            <h1 class="title">로고이름 넣기</h1>
-                            <p>A responsive, retina-ready &amp; wide multipurpose template.</p>
-                        </div>
-                        <div class="col-sm-5 text-center wow fadeInRight" data-wow-duration="500ms" data-wow-delay="300ms">
-                            <div class="tour-button">
-                                
-                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-   </section>
-    <!--/#action-->
+		<div class="vertical-center">
+			<div class="container">
+				<div class="row">
+					<div class="action take-tour">
+						<div class="col-sm-7 wow fadeInLeft" data-wow-duration="500ms"
+							data-wow-delay="300ms">
+							<h1 class="title">로고이름 넣기</h1>
+							<p>A responsive, retina-ready &amp; wide multipurpose
+								template.</p>
+						</div>
+						<div class="col-sm-5 text-center wow fadeInRight"
+							data-wow-duration="500ms" data-wow-delay="300ms">
+							<div class="tour-button"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--/#action-->
 
-   <section id="blog" class="padding-bottom">
-        <div class="container">
-            <div class="row">
-                <div class="timeline-blog overflow padding-top">
-                    <div class="timeline-date text-center">
-                        <a href="#japanese_Fairy" class="btn btn-common uppercase">LEARNING</a>
-                    </div>
-                    <div class="timeline-divider overflow padding-bottom">
-                        <div class="col-sm-6 padding-right arrow-right wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="300ms">
-                            <div class="single-blog timeline">
-                                <div class="single-blog-wrapper">
-                                    <div class="post-thumb">
-                                        <img src="images/main_japan.png" class="img-responsive" alt="">
-                                        <div class="post-overlay">
-                                           <span class="uppercase"><a href="japanese_fairy">Go<br><small>Fairy</small></a></span>
-                                       </div>
-                                    </div>
-                                </div>
-                                <div id ="japanese_Fairy" class="post-content overflow">
-                                    <h2 class="post-title bold"><a href="japanese_fairy">Japanese Fairy</a></h2>
-                                    
-                                    <p>일본어를 학습할 수 있습니다.</p>
-                                    
-                                    <div class="post-bottom overflow">
-                                      
-                                        <span class="comments-number pull-right"><a href="japanese_fairy" class="read-more">View More</a></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 padding-left padding-top arrow-left wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="300ms">
-                            <div class="single-blog timeline">
-                                <div class="single-blog-wrapper">
-                                    <div class="post-thumb">
-                                        <img src="images/main_coding.png" class="img-responsive" alt="">
-                                        <div class="post-overlay">
-                                           <span class="uppercase"><a href="coding_puzzle">Go<br><small>Puzzle</small></a></span>
-                                       </div>
-                                    </div>
-                                </div>
-                                <div class="post-content overflow">
-                                    <h2 class="post-title bold"><a href="coding_puzzle">Codding Puzzle</a></h2>
-                                    
-                                    <p>퍼즐 완성으로 코딩을 학습할 수 있습니다.</p>
-                                    
-                                    <div class="post-bottom overflow">
-                                    
-                                        <span class="comments-number pull-right"> <a href="coding_puzzle" class="read-more">View More</a></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
-                <div class="timeline-blog overflow">
-                    <div class="timeline-date text-center">
-                        <a href="#" class="btn btn-common">ON TOP</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--/#blog-->
+	<section id="blog" class="padding-bottom">
+		<div class="container">
+			<div class="row">
+				<div class="timeline-blog overflow padding-top">
+					<div class="timeline-date text-center">
+						<a href="#japanese_Fairy" class="btn btn-common uppercase">LEARNING</a>
+					</div>
+					<div class="timeline-divider overflow padding-bottom">
+						<div class="col-sm-6 padding-right arrow-right wow fadeInLeft"
+							data-wow-duration="1000ms" data-wow-delay="300ms">
+							<div class="single-blog timeline">
+								<div class="single-blog-wrapper">
+									<div class="post-thumb">
+										<img src="images/main_japan.png" class="img-responsive" alt="">
+										<div class="post-overlay">
+											<span class="uppercase"><a href="japanese_fairy">Go<br>
+													<small>Fairy</small></a></span>
+										</div>
+									</div>
+								</div>
+								<div id="japanese_Fairy" class="post-content overflow">
+									<h2 class="post-title bold">
+										<a href="japanese_fairy">Japanese Fairy</a>
+									</h2>
 
-<!--     <section id="features">
+									<p>일본어를 학습할 수 있습니다.</p>
+
+									<div class="post-bottom overflow">
+
+										<span class="comments-number pull-right"><a
+											href="japanese_fairy" class="read-more">View More</a></span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div
+							class="col-sm-6 padding-left padding-top arrow-left wow fadeInRight"
+							data-wow-duration="1000ms" data-wow-delay="300ms">
+							<div class="single-blog timeline">
+								<div class="single-blog-wrapper">
+									<div class="post-thumb">
+										<img src="images/main_coding.png" class="img-responsive"
+											alt="">
+										<div class="post-overlay">
+											<span class="uppercase"><a href="coding_puzzle">Go<br>
+													<small>Puzzle</small></a></span>
+										</div>
+									</div>
+								</div>
+								<div class="post-content overflow">
+									<h2 class="post-title bold">
+										<a href="coding_puzzle">Codding Puzzle</a>
+									</h2>
+
+									<p>퍼즐 완성으로 코딩을 학습할 수 있습니다.</p>
+
+									<div class="post-bottom overflow">
+
+										<span class="comments-number pull-right"> <a
+											href="coding_puzzle" class="read-more">View More</a></span>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<div class="timeline-blog overflow">
+					<div class="timeline-date text-center">
+						<a href="#" class="btn btn-common">ON TOP</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--/#blog-->
+
+	<!--     <section id="features">
         <div class="container">
             <div class="row">
                 <div class="single-features">
@@ -294,7 +325,7 @@
     </section>
      /#features -->
 
-    <!-- <section id="clients">
+	<!-- <section id="clients">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
@@ -328,39 +359,39 @@
         </div>
      </section>
     <--/#clients -->
-    
-<!-- footer -->
-    <footer id="footer">
-        <div class="container">
-            <div class="row">
-            	<div class="row">
-	                <div class="col-sm-12 text-center bottom-separator">
-	                    <img src="images/home/under.png" class="img-responsive inline" alt="">
-	                </div>
-                </div>
-                <div class="row">
-	                <div class="col-md-4 col-sm-4">
-	                    <div class="contact-info bottom">
-	                        <h2>Contacts</h2>
-	                        <address>
-	                        E-mail: <a href="mailto:jungim0547@gmail.com">jungim0547@gmail.com</a> <br> 
-	                        Phone: 1566-5114 <br> 
-	                        </address>
-	
-	                        <h2>Address</h2>
-	                        <address>
-	                        513 COEX office<br>
-	                        Korea International Trade Association, <br> 
-	                        Yeongdong-daero, <br> 
-	                        Gangnam-gu, <br> 
-	                        Seoul <br> 
-	                        </address>
-	                    </div>
-	                </div>
+
+	<!-- footer -->
+	<footer id="footer">
+		<div class="container">
+			<div class="row">
+				<div class="row">
+					<div class="col-sm-12 text-center bottom-separator">
+						<img src="images/home/under.png" class="img-responsive inline"
+							alt="">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4 col-sm-4">
+						<div class="contact-info bottom">
+							<h2>Contacts</h2>
+							<address>
+								E-mail: <a href="mailto:jungim0547@gmail.com">jungim0547@gmail.com</a>
+								<br> Phone: 1566-5114 <br>
+							</address>
+
+							<h2>Address</h2>
+							<address>
+								513 COEX office<br> Korea International Trade Association,
+								<br> Yeongdong-daero, <br> Gangnam-gu, <br> Seoul
+								<br>
+							</address>
+						</div>
+					</div>
 					<div class="col-md-8 col-sm-8">
-						<iframe width="100%" height="300" frameborder="0" scrolling="no" marginheight="0"
-								src="https://maps.google.com/maps?q=coex&t=&z=13&ie=UTF8&iwloc=&output=embed" marginwidth="0">
-						</iframe>
+						<iframe width="100%" height="300" frameborder="0" scrolling="no"
+							marginheight="0"
+							src="https://maps.google.com/maps?q=coex&t=&z=13&ie=UTF8&iwloc=&output=embed"
+							marginwidth="0"> </iframe>
 					</div>
 				</div>
 				<!-- <div class="col-md-4 col-sm-12">
@@ -393,20 +424,22 @@
 					/#map-container
 				</div> -->
 				<div class="col-sm-12">
-                    <div class="copyright-text text-center">
-                   		<p>Copyright &copy; SC IT MASTER </p>
-                        <p>Designed by C class 3Group</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!--/#footer-->
+					<div class="copyright-text text-center">
+						<p>Copyright &copy; SC IT MASTER</p>
+						<p>
+							Designed by C class 3Group</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!--/#footer-->
 
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/lightbox.min.js"></script>
-    <script type="text/javascript" src="js/wow.min.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>   
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/lightbox.min.js"></script>
+	<script type="text/javascript" src="js/wow.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>

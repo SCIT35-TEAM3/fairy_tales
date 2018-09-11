@@ -2,6 +2,7 @@ package global.sesoc.fairytales.controllers;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,8 +16,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import global.sesoc.fairytales.dao.Board_1to1_Repository;
+import global.sesoc.fairytales.dto.Board_1to1;
+import global.sesoc.fairytales.util.PageNavigator;
+import global.sesoc.fairytales.util.PageNavigatorForMain;
 
 /**
  * Handles requests for the application home page.
@@ -28,6 +35,8 @@ public class HomeController {
 	@Autowired
 	testRepository repository;
 	*/
+	@Autowired
+	Board_1to1_Repository board_1to1_Repository;
 	
 	/* 셈플입니다 새로운 Controller를 만들어 사용해주세요 !! */
 	
@@ -93,7 +102,23 @@ public class HomeController {
 	
 	/*bootstrap 적용한 메인*/
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model, HttpServletRequest request, HttpSession session) {
+	public String home(Locale locale,HttpServletRequest request, HttpSession session,
+			@RequestParam(value = "searchItem", defaultValue = "user_id") String searchItem,
+			@RequestParam(value = "searchWord", defaultValue = "") String searchWord, Model model,
+			@RequestParam(value = "currentPage", defaultValue = "0") int currentPage) {
+		
+		// 1:1 
+		int board_1to1_totalRecordCount = board_1to1_Repository.getTotalBoard(searchItem, searchWord);
+		
+		PageNavigatorForMain navi = new PageNavigatorForMain(currentPage, board_1to1_totalRecordCount);
+		List<Board_1to1> board_1to1_list = board_1to1_Repository.select(searchItem, searchWord, navi.getStartRecord(),
+				navi.getCountPerPage());
+
+		model.addAttribute("board_1to1_list", board_1to1_list);
+		model.addAttribute("searchItem", searchItem);
+		model.addAttribute("searchWord", searchWord);
+		model.addAttribute("navi", navi);
+		model.addAttribute("currentPage", currentPage);
 		
 		return "home";
 	}
