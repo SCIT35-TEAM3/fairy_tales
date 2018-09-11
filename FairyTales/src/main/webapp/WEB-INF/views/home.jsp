@@ -140,7 +140,7 @@
 					<div class="sidebar blog-sidebar">
 
 						<div class="sidebar-item categories">
-							<h3>Categories</h3>
+							<h3>Notice<a href="#"><i class="fa fa-tag"></i>more</a></h3> 
 							<ul class="nav navbar-stacked">
 								<li><a href="#">Lorem ipsum<span class="pull-right">(1)</span></a></li>
 								<li class="active"><a href="#">Dolor sit amet<span
@@ -153,7 +153,7 @@
 							</ul>
 						</div>
 						<div class="sidebar-item categories">
-							<h3>Categories</h3>
+							<h3>1:1 Board<a href="#"><i class="fa fa-tag"></i>more</a></h3> 
 							<ul class="nav navbar-stacked">
 								<li><a href="#">Lorem ipsum<span class="pull-right">(1)</span></a></li>
 								<li class="active"><a href="#">Dolor sit amet<span
