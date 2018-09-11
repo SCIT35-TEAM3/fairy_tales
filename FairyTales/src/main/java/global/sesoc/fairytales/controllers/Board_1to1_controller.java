@@ -42,7 +42,8 @@ public class Board_1to1_controller {
 	Reply_1to1_Repository reply_repository;
 	@Autowired // 보드 레파지토리
 	Board_1to1_Repository board_repository;
-
+	
+//파일 경로
 	final String UPLOADPATH = "/boardfile";
 
 	// 보드 메인화면
@@ -66,7 +67,7 @@ public class Board_1to1_controller {
 		model.addAttribute("navi", navi);
 		model.addAttribute("currentPage", currentPage);
 
-		return "board_1to1";
+		return "board_1to1/board_1to1";
 	}
 
 	// 글쓰기 진입
@@ -74,7 +75,7 @@ public class Board_1to1_controller {
 	public String write(Model model) {
 		model.addAttribute("login_id", "aa");
 
-		return "write";
+		return "board_1to1/write";
 	}
 
 	// 글 등록
@@ -83,10 +84,10 @@ public class Board_1to1_controller {
 
 		board_1to1.setUser_id(String.valueOf(session.getAttribute("loginid")));
 		String user_id = (String) session.getAttribute("loginid");
-		System.out.println("▶▶▶▶▶ 글쓰기▶▶▶▶▶" +board_1to1+"▶▶▶▶upload▶▶▶▶"+ upload);
+		System.out.println("▶▶▶▶▶ 글쓰기▶▶▶▶▶" + board_1to1 + "▶▶▶▶upload▶▶▶▶" + upload);
 		String origin_file_name = upload.getOriginalFilename();
 		String save_file = FileService.saveFile(upload, UPLOADPATH);
-		
+
 		board_1to1.setOrigin_file_name(origin_file_name);
 		board_1to1.setSave_file_name(save_file);
 
@@ -94,7 +95,7 @@ public class Board_1to1_controller {
 
 		int result = board_repository.insert_board_1to1(board_1to1);
 
-		return "redirect:board_1to1";
+		return "redirect:board_1to1/board_1to1";
 
 	}
 
@@ -102,10 +103,9 @@ public class Board_1to1_controller {
 	@Transactional
 	@RequestMapping(value = "/post")
 	public String post(Model model, int board_num) {
-		
-		
+
 		model.addAttribute("login_id", "aa"); // 시험용
-		
+		board_repository.hitcount(board_num);
 		Board_1to1 board_1to1 = new Board_1to1();
 		board_1to1.setBoard_num(board_num);
 		Board_1to1 board_1to12 = board_repository.select_one_board_1to1(board_1to1);
@@ -129,7 +129,7 @@ public class Board_1to1_controller {
 			e.printStackTrace();
 		}
 
-		return "post";
+		return "board_1to1/post";
 	}
 
 	// 글 수정
@@ -141,7 +141,7 @@ public class Board_1to1_controller {
 
 		Board_1to1 board_1to12 = board_repository.select_one_board_1to1(board_1to11);
 		model.addAttribute("board_1to1", board_1to12);
-		return "board_update";
+		return "board_1to1/board_update";
 
 	}
 
@@ -150,14 +150,14 @@ public class Board_1to1_controller {
 	public String update(Board_1to1 board_1to1) {
 		System.out.println(board_1to1);
 		board_repository.update_board_1to1(board_1to1);
-		return "redirect:board_1to1";
+		return "redirect:board_1to1/board_1to1";
 	}
 
 	// 글 삭제
 	@RequestMapping(value = "board_delete")
 	public String delete(int board_num) {
 		int result = board_repository.delete_board_1to1(board_num);
-		return "redirect:board_1to1";
+		return "redirect:board_1to1/board_1to1";
 
 	}
 
@@ -182,9 +182,10 @@ public class Board_1to1_controller {
 		red.addAttribute("board_num", board_num);
 		red.addAttribute("user_id", board_1to12.getUser_id());
 
-		return "redirect:/update";
+		return "redirect:board_1to1/update";
 
 	}
+
 	// 파일 다운로드
 	@RequestMapping(value = "/download", method = RequestMethod.GET)
 	public String download(Board_1to1 board_1to1, Model model, int board_num, HttpServletResponse rep) {
@@ -228,6 +229,5 @@ public class Board_1to1_controller {
 		}
 		return null; // return 할게 없다
 	}
-	
 
 }
