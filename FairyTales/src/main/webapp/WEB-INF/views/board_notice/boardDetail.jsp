@@ -163,7 +163,7 @@
 													<tr >
 														<td width="100px" align="center">글내용</td>
 														<td colspan="8">
-														<div class="form-control" name="content" id="content">${boarddetail.content}</div>
+														<div class="form-control" name="content" id="content" style="height: 300px;">${boarddetail.content}</div>
 														</td>
 
 													</tr>
