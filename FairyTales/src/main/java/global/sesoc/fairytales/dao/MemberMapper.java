@@ -3,6 +3,7 @@ package global.sesoc.fairytales.dao;
 import global.sesoc.fairytales.dto.Member;
 
 public interface MemberMapper {
+	
 	//회원가입
 	public int insert(Member member);
 
@@ -14,6 +15,9 @@ public interface MemberMapper {
 	
 	//이메일 중복확인
 	public String emailcheck(String user_email);
+	
+	//출석확인
+	public int insert_access(Member member);
 	
 	
 }

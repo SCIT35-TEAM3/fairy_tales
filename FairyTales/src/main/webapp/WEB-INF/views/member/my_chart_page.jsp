@@ -32,90 +32,80 @@
 </head>
 
 <body>
-	<!--header-->
-	<header id="header">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-12 overflow">
-					<div class="social-icons pull-right">
-						<ul class="nav nav-pills">
-							<li><a href=""><i class="fa fa-facebook"></i></a></li>
-							<li><a href=""><i class="fa fa-twitter"></i></a></li>
-							<li><a href=""><i class="fa fa-google-plus"></i></a></li>
-							<li><a href=""><i class="fa fa-dribbble"></i></a></li>
-							<li><a href=""><i class="fa fa-linkedin"></i></a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="navbar navbar-inverse" role="banner">
-			<div class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse"
-						data-target=".navbar-collapse">
-						<span class="sr-only">Toggle navigation</span> <span
-							class="icon-bar"></span> <span class="icon-bar"></span> <span
-							class="icon-bar"></span>
-					</button>
+<!--header-->
+	<header id="header">      
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 overflow">
+                   <div class="social-icons pull-right">
+                        <!-- <ul class="nav nav-pills">
+                            <li><a href=""><i class="fa fa-facebook"></i></a></li>
+                            <li><a href=""><i class="fa fa-twitter"></i></a></li>
+                            <li><a href=""><i class="fa fa-google-plus"></i></a></li>
+                            <li><a href=""><i class="fa fa-dribbble"></i></a></li>
+                            <li><a href=""><i class="fa fa-linkedin"></i></a></li>
+                        </ul> -->
+                    </div> 
+                </div>
+             </div>
+        </div>
+        <div class="navbar navbar-inverse" role="banner">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
 
-					<a class="navbar-brand" href="./">
-						<h1>
-							<img src="images/logo(ex).png" alt="logo">
-						</h1>
-					</a>
-
-				</div>
-				<div class="collapse navbar-collapse">
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="./">Home</a></li>
-						<li class="dropdown"><a href="#">Page <i
-								class="fa fa-angle-down"></i></a>
-							<ul role="menu" class="sub-menu">
-
-								<li><a href="japanese_fairy">Japanese Fairy</a></li>
-								<li><a href="aboutus.html">Coding Puzzle</a></li>
-							</ul></li>
-						<li class="dropdown"><a href="#">Board<i
-								class="fa fa-angle-down"></i></a>
-							<ul role="menu" class="sub-menu">
-								<li><a href="board_list">Notice</a></li>
-								<li><a href="blogtwo.html">1:1 CustomerBoard</a></li>
-							</ul></li>
-						<!-- 회원 로그인 후-->
+                    <a class="navbar-brand" href="./">
+                    	<h1><img src="images/로고.png" alt="logo"></h1>
+                    </a>
+                    
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="./">Home</a></li>
+                        <li class="dropdown"><a href="#">Page <i class="fa fa-angle-down"></i></a>
+                            <ul role="menu" class="sub-menu">
+                            
+                            	<li><a href="japanese_fairy">Japanese Fairy</a></li>
+                                <li><a href="coding_puzzle">Coding Puzzle</a></li>
+                            </ul>
+                        </li>                    
+                        <li class="dropdown"><a href="#">Board<i class="fa fa-angle-down"></i></a>
+                            <ul role="menu" class="sub-menu">
+                                <li><a href="board_list">Notice</a></li>
+                                <li><a href="board_1to1">1:1 CustomerBoard</a></li>
+                            </ul>
+                        </li>
+                        <!-- 회원 로그인 후-->
 						<c:if test="${sessionScope.loginid != null}">
-
-							<li class="dropdown"><a href="#">MyPage <i
-									class="fa fa-angle-down"></i></a>
-								<ul role="menu" class="sub-menu">
-									<li><a href="my_info_detail">My Infomation</a></li>
-									<li><a href="portfoliofour.html">Learning Page</a></li>
-									<li><a href="my_chart_page">My Chart</a></li>
-								</ul></li>
-							<li><div>${sessionScope.loginid}</div></li>
-							<li><a href="logout">Logout</a></li>
+						
+                        <li class="dropdown"><a href="#">MyPage <i class="fa fa-angle-down"></i></a>
+                            <ul role="menu" class="sub-menu">
+                                <li><a href="my_info_detail">My Infomation</a></li>
+                                <li><a href="#">Learning Page</a></li>
+                                <li><a href="my_chart_page">My Chart</a></li>
+                            </ul>
+                        </li>
+                        <li><div>${sessionScope.loginid}</div></li>
+                        <li><a href="logout">Logout</a></li>
 						</c:if>
-
 						<!-- 로그인 전  -->
 						<c:if test="${sessionScope.loginid == null}">
 							<li><a href="login ">Login</a></li>
 							<li><a href="join ">Join</a></li>
 						</c:if>
+
 					</ul>
-				</div>
-				<div class="search">
-					<form role="form">
-						<i class="fa fa-search"></i>
-						<div class="field-toggle">
-							<input type="text" class="search-form" autocomplete="off"
-								placeholder="Search">
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</header>
-	<!--/#header-->
+                </div>
+                
+            </div>
+        </div>
+    </header>
+    <!--/#header-->
 
 	<section id="page-breadcrumb">
 		<div class="vertical-center sun">
@@ -140,7 +130,7 @@
 				<div class="col-md-3 col-sm-5">
 					<div class="sidebar blog-sidebar w3-sidebar">
 						<!-- 고정시켜서 쓸 수 있는 사이드바 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 붙여서 쓰시면 됩니다!-->
-						<div class="sidebar-item categories">
+						<div class="sidebar-item categories" >
 							<h3>나의 학습 진행 현황</h3>
 							<ul class="nav navbar-stacked">
 								<li><a href="#allChart">학습진행도</a></li>
@@ -163,21 +153,31 @@
 													<h3>Chart</h3>
 
 													<!-- 진행도 -->
-													<div style="position: relative; height: 900px; width: 700px">
+													
+													<!-- 차트 2개 넓이는 1000px -->
+													<div style="position: relative; height: 1000px; width: 700px">
 														<br> <br> <br>
 														<canvas id="allChart"></canvas>
 														<br> <br> <br> <br> <br> <br>
 														<canvas id="levelChart"></canvas>
-														<br> <br> <br> <br> <br> <br>
+													</div>
+													<!-- /차트 2개 -->
+													
+													<!-- 차트 1개 넓이는 450px -->
+													<div style="position: relative; height: 450px; width: 700px">
+													
 														<canvas id="fairyChart"></canvas>
 														<br> <br> <br> <br> <br> <br>
-
+													</div>
+													<!-- /차트 1개 -->
+													
+													<div style="position: relative; height: 1000px; width: 700px">
 														<!-- 오답률 -->
 														<canvas id="allWorngChart"></canvas>
 														<br> <br> <br> <br> <br> <br>
 														<canvas id="levelWorngChart"></canvas>
-														<br> <br> <br> <br> <br> <br>
-
+													</div>
+													<div style="position: relative; height: 450px; width: 700px">
 														<!-- 출석률 -->
 														<canvas id="attendChart"></canvas>
 														<br> <br> <br> <br> <br> <br>
@@ -196,94 +196,80 @@
 	</section>
 	<!--/#blog-->
 
-	<!-- <footer id="footer">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-12 text-center bottom-separator">
-					<img src="images/home/under.png" class="img-responsive inline" alt="">
-				</div>
-				<div class="col-md-4 col-sm-6">
-					<div class="testimonial bottom">
-						<h2>Testimonial</h2>
-						<div class="media">
-							<div class="pull-left">
-								<a href="#"><img src="images/home/profile1.png" alt=""></a>
-							</div>
-							<div class="media-body">
-								<blockquote>Nisi commodo bresaola, leberkas venison
-									eiusmod bacon occaecat labore tail.</blockquote>
-								<h3>
-									<a href="#">- Jhon Kalis</a>
-								</h3>
-							</div>
-						</div>
-						<div class="media">
-							<div class="pull-left">
-								<a href="#"><img src="images/home/profile2.png" alt=""></a>
-							</div>
-							<div class="media-body">
-								<blockquote>Capicola nisi flank sed minim sunt
-									aliqua rump pancetta leberkas venison eiusmod.</blockquote>
-								<h3>
-									<a href="">- Abraham Josef</a>
-								</h3>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 col-sm-6">
+    <footer id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center bottom-separator">
+                    <img src="images/home/under.png" class="img-responsive inline" alt="">
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="contact-info bottom">
+                        <h2>Contacts</h2>
+                        <address>
+                        E-mail: <a href="mailto:jungim0547@gmail.com">jungim0547@gmail.com</a> <br> 
+                        Phone: 1566-5114 <br> 
+                        </address>
+
+                        <h2>Address</h2>
+                        <address>
+                        513 COEX office<br>
+                        Korea International Trade Association, <br> 
+                        Yeongdong-daero, <br> 
+                        Gangnam-gu, <br> 
+                        Seoul <br> 
+                        </address>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+				<!-- <div class="col-md-12 col-sm-12"> -->
 					<div class="contact-info bottom">
-						<h2>Contacts</h2>
-						<address>
-							E-mail: <a href="mailto:someone@example.com">email@email.com</a>
-							<br> Phone: +1 (123) 456 7890 <br> Fax: +1 (123) 456
-							7891 <br>
-						</address>
+						<div class="map">
+							<iframe width="120%" height="300" frameborder="0" scrolling="no"
+								marginheight="0"
+								src="https://maps.google.com/maps?q=coex&t=&z=13&ie=UTF8&iwloc=&output=embed"
+								marginwidth="0">
+								<a class="addmaps" href="http://www.embedgooglemap.net"
+									id="get-map-data"
+									mce_href="http://maps.google.com/maps/api/js?sensor=false">embedgooglemap.net</a>
 
-						<h2>Address</h2>
-						<address>
-							Unit C2, St.Vincent's Trading Est., <br> Feeder Road, <br>
-							Bristol, BS2 0UY <br> United Kingdom <br>
-						</address>
-					</div>
-				</div>
-				<div class="col-md-4 col-sm-12">
-					<div class="contact-form bottom">
-						<h2>Send a message</h2>
-						<form id="main-contact-form" name="contact-form" method="post"
-							action="sendemail.php">
-							<div class="form-group">
-								<input type="text" name="name" class="form-control"
-									required="required" placeholder="Name">
-							</div>
-							<div class="form-group">
-								<input type="email" name="email" class="form-control"
-									required="required" placeholder="Email Id">
-							</div>
-							<div class="form-group">
-								<textarea name="message" id="message" required="required"
-									class="form-control" rows="8" placeholder="Your text here"></textarea>
-							</div>
-							<div class="form-group">
-								<input type="submit" name="submit" class="btn btn-submit"
-									value="Submit">
-							</div>
-						</form>
-					</div>
-				</div>
-				<div class="col-sm-12">
-					<div class="copyright-text text-center">
-						<p>&copy; Your Company 2014. All Rights Reserved.</p>
-						<p>
-							Designed by <a target="_blank" href="http://www.themeum.com">Themeum</a>
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</footer> -->
-	<!--/#footer-->
 
+
+							</iframe>
+						</div>
+
+					</div>
+				</div>
+                <!-- <div class="col-md-4 col-sm-12">
+                    <div class="contact-form bottom">
+                        <h2>Send a message</h2>
+                        <form id="main-contact-form" name="contact-form" method="post" action="sendemail.php">
+                            <div class="form-group">
+                                <input type="text" name="name" class="form-control" required="required" placeholder="Name">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="email" class="form-control" required="required" placeholder="Email Id">
+                            </div>
+                            <div class="form-group">
+                                <textarea name="message" id="message" required="required" class="form-control" rows="8" placeholder="Your text here"></textarea>
+                            </div>                        
+                            <div class="form-group">
+                                <input type="submit" name="submit" class="btn btn-submit" value="Submit">
+                            </div>
+                        </form>
+                    </div>
+                </div> -->
+                <div class="col-sm-12">
+                    <div class="copyright-text text-center">
+                        <p>&copy; Your Company 2014. All Rights Reserved.</p>
+                        <p>Designed by <a target="_blank" href="http://www.themeum.com">Themeum</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--/#footer-->
+
+	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/lightbox.min.js"></script>
 	<script type="text/javascript" src="js/wow.min.js"></script>

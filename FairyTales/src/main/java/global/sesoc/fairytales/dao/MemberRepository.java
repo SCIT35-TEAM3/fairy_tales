@@ -38,7 +38,12 @@ public class MemberRepository {
 		return result;
 	}
 	
-	
+	//회원 출석
+	public int insert_access(Member member) {
+		MemberMapper mapper = session.getMapper(MemberMapper.class);
+		int insert_access = mapper.insert_access(member);
+		return insert_access;	
+	}
 	
 	 /*
 	// 이메일 중복확인

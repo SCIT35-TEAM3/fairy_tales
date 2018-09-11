@@ -104,8 +104,9 @@ COMMENT ON COLUMN member.subject IS '일어동화, 퍼즐코딩';
 insert into member (user_id,user_pwd,user_name,	user_age,phone_num	,user_email,address,user_level)
 		values('manager','1234'	,'관리자1',33,'010-1111-1111','nam7318@naver.com','서울시 삼성동 scit master',1);
 
-//로그인 이력
+/* 로그인 이력 */
 DROP TABLE member_log CASCADE CONSTRAINTS;
+
 CREATE TABLE member_log
 (
 	-- 사용자 ID
@@ -118,6 +119,8 @@ ALTER TABLE member_log
 	ADD FOREIGN KEY (user_id)
 	REFERENCES member (user_id)
 ;
+
+
 
 COMMENT ON COLUMN member_log.user_id IS '사용자 ID';
 COMMENT ON COLUMN member_log.member_access IS '회원 접속일';
@@ -237,3 +240,4 @@ COMMENT ON COLUMN question.answer IS '문제의 답';
 COMMENT ON COLUMN question.screen IS '챕터의 몇번째 화면';
 
 commit;
+

@@ -55,13 +55,13 @@ function formCheck(){
             <div class="row">
                 <div class="col-sm-12 overflow">
                    <div class="social-icons pull-right">
-                        <ul class="nav nav-pills">
+                        <!-- <ul class="nav nav-pills">
                             <li><a href=""><i class="fa fa-facebook"></i></a></li>
                             <li><a href=""><i class="fa fa-twitter"></i></a></li>
                             <li><a href=""><i class="fa fa-google-plus"></i></a></li>
                             <li><a href=""><i class="fa fa-dribbble"></i></a></li>
                             <li><a href=""><i class="fa fa-linkedin"></i></a></li>
-                        </ul>
+                        </ul> -->
                     </div> 
                 </div>
              </div>
@@ -77,7 +77,7 @@ function formCheck(){
                     </button>
 
                     <a class="navbar-brand" href="./">
-                    	<h1><img src="images/logo(ex).png" alt="logo"></h1>
+                    	<h1><img src="images/로고.png" alt="logo"></h1>
                     </a>
                     
                 </div>
@@ -88,13 +88,13 @@ function formCheck(){
                             <ul role="menu" class="sub-menu">
                             
                             	<li><a href="japanese_fairy">Japanese Fairy</a></li>
-                                <li><a href="aboutus.html">Codding Puzzle</a></li>
+                                <li><a href="coding_puzzle">Coding Puzzle</a></li>
                             </ul>
-                        </li>                  
+                        </li>                    
                         <li class="dropdown"><a href="#">Board<i class="fa fa-angle-down"></i></a>
                             <ul role="menu" class="sub-menu">
                                 <li><a href="board_list">Notice</a></li>
-                                <li><a href="blogtwo.html">1:1 CustomerBoard</a></li>
+                                <li><a href="board_1to1">1:1 CustomerBoard</a></li>
                             </ul>
                         </li>
                         <!-- 회원 로그인 후-->
@@ -104,6 +104,7 @@ function formCheck(){
                             <ul role="menu" class="sub-menu">
                                 <li><a href="my_info_detail">My Infomation</a></li>
                                 <li><a href="portfoliofour.html">Learning Page</a></li>
+                                <li><a href="my_chart_page">My Chart</a></li>
                             </ul>
                         </li>
                         <li><div>${sessionScope.loginid}</div></li>
@@ -115,29 +116,9 @@ function formCheck(){
 							<li><a href="join ">Join</a></li>
 						</c:if>
 
-						<!-- 회원 로그인 후-->
-						
-							
-						
-						
-				<%-- 				<br />
-							<a href="my_info_detail">마이페이지</a>
-							<br />
-							<a href="board_list">공지사항</a>
-						</c:if> --%>
-
-
-
 					</ul>
                 </div>
-                <div class="search">
-                    <form role="form">
-                        <i class="fa fa-search"></i>
-                        <div class="field-toggle">
-                            <input type="text" class="search-form" autocomplete="off" placeholder="Search">
-                        </div>
-                    </form>
-                </div>
+                
             </div>
         </div>
     </header>
@@ -173,30 +154,37 @@ function formCheck(){
 								<div class="sidebar blog-sidebar">
 									<div class="sidebar-item  recent">
 										<h3>Notice</h3>
-										 <form action="boardUpdate" method="post">
-											<input type="hidden" name="board_num" value="${board.board_num}">
-											<table class="table">
-												<thead>
-													<tr>
-														<td>글 제목</td>
-														<td><input type="text" name="title" class="form-control" id="title" value="${board.title}" ></td>
-													</tr>
-												</thead>
+									<form action="boardUpdate" method="post">
+										<input type="hidden" name="board_num"
+											value="${board.board_num}">
+										<table class="table">
+											<thead>
+												<tr>
+													<td>글 제목</td>
+													<td><input type="text" name="title"
+														class="form-control" id="title" value="${board.title}"></td>
+												</tr>
+											</thead>
 
-												<tbody>
-													 	<td>내용</td>
-													 	<td><textarea rows="15" cols="80" class="form-control" name="content" id="content" >${board.content}</textarea></td>
-												</tbody>
-											</table>
-							
-									<c:if test="${sessionScope.user_level eq '1'}">
-											<div class="user-data__footer" align="center">
-												<button type="submit" class="btn btn-submit" onclick="return formCheck()">Ok</button>
-												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												<button type="reset" class="btn btn-submit">Cancel</button>
-											</div>
-										</c:if>
-										</form>
+											<tbody>
+												<td>내용</td>
+												<td><textarea rows="15" cols="80" class="form-control"
+														name="content" id="content">${board.content}</textarea></td>
+											</tbody>
+
+											<tr>
+												<td colspan="8">
+												<c:if test="${sessionScope.user_level eq '1'}">
+														<div class="user-data__footer" align="center">
+															<button type="submit" class="btn btn-submit"
+																onclick="return formCheck()">Ok</button>
+															&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+															<button type="reset" class="btn btn-submit">Cancel</button>
+														</div>
+													</c:if></td>
+											</tr>
+										</table>
+									</form>
 								</div>
 							 </div>
 						</div>
@@ -251,28 +239,7 @@ function formCheck(){
                                 <li><a href="#">Veniam, quis nostrud <span class="pull-right">(8)</span></a></li>
                             </ul>
                         </div>
-                        <div class="sidebar-item tag-cloud">
-                            <h3>Tag Cloud</h3>
-                            <ul class="nav nav-pills">
-                                <li><a href="#">Corporate</a></li>
-                                <li><a href="#">Joomla</a></li>
-                                <li><a href="#">Abstract</a></li>
-                                <li><a href="#">Creative</a></li>
-                                <li><a href="#">Business</a></li>
-                                <li><a href="#">Product</a></li>
-                            </ul>
-                        </div>
-                        <div class="sidebar-item popular">
-                            <h3>Latest Photos</h3>
-                            <ul class="gallery">
-                                <li><a href="#"><img src="images/portfolio/popular1.jpg" alt=""></a></li>
-                                <li><a href="#"><img src="images/portfolio/popular2.jpg" alt=""></a></li>
-                                <li><a href="#"><img src="images/portfolio/popular3.jpg" alt=""></a></li>
-                                <li><a href="#"><img src="images/portfolio/popular4.jpg" alt=""></a></li>
-                                <li><a href="#"><img src="images/portfolio/popular5.jpg" alt=""></a></li>
-                                <li><a href="#"><img src="images/portfolio/popular1.jpg" alt=""></a></li>
-                            </ul>
-                        </div>
+                      
                     </div>
                 </div>
             </div>
@@ -285,48 +252,44 @@ function formCheck(){
                 <div class="col-sm-12 text-center bottom-separator">
                     <img src="images/home/under.png" class="img-responsive inline" alt="">
                 </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="testimonial bottom">
-                        <h2>Testimonial</h2>
-                        <div class="media">
-                            <div class="pull-left">
-                                <a href="#"><img src="images/home/profile1.png" alt=""></a>
-                            </div>
-                            <div class="media-body">
-                                <blockquote>Nisi commodo bresaola, leberkas venison eiusmod bacon occaecat labore tail.</blockquote>
-                                <h3><a href="#">- Jhon Kalis</a></h3>
-                            </div>
-                         </div>
-                        <div class="media">
-                            <div class="pull-left">
-                                <a href="#"><img src="images/home/profile2.png" alt=""></a>
-                            </div>
-                            <div class="media-body">
-                                <blockquote>Capicola nisi flank sed minim sunt aliqua rump pancetta leberkas venison eiusmod.</blockquote>
-                                <h3><a href="">- Abraham Josef</a></h3>
-                            </div>
-                        </div>   
-                    </div> 
-                </div>
-                <div class="col-md-3 col-sm-6">
+                    <div class="col-md-4 col-sm-6">
                     <div class="contact-info bottom">
                         <h2>Contacts</h2>
                         <address>
-                        E-mail: <a href="mailto:someone@example.com">email@email.com</a> <br> 
-                        Phone: +1 (123) 456 7890 <br> 
-                        Fax: +1 (123) 456 7891 <br> 
+                        E-mail: <a href="mailto:jungim0547@gmail.com">jungim0547@gmail.com</a> <br> 
+                        Phone: 1566-5114 <br> 
                         </address>
 
                         <h2>Address</h2>
                         <address>
-                        Unit C2, St.Vincent's Trading Est., <br> 
-                        Feeder Road, <br> 
-                        Bristol, BS2 0UY <br> 
-                        United Kingdom <br> 
+                        513 COEX office<br>
+                        Korea International Trade Association, <br> 
+                        Yeongdong-daero, <br> 
+                        Gangnam-gu, <br> 
+                        Seoul <br> 
                         </address>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-12">
+				<div class="col-md-6 col-sm-12">
+				<!-- <div class="col-md-12 col-sm-12"> -->
+					<div class="contact-info bottom">
+						<div class="map">
+							<iframe width="120%" height="300" frameborder="0" scrolling="no"
+								marginheight="0"
+								src="https://maps.google.com/maps?q=coex&t=&z=13&ie=UTF8&iwloc=&output=embed"
+								marginwidth="0">
+								<a class="addmaps" href="http://www.embedgooglemap.net"
+									id="get-map-data"
+									mce_href="http://maps.google.com/maps/api/js?sensor=false">embedgooglemap.net</a>
+
+
+
+							</iframe>
+						</div>
+
+					</div>
+				</div>
+                <!-- <div class="col-md-4 col-sm-12">
                     <div class="contact-form bottom">
                         <h2>Send a message</h2>
                         <form id="main-contact-form" name="contact-form" method="post" action="sendemail.php">
@@ -344,7 +307,7 @@ function formCheck(){
                             </div>
                         </form>
                     </div>
-                </div>
+                </div> -->
                 <div class="col-sm-12">
                     <div class="copyright-text text-center">
                         <p>&copy; Your Company 2014. All Rights Reserved.</p>

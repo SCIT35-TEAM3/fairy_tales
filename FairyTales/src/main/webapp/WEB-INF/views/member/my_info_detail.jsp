@@ -70,13 +70,13 @@ function check(){
             <div class="row">
                 <div class="col-sm-12 overflow">
                    <div class="social-icons pull-right">
-                        <ul class="nav nav-pills">
+                        <!-- <ul class="nav nav-pills">
                             <li><a href=""><i class="fa fa-facebook"></i></a></li>
                             <li><a href=""><i class="fa fa-twitter"></i></a></li>
                             <li><a href=""><i class="fa fa-google-plus"></i></a></li>
                             <li><a href=""><i class="fa fa-dribbble"></i></a></li>
                             <li><a href=""><i class="fa fa-linkedin"></i></a></li>
-                        </ul>
+                        </ul> -->
                     </div> 
                 </div>
              </div>
@@ -92,7 +92,7 @@ function check(){
                     </button>
 
                     <a class="navbar-brand" href="./">
-                    	<h1><img src="images/logo(ex).png" alt="logo"></h1>
+                    	<h1><img src="images/로고.png" alt="logo"></h1>
                     </a>
                     
                 </div>
@@ -103,13 +103,13 @@ function check(){
                             <ul role="menu" class="sub-menu">
                             
                             	<li><a href="japanese_fairy">Japanese Fairy</a></li>
-                                <li><a href="aboutus.html">Codding Puzzle</a></li>
+                                <li><a href="coding_puzzle">Coding Puzzle</a></li>
                             </ul>
-                        </li>                  
+                        </li>                    
                         <li class="dropdown"><a href="#">Board<i class="fa fa-angle-down"></i></a>
                             <ul role="menu" class="sub-menu">
                                 <li><a href="board_list">Notice</a></li>
-                                <li><a href="blogtwo.html">1:1 CustomerBoard</a></li>
+                                <li><a href="board_1to1">1:1 CustomerBoard</a></li>
                             </ul>
                         </li>
                         <!-- 회원 로그인 후-->
@@ -118,7 +118,8 @@ function check(){
                         <li class="dropdown"><a href="#">MyPage <i class="fa fa-angle-down"></i></a>
                             <ul role="menu" class="sub-menu">
                                 <li><a href="my_info_detail">My Infomation</a></li>
-                                <li><a href="portfoliofour.html">Learning Page</a></li>
+                                <li><a href="#">Learning Page</a></li>
+                                <li><a href="my_chart_page">My Chart</a></li>
                             </ul>
                         </li>
                         <li><div>${sessionScope.loginid}</div></li>
@@ -130,29 +131,9 @@ function check(){
 							<li><a href="join ">Join</a></li>
 						</c:if>
 
-						<!-- 회원 로그인 후-->
-						
-							
-						
-						
-				<%-- 				<br />
-							<a href="my_info_detail">마이페이지</a>
-							<br />
-							<a href="board_list">공지사항</a>
-						</c:if> --%>
-
-
-
 					</ul>
                 </div>
-                <div class="search">
-                    <form role="form">
-                        <i class="fa fa-search"></i>
-                        <div class="field-toggle">
-                            <input type="text" class="search-form" autocomplete="off" placeholder="Search">
-                        </div>
-                    </form>
-                </div>
+                
             </div>
         </div>
     </header>

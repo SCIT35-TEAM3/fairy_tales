@@ -85,10 +85,11 @@ public class MemberController {
 			session.setAttribute("loginid", m.getUser_id());
 			session.setAttribute("loginname", m.getUser_name());
 			session.setAttribute("user_level", m.getUser_level());
+			repository.insert_access(member);
 			return "redirect:/";
 
 		} else {
-			model.addAttribute("message", "해당 아이디나 비밀번호가 없습니다.");
+			model.addAttribute("message", "해당 아이디나 비밀번호가 일치하지 않습니다.");
 			return "member/login";
 		}
 
@@ -162,7 +163,6 @@ public class MemberController {
 		
 		return "member/my_chart_page";
 	}
-	
 	
 
 	/*
