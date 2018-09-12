@@ -94,13 +94,7 @@
 								}
 							);
 							
-							//console.error("스크린 추가시 락 걸린것 처럼 움직이지 못함");
-							$("#fElementTarget").css(
-								{
-									  "width" : selectTarget.width
-									, "height": selectTarget.height
-								}
-							);
+							
 							yHPointOld = yHPoint;
 						}else{
 							var height = parseInt($(selectTarget).height()) + parseInt(xWPoint - xWPointOld);
@@ -111,15 +105,15 @@
 									, "height": height
 								}
 							);
-							
-							$("#fElementTarget").css(
-								{
-									  "width" : selectTarget.width
-									, "height": selectTarget.height
-								}
-							);
 						}
 						
+						$("#fElementTarget").css(
+							{
+								  "width" : $(selectTarget).width()
+								, "height": $(selectTarget).height()
+							}
+						);
+					
 						xWPointOld = xWPoint;
 						
 						//객체 크기 setting
@@ -649,9 +643,9 @@
 			var image = new Image();
 			image.src = file;
 			image.onload = function(){
-				//image size set
 				
 				if(scene == null){
+					//image size set
 					while(true){
 						if((this.width > $(".fairyTale").width()) || (this.height > $(".fairyTale").height())){
 							//50%
@@ -675,7 +669,7 @@
 					);
 				}
 				$(this).data("objId", objId == null ? objMaxNum() : objId ).css("position", "absolute");
-				var layerGroupNum = scene == null ? layerSelector() : scene.layerNum;
+				var layerGroupNum = (scene == null ? layerSelector() : scene.layerNum);
 				//console.log("layerGroupNum : " + layerGroupNum);
 				if(objId == null){
 					objId = objPush("img",file);
@@ -741,8 +735,8 @@
 							//레이어 넘버
 							, "layerNum"	: layerNum
 							//크기
-							, "width"		: target.width / $(".fairyTale").width()
-							, "height"		: target.height / $(".fairyTale").height()
+							, "width"		: $(target).width() / $(".fairyTale").width()
+							, "height"		: $(target).height() / $(".fairyTale").height()
 							//적용애니메이션 종류
 							, "animate"		: animate
 							//타임시간
@@ -835,6 +829,19 @@
 		
 		//add object text
 		function addObjTxt(){
+			
+			if($("#objText").val().length < 1){
+				alert("글을 입력하세요.");
+			}else{
+				//Text object
+				addTxtObject($("#objText").val());
+				//add objList
+				//objPush("text",$("#objText").val());
+				//view set
+				//objViewList();
+			}
+			////////여기여기
+			/*
 			$("input[name='object']").each(function(index,object){
 				if($(object).prop('checked')){
 					//Text object
@@ -848,15 +855,34 @@
 					return false;
 				}
 			});
+			*/
 		};
 		
+		//텍스트 여기
 		// add text object
 		function addTxtObject(value){
 			var span = document.createElement("span");
-			$(span).html(value).data("objId",objMaxNum()).css("position", "absolute");
+			$(span).html(value).css("position", "absolute");
+			//add objList
+			objId = objPush("text",value);
+			
+			sceneNum = playAnimateSet(span,screenSelector(),objId,layerSelector(),"fadeIn",0,0);
+			
+			$(span).data("objId",objId);
+			$(span).data("sceneNum",sceneNum);
+			
+			alert($(span).data("objId"));
+			
 			$(".move.group"+layerSelector()).append(span);
+			
+			//객체 선택
+			selectTarget = span;
 			//green box
-			greenBox(selectTarget);
+			greenBox(span);
+			//scene view
+			sceneViewList();
+			//object view
+			objViewList();
 		}
 		
 		//선택된 scene
@@ -962,7 +988,7 @@
 			
 			//objId img 와 radio 구분
 			//selectTarget 선택	
-			if($(element).is("img")){
+			if($(element).is("img")||$(element).is("span")){
 				selectTarget = element;
 			}else{
 				var sceneNum = $(this).data("sceneNum");
@@ -1035,8 +1061,8 @@
 			//데이터 넣기
 			$($(chapter.screen).get(screenSelector()).scene).each(function(index,scene){
 				if(scene.objId == $(target).data("objId")){
-					scene.width		= target.width / $(".fairyTale").width();
-					scene.height	= target.height / $(".fairyTale").height();
+					scene.width		= $(target).width() / $(".fairyTale").width();
+					scene.height	= $(target).height() / $(".fairyTale").height();
 					scene.left		= $(target).position().left / $(".fairyTale").width();
 					scene.top		= $(target).position().top / $(".fairyTale").height();
 					
@@ -1142,6 +1168,34 @@
 		</tr>
 		<tr>
 			<td colspan = "3">
+				<!-- 
+				<div class="objectSelector">
+					<span><input type="radio" value="text" name="object" checked />글</span>
+					<span><input type="radio" value="img" name="object" />이미지</span>
+					<span><input type="radio" value="effect" name="object" />효과</span>
+				</div>
+				 -->
+				<input type="text" id="objText"/>
+				<input type="button" id="addObjTxtBtn" value="새 텍스트 추가"/>
+				
+				<select id ="effect" name="effect">
+					<option value="effect1" >눈</option>
+					<option value="effect2" >비</option>
+					<option value="effect3" >안개</option>
+				</select>
+				
+				<input type="button" id="effectAddBtn" value="효과추가"/>
+				<!-- file  -->
+				<form action="#" method="post" id="editForm" enctype="multipart/mixed">
+					<input type="file" onchange="imgFilePut(this.files)" />
+				</form>
+				<!-- file  -->
+				<input type="button" id="addObjectBtn" value="기존 오브젝트 추가"/>
+				<input type="button" id="objCheckBtn" value="오브젝트 삭제"/>
+			</td>
+		</tr>
+		<tr>
+			<td colspan = "3">
 				선택된 objId <br/>
 				<input type="number" id="sObjId" disabled/>
 				<br/> 시간 / 대기 시간 <br/>
@@ -1209,6 +1263,7 @@
 				</div>
 			</td>
 		</tr>
+		<!--
 		<tr>
 			<td colspan = "2">
 				<div class="chapterSelector">
@@ -1224,21 +1279,7 @@
 				</div>
 			</td>
 		</tr>
-	</div>
-	
-	<div class="objectSelector">
-		<span><input type="radio" value="text" name="object" checked />글</span>
-		<span><input type="radio" value="img" name="object" />이미지</span>
-		<span><input type="radio" value="effect" name="object" />효과</span>
-	</div>
-	<input type="text" id="objText"/>
-	<input type="button" id="addObjTxtBtn" value="새 텍스트 추가"/>
-	<!-- file  -->
-	<form action="#" method="post" id="editForm" enctype="multipart/mixed">
-		<input type="file" onchange="imgFilePut(this.files)" >새 이미지 추가</input>
-	</form>
-	<!-- file  -->
-	<input type="button" id="addObjectBtn" value="기존 오브젝트 추가"/>
-	<input type="button" id="objCheckBtn" value="오브젝트 삭제"/>
+		-->
+	</table
 </body>
 </html>
