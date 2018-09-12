@@ -612,7 +612,6 @@
 					}
 				);
 				//group*
-				
 			});
 		};
 		
@@ -633,14 +632,13 @@
 						alert("./image?tmpImg="+response);
 						addImgObject("./image?tmpImg="+response);
 						$("input[type=file]").val("");
-						console.error("여기 좀 생각해보자구");
-						/*
-						if ($.browser.msie) { 
+						
+						//ie
+						if (/msie/.test(navigator.userAgent.toLowerCase())) { 
 							$("input[type=file]").replaceWith( $("input[type=file]").clone(true) );
 						} else {
 							$("input[type=file]").val("");
 						}
-						*/
 					}
 			});
 		};
