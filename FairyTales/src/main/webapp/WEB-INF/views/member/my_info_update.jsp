@@ -126,7 +126,7 @@ function check(){
                                 <li><a href="my_chart_page">My Chart</a></li>
                             </ul>
                         </li>
-                        <li><div>${sessionScope.loginid}</div></li>
+                        <li><div id="user_id_form">${sessionScope.loginid}님,</div></li>
                         <li><a href="logout">Logout</a></li>
 						</c:if>
 						<!-- 로그인 전  -->
@@ -201,79 +201,53 @@ function check(){
                         </form>
                     </div>                 
                 </div>
-                <div class="col-sm-12">
-                    <div class="time-count">
-                        <ul id="countdown">
-                            <li class="angle-one">
-                                <span class="days time-font">00</span>
-                                <p>Days</p>
-                            </li>
-                            <li class="angle-two">
-                                <span class="hours time-font">00</span>
-                                <p>Hours</p>
-                            </li>
-                            <li class="angle-one">
-                                <span class="minutes time-font">00</span>
-                                <p class="minute">Mins</p>
-                            </li>                            
-                            <li class="angle-two">
-                                <span class="seconds time-font">00</span>
-                                <p>Secs</p>
-                            </li>               
-                        </ul>   
-                    </div>
-                </div>
+                
             </div>
         </div>       
     </section>
-    <section id="subscribe">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-10 col-sm-offset-1">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <h2><i class="fa fa-envelope-o"></i> SUBSCRIBE TO OUR NEWSLETTER</h2>
-                            <p>Quis filet mignon proident, laboris venison tri-tip commodo brisket aute ut. Tail salami pork belly, flank ullamco bacon bresaola do beef<br /> laboris venison tri-tip.</p>
-                        </div>
-                        <div class="col-sm-6 newsletter">
-                            <form id="newsletter">
-                                <input class="form-control" type="email" name="email"  value="" placeholder="Enter Your email">
-                                <i class="fa fa-check"></i>
-                            </form>
-                            <p>Don't worry we will not use your email for spam</p>
-                        </div>    
-                    </div>
-                </div>     
-            </div>
-        </div> 
-    </section>
 
-    <section id="coming-soon-footer" class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="text-center">
-                    <p>&copy; Your Company 2014. All Rights Reserved.</p>
-                    <p>Designed by <a target="_blank" href="http://www.themeum.com">Themeum</a></p>
-                </div>
-            </div>
-        </div>       
-    </section>
-    
+	<section id="subscribe">
+		<div class="container" align="center">
+			<!-- <div class="copyright-text text-center"> -->
+			<h2>
+				<i class="fa fa-envelope-o"></i> POFT
+			</h2>
+			<p>
+				513 COEX office Korea International Trade Association, <br>
+				Yeongdong-daero, Gangnam-gu, Seoul
+			</p>
+		</div>
 
-    <script type="text/javascript" src="js/jquery.js"></script>
+
+
+	</section>
+
+
+	<div class="col-sm-12">
+		<div class="copyright-text text-center">
+			<p>Copyright &copy; SC IT MASTER</p>
+			<p>
+				Designed by C class 3Group</a>
+			</p>
+		</div>
+	</div>
+
+
+
+	<script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/wow.min.js"></script>
     <script type="text/javascript" src="js/coundown-timer.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript">
         //Countdown js
-    /*     $("#countdown").countdown({
+     /*     $("#countdown").countdown({
             date: "10 march 2015 12:00:00",
             format: "on"
         },      
         function() {
             // callback function
-        }); */
+        });  */
     </script>
     
 </body>

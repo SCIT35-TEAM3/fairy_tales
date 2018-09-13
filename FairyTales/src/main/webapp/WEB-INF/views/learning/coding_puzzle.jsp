@@ -13,7 +13,7 @@
 
 <meta name="description" content="" />
 <meta name="keywords" content="" />
-<meta name="description" content="">
+
 <meta name="author" content="">
 <link rel="shortcut icon" href="../favicon.ico">
 <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -22,9 +22,7 @@
 <link href="css/lightbox.css" rel="stylesheet">
 <link href="css/main.css" rel="stylesheet">
 <link href="css/responsive.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="css/default.css" />
 <link rel="stylesheet" type="text/css" href="css/default_puzzle.css" />
-<link rel="stylesheet" type="text/css" href="css/component.css" />
 <link rel="stylesheet" type="text/css" href="css/component_puzzle.css" />
 <link rel="shortcut icon" href="images/ico/favicon.ico">
 <link rel="apple-touch-icon-precomposed" sizes="144x144"
@@ -102,7 +100,7 @@
                                 <li><a href="my_chart_page">My Chart</a></li>
                             </ul>
                         </li>
-                        <li><div>${sessionScope.loginid}</div></li>
+                        <li><div id="user_id_form">${sessionScope.loginid}님,</div></li>
                         <li><a href="logout">Logout</a></li>
 						</c:if>
 						<!-- 로그인 전  -->
@@ -134,71 +132,99 @@
 		</div>
 	</section>
 	<!--/#action-->
-	
-	
+
+
 	<div class="col-md-3 col-sm-3">
 		<section id="projects" class="padding-top">
 			<div class="container">
-				<div class="row" style="padding-left: 200px">
+				<div class="row" style="padding-left: 80px">
 					<div class="col-md-3 col-sm-4">
 						<div class="sidebar portfolio-sidebar">
 							<div class="sidebar-item categories">
 								<h3>Fairy Level</h3>
 								<ul class="nav navbar-stacked">
-									<li><a href="#">초급<span class="pull-right">(4)</span></a></li>
-									<li><a href="#">중급<span class="pull-right">(9)</span></a></li>
-									<li><a href="#">고급<span class="pull-right">(3)</span></a></li>
-	
+									<li><a href="#">초급<span class="pull-right"><i class="fa fa-chevron-circle-right"></i></span></a></li>
+									<li><a href="#">중급<span class="pull-right"><i class="fa fa-arrow-right"></i></span></a></li>
+									<li><a href="#">고급<span class="pull-right"><i class="fa fa-angle-double-right "></i></span></a></li>
+
 								</ul>
 							</div>
 						</div>
 					</div>
-								<div class="container demo-3">
-									<ul class="grid cs-style-4" style="width: 1400px;">
-										<li>
-											<figure>
-												<div>
-													<img src="images/1.png" alt="img05">
-												</div>
-												<figcaption>
-													<h3>동화이름1</h3>
-													<span>Jacob Cummings</span> <a href="#">Take a look</a>
-												</figcaption>
-											</figure>
-										</li>
-										<li>
-											<figure>
-												<div>
-													<img src="images/3.png" alt="img06">
-												</div>
-												<figcaption>
-													<h3>동화이름2</h3>
-													<span>Jacob Cummings</span> <a href="#">Take a look</a>
-												</figcaption>
-											</figure>
-										</li>
-										<li>
-											<figure>
-												<div>
-													<img src="images/2.png" alt="img02">
-												</div>
-												<figcaption>
-													<h3>동화이름3</h3>
-													<span>Jacob Cummings</span> <a href="#">Take a look</a>
-												</figcaption>
-											</figure>
-										</li>
-									</ul>
-								</div>
-							
+					<div class="col-md-9 col-sm-9" >
+						<div class="container demo-3">
+							<ul class="grid cs-style-6" style="width: 1400px;">
+								<li>
+									<figure>
+										<img src="images/1.png" alt="img05">
+										<figcaption>
+											<h3>동화이름1</h3>
+											<span>Jacob Cummings</span> <a href="#">Take a look</a>
+										</figcaption>
+									</figure>
+								</li>
+								<li>
+									<figure>
+										<img src="images/3.png" alt="img06">
+										<figcaption>
+											<h3>동화이름1</h3>
+											<span>Jacob Cummings</span> <a href="#">Take a look</a>
+										</figcaption>
+									</figure>
+								</li>
+								<li>
+									<figure>
+										<img src="images/2.png" alt="img02">
+										<figcaption>
+											<h3>동화이름1</h3>
+											<span>Jacob Cummings</span> <a href="#">Take a look</a>
+										</figcaption>
+									</figure>
+								</li>
+							</ul>
 						</div>
+						 <!-- <ul class="grid cs-style-4" style="width: 1400px;">
+							<li>
+								<figure>
+									<div>
+										<img src="images/1.png" alt="img05">
+									</div>
+									<figcaption>
+										<h3>동화이름1</h3>
+										<span>Jacob Cummings</span> <a href="#">Take a look</a>
+									</figcaption>
+								</figure>
+							</li>
+							<li>
+								<figure>
+									<div>
+										<img src="images/3.png" alt="img06">
+									</div>
+									<figcaption>
+										<h3>동화이름2</h3>
+										<span>Jacob Cummings</span> <a href="#">Take a look</a>
+									</figcaption>
+								</figure>
+							</li>
+							<li>
+								<figure>
+									<div>
+										<img src="images/2.png" alt="img02">
+									</div>
+									<figcaption>
+										<h3>동화이름3</h3>
+										<span>Jacob Cummings</span> <a href="#">Take a look</a>
+									</figcaption>
+								</figure>
+							</li>
+						</ul> --> 
 					</div>
-				
+				</div>
+			</div>
 		</section>
-		
 	</div>
 	<!--/#projects-->
-<!-- 	
+	<!-- 	
 	<div class="container demo-3">	
 		<ul class="grid cs-style-4" style="width: 700px;">
 			<li>

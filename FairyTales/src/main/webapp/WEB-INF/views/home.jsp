@@ -109,7 +109,7 @@
 									<li><a href="#">Learning Page</a></li>
 									<li><a href="my_chart_page">My Chart</a></li>
 								</ul></li>
-							<li><div>${sessionScope.loginid}</div></li>
+							<li><div id="user_id_form">${sessionScope.loginid}님,</div></li>
 							<li><a href="logout">Logout</a></li>
 						</c:if>
 						<!-- 로그인 전  -->
@@ -158,7 +158,7 @@
                              <a href="#"><img src="images/home/icon1.png" alt=""></a>
                         </div>
                         <h2>사전 학습</h2>
-                       <p>Ground round tenderloin flank shank ribeye. Hamkevin meatball swine. Cow shankle beef sirloin chicken ground round.</p>
+                       <p>사전학습을 통해 <br/>자신의 레벨을 테스트 해 보세요.</p>
                     </div>
                 </div>
                 <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="600ms">
@@ -167,7 +167,7 @@
                              <a href="#learning"><img src="images/home/icon2.png" alt=""></a>
                         </div>
                         <h2>Japanese Fairy</h2>
-                        <p>Hamburger ribeye drumstick turkey, strip steak sausage ground round shank pastrami beef brisket pancetta venison.</p>
+                        <p>수준별 다양한 동화를 통한 <br/>일본어 학습을 할 수 있습니다.</p>
                     </div>
                 </div>
                 <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="900ms">
@@ -176,7 +176,7 @@
                             <a href="#learning"><img src="images/home/icon3.png" alt=""></a>
                         </div>
                         <h2>Coding Puzzle</h2>
-                        <p>Venison tongue, salami corned beef ball tip meatloaf bacon. Fatback pork belly bresaola tenderloin bone pork kevin shankle.</p>
+                        <p>수준별 다양한 동화를 통한 <br/>JAVA를 공부할 수 있습니다.</p>
                     </div>
                 </div>
             </div>

@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 	<form action="board_update" method="post" id="form">
 	<input type="hidden" name="board_num" value="${board_1to1.board_num}">
 		<div>
@@ -54,5 +55,6 @@
 		<button type="button" onclick="back()">돌아가기</button>
 
 	</form>
+	
 </body>
 </html>

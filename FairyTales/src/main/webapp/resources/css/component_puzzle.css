@@ -21,7 +21,7 @@
 }
 
 .grid figure img {
-	max-width: 100%;
+	max-width: 70%;
 	display: block;
 	position: relative;
 }
@@ -306,7 +306,7 @@
 
 .cs-style-6 figcaption {
 	height: 100%;
-	width: 100%;
+	width: 70%;
 }
 
 .cs-style-6 figcaption h3 {

@@ -64,66 +64,68 @@ function check(){
 </head><!--/head-->
 
 <body>
-<!--header-->
-	<header id="header">      
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12 overflow">
-                   <div class="social-icons pull-right">
-                        <!-- <ul class="nav nav-pills">
+	<!--header-->
+	<header id="header">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 overflow">
+					<div class="social-icons pull-right">
+						<!-- <ul class="nav nav-pills">
                             <li><a href=""><i class="fa fa-facebook"></i></a></li>
                             <li><a href=""><i class="fa fa-twitter"></i></a></li>
                             <li><a href=""><i class="fa fa-google-plus"></i></a></li>
                             <li><a href=""><i class="fa fa-dribbble"></i></a></li>
                             <li><a href=""><i class="fa fa-linkedin"></i></a></li>
                         </ul> -->
-                    </div> 
-                </div>
-             </div>
-        </div>
-        <div class="navbar navbar-inverse" role="banner">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="navbar navbar-inverse" role="banner">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+						data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
 
-                    <a class="navbar-brand" href="./">
-                    	<h1><img src="images/로고.png" alt="logo"></h1>
-                    </a>
-                    
-                </div>
-                <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="./">Home</a></li>
-                        <li class="dropdown"><a href="#">Page <i class="fa fa-angle-down"></i></a>
-                            <ul role="menu" class="sub-menu">
-                            
-                            	<li><a href="japanese_fairy">Japanese Fairy</a></li>
-                                <li><a href="coding_puzzle">Coding Puzzle</a></li>
-                            </ul>
-                        </li>                    
-                        <li class="dropdown"><a href="#">Board<i class="fa fa-angle-down"></i></a>
-                            <ul role="menu" class="sub-menu">
-                                <li><a href="board_list">Notice</a></li>
-                                <li><a href="board_1to1">1:1 CustomerBoard</a></li>
-                            </ul>
-                        </li>
-                        <!-- 회원 로그인 후-->
+					<a class="navbar-brand" href="./">
+						<h1>
+							<img src="images/로고.png" alt="logo">
+						</h1>
+					</a>
+
+				</div>
+				<div class="collapse navbar-collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="./">Home</a></li>
+						<li class="dropdown"><a href="#">Page <i
+								class="fa fa-angle-down"></i></a>
+							<ul role="menu" class="sub-menu">
+
+								<li><a href="japanese_fairy">Japanese Fairy</a></li>
+								<li><a href="coding_puzzle">Coding Puzzle</a></li>
+							</ul></li>
+						<li class="dropdown"><a href="#">Board<i
+								class="fa fa-angle-down"></i></a>
+							<ul role="menu" class="sub-menu">
+								<li><a href="board_list">Notice</a></li>
+								<li><a href="board_1to1">1:1 CustomerBoard</a></li>
+							</ul></li>
+						<!-- 회원 로그인 후-->
 						<c:if test="${sessionScope.loginid != null}">
-						
-                        <li class="dropdown"><a href="#">MyPage <i class="fa fa-angle-down"></i></a>
-                            <ul role="menu" class="sub-menu">
-                                <li><a href="my_info_detail">My Infomation</a></li>
-                                <li><a href="#">Learning Page</a></li>
-                                <li><a href="my_chart_page">My Chart</a></li>
-                            </ul>
-                        </li>
-                        <li><div>${sessionScope.loginid}</div></li>
-                        <li><a href="logout">Logout</a></li>
+
+							<li class="dropdown"><a href="#">MyPage <i
+									class="fa fa-angle-down"></i></a>
+								<ul role="menu" class="sub-menu">
+									<li><a href="my_info_detail">My Infomation</a></li>
+									<li><a href="#">Learning Page</a></li>
+									<li><a href="my_chart_page">My Chart</a></li>
+								</ul></li>
+							<li><div id="user_id_form">${sessionScope.loginid}님,</div></li>
+							<li><a href="logout">Logout</a></li>
 						</c:if>
 						<!-- 로그인 전  -->
 						<c:if test="${sessionScope.loginid == null}">
@@ -132,12 +134,12 @@ function check(){
 						</c:if>
 
 					</ul>
-                </div>
-                
-            </div>
-        </div>
-    </header>
-    <!--/#header-->
+				</div>
+
+			</div>
+		</div>
+	</header>
+	<!--/#header-->
     
      <section id="coming-soon">        
          <div class="container">
@@ -188,63 +190,36 @@ function check(){
                         </form>
                     </div>                 
                 </div>
-                <div class="col-sm-12">
-                    <div class="time-count">
-                        <ul id="countdown">
-                            <li class="angle-one">
-                                <span class="days time-font">00</span>
-                                <p>Days</p>
-                            </li>
-                            <li class="angle-two">
-                                <span class="hours time-font">00</span>
-                                <p>Hours</p>
-                            </li>
-                            <li class="angle-one">
-                                <span class="minutes time-font">00</span>
-                                <p class="minute">Mins</p>
-                            </li>                            
-                            <li class="angle-two">
-                                <span class="seconds time-font">00</span>
-                                <p>Secs</p>
-                            </li>               
-                        </ul>   
-                    </div>
-                </div>
+                
             </div>
         </div>       
     </section>
-    <section id="subscribe">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-10 col-sm-offset-1">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <h2><i class="fa fa-envelope-o"></i> SUBSCRIBE TO OUR NEWSLETTER</h2>
-                            <p>Quis filet mignon proident, laboris venison tri-tip commodo brisket aute ut. Tail salami pork belly, flank ullamco bacon bresaola do beef<br /> laboris venison tri-tip.</p>
-                        </div>
-                        <div class="col-sm-6 newsletter">
-                            <form id="newsletter">
-                                <input class="form-control" type="email" name="email"  value="" placeholder="Enter Your email">
-                                <i class="fa fa-check"></i>
-                            </form>
-                            <p>Don't worry we will not use your email for spam</p>
-                        </div>    
-                    </div>
-                </div>     
-            </div>
-        </div> 
-    </section>
+    
+	<section id="subscribe">
+		<div class="container" align="center">
+			<!-- <div class="copyright-text text-center"> -->
+			<h2>
+				<i class="fa fa-envelope-o"></i> POFT
+			</h2>
+			<p>
+				513 COEX office Korea International Trade Association, <br>
+				Yeongdong-daero, Gangnam-gu, Seoul
+			</p>
+		</div>
 
-    <section id="coming-soon-footer" class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="text-center">
-                    <p>&copy; Your Company 2014. All Rights Reserved.</p>
-                    <p>Designed by <a target="_blank" href="http://www.themeum.com">Themeum</a></p>
-                </div>
-            </div>
-        </div>       
-    </section>
+
+
+	</section>
+
+
+	<div class="col-sm-12">
+		<div class="copyright-text text-center">
+			<p>Copyright &copy; SC IT MASTER</p>
+			<p>
+				Designed by C class 3Group
+			</p>
+		</div>
+	</div>
     
 
     <script type="text/javascript" src="js/jquery.js"></script>

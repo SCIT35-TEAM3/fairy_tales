@@ -128,7 +128,7 @@
                                 <li><a href="my_chart_page">My Chart</a></li>
                             </ul>
                         </li>
-                        <li><div>${sessionScope.loginid}</div></li>
+                        <li><div id="user_id_form">${sessionScope.loginid}님,</div></li>
                         <li><a href="logout">Logout</a></li>
 						</c:if>
 						<!-- 로그인 전  -->
@@ -185,9 +185,9 @@
 							<div class="sidebar-item categories">
 								<h3>Fairy Level</h3>
 								<ul class="nav navbar-stacked">
-									<li><a href="#">초급<span class="pull-right">(4)</span></a></li>
-									<li><a href="#">중급<span class="pull-right">(9)</span></a></li>
-									<li><a href="#">고급<span class="pull-right">(3)</span></a></li>
+									<li><a href="#">초급<span class="pull-right"><i class="fa fa-chevron-circle-right"></i></span></a></li>
+									<li><a href="#">중급<span class="pull-right"><i class="fa fa-arrow-right"></i></span></a></li>
+									<li><a href="#">고급<span class="pull-right"><i class="fa fa-angle-double-right "></i></span></a></li>
 									
 								</ul>
 							</div>

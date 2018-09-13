@@ -32,9 +32,6 @@
 	href="images/ico/apple-touch-icon-57-precomposed.png">
 
 
-
-
-
 </head>
 <body>
 	<!--header-->
@@ -65,9 +62,7 @@
 					</button>
 
 					<a class="navbar-brand" href="./">
-						<h1>
-							<img src="images/로고.png" alt="logo">
-						</h1>
+						<h1><img src="images/로고.png" alt="logo"></h1>
 					</a>
 
 				</div>
@@ -97,7 +92,7 @@
 									<li><a href="#">Learning Page</a></li>
 									<li><a href="my_chart_page">My Chart</a></li>
 								</ul></li>
-							<li><div>${sessionScope.loginid}</div></li>
+							<li><div id="user_id_form">${sessionScope.loginid}님,</div></li>
 							<li><a href="logout">Logout</a></li>
 						</c:if>
 						<!-- 로그인 전  -->

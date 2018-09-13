@@ -2589,3 +2589,10 @@ span.stMainServices, span.stButton_gradient, .stButton .chicklets {
 .more_icon2{
 	float: right;
 }
+
+
+/* 추가하는 css */
+#user_id_form{
+	padding-top: 17px;  
+	color: #a5732a;
+}

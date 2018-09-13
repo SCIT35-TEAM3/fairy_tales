@@ -248,7 +248,7 @@ $(function() {
                                 <li><a href="my_chart_page">My Chart</a></li>
                             </ul>
                         </li>
-                        <li><div>${sessionScope.loginid}</div></li>
+                        <li><div id="user_id_form">${sessionScope.loginid}님,</div></li>
                         <li><a href="logout">Logout</a></li>
 						</c:if>
 						<!-- 로그인 전  -->
