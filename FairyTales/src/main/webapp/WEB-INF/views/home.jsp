@@ -37,6 +37,7 @@
 	href="images/ico/apple-touch-icon-72-precomposed.png">
 <link rel="apple-touch-icon-precomposed"
 	href="images/ico/apple-touch-icon-57-precomposed.png">
+	
 <style type="text/css">
  .space {
         word-spacing: 30px;
@@ -129,10 +130,10 @@
 		<div class="container">
 			<div class="main-slider">
 				<div class="slide-text">
-					<h1>おはようございます。</h1>
-					<p>어떤 멘트가 좋을까....</p>
+					<h1 >Peace Of Fairy Taleへ</h1>
+					<p style="font-size: 22px;">ようこそ。</p>
 				</div>
-				<img src="images/castle1.png" class="img-responsive slider-house"
+				<img src="images/castle2.png" class="img-responsive slider-house"
 					alt="slider image">
 				<!-- <img src="images/home/slider/slide1/circle1.png" class="slider-circle1" alt="slider image">
                 <img src="images/home/slider/slide1/circle2.png" class="slider-circle2" alt="slider image"> 
@@ -140,7 +141,7 @@
 				<img src="images/구름1.png" class="slider-cloud2" alt="slider image">
 				<img src="images/구름2.png" class="slider-cloud3" alt="slider image">
 				<img src="images/main_sun.png" class="slider-sun" alt="slider image">
-				<img src="images/마차_main.png" class="slider-cycle" alt="">
+				<img src="images/마차_main1.png" class="slider-cycle" alt="">
 			</div>
 		</div>
 		<div class="preloader">
@@ -148,47 +149,40 @@
 		</div>
 	</section>
 	<!--/#home-slider-->
-
-	<section id="blog-details" class="padding-top">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12 col-sm-5">
-					<div class="sidebar blog-sidebar">
-						<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
-						<div class="sidebar-item categories table_1">
-							<h3>Notice <a style="float: right;" href="board_list"><i class="fa fa-plus"></i>&nbsp;more</a>
-							</h3>
-							<c:forEach var="board" items="${list}">
-							<ul class="nav navbar-stacked">
-								<li class="active"><a href="boardDetail?board_num=${board.board_num}">${board.title}</a></li>
-							</ul>
-							</c:forEach>
-						</div>
-						<div class="sidebar-item categories table_2">
-							<h3>1:1 Board<a style="float: right;" href="board_1to1"><i class="fa fa-plus"></i>&nbsp;more</a>
-							</h3>
-							<ul class="nav navbar-stacked">
-								<c:forEach items="${board_1to1_list}" var="board_1to1">
-									<c:choose>
-										<c:when
-											test="${sessionScope.loginid!=board.user_id and board.secret!=null}">
-											<li class="active"><a href="#">Eiusmod<span class="pull-right">(3)</span></a></li>
-										</c:when>
-										<c:otherwise>
-											<li><a href="#">비밀글 입니다.<span
-													class="pull-right"></span></a></li>
-										</c:otherwise>
-									</c:choose>
-								</c:forEach>
-							</ul>
-						</div>
-						<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!--/#blog-->
+<section id="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="300ms">
+                    <div class="single-service">
+                        <div class="wow scaleIn" data-wow-duration="500ms" data-wow-delay="300ms">
+                             <a href="#"><img src="images/home/icon1.png" alt=""></a>
+                        </div>
+                        <h2>사전 학습</h2>
+                       <p>Ground round tenderloin flank shank ribeye. Hamkevin meatball swine. Cow shankle beef sirloin chicken ground round.</p>
+                    </div>
+                </div>
+                <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="600ms">
+                    <div class="single-service">
+                        <div class="wow scaleIn" data-wow-duration="500ms" data-wow-delay="600ms">
+                             <a href="#learning"><img src="images/home/icon2.png" alt=""></a>
+                        </div>
+                        <h2>Japanese Fairy</h2>
+                        <p>Hamburger ribeye drumstick turkey, strip steak sausage ground round shank pastrami beef brisket pancetta venison.</p>
+                    </div>
+                </div>
+                <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="900ms">
+                    <div class="single-service">
+                        <div class="wow scaleIn" data-wow-duration="500ms" data-wow-delay="900ms">
+                            <a href="#learning"><img src="images/home/icon3.png" alt=""></a>
+                        </div>
+                        <h2>Coding Puzzle</h2>
+                        <p>Venison tongue, salami corned beef ball tip meatloaf bacon. Fatback pork belly bresaola tenderloin bone pork kevin shankle.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/#services-->
 
 
 	<section id="action" class="responsive">
@@ -198,7 +192,7 @@
 					<div class="action take-tour">
 						<div class="col-sm-7 wow fadeInLeft" data-wow-duration="500ms"
 							data-wow-delay="300ms">
-							<h1 class="title">로고이름 넣기</h1>
+							<h1 class="title">Peace Of Fairy Tale</h1>
 							<p>A responsive, retina-ready &amp; wide multipurpose
 								template.</p>
 						</div>
@@ -218,7 +212,7 @@
 			<div class="row">
 				<div class="timeline-blog overflow padding-top">
 					<div class="timeline-date text-center">
-						<a href="#japanese_Fairy" class="btn btn-common uppercase">LEARNING</a>
+						<a href="#japanese_Fairy" class="btn btn-common uppercase" id="learning">LEARNING</a>
 					</div>
 					<div class="timeline-divider overflow padding-bottom">
 						<div class="col-sm-6 padding-right arrow-right wow fadeInLeft"
@@ -264,7 +258,7 @@
 								</div>
 								<div class="post-content overflow">
 									<h2 class="post-title bold">
-										<a href="coding_puzzle">Codding Puzzle</a>
+										<a href="coding_puzzle">Coding Puzzle</a>
 									</h2>
 
 									<p>퍼즐 완성으로 코딩을 학습할 수 있습니다.</p>

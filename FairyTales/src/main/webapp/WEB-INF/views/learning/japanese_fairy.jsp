@@ -161,8 +161,9 @@
 		</div>
 	</section>
 	<!--/#action-->
-
-<!-- 팝업창  -->
+	
+	
+	
 	<div>
 	<!-- 	<button id="popOpenBtn">Popup Open</button>-->
 		<div id="popup_mask"></div>
@@ -174,137 +175,83 @@
 		</div>
 	</div>
 	<!-- /팝업창  -->
-
-	<section id="grid" class="grid clearfix cross-1">
-	<!-- 초급 -->
-		<a href="#" data-path-hover="m 180,34.57627 -180,0 L 0,0 180,0 z" class="popOpen">
-			<figure>
-				<img src="images/img/1.png" />
-				<svg viewBox="0 0 180 320" preserveAspectRatio="none">
-					<path d="M 180,160 0,218 0,0 180,0 z" /></svg>
-				<figcaption>
-					<h2>초급</h2>
-					<p>장갑</p>
-					<button >View</button>
-				</figcaption>
-			</figure>
-		</a> <!-- /초급 -->
-
-		<!-- 중급 -->
-		<a href="#" data-path-hover="m 180,34.57627 -180,0 L 0,0 180,0 z" class="popOpen">
-			<figure>
-				<img src="images/img/2.png" />
-				<svg viewBox="0 0 180 320" preserveAspectRatio="none">
-					<path d="M 180,160 0,218 0,0 180,0 z" /></svg>
-				<figcaption>
-					<h2>중급</h2>
-					<p>신데렐라</p>
-					<button>View</button>
-				</figcaption>
-			</figure>
-		</a><!-- /중급 -->
-
-		<!-- 고급 -->			
-		<a href="#" data-path-hover="m 180,34.57627 -180,0 L 0,0 180,0 z" class="popOpen">
-			<figure>
-				<img src="images/img/1.png" />
-				<svg viewBox="0 0 180 320" preserveAspectRatio="none">
-					<path d="M 180,160 0,218 0,0 180,0 z" /></svg>
-				<figcaption>
-					<h2>고급</h2>
-					<p>장화신은 고양이</p>
-					<button>View</button>
-				</figcaption>
-			</figure>
-		</a><!-- /고급 -->	
-		
-	</section>
-	<!--/#blog-->
 	
-	<section id="related-work" class="padding-top padding-bottom">
-    
-        <div class="container">
-            <div class="row">
-                <h1 class="title text-center">Related Work</h1>
-                <div class="col-sm-3">
-                    <div class="portfolio-wrapper">
-                        <div class="portfolio-single">
-                            <div class="portfolio-thumb">
-                                <img src="images/portfolio/1.jpg" class="img-responsive" alt="">
-                            </div>
-                            <div class="portfolio-view">
-                                <ul class="nav nav-pills">
-                                    <li><a href="images/portfolio/1.jpg" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="portfolio-info ">
-                            <h2>Sailing Vivamus</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="portfolio-wrapper">
-                        <div class="portfolio-single">
-                            <div class="portfolio-thumb">
-                                <img src="images/portfolio/2.jpg" class="img-responsive" alt="">
-                            </div>
-                            <div class="portfolio-view">
-                                <ul class="nav nav-pills">
-                                    <li><a href="images/portfolio/2.jpg" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="portfolio-info ">
-                            <h2>Sailing Vivamus</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="portfolio-wrapper">
-                        <div class="portfolio-single">
-                            <div class="portfolio-thumb">
-                                <img src="images/portfolio/3.jpg" class="img-responsive" alt="">
-                            </div>
-                            <div class="portfolio-view">
-                                <ul class="nav nav-pills">
-                                    <li><a href="images/portfolio/3.jpg" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="portfolio-info ">
-                            <h2>Sailing Vivamus</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="portfolio-wrapper">
-                        <div class="portfolio-single">
-                            <div class="portfolio-thumb">
-                                <img src="images/portfolio/4.jpg" class="img-responsive" alt="">
-                            </div>
-                            <div class="portfolio-view">
-                                <ul class="nav nav-pills">
-                                    <li><a href="images/portfolio/4.jpg" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="portfolio-info ">
-                            <h2>Sailing Vivamus</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--/#related-work-->
+	<div class="col-md-3 col-sm-3">
+		<section id="projects" class="padding-top">
+			<div class="container">
+				<div class="row" style="padding-left: 200px">
+					<div class="col-md-3 col-sm-4" >
+						<div class="sidebar portfolio-sidebar">
+							<div class="sidebar-item categories">
+								<h3>Fairy Level</h3>
+								<ul class="nav navbar-stacked">
+									<li><a href="#">초급<span class="pull-right">(4)</span></a></li>
+									<li><a href="#">중급<span class="pull-right">(9)</span></a></li>
+									<li><a href="#">고급<span class="pull-right">(3)</span></a></li>
+									
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+	<!--/Fairy Level sidebar-->
 
+	<div class="col-md-9 col-sm-9" style="padding-top: 70px">
+		<section id="grid" class="grid clearfix cross-1">
+		<!-- 초급 -->
+			<a href="#" data-path-hover="m 180,34.57627 -180,0 L 0,0 180,0 z" class="popOpen">
+				<figure>
+					<img src="images/img/1.png" />
+					<svg viewBox="0 0 180 320" preserveAspectRatio="none">
+						<path d="M 180,160 0,218 0,0 180,0 z" /></svg>
+					<figcaption>
+						<h2>초급</h2>
+						<p>장갑</p>
+						<button >View</button>
+					</figcaption>
+				</figure>
+			</a> <!-- /초급 -->
+	
+			<!-- 중급 -->
+			<a href="#" data-path-hover="m 180,34.57627 -180,0 L 0,0 180,0 z" class="popOpen">
+				<figure>
+					<img src="images/img/2.png" />
+					<svg viewBox="0 0 180 320" preserveAspectRatio="none">
+						<path d="M 180,160 0,218 0,0 180,0 z" /></svg>
+					<figcaption>
+						<h2>중급</h2>
+						<p>신데렐라</p>
+						<button>View</button>
+					</figcaption>
+				</figure>
+			</a><!-- /중급 -->
+	
+			<!-- 고급 -->			
+			<a href="#" data-path-hover="m 180,34.57627 -180,0 L 0,0 180,0 z" class="popOpen">
+				<figure>
+					<img src="images/img/1.png" />
+					<svg viewBox="0 0 180 320" preserveAspectRatio="none">
+						<path d="M 180,160 0,218 0,0 180,0 z" /></svg>
+					<figcaption>
+						<h2>고급</h2>
+						<p>장화신은 고양이</p>
+						<button>View</button>
+					</figcaption>
+				</figure>
+			</a><!-- /고급 -->	
+		</section>
+	</div>
+	<!--/Japanese Fairy animation-->
+	
 <!-- footer -->
     <footer id="footer">
         <div class="container">
             <div class="row">
             	<div class="row">
-	                <div class="col-sm-12 text-center bottom-separator">
+	                <div class="col-sm-12 text-center bottom-separator"><br/><br/><br/><br/><br/><br/><br/><br/>
 	                    <img src="images/home/under.png" class="img-responsive inline" alt="">
 	                </div>
                 </div>

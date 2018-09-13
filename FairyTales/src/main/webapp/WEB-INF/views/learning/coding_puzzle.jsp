@@ -134,9 +134,73 @@
 		</div>
 	</section>
 	<!--/#action-->
-
-<div class="container demo-3">	
-		<ul class="grid cs-style-4" style="width: 1400px;">
+	
+	
+	<div class="col-md-3 col-sm-3">
+		<section id="projects" class="padding-top">
+			<div class="container">
+				<div class="row" style="padding-left: 200px">
+					<div class="col-md-3 col-sm-4">
+						<div class="sidebar portfolio-sidebar">
+							<div class="sidebar-item categories">
+								<h3>Fairy Level</h3>
+								<ul class="nav navbar-stacked">
+									<li><a href="#">초급<span class="pull-right">(4)</span></a></li>
+									<li><a href="#">중급<span class="pull-right">(9)</span></a></li>
+									<li><a href="#">고급<span class="pull-right">(3)</span></a></li>
+	
+								</ul>
+							</div>
+						</div>
+					</div>
+								<div class="container demo-3">
+									<ul class="grid cs-style-4" style="width: 1400px;">
+										<li>
+											<figure>
+												<div>
+													<img src="images/1.png" alt="img05">
+												</div>
+												<figcaption>
+													<h3>동화이름1</h3>
+													<span>Jacob Cummings</span> <a href="#">Take a look</a>
+												</figcaption>
+											</figure>
+										</li>
+										<li>
+											<figure>
+												<div>
+													<img src="images/3.png" alt="img06">
+												</div>
+												<figcaption>
+													<h3>동화이름2</h3>
+													<span>Jacob Cummings</span> <a href="#">Take a look</a>
+												</figcaption>
+											</figure>
+										</li>
+										<li>
+											<figure>
+												<div>
+													<img src="images/2.png" alt="img02">
+												</div>
+												<figcaption>
+													<h3>동화이름3</h3>
+													<span>Jacob Cummings</span> <a href="#">Take a look</a>
+												</figcaption>
+											</figure>
+										</li>
+									</ul>
+								</div>
+							
+						</div>
+					</div>
+				
+		</section>
+		
+	</div>
+	<!--/#projects-->
+<!-- 	
+	<div class="container demo-3">	
+		<ul class="grid cs-style-4" style="width: 700px;">
 			<li>
 				<figure>
 					<div>
@@ -173,84 +237,7 @@
 		</ul>
 	</div>
 
-	  <!--#related-work-->	
-	<section id="related-work" class="padding-top padding-bottom">
-      <div class="container">
-            <div class="row">
-                <h1 class="title text-center">Related Work</h1>
-                <div class="col-sm-3">
-                    <div class="portfolio-wrapper">
-                        <div class="portfolio-single">
-                            <div class="portfolio-thumb">
-                                <img src="images/portfolio/1.jpg" class="img-responsive" alt="">
-                            </div>
-                            <div class="portfolio-view">
-                                <ul class="nav nav-pills">
-                                    <li><a href="images/portfolio/1.jpg" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="portfolio-info ">
-                            <h2>Sailing Vivamus</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="portfolio-wrapper">
-                        <div class="portfolio-single">
-                            <div class="portfolio-thumb">
-                                <img src="images/portfolio/2.jpg" class="img-responsive" alt="">
-                            </div>
-                            <div class="portfolio-view">
-                                <ul class="nav nav-pills">
-                                    <li><a href="images/portfolio/2.jpg" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="portfolio-info ">
-                            <h2>Sailing Vivamus</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="portfolio-wrapper">
-                        <div class="portfolio-single">
-                            <div class="portfolio-thumb">
-                                <img src="images/portfolio/3.jpg" class="img-responsive" alt="">
-                            </div>
-                            <div class="portfolio-view">
-                                <ul class="nav nav-pills">
-                                    <li><a href="images/portfolio/3.jpg" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="portfolio-info ">
-                            <h2>Sailing Vivamus</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="portfolio-wrapper">
-                        <div class="portfolio-single">
-                            <div class="portfolio-thumb">
-                                <img src="images/portfolio/4.jpg" class="img-responsive" alt="">
-                            </div>
-                            <div class="portfolio-view">
-                                <ul class="nav nav-pills">
-                                    <li><a href="images/portfolio/4.jpg" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="portfolio-info ">
-                            <h2>Sailing Vivamus</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--/#related-work-->
-    
+     -->
 	<!-- footer -->
     <footer id="footer">
         <div class="container">
