@@ -1,5 +1,6 @@
 package global.sesoc.fairytales.controllers;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import global.sesoc.fairytales.dao.ChartMapper;
+import global.sesoc.fairytales.dao.ChartRepository;
 import global.sesoc.fairytales.dao.MemberRepository;
 import global.sesoc.fairytales.dto.Member;
 
@@ -25,6 +28,8 @@ public class MemberController {
 
 	@Autowired
 	MemberRepository repository;
+	@Autowired
+	ChartRepository chartRepository;
 
 	// index.jsp에 join(회원가입) 요청
 	@RequestMapping(value = "/join", method = RequestMethod.GET)
@@ -159,7 +164,24 @@ public class MemberController {
 	
 	//통계 페이지로 이동
 	@RequestMapping(value="/my_chart_page", method = RequestMethod.GET)
-	public String my_chart_page() {
+	public String my_chart_page(HttpSession httpsession, Model model) {
+		String user_id = (String) httpsession.getAttribute("loginid");
+		
+		int attendThisMon = chartRepository.attendThisMon(user_id);
+		int oneMonAttend = chartRepository.oneMonAttend(user_id);
+		int twoMonAttend = chartRepository.twoMonAttend(user_id);
+		int threeMonAttend = chartRepository.threeMonAttend(user_id);
+		int fourMonAttend = chartRepository.fourMonAttend(user_id);
+		int fiveMonAttend = chartRepository.fiveMonAttend(user_id);
+		int sixMonAttend = chartRepository.sixMonAttend(user_id);
+		
+		model.addAttribute("attendThisMon", attendThisMon);
+		model.addAttribute("oneMonAttend", oneMonAttend);
+		model.addAttribute("twoMonAttend", twoMonAttend);
+		model.addAttribute("threeMonAttend", threeMonAttend);
+		model.addAttribute("fourMonAttend", fourMonAttend);
+		model.addAttribute("fiveMonAttend", fiveMonAttend);
+		model.addAttribute("sixMonAttend", sixMonAttend);
 		
 		return "member/my_chart_page";
 	}

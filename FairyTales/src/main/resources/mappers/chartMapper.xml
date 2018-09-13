@@ -5,11 +5,9 @@
 <mapper namespace="global.sesoc.fairytales.dao.ChartMapper">
 	
 	<!-- 전체 진행율 -->
-	<select id="allProgress" parameterType="String" resultType="int">
+	<select id="allProgress" parameterType="String" resultType="ChartValue">
 	SELECT 
 		m.user_id
-		, mf.user_id
-		, mf.fairy_pk
 		, mf.chapter
 		, f.fairy_pk
 		, f.fairy_chapter
@@ -18,31 +16,88 @@
 		, member_fairy mf
 		, fairytales f
 	WHERE 
-		m.user_id = #{user_id}
-		, m.user_id = mf.user_id
-		, mf.fairy_pk = f.fairy_pk
+		m.user_id = #{user_id} 
+		AND m.user_id = mf.user_id 
+		AND mf.fairy_pk = f.fairy_pk
 	</select>
 	
-	
-	<!-- 레벨별 진행도 -->
-	<select id="levelProgress" parameterType="String" resultType="int">
-	SELECT
-		f.fairy_level
-		, SUM(f.fairy_chapter) AS fairy_chapter
-		, SUM(mf.chapter) AS chapter
-	FROM
+	<!-- 일본어 전체 진행률 -->
+	<select id="jpnAllProgress" parameterType="String" resultType="ChartValue">
+	SELECT 
+		m.user_id
+		, mf.chapter
+		, f.fairy_pk
+		, f.fairy_chapter
+		, f.fairy_code
+	FROM 
 		member m
 		, member_fairy mf
 		, fairytales f
 	WHERE 
-		m.user_id = #{user_id}
-		, m.user_id = mf.user_id
-		, mf.fairy_pk = f.fairy_pk
-		GROUP BY f.fairy_level
+		m.user_id = #{user_id} 
+		AND m.user_id = mf.user_id 
+		AND mf.fairy_pk = f.fairy_pk
+		AND f.fairy_code LIKE 'JP%'
+	</select>
+	
+	<!-- JAVA 전체 진행률 -->
+	<select id="javaAllProgress" parameterType="String" resultType="ChartValue">
+	SELECT 
+		m.user_id
+		, mf.chapter
+		, f.fairy_pk
+		, f.fairy_chapter
+		, f.fairy_code
+	FROM 
+		member m
+		, member_fairy mf
+		, fairytales f
+	WHERE 
+		m.user_id = #{user_id} 
+		AND m.user_id = mf.user_id 
+		AND mf.fairy_pk = f.fairy_pk
+		AND f.fairy_code LIKE 'CD%'
 	</select>
 
+	<!-- 레벨별 진행도 -->
+	<select id="levelProgress" parameterType="String" resultType="ChartValue">
+	 SELECT 
+		f.fairy_pk
+		, SUM(f.fairy_chapter) AS fairy_chapter
+		, SUM(mf.chapter) AS chapter
+	FROM 
+        member m
+		,fairytales f
+        , member_fairy mf
+    WHERE 
+          m.user_id = #{user_id}
+		AND m.user_id = mf.user_id 
+		AND mf.fairy_pk = f.fairy_pk
+            GROUP BY f.fairy_pk;
+	</select>
+	
+	<select id="jpnLevelProgress" parameterType="String" resultType="ChartValue">
+	 SELECT 
+		f.fairy_pk
+		, f.fairy_code
+		, SUM(f.fairy_chapter) AS fairy_chapter
+		, SUM(mf.chapter) AS chapter
+	FROM 
+        member m
+		,fairytales f
+        , member_fairy mf
+    WHERE 
+          m.user_id = #{user_id}
+		AND m.user_id = mf.user_id 
+		AND f.fairy_code LIKE 'JP%'
+		AND mf.fairy_pk = f.fairy_pk
+            GROUP BY f.fairy_pk
+	</select>
+	
+
+
 	<!-- 동화별 진행도 -->
-	<select id="fairyProgress" parameterType="String" resultType="int">
+	<select id="fairyProgress" parameterType="String" resultType="ChartValue">
 	SELECT 
 		f.fairy_pk
 		, SUM(f.fairy_chapter) AS fairy_chapter
@@ -53,32 +108,33 @@
 		member_fairy mf INNER JOIN member m
 			ON mf.user_id = m.user_id
 	WHERE 
-		m.user_id GROUP BY f.fairy_pk
+		m.user_id 
+			GROUP BY f.fairy_pk
 	</select>
 	<!-- NULL이 치환이 안되서 오류나면 CASE 써볼것 -->
 	
 	
 	<!-- 전체문제수 -->
-	<select id="allQuestion" parameterType="String" resultType="int">
+	<select id="allQuestion" parameterType="String" resultType="ChartValue">
 	SELECT 
-		m.user_id.count(*) AS allQuestion
+		m.user_id, count(*) AS allQuestion
 	FROM
 		member m
 		, member_fairy mf
 		, question q
 	WHERE
 		m.user_id = #{user_id}
-		, m.user_id = mf.user_id
-		, mf.fairy_pk  = q.fairy_pk
-		, <![CDATA[q.chapter <= mf.chapter]]>
-		GROUP BY m.user_id
+		AND m.user_id = mf.user_id
+		AND mf.fairy_pk  = q.fairy_pk
+		AND <![CDATA[q.chapter <= mf.chapter]]>
+			GROUP BY m.user_id
 	</select>
 	<!-- <쓸 때  <![CDATA[조건식]]>이런 식으로 써야함 -->
 
 	<!-- 오답수 -->
-	<select id="wrongQuestion" parameterType="String" resultType="int">
+	<select id="wrongQuestion" parameterType="String" resultType="ChartValue">
 	SELECT 
-		m.user_id.count(*) AS wrongQuestion
+		m.user_id, count(*) AS wrongQuestion
 	FROM
 		member m
 		, member_fairy mf
@@ -86,24 +142,153 @@
 		, wrong w
 	WHERE
 		m.user_id = #{user_id}
-		, m.user_id = mf.user_id
-		, mf.fairy_pk  = q.fairy_pk
-		, q.question_pk = w.question_pk
-		, <![CDATA[q.chapter <= mf.chapter]]>
-		GROUP BY m.user_id
+		AND m.user_id = mf.user_id
+		AND mf.fairy_pk  = q.fairy_pk
+		AND q.question_pk = w.question_pk
+		AND <![CDATA[q.chapter <= mf.chapter]]>
+			GROUP BY m.user_id
 	</select>
 	
-	<!-- 출석률 -->
-	<select id="attend" parameterType="String" resultType="int">
+	<!-- 이번달 출석률 -->
+	<select id="attendThisMon" parameterType="String" resultType="int">
 	SELECT 
-		m.user_id, ml.member_access
-	FROM
-		member m
-		, member_log ml
-	WHERE
-		m.user_id = ml.user_id
-		, ml.member_access BETWEEN TRUNC(SYSDATE, 'MM') AND LAST_DAY(SYSDATE)
+		count(member_access) as member_access
+    FROM
+    	(
+    	 SELECT 
+			m.user_id
+			, to_char(member_access,'YYYYMMDD') AS member_access
+		 FROM
+			member m
+			, member_log ml
+		 WHERE
+        	m.user_id = #{user_id}
+        	AND m.user_id = ml.user_id
+        	AND ml.member_access BETWEEN TRUNC(ADD_MONTHS(TO_DATE(SYSDATE),-0)+1)-TO_CHAR(TO_DATE(SYSDATE),'DD')
+                                        AND TRUNC(LAST_DAY(TO_DATE(SYSDATE)))
+            	GROUP BY m.user_id, to_char(member_access,'YYYYMMDD'))
+            	GROUP BY user_id
 	</select>
-	<!-- 디벨로퍼에서 dual써서 가상 정보 확인하기 -->
-
+	
+	<!-- 한 달 전 출석횟수 -->
+	<select id="oneMonAttend" parameterType="String" resultType="int">
+	SELECT 
+		count(member_access) as member_access
+    FROM
+    	(
+    	 SELECT 
+			m.user_id
+			, to_char(member_access,'YYYYMMDD') AS member_access
+		 FROM
+			member m
+			, member_log ml
+		 WHERE
+        	m.user_id = #{user_id}
+        	AND m.user_id = ml.user_id
+        	AND ml.member_access BETWEEN TRUNC(ADD_MONTHS(TO_DATE(SYSDATE),-1)+1)-TO_CHAR(ADD_MONTHS(TO_DATE(SYSDATE),-1),'DD')
+                                    AND TRUNC(LAST_DAY(TO_DATE(ADD_MONTHS(TO_DATE(SYSDATE),-1))))
+            	GROUP BY m.user_id, to_char(member_access,'YYYYMMDD'))
+            	GROUP BY user_id
+	</select>
+	
+	<select id="twoMonAttend" parameterType="String" resultType="int">
+	SELECT 
+		count(member_access) as member_access
+    FROM
+    	(
+    	 SELECT 
+			m.user_id
+			, to_char(member_access,'YYYYMMDD') AS member_access
+		 FROM
+			member m
+			, member_log ml
+		 WHERE
+        	m.user_id = #{user_id}
+        	AND m.user_id = ml.user_id
+        	AND ml.member_access BETWEEN TRUNC(ADD_MONTHS(TO_DATE(SYSDATE),-2)+1)-TO_CHAR(ADD_MONTHS(TO_DATE(SYSDATE),-1),'DD')
+                                    AND TRUNC(LAST_DAY(TO_DATE(ADD_MONTHS(TO_DATE(SYSDATE),-2))))
+            	GROUP BY m.user_id, to_char(member_access,'YYYYMMDD'))
+            	GROUP BY user_id
+	</select>
+	
+	<select id="threeMonAttend" parameterType="String" resultType="int">
+	SELECT 
+		count(member_access) as member_access
+    FROM
+    	(
+    	 SELECT 
+			m.user_id
+			, to_char(member_access,'YYYYMMDD') AS member_access
+		 FROM
+			member m
+			, member_log ml
+		 WHERE
+        	m.user_id = #{user_id}
+        	AND m.user_id = ml.user_id
+        	AND ml.member_access BETWEEN TRUNC(ADD_MONTHS(TO_DATE(SYSDATE),-3)+1)-TO_CHAR(ADD_MONTHS(TO_DATE(SYSDATE),-1),'DD')
+                                    AND TRUNC(LAST_DAY(TO_DATE(ADD_MONTHS(TO_DATE(SYSDATE),-3))))
+            	GROUP BY m.user_id, to_char(member_access,'YYYYMMDD'))
+            	GROUP BY user_id
+	</select>
+	
+	<select id="fourMonAttend" parameterType="String" resultType="int">
+	SELECT 
+		count(member_access) as member_access
+    FROM
+    	(
+    	 SELECT 
+			m.user_id
+			, to_char(member_access,'YYYYMMDD') AS member_access
+		 FROM
+			member m
+			, member_log ml
+		 WHERE
+        	m.user_id = #{user_id}
+        	AND m.user_id = ml.user_id
+        	AND ml.member_access BETWEEN TRUNC(ADD_MONTHS(TO_DATE(SYSDATE),-4)+1)-TO_CHAR(ADD_MONTHS(TO_DATE(SYSDATE),-1),'DD')
+                                    AND TRUNC(LAST_DAY(TO_DATE(ADD_MONTHS(TO_DATE(SYSDATE),-4))))
+            	GROUP BY m.user_id, to_char(member_access,'YYYYMMDD'))
+            	GROUP BY user_id
+	</select>
+	
+	<select id="fiveMonAttend" parameterType="String" resultType="int">
+	SELECT 
+		count(member_access) as member_access
+    FROM
+    	(
+    	 SELECT 
+			m.user_id
+			, to_char(member_access,'YYYYMMDD') AS member_access
+		 FROM
+			member m
+			, member_log ml
+		 WHERE
+        	m.user_id = #{user_id}
+        	AND m.user_id = ml.user_id
+        	AND ml.member_access BETWEEN TRUNC(ADD_MONTHS(TO_DATE(SYSDATE),-5)+1)-TO_CHAR(ADD_MONTHS(TO_DATE(SYSDATE),-1),'DD')
+                                    AND TRUNC(LAST_DAY(TO_DATE(ADD_MONTHS(TO_DATE(SYSDATE),-5))))
+            	GROUP BY m.user_id, to_char(member_access,'YYYYMMDD'))
+            	GROUP BY user_id	
+	</select>
+	
+	<select id="sixMonAttend" parameterType="String" resultType="int">
+	SELECT 
+		count(member_access) as member_access
+    FROM
+    	(
+    	 SELECT 
+			m.user_id
+			, to_char(member_access,'YYYYMMDD') AS member_access
+		 FROM
+			member m
+			, member_log ml
+		 WHERE
+        	m.user_id = #{user_id}
+        	AND m.user_id = ml.user_id
+        	AND ml.member_access BETWEEN TRUNC(ADD_MONTHS(TO_DATE(SYSDATE),-6)+1)-TO_CHAR(ADD_MONTHS(TO_DATE(SYSDATE),-1),'DD')
+                                    AND TRUNC(LAST_DAY(TO_DATE(ADD_MONTHS(TO_DATE(SYSDATE),-6))))
+            	GROUP BY m.user_id, to_char(member_access,'YYYYMMDD'))
+            	GROUP BY user_id
+	</select>
+	
 </mapper>

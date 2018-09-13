@@ -511,14 +511,13 @@
 	var attendChart = new Chart(ctx, {
 		type : 'line',
 		data : {
-			labels : [ "1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월",
-					"10월", "11월", "12월" ],
+			labels : ["이번달", "1개월 전", "2개월 전", "3개월 전", "4개월 전", "5개월 전", "6개월 전"],
 			datasets : [ {
 				label : '출석일',
 				backgroundColor : 'rgba(153, 102, 255, 0.2)',
 				borderColor : 'rgba(153, 102, 255, 1)',
 				borderWidth : 1,
-				data : [ 15, 16, 17, 14, 5, 20, 18, 10, 7, 30, 17, 12 ]
+				data : [${attendThisMon}, ${oneMonAttend}, ${twoMonAttend}, ${threeMonAttend}, ${fourMonAttend}, ${fiveMonAttend}, ${sixMonAttend}]
 			} ]
 		},
 		options : {

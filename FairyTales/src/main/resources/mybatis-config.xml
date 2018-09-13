@@ -15,7 +15,7 @@
 		<typeAlias type="global.sesoc.fairytales.dto.Reply_1to1" alias="Reply_1to1"/>	
 		<typeAlias type="global.sesoc.fairytales.dto.Member" alias="Member"/>
 		<typeAlias type="global.sesoc.fairytales.dto.Board" alias="Board"/>
-			
+			<typeAlias type="global.sesoc.fairytales.dto.ChartValue" alias="ChartValue"/>
 	</typeAliases>
 	<mappers>
 
