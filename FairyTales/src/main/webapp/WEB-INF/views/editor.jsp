@@ -86,11 +86,15 @@
 						if(shiftSet){
 							var yHPoint = events.pageY - $(selectTarget).offset().top - (mouseY);
 							var height = parseInt($(selectTarget).height()) + parseInt(yHPoint - yHPointOld);
+							//var fontSize = $(selectTarget).css("font-size") ;
+							
+							//console.log("fontSize : "+fontSize + " : " + (mouseX - xWPointOld));
 							//유동적 증감
 							$(selectTarget).css(
 								{
-									  "width" : width
-									, "height": height
+									  "width"		: width
+									, "height"		: height
+									//, "font-size"	: "1.5em"
 								}
 							);
 							
@@ -101,8 +105,9 @@
 							//비율증감
 							$(selectTarget).css(
 								{
-									  "width" : width
-									, "height": height
+									  "width"		: width
+									, "height"		: height
+									//, "font-size"	: "1.5em"
 								}
 							);
 						}
@@ -817,11 +822,7 @@
 				putInfo += "<input type='checkbox' class='objCheck' value='"+obj.objId+"' >"
 				putInfo += "<span> ID : " + obj.objId + "</span><br>";
 				putInfo += "<span> Name : " + obj.objNm + "</span><br>";
-				if(obj.objNm == "img"){
-					putInfo += "<span> Obj : " + obj.obj.name + "</span><br>";
-				}else if(obj.objNm == "text"){
-					putInfo += "<span> Obj : " + obj.obj + "</span><br>";
-				}
+				putInfo += "<span> Obj : " + obj.obj + "</span><br>";
 				putInfo += "<span>-------------------</span><br/>";
 			});
 			$("#objList").html(putInfo);
@@ -835,10 +836,6 @@
 			}else{
 				//Text object
 				addTxtObject($("#objText").val());
-				//add objList
-				//objPush("text",$("#objText").val());
-				//view set
-				//objViewList();
 			}
 			////////여기여기
 			/*
