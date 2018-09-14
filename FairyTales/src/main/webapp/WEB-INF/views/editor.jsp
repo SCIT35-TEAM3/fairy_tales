@@ -63,8 +63,8 @@
 			resize();
 			$(".fairyTale").css(
 				{
-					  "background" : "url('../신데렐라 정산/배경.png')"
-					, "background-size": "cover"
+					  "background-size": "cover"
+					//, "background" : "url('../신데렐라 정산/배경.png')"
 				}
 			);
 			
@@ -88,13 +88,14 @@
 							var height = parseInt($(selectTarget).height()) + parseInt(yHPoint - yHPointOld);
 							//var fontSize = $(selectTarget).css("font-size") ;
 							
-							//console.log("fontSize : "+fontSize + " : " + (mouseX - xWPointOld));
+							console.log("white-space : "+ $(selectTarget).css("white-space"));
 							//유동적 증감
 							$(selectTarget).css(
 								{
 									  "width"		: width
 									, "height"		: height
-									//, "font-size"	: "1.5em"
+									//, "white-space"	: "normal"
+									, "word-break"	: "break-all"
 								}
 							);
 							
@@ -107,7 +108,8 @@
 								{
 									  "width"		: width
 									, "height"		: height
-									//, "font-size"	: "1.5em"
+									//, "white-space"	: "normal"
+									, "word-break"	: "break-all"
 								}
 							);
 						}
@@ -116,6 +118,8 @@
 							{
 								  "width" : $(selectTarget).width()
 								, "height": $(selectTarget).height()
+								//, "white-space"	: "normal"
+								, "word-break"	: "break-all"
 							}
 						);
 					
@@ -261,7 +265,7 @@
 			//keypad set
 			$(document).keydown(function(event){
 				var keydown = event.which;
-				//console.log(keydown);
+				console.log(keydown);
 				//ctrl click
 				if(keydown == 17){
 					ctrlSet = true;
@@ -301,6 +305,10 @@
 					
 					switch(keydown){
 						//keypad
+						case 107 :
+							var fontSize = Number.parseInt($(selectTarget).css("font-size"));
+							$(selectTarget).css("font-size",(fontSize + 1) + "px").css("white-space","normal");
+							break;
 						case 38 : fMovement("+=0","-="+keyAniVal,0);
 							break;
 						case 40 : fMovement("+=0","+="+keyAniVal,0);
