@@ -43,6 +43,7 @@
 	<resources mapping="/images/portfolio/**" location="/resources/images/portfolio/" />
 	<resources mapping="/images/portfolio-details/**" location="/resources/images/portfolio-details/" />
 	<resources mapping="/images/services/**" location="/resources/images/services/" />
+	<resources mapping="/images/demo3/**" location="/resources/images/demo3/" />
 	
 	
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->

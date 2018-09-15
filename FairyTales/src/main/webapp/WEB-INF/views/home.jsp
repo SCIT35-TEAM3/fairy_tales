@@ -164,7 +164,7 @@
                 <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="600ms">
                     <div class="single-service">
                         <div class="wow scaleIn" data-wow-duration="500ms" data-wow-delay="600ms">
-                             <a href="#learning"><img src="images/home/icon2.png" alt=""></a>
+                             <a href="#learning"><img src="images/main_icon_jap.png" alt=""></a>
                         </div>
                         <h2>Japanese Fairy</h2>
                         <p>수준별 다양한 동화를 통한 <br/>일본어 학습을 할 수 있습니다.</p>
@@ -173,7 +173,7 @@
                 <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="900ms">
                     <div class="single-service">
                         <div class="wow scaleIn" data-wow-duration="500ms" data-wow-delay="900ms">
-                            <a href="#learning"><img src="images/home/icon3.png" alt=""></a>
+                            <a href="#learning"><img src="images/main_icon_java.png" alt=""></a>
                         </div>
                         <h2>Coding Puzzle</h2>
                         <p>수준별 다양한 동화를 통한 <br/>JAVA를 공부할 수 있습니다.</p>
@@ -220,7 +220,7 @@
 							<div class="single-blog timeline">
 								<div class="single-blog-wrapper">
 									<div class="post-thumb">
-										<img src="images/main_japan.png" class="img-responsive" alt="">
+										<a href="japanese_fairy"><img src="images/main_japan.png" class="img-responsive" alt=""></a>
 										<div class="post-overlay">
 											<span class="uppercase"><a href="japanese_fairy">Go<br>
 													<small>Fairy</small></a></span>
@@ -248,8 +248,7 @@
 							<div class="single-blog timeline">
 								<div class="single-blog-wrapper">
 									<div class="post-thumb">
-										<img src="images/main_coding.png" class="img-responsive"
-											alt="">
+										<a href="coding_puzzle"><img src="images/main_coding.png" class="img-responsive" alt=""></a>
 										<div class="post-overlay">
 											<span class="uppercase"><a href="coding_puzzle">Go<br>
 													<small>Puzzle</small></a></span>
