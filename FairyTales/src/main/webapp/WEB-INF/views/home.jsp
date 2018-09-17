@@ -37,11 +37,11 @@
 	href="images/ico/apple-touch-icon-72-precomposed.png">
 <link rel="apple-touch-icon-precomposed"
 	href="images/ico/apple-touch-icon-57-precomposed.png">
-	
+
 <style type="text/css">
- .space {
-        word-spacing: 30px;
-      }
+.space {
+	word-spacing: 30px;
+}
 </style>
 </head>
 
@@ -89,7 +89,8 @@
 						<li class="dropdown"><a href="#">Page <i
 								class="fa fa-angle-down"></i></a>
 							<ul role="menu" class="sub-menu">
-
+								<li><a href="it_test">Coding Test</a></li>
+								<li><a href="j_test">Japanese Test</a></li>
 								<li><a href="japanese_fairy">Japanese Fairy</a></li>
 								<li><a href="coding_puzzle">Coding Puzzle</a></li>
 							</ul></li>
@@ -130,7 +131,7 @@
 		<div class="container">
 			<div class="main-slider">
 				<div class="slide-text">
-					<h1 >Peace Of Fairy Taleへ</h1>
+					<h1>Peace Of Fairy Taleへ</h1>
 					<p style="font-size: 22px;">ようこそ。</p>
 				</div>
 				<img src="images/castle2.png" class="img-responsive slider-house"
@@ -149,40 +150,54 @@
 		</div>
 	</section>
 	<!--/#home-slider-->
-<section id="services">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="300ms">
-                    <div class="single-service">
-                        <div class="wow scaleIn" data-wow-duration="500ms" data-wow-delay="300ms">
-                             <a href="#"><img src="images/home/icon1.png" alt=""></a>
-                        </div>
-                        <h2>사전 학습</h2>
-                       <p>사전학습을 통해 <br/>자신의 레벨을 테스트 해 보세요.</p>
-                    </div>
-                </div>
-                <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="600ms">
-                    <div class="single-service">
-                        <div class="wow scaleIn" data-wow-duration="500ms" data-wow-delay="600ms">
-                             <a href="#learning"><img src="images/main_icon_jap.png" alt=""></a>
-                        </div>
-                        <h2>Japanese Fairy</h2>
-                        <p>수준별 다양한 동화를 통한 <br/>일본어 학습을 할 수 있습니다.</p>
-                    </div>
-                </div>
-                <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="900ms">
-                    <div class="single-service">
-                        <div class="wow scaleIn" data-wow-duration="500ms" data-wow-delay="900ms">
-                            <a href="#learning"><img src="images/main_icon_java.png" alt=""></a>
-                        </div>
-                        <h2>Coding Puzzle</h2>
-                        <p>수준별 다양한 동화를 통한 <br/>JAVA를 공부할 수 있습니다.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--/#services-->
+	<section id="services">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-4 text-center padding wow fadeIn"
+					data-wow-duration="1000ms" data-wow-delay="300ms">
+					<div class="single-service">
+						<div class="wow scaleIn" data-wow-duration="500ms"
+							data-wow-delay="300ms">
+							<a href="#"><img src="images/home/icon1.png" alt=""></a>
+						</div>
+						<h2>사전 학습</h2>
+						<p>
+							사전학습을 통해 <br />자신의 레벨을 테스트 해 보세요.
+						</p>
+					</div>
+				</div>
+				<div class="col-sm-4 text-center padding wow fadeIn"
+					data-wow-duration="1000ms" data-wow-delay="600ms">
+					<div class="single-service">
+						<div class="wow scaleIn" data-wow-duration="500ms"
+							data-wow-delay="600ms">
+							<a href="#learning"><img src="images/main_icon_jap.png"
+								alt=""></a>
+						</div>
+						<h2>Japanese Fairy</h2>
+						<p>
+							수준별 다양한 동화를 통한 <br />일본어 학습을 할 수 있습니다.
+						</p>
+					</div>
+				</div>
+				<div class="col-sm-4 text-center padding wow fadeIn"
+					data-wow-duration="1000ms" data-wow-delay="900ms">
+					<div class="single-service">
+						<div class="wow scaleIn" data-wow-duration="500ms"
+							data-wow-delay="900ms">
+							<a href="#learning"><img src="images/main_icon_java.png"
+								alt=""></a>
+						</div>
+						<h2>Coding Puzzle</h2>
+						<p>
+							수준별 다양한 동화를 통한 <br />JAVA를 공부할 수 있습니다.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--/#services-->
 
 
 	<section id="action" class="responsive">
@@ -212,7 +227,8 @@
 			<div class="row">
 				<div class="timeline-blog overflow padding-top">
 					<div class="timeline-date text-center">
-						<a href="#japanese_Fairy" class="btn btn-common uppercase" id="learning">LEARNING</a>
+						<a href="#japanese_Fairy" class="btn btn-common uppercase"
+							id="learning">LEARNING</a>
 					</div>
 					<div class="timeline-divider overflow padding-bottom">
 						<div class="col-sm-6 padding-right arrow-right wow fadeInLeft"
@@ -220,7 +236,8 @@
 							<div class="single-blog timeline">
 								<div class="single-blog-wrapper">
 									<div class="post-thumb">
-										<a href="japanese_fairy"><img src="images/main_japan.png" class="img-responsive" alt=""></a>
+										<a href="japanese_fairy"><img src="images/main_japan.png"
+											class="img-responsive" alt=""></a>
 										<div class="post-overlay">
 											<span class="uppercase"><a href="japanese_fairy">Go<br>
 													<small>Fairy</small></a></span>
@@ -248,7 +265,8 @@
 							<div class="single-blog timeline">
 								<div class="single-blog-wrapper">
 									<div class="post-thumb">
-										<a href="coding_puzzle"><img src="images/main_coding.png" class="img-responsive" alt=""></a>
+										<a href="coding_puzzle"><img src="images/main_coding.png"
+											class="img-responsive" alt=""></a>
 										<div class="post-overlay">
 											<span class="uppercase"><a href="coding_puzzle">Go<br>
 													<small>Puzzle</small></a></span>
