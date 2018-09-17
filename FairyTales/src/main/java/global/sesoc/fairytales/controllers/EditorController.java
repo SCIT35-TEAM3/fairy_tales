@@ -45,6 +45,13 @@ public class EditorController {
 		return save_file;
 	}
 	
+	@RequestMapping(value = "/saveFairy", method = RequestMethod.POST)
+	public String saveFairy(String chapter,String objList){
+		FileService.saveJson(chapter,FT_UPLOAD_PATH + "/chapter.json");
+		FileService.saveJson(objList,FT_UPLOAD_PATH + "/objList.json");
+		
+		return "redirect:/";
+	}
 	
 	//이미지 보기
 	@RequestMapping(value = "/image", method = RequestMethod.GET, produces = "image/jpg")

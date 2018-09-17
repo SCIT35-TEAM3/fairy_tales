@@ -1126,16 +1126,25 @@
 			//$("#objList").val(objList);
 		}
 		*/
+		
+		function jsonView(){
+			$("#chapterJsonView").val(JSON.stringify(chapter));
+			$("#objListJsonView").val(JSON.stringify(objList));
+		}
+		
+		function saveFairy(){
+			$("#saveChapter").val(JSON.stringify(chapter));
+			$("#saveObjList").val(JSON.stringify(objList));			
+			return true;
+		}
 	</script>
 	<style>
 		.fairyTale{
 			border:1px solid gold;
 		}
-		
 		.move{
 			border:1px solid rad;
 		}
-		
 		.effect{
 			border:1px solid blue;
 		}
@@ -1285,6 +1294,24 @@
 			</td>
 		</tr>
 		-->
+		<tr>
+			<td colspan = "3">
+				<input type="button" onclick="jsonView()" value="출력">
+				<p> chapter 출력 JSON</p>
+				<textarea rows="20" cols="100" id="chapterJsonView"></textarea>
+				<p> objList 출력 JSON</p>
+				<textarea rows="20" cols="100" id="objListJsonView"></textarea>
+			</td>
+		</tr>
+		<tr>
+			<td colspan = "3">
+				<form action="saveFairy" method="post" onsubmit="return saveFairy()">
+					<input type="submit" value="저장">
+					<input type="text" id="saveChapter" name="chapter">
+					<input type="text" id="saveObjList" name="objList">
+				</form>
+			</td>
+		</tr>
 	</table>
 </body>
 </html>

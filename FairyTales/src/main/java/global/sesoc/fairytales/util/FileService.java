@@ -1,7 +1,9 @@
 package global.sesoc.fairytales.util;
 
+import java.io.BufferedWriter;
 import java.io.File;
-import java.text.SimpleDateFormat;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Date;
 import java.util.UUID;
 
@@ -74,7 +76,7 @@ public class FileService {
 			if ( !serverFile.isFile()) break;	
 			//같은 이름의 파일이 있으면 이름 뒤에 long 타입의 시간정보를 덧붙임.
 			savedFilename = savedFilename + new Date().getTime();
-		}		
+		}
 		
 		//파일 저장
 		try {
@@ -96,6 +98,8 @@ public class FileService {
 		//파일 삭제 여부를 리턴할 변수
 		boolean result = false;
 		
+		
+		
 		//전달된 전체 경로로 File객체 생성
 		File delFile = new File(fullpath);
 		
@@ -106,5 +110,55 @@ public class FileService {
 		}
 		
 		return result;
+	}
+	
+	/**
+	 * Json을 만듭니다.
+	 * @param json
+	 * @param uploadPath
+	 * @return
+	 */
+	public static boolean saveJson(String json, String uploadPath) {
+		//저장 폴더가 없으면 생성
+		/*
+		File path = new File(uploadPath);
+		if (!path.isDirectory()) {
+			path.mkdirs();
+		}
+		
+		//json 저장
+		try {
+			FileWriter fw = new FileWriter(uploadPath);
+			BufferedWriter bw = new BufferedWriter(fw);
+			bw.write(json);
+			bw.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+		*/
+		
+		File file = new File(uploadPath);
+        //if (!file.getParentFile().mkdirs())
+                //throw new IOException("Unable to create " + file.getParentFile());
+		BufferedWriter out = null;
+        try{
+        	out = new BufferedWriter(new FileWriter(file,true));
+            out.append(json);
+            out.newLine();
+        } catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+            try {
+				out.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        }
+		
+		return true;
 	}
 }
