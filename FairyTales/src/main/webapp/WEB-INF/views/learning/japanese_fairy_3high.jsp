@@ -236,8 +236,6 @@
 							<span></span>
 						</nav>
 					</li>
-				</ul>
-				<ul class="bb-custom-grid" id="bb-custom-grid">
 					<li>
 						<h3>고급동화 2</h3>
 						<div class="bb-bookblock">
@@ -262,8 +260,6 @@
 							<span></span>
 						</nav>
 					</li>
-				</ul>
-				<ul class="bb-custom-grid" id="bb-custom-grid">
 					<li>
 						<h3>고급동화 3</h3>
 						<div class="bb-bookblock">
