@@ -41,7 +41,15 @@
 
 	<select id="select_one_board_1to1" parameterType="Board_1to1"
 		resultType="Board_1to1">
-		select*from board_1to1
+		select
+		board_num
+		,user_id
+		,hitcount
+		,to_char(new_date,'yyyy-mm-dd') as new_date
+		,title
+		,text
+		,secret
+		from board_1to1
 		where
 		board_num=#{board_num}
 

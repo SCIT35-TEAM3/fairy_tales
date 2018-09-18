@@ -47,7 +47,7 @@ public class Board_1to1_controller {
 	final String UPLOADPATH = "/boardfile";
 
 	// 보드 메인화면
-	@RequestMapping(value = "/board_1to1")
+	@RequestMapping(value = "board_1to1")
 	public String board_1to1(@RequestParam(value = "searchItem", defaultValue = "user_id") String searchItem,
 			@RequestParam(value = "searchWord", defaultValue = "") String searchWord, Model model,
 			@RequestParam(value = "currentPage", defaultValue = "0") int currentPage) {
@@ -79,7 +79,7 @@ public class Board_1to1_controller {
 	}
 
 	// 글 등록
-	@RequestMapping(value = "/write", method = RequestMethod.POST)
+	@RequestMapping(value = "write", method = RequestMethod.POST)
 	public String write(Model model, Board_1to1 board_1to1, HttpSession session, MultipartFile upload) {
 
 		board_1to1.setUser_id(String.valueOf(session.getAttribute("loginid")));
@@ -101,7 +101,7 @@ public class Board_1to1_controller {
 
 	// 상세글 진입
 	@Transactional
-	@RequestMapping(value = "/post")
+	@RequestMapping(value = "post")
 	public String post(Model model, int board_num) {
 
 		model.addAttribute("login_id", "aa"); // 시험용
@@ -147,10 +147,19 @@ public class Board_1to1_controller {
 
 	// 글 수정 완료
 	@RequestMapping(value = "board_update", method = RequestMethod.POST)
-	public String update(Board_1to1 board_1to1) {
+	public String update(Board_1to1 board_1to1,Model model, HttpSession session, MultipartFile upload ) {
 		System.out.println(board_1to1);
+		board_1to1.setUser_id(String.valueOf(session.getAttribute("loginid")));
+		String user_id = (String) session.getAttribute("loginid");
+		System.out.println("▶▶▶▶▶ 수정 ▶▶▶▶▶" + board_1to1 + "▶▶▶▶수정▶▶▶▶" + upload);
+		String origin_file_name = upload.getOriginalFilename();
+		String save_file = FileService.saveFile(upload, UPLOADPATH);
+
+		board_1to1.setOrigin_file_name(origin_file_name);
+		board_1to1.setSave_file_name(save_file);
+		
 		board_repository.update_board_1to1(board_1to1);
-		return "redirect:board_1to1/board_1to1";
+		return "redirect:board_1to1";
 	}
 
 	// 글 삭제
@@ -187,7 +196,7 @@ public class Board_1to1_controller {
 	}
 
 	// 파일 다운로드
-	@RequestMapping(value = "/download", method = RequestMethod.GET)
+	@RequestMapping(value = "download", method = RequestMethod.GET)
 	public String download(Board_1to1 board_1to1, Model model, int board_num, HttpServletResponse rep) {
 
 		Board_1to1 board_1to11 = new Board_1to1();
