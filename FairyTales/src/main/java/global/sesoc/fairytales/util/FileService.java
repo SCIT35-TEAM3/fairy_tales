@@ -113,52 +113,48 @@ public class FileService {
 	}
 	
 	/**
-	 * Json을 만듭니다.
+	 * 텍스트 json 파일을 만듭니다.
 	 * @param json
 	 * @param uploadPath
 	 * @return
 	 */
 	public static boolean saveJson(String json, String uploadPath) {
-		//저장 폴더가 없으면 생성
-		/*
-		File path = new File(uploadPath);
-		if (!path.isDirectory()) {
-			path.mkdirs();
-		}
-		
-		//json 저장
-		try {
-			FileWriter fw = new FileWriter(uploadPath);
-			BufferedWriter bw = new BufferedWriter(fw);
-			bw.write(json);
-			bw.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return false;
-		}
-		*/
-		
 		File file = new File(uploadPath);
-        //if (!file.getParentFile().mkdirs())
-                //throw new IOException("Unable to create " + file.getParentFile());
-		BufferedWriter out = null;
+		
+		// 폴더만들기
+		file.getParentFile().mkdirs();
+		/* 
+        if (!file.getParentFile().mkdirs()) {
+        	System.out.println("mkdirs!!");
+	        try {
+				throw new IOException("Unable to create " + file.getParentFile());
+			} catch (IOException e) {
+				e.printStackTrace();
+				return false;
+			}
+        }
+        */
+    	BufferedWriter out = null;
         try{
-        	out = new BufferedWriter(new FileWriter(file,true));
+        	//JSON 파일 쓰기
+        	//out = new BufferedWriter(new FileWriter(file,true));
+        	//덮어쓰기
+        	out = new BufferedWriter(new FileWriter(file));
             out.append(json);
             out.newLine();
         } catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return false;
 		} finally {
             try {
 				out.close();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				return false;
 			}
         }
-		
 		return true;
 	}
 }
