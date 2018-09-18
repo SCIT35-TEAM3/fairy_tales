@@ -236,25 +236,23 @@
 							<span></span>
 						</nav>
 					</li>
-				</ul>
-				<ul class="bb-custom-grid" id="bb-custom-grid">
 					<li>
 						<h3>초급동화 2</h3>
 						<div class="bb-bookblock">
 							<div class="bb-item">
-								<a href="#"><img src="images/demo3/1.jpg" alt="image01" /></a>
+								<a href="#"><img src="images/demo3/6.jpg" alt="image06" /></a>
 							</div>
 							<div class="bb-item">
-								<a href="#"><img src="images/demo3/2.jpg" alt="image02" /></a>
+								<a href="#"><img src="images/demo3/7.jpg" alt="image07" /></a>
 							</div>
 							<div class="bb-item">
-								<a href="#"><img src="images/demo3/3.jpg" alt="image03" /></a>
+								<a href="#"><img src="images/demo3/8.jpg" alt="image08" /></a>
 							</div>
 							<div class="bb-item">
-								<a href="#"><img src="images/demo3/4.jpg" alt="image04" /></a>
+								<a href="#"><img src="images/demo3/9.jpg" alt="image09" /></a>
 							</div>
 							<div class="bb-item">
-								<a href="#"><img src="images/demo3/5.jpg" alt="image05" /></a>
+								<a href="#"><img src="images/demo3/10.jpg" alt="image10" /></a>
 							</div>
 						</div>
 						<nav>
@@ -262,8 +260,6 @@
 							<span></span>
 						</nav>
 					</li>
-				</ul>
-				<ul class="bb-custom-grid" id="bb-custom-grid">
 					<li>
 						<h3>초급동화 3</h3>
 						<div class="bb-bookblock">
