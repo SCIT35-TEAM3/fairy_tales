@@ -166,8 +166,7 @@
 									<form action="write" method="post" id="form"
 										enctype="multipart/form-data">
 										<input name="user_id" value="${sessionScope.loginid}"
-											type="hidden"> <input type="hidden" name="user_id"
-											value="${sessionScope.loginid}" id="user_id">
+											type="hidden"> 
 										<table class="table">
 											<thead>
 												<tr>
