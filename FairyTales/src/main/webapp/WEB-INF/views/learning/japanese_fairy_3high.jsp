@@ -289,7 +289,7 @@
 		</div>
 	<!-- /페이지 넘기기 -->
 
-	<div class="col-md-9 col-sm-9" style="padding-top: 70px">
+<!-- 	<div class="col-md-9 col-sm-9" style="padding-top: 70px">
 		<section id="grid" class="grid clearfix cross-1">
 
 			<a href="#" data-path-hover="m 180,34.57627 -180,0 L 0,0 180,0 z"
@@ -330,7 +330,7 @@
 				</figure>
 			</a>
 		</section>
-	</div>
+	</div> -->
 	<!--/Japanese Fairy animation-->
 
 	<!-- footer -->
