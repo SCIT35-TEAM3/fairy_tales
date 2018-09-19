@@ -33,30 +33,8 @@
 
 <!-- 팝업 css -->
 <style type="text/css">
-	* {
-	  margin: 0;
-	  padding: 0;
-	}
-	
-	body {
-	  margin: 100px;
-	}
-	
 	.pop-layer .pop-container {
 	  padding: 20px 25px;
-	}
-	
-	.pop-layer p.ctxt {
-	  color: #666;
-	  line-height: 25px;
-	}
-	
-	.pop-layer .btn-r {
-	  width: 100%;
-	  margin: 10px 0 20px;
-	  padding-top: 10px;
-	  border-top: 1px solid #DDD;
-	  text-align: right;
 	}
 	
 	.pop-layer {
@@ -67,7 +45,7 @@
 	  width: 410px;
 	  height: auto;
 	  background-color: #fff;
-	  border: 5px solid #3571B5;
+	  border: 5px solid #a5732c;
 	  z-index: 10;
 	}
 	
@@ -97,23 +75,15 @@
 	  display: block;
 	}
 	
-	a.btn-layerClose {
+	a.btn-layer {
 	  display: inline-block;
-	  height: 25px;
+	  height: 30px;
 	  padding: 0 14px 0;
-	  border: 1px solid #304a8a;
-	  background-color: #3f5a9d;
 	  font-size: 13px;
-	  color: #fff;
 	  line-height: 25px;
 	}
-	
-	a.btn-layerClose:hover {
-	  border: 1px solid #091940;
-	  background-color: #1f326a;
-	  color: #fff;
-	}
 </style>
+<!-- 팝업 css -->
 
 </head>
 <body>
@@ -199,8 +169,8 @@
 				<div class="row">
 					<div class="action">
 						<div class="col-sm-12">
-							<h1 class="title">Notice</h1>
-							<p>Notice with right sidebar</p>
+							<h1 class="title">FairyTales</h1>
+							<p>FairyTales List</p>
 						</div>
 					</div>
 				</div>
@@ -221,97 +191,48 @@
 									<table class="table text-center">
 										<thead>
 											<tr>
-												<td class="col-sm-1 col-md-1">동화코드</td>
-												<td class="col-sm-2 col-md-2">레벨</td>
+												<td class="col-sm-1 col-md-1">동화번호</td>
+												<td class="col-sm-1 col-md-1">분류</td>
+												<td class="col-sm-1 col-md-1">레벨</td>
 												<td class="col-sm-6 col-md-6">동화명</td>
-												<td class="col-sm-2 col-md-2">총챕터수</td>
-												<td class="col-sm-1 col-md-1"></td>
+												<td class="col-sm-1 col-md-1">총챕터수</td>
+												<td class="col-sm-2 col-md-2"></td>
 											</tr>
 										</thead>
 										<%--게시판--%>
 										<tbody>
-											<tr>
-												<td colspan="5">
-													등록된 동화가 없습니다.
-												</td>
-											</tr>
-											<tr>
-												<td>1</td>
-												<td>극난이도</td>
-												<td><a href="#">어린이동화</a></td>
-												<td>100</td>
-												<td>
-												<a href="#layer2" class="btn-popup"><i class="fa fa-wrench"></i>&nbsp;&nbsp;modify</a>
-												</td>
-												<%-- <td><input type="button" value="수정"></td> --%>
-											</tr>
+											<c:if test="${empty fairytales}">
+												<tr>
+													<td colspan="6">
+														등록된 동화가 없습니다.
+													</td>
+												</tr>
+											</c:if>
+											<c:if test="${!empty fairytales}">
+												<c:forEach items="${fairytales}" var="fairy">
+													<tr>
+														<td><c:out value="${fairy.fairy_pk}" /></td>
+														<td><c:out value="${fairy.fairy_code}" /></td>
+														<td><c:out value="${fairy.fairy_level}" /></td>
+														<td><a href="#"><c:out value="${fairy.fairy_name}" /></a></td>
+														<td><c:out value="${fairy.fairy_chapter}" /></td>
+														<td>
+														<a href="#layer" class="btn-popup"><i class="fa fa-wrench"></i>&nbsp;&nbsp;modify</a>
+														</td>
+													</tr>
+												</c:forEach>
+											</c:if>
 										</tbody>
 										<tfoot>
 											<tr>
 												<td colspan="5" ></td>
 											</tr>
 										</tfoot>
-										<%--
-										<c:forEach var="board" items="${list}" varStatus="s">
-											<c:choose>
-												<c:when test="${sessionScope.login_id!=board.user_id and board.secret!=null}">
-													<tr>
-														<td>
-															<div class="table-data__info">
-																<h6>${s.count}</h6>
-															</div>
-														</td>
-														<td>
-															<div class="table-data__info">
-																<h6>${board.user_id}</h6>
-															</div>
-														</td>
-														<td class="align_left01">비밀글 입니다.</td>
-														<td>
-															<div class="rs-select2--trans rs-select2--sm">
-																<span class="role admin">${board.new_date}</span>
-															</div>
-
-														</td>
-														<td><span class="more"> <i
-																class="zmdi zmdi-more">${board.hitcount}</i>
-														</span></td>
-													</tr>
-												</c:when>
-												<c:otherwise>
-													<tr>
-														<td>
-															<div class="table-data__info">
-																<h6>${s.count}</h6>
-															</div>
-														</td>
-														<td>
-															<div class="table-data__info">
-																<h6>${board.user_id}</h6>
-															</div>
-														</td>
-														<td><span class="role admin"><a
-																href="post?board_num=${board.board_num}" onclick="">${board.title}</a></span>
-														</td>
-														<td>
-															<div class="rs-select2--trans rs-select2--sm">
-																<span class="role admin">${board.new_date}</span>
-															</div>
-														</td>
-														<td><span class="more"> <i
-																class="zmdi zmdi-more">${board.hitcount}</i>
-														</span></td>
-													</tr>
-												</c:otherwise>
-											</c:choose>
-										</c:forEach>
-										</tbody>
-										--%>
 									</table>
 
 									<div class="user-data__footer" align="center">
 										<%-- 새로등록 --%>
-										<a href="#layer2" class="btn btn-submit btn-popup">Register</a>
+										<a href="#layer" class="btn btn-submit btn-popup">Register</a>
 									</div>
 									<c:if test="${sessionScope.user_level eq '1'}">
 									</c:if>
@@ -405,42 +326,62 @@
 	
 	
 	<!-- 팝업 HTML -->
-	<div style="height: 300px;"></div>
-	<a href="#layer1" class="btn-example">일반 팝업레이어</a>
-	<div id="layer1" class="pop-layer">
-	    <div class="pop-container">
-	        <div class="pop-conts">
-	            <!--content //-->
-	            <p class="ctxt mb20">Thank you.<br>
-	                Your registration was submitted successfully.<br>
-	                Selected invitees will be notified by e-mail on JANUARY 24th.<br><br>
-	                Hope to see you soon!
-	            </p>
-	
-	            <div class="btn-r">
-	                <a href="#" class="btn-layerClose">Close</a>
-	            </div>
-	            <!--// content-->
-	        </div>
-	    </div>
-	</div>
-	<br/><br/>
-	<a href="#layer2" class="btn-example">딤처리 팝업레이어 1</a>
+	<a href="#layer" class="btn-example">딤처리 팝업레이어 1</a>
 	<div class="dim-layer">
 	    <div class="dimBg"></div>
-	    <div id="layer2" class="pop-layer">
+	    <div id="layer" class="pop-layer">
 	        <div class="pop-container">
 	            <div class="pop-conts">
-	                <!--content //-->
-	                <p class="ctxt mb20">Thank you.<br>
-	                    Your registration was submitted successfully.<br>
-	                    Selected invitees will be notified by e-mail on JANUARY 24th.<br><br>
-	                    Hope to see you soon!
-	                </p>
-	
-	                <div class="btn-r">
-	                    <a href="#" class="btn-layerClose">Close</a>
-	                </div>
+	            	<!-- <form method="post" id="pop"> -->
+						<table class="table text-center">
+							<tr>
+								<td>
+									<b>분류</b>
+								</td>
+								<td>
+									<select id="fcode" name = "fcode">
+										<option value="jp">일본어
+										<option value="cd">JAVA
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<b>난이도</b>
+								</td>
+								<td>
+									<select id="flevel" name = "flevel">
+										<option value="1">초급
+										<option value="2">중급
+										<option value="3">고급
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<b>동화명</b>
+								</td>
+								<td>
+									<input type="text" id="fname" name="fname" style = "text-align:center;" >
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<b>총 챕터수</b>
+								</td>
+								<td>
+									<input type="number" id="fchapter" name="fchapter" style = "text-align:center;" >
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<br>
+									<a href="#" id="btnSubmit" class="btn btn-submit btn-layer">Register</a>
+		                			<a href="#" id="btnClose" class="btn btn-submit btn-layer">Close</a>
+								</td>
+							</tr>
+						</table>
+					<!-- </form> -->
 	                <!--// content-->
 	            </div>
 	        </div>
@@ -459,42 +400,72 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$('.btn-popup').click(function(){
-			    var $href = $(this).attr('href');
-			    layer_popup($href);
+				var $href = $(this).attr('href');
+				layer_popup($href);
 			});
-			function layer_popup(el){
-				
-			    var $el = $(el);        //레이어의 id를 $el 변수에 저장
-			    var isDim = $el.prev().hasClass('dimBg');   //dimmed 레이어를 감지하기 위한 boolean 변수
-			    alert("isDim :" + isDim);
-			    isDim ? $('.dim-layer').fadeIn() : $el.fadeIn();
 			
-			    var $elWidth = ~~($el.outerWidth()),
-			        $elHeight = ~~($el.outerHeight()),
-			        docWidth = $(document).width(),
-			        docHeight = $(document).height();
-			
-			    // 화면의 중앙에 레이어를 띄운다.
-			    if ($elHeight < docHeight || $elWidth < docWidth) {
-			        $el.css({
-			            marginTop: -$elHeight /2,
-			            marginLeft: -$elWidth/2
-			        })
-			    } else {
-			        $el.css({top: 0, left: 0});
-			    }
-			
-			    $el.find('a.btn-layerClose').click(function(){
-			        isDim ? $('.dim-layer').fadeOut() : $el.fadeOut(); // 닫기 버튼을 클릭하면 레이어가 닫힌다.
-			        return false;
-			    });
-			
-			    $('.layer .dimBg').click(function(){
-			        $('.dim-layer').fadeOut();
-			        return false;
-			    });
-			};
+			$('#btnSubmit').click(function(){insertFt()});
 		});
+		
+		function layer_popup(el){
+			var $el = $(el);							//레이어의 id를 $el 변수에 저장
+			var isDim = $el.prev().hasClass('dimBg');	//dimmed 레이어를 감지하기 위한 boolean 변수
+			
+			isDim ? $('.dim-layer').fadeIn() : $el.fadeIn();
+			
+			var  $elWidth  = $el.outerWidth()
+			  	,$elHeight = $el.outerHeight()
+			  	,docWidth  = $(document).width()
+			  	,docHeight = $(document).height();
+			
+			// 화면의 중앙에 레이어를 띄운다.
+			if ($elHeight < docHeight || $elWidth < docWidth) {
+			    $el.css({
+			    	  marginTop : -$elHeight/2
+			    	, marginLeft: -$elWidth/2
+			    })
+			} else {
+				$el.css({top: 0, left: 0});
+			}
+			  
+			$el.find('#btnClose').click(function(){
+				isDim ? $('.dim-layer').fadeOut() : $el.fadeOut(); // 닫기 버튼을 클릭하면 레이어가 닫힌다.
+				return false;
+			});
+			
+			$('.layer .dimBg').click(function(){
+				$('.dim-layer').fadeOut();
+				return false;
+			});
+		};
+		
+		function insertFt(){
+			//flevel
+			//fname
+			//fchapter
+			var flevel = $("#flevel").val();
+			var fname = $("#fname").val();
+			var fchapter = $("#fchapter").val();
+			var fcode = $("#fcode").val();
+			
+			var parameter = {"fairy_level":flevel,"fairy_name":fname,"fairy_chapter":fchapter,"fairy_code":fcode};
+			
+			console.log("parameter : " + JSON.stringify(parameter));
+			
+			$.ajax({
+					  url		: "inFT"
+					, type		: "post"			
+					, data		: JSON.stringify(parameter)
+					, contentType	:	"application/json; charset=utf-8"
+					, dataType	: "text"
+					, success	: function (response) {
+						
+					}
+			});
+			
+			return false;
+			
+		}
 	</script>
 </body>
 </html>
