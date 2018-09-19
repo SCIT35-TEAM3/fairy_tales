@@ -140,8 +140,8 @@
 				<div class="row">
 					<div class="action">
 						<div class="col-sm-12">
-							<h1 class="title">Notice</h1>
-							<p>Notice with right sidebar</p>
+							<h1 class="title">1:1 CustomerBoard</h1>
+							<p>update</p>
 						</div>
 					</div>
 				</div>

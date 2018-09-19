@@ -72,9 +72,8 @@
 						<li class="dropdown"><a href="#">Page <i
 								class="fa fa-angle-down"></i></a>
 							<ul role="menu" class="sub-menu">
-								<li><a href="it_test">Coding Test</a></li>
 								<li><a href="j_test">Japanese Test</a></li>
-
+								<li><a href="it_test">Coding Test</a></li>
 								<li><a href="japanese_fairy">Japanese Fairy</a></li>
 								<li><a href="coding_puzzle">Coding Puzzle</a></li>
 							</ul></li>
@@ -118,8 +117,7 @@
 				<div class="row">
 					<div class="action">
 						<div class="col-sm-12">
-							<h1 class="title">Notice</h1>
-							<p>Notice with right sidebar</p>
+							<h1 class="title">1:1 CustomerBoard</h1>
 						</div>
 					</div>
 				</div>
@@ -167,7 +165,7 @@
 
 											<c:choose>
 												<c:when
-													test="${sessionScope.login_id!=board.user_id and board.secret!=null}">
+													test="${sessionScope.loginid!=board.user_id and board.secret!=null}">
 
 													<tr>
 														<td>
