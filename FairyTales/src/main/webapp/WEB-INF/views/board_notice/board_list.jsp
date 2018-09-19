@@ -289,19 +289,19 @@
 					<div class="contents">
 						<div class="banner">
 							<ul>
-								<li><img src="resources/images/1.jpg" width="210"
+								<li><img src="resources/images/leader.png" width="210"
 									height="510"></li>
 								<li><img
-									src="resources/images/stay.png"
+									src="resources/images/image2.png"
 									width="210px" height="510px"></li>
 								<li><img
-									src="resources/images/i10967444235.png"
+									src="resources/images/image3.jpg"
 									width="210" height="510px"></li>
 								<li><img
-									src="https://cdn.pixabay.com/photo/2016/03/05/20/01/art-1238602__340.jpg"
+									src="resources/images/black.png"
 									width="210" height="510px"></li>
 								<li><img
-									src="https://cdn.pixabay.com/photo/2015/07/31/15/01/guitar-869217__340.jpg"
+									src="resources/images/image4.jpg"
 									width="210" height="510"></li>
 							</ul>
 						</div>
