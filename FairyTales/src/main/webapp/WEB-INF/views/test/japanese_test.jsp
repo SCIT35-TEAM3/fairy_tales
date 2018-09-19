@@ -37,6 +37,7 @@
 
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="resources/j_test.js"></script>
 
 <script >
 
@@ -87,6 +88,7 @@
 	}); 
 
 </script>
+
 </head>
 <!--/head-->
 
@@ -704,22 +706,9 @@
 						</div>
 
 						<div>
-							<button type="button" id="success" class="btn">완료</button>
+							<button type="button" id="success" class="btn btn-submit">완료</button>
 						</div>
 						<div class="blog-pagination">
-							<!-- <ul class="pagination">
-							<li><a href="#">left</a></li>
-							<li><a href="#">1</a></li>
-							<li><a href="#">2</a></li>
-							<li class="active"><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">5</a></li>
-							<li><a href="#">6</a></li>
-							<li><a href="#">7</a></li>
-							<li><a href="#">8</a></li>
-							<li><a href="#">9</a></li>
-							<li><a href="#">right</a></li>
-						</ul> -->
 						</div>
 
 						<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■< 문제 >■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
