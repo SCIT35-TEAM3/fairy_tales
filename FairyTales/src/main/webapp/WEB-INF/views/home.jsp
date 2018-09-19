@@ -158,11 +158,11 @@
 					<div class="single-service">
 						<div class="wow scaleIn" data-wow-duration="500ms"
 							data-wow-delay="300ms">
-							<a href="#"><img src="images/home/icon1.png" alt=""></a>
+							<a href="j_test"><img src="images/test_icon.png" alt=""></a>
 						</div>
-						<h2>사전 학습</h2>
+						<h2>사전 TEST</h2>
 						<p>
-							사전학습을 통해 <br />자신의 레벨을 테스트 해 보세요.
+							사전 TEST을 통해 <br />자신의 레벨을 확인해 보세요.
 						</p>
 					</div>
 				</div>
@@ -208,8 +208,7 @@
 						<div class="col-sm-7 wow fadeInLeft" data-wow-duration="500ms"
 							data-wow-delay="300ms">
 							<h1 class="title">Peace Of Fairy Tale</h1>
-							<p>A responsive, retina-ready &amp; wide multipurpose
-								template.</p>
+							<p>Learn Japanese and Java through various fairy tales</p>
 						</div>
 						<div class="col-sm-5 text-center wow fadeInRight"
 							data-wow-duration="500ms" data-wow-delay="300ms">

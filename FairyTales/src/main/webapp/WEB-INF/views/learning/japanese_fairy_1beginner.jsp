@@ -117,12 +117,13 @@
 						<li class="dropdown"><a href="#">Page <i
 								class="fa fa-angle-down"></i></a>
 							<ul role="menu" class="sub-menu">
+								<li><a href="j_test">Japanese Test</a></li>
+								<li><a href="it_test">Coding Test</a></li>
 
 								<li><a href="japanese_fairy">Japanese Fairy</a></li>
 								<li><a href="coding_puzzle">Coding Puzzle</a></li>
 							</ul></li>
-						<li class="dropdown"><a href="#">Board<i
-								class="fa fa-angle-down"></i></a>
+						<li class="dropdown"><a href="#">Board<i class="fa fa-angle-down"></i></a>
 							<ul role="menu" class="sub-menu">
 								<li><a href="board_list">Notice</a></li>
 								<li><a href="board_1to1">1:1 CustomerBoard</a></li>
@@ -289,7 +290,7 @@
 		</div>
 	<!-- /페이지 넘기기 -->
 
-	<div class="col-md-9 col-sm-9" style="padding-top: 70px">
+<!-- 	<div class="col-md-9 col-sm-9" style="padding-top: 70px">
 		<section id="grid" class="grid clearfix cross-1">
 
 			<a href="#" data-path-hover="m 180,34.57627 -180,0 L 0,0 180,0 z"
@@ -330,7 +331,7 @@
 				</figure>
 			</a>
 		</section>
-	</div>
+	</div> -->
 	<!--/Japanese Fairy animation-->
 	
 	<!-- footer -->

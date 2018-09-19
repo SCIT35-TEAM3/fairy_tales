@@ -329,11 +329,13 @@ $(function() {
             </div>
         </div>       
     </section>
+    
+    <!-- footer -->
 	<section id="subscribe">
 		<div class="container" align="center">
 			<!-- <div class="copyright-text text-center"> -->
 				<h2>
-					<i class="fa fa-envelope-o"></i> 팀이름
+					<img src="images/로고.png" alt="logo">
 				</h2>
 				<p>
 					513 COEX office Korea International Trade Association, <br>
@@ -346,7 +348,8 @@ $(function() {
 		<!-- </div> -->
 
 	</section>
-
+ 		<!-- /footer -->
+ 		
 	<!-- <section id="coming-soon-footer" class="container">
         <div class="row">
             <div class="col-sm-12">

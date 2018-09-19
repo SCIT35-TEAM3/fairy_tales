@@ -171,27 +171,28 @@
             </div>
         </div>       
     </section>
-    <section id="subscribe">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-10 col-sm-offset-1" >
-                    <div class="row">
-                        <div class="col-sm-6" align="center">
-                            <h2><i class="fa fa-envelope-o"></i> 팀이름</h2>
-                        </div>
-						<div class="col-sm-6 newsletter">
-							<p>
-								513 COEX office Korea International Trade Association, <br>
-								Yeongdong-daero, Gangnam-gu, Seoul <br> Copyright &copy; SC
-								IT MASTER <br> Designed by C class 3Group
-							</p>
-						</div>
-					</div>
-                </div>     
-            </div>
-        </div> 
-    </section>
+    
+    <!-- footer -->
+	<section id="subscribe">
+		<div class="container" align="center">
+			<!-- <div class="copyright-text text-center"> -->
+				<h2>
+					<img src="images/로고.png" alt="logo">
+				</h2>
+				<p>
+					513 COEX office Korea International Trade Association, <br>
+					Yeongdong-daero, Gangnam-gu, Seoul <br>
+					Copyright &copy; SC IT MASTER <br>
+					Designed by C class 3Group
+				</p>
+			</div>
 
+		<!-- </div> -->
+
+	</section>
+ 		<!-- /footer -->
+ 		
+ 		
   <!--   <section id="coming-soon-footer" class="container">
         <div class="row">
             <div class="col-sm-12">

@@ -44,7 +44,8 @@ a img {
 .main,
 .container > header {
 	margin: 0 auto;
-	padding: 2em;
+	padding-top:100px;
+	
 }
 
 /* .container {

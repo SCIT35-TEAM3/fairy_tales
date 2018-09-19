@@ -178,7 +178,7 @@
 					<div class="action">
 						<div class="col-sm-12">
 							<h1 class="title">Notice</h1>
-							<p>Notice with right sidebar</p>
+							
 						</div>
 					</div>
 				</div>
@@ -242,13 +242,13 @@
 												href="board_list?currentPage=${navi.currentPage - navi.pagePerGroup}&searchItem=${searchItem}&searchWord=${searchWord}">◀◀</a></li>
 											<li><a
 												href="board_list?currentPage=${navi.currentPage - 1}&searchItem=${searchItem}&searchWord=${searchWord}">◁</a></li>
-											<li>&nbsp;&nbsp;</li>
+											<li>&nbsp;</li>
 
 											<c:forEach var="page" begin="${navi.startPageGroup}"
 												end="${navi.endPageGroup}">
 												<c:if test="${page == currentPage}">
 													<li><span>${page}</span></li>
-													<li>&nbsp;</li>
+													
 												</c:if>
 												<c:if test="${page != currentPage}">
 
@@ -259,7 +259,7 @@
 													<!-- 한칸 띄우기 -->
 												</c:if>
 											</c:forEach>
-											<li>&nbsp;&nbsp;</li>
+											<li>&nbsp;</li>
 											<li><a
 												href="board_list?currentPage=${navi.currentPage + 1}&searchItem=${searchItem}&searchWord=${searchWord}">▷</a></li>
 											<li><a
