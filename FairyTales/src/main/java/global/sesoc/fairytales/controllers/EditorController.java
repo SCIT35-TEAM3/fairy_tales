@@ -27,12 +27,20 @@ public class EditorController {
 	static final String FT_TEMP_PATH = "/FairyTales/TEMP/";
 	// 저장소
 	static final String FT_UPLOAD_PATH = "/FairyTales/";
-
+	
+	
+	//에디터 리스트
+	@RequestMapping(value = "/editorList", method = RequestMethod.GET)
+	public String editorList() {
+		return "editorList";
+	}
+	
+	//에디터
 	@RequestMapping(value = "/editor", method = RequestMethod.GET)
 	public String editor() {
 		return "editor";
 	}
-
+	
 	// 이미지 저장
 	@ResponseBody
 	@RequestMapping(value = "/editdata", method = RequestMethod.POST, produces = "text/plain;charset=utf-8")
