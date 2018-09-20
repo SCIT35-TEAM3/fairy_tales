@@ -11,7 +11,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>My Chart</title>
+<title>My Chart | POFT</title>
 
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -69,9 +69,8 @@
                         <li><a href="./">Home</a></li>
                         <li class="dropdown"><a href="#">Page <i class="fa fa-angle-down"></i></a>
                             <ul role="menu" class="sub-menu">
-                            	<li><a href="it_test">Coding Test</a></li>
 								<li><a href="j_test">Japanese Test</a></li>
-                            
+                           		<li><a href="it_test">Coding Test</a></li>
                             	<li><a href="japanese_fairy">Japanese Fairy</a></li>
                                 <li><a href="coding_puzzle">Coding Puzzle</a></li>
                             </ul>
