@@ -4,13 +4,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<style type="text/css">
-.nav>li>div {
-	position: relative;
-	padding: 10px 15px;
-}
-</style>
-
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">

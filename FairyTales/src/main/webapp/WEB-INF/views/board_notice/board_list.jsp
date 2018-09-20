@@ -238,32 +238,25 @@
 									<!-- 페이징  -->
 									<div class="blog-pagination">
 										<ul class="pagination">
-											<li><a
-												href="board_list?currentPage=${navi.currentPage - navi.pagePerGroup}&searchItem=${searchItem}&searchWord=${searchWord}">◀◀</a></li>
-											<li><a
-												href="board_list?currentPage=${navi.currentPage - 1}&searchItem=${searchItem}&searchWord=${searchWord}">◁</a></li>
-											<li>&nbsp;</li>
+											<li><a href="board_list?currentPage=${navi.currentPage - navi.pagePerGroup}&searchItem=${searchItem}&searchWord=${searchWord}">◁</a></li>
+											<li><a href="board_list?currentPage=${navi.currentPage - 1}&searchItem=${searchItem}&searchWord=${searchWord}">◁</a></li>
+											
 
-											<c:forEach var="page" begin="${navi.startPageGroup}"
-												end="${navi.endPageGroup}">
+											<c:forEach var="page" begin="${navi.startPageGroup}" end="${navi.endPageGroup}">
 												<c:if test="${page == currentPage}">
-													<li><span>${page}</span></li>
+													<li><span>${page}</span></li>&nbsp;
 													
 												</c:if>
+												
 												<c:if test="${page != currentPage}">
-
-
 													<!-- listboard를 누르면 페이지를 요청하는데, 링크건 ${page}값을 받아온다. -->
-													<li><a
-														href="board_list?currentPage=${page}&searchItem=${searchItem}&searchWord=${searchWord}">${page}</a></li>
+													<li><a href="board_list?currentPage=${page}&searchItem=${searchItem}&searchWord=${searchWord}">${page}</a></li>&nbsp;
 													<!-- 한칸 띄우기 -->
 												</c:if>
 											</c:forEach>
-											<li>&nbsp;</li>
-											<li><a
-												href="board_list?currentPage=${navi.currentPage + 1}&searchItem=${searchItem}&searchWord=${searchWord}">▷</a></li>
-											<li><a
-												href="board_list?currentPage=${navi.currentPage + navi.pagePerGroup}&searchItem=${searchItem}&searchWord=${searchWord}">▶▶</a></li>
+										
+											<li><a href="board_list?currentPage=${navi.currentPage + 1}&searchItem=${searchItem}&searchWord=${searchWord}">▷</a></li>
+											<li><a href="board_list?currentPage=${navi.currentPage + navi.pagePerGroup}&searchItem=${searchItem}&searchWord=${searchWord}">▶▶</a></li>
 										</ul>
 									</div>
 									<!-- /페이징  -->

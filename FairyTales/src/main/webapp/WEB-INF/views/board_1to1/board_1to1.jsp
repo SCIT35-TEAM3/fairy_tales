@@ -241,23 +241,19 @@
 
 									<div class="blog-pagination">
 										<ul class="pagination">
-											<li><a
-												href="board_1to1?currentPage=${navi.currentPage - navi.pagePerGroup}&searchItem=${searchItem}&searchWord=${searchWord}">◁</a></li>
-											<li><a
-												href="board_1to1?currentPage=${navi.currentPage-1}&searchItem=${searchItem}&searchWord=${searchWord}">◁</a></li>
+											<li><a href="board_1to1?currentPage=${navi.currentPage - navi.pagePerGroup}&searchItem=${searchItem}&searchWord=${searchWord}">◁</a></li>
+											<li><a href="board_1to1?currentPage=${navi.currentPage-1}&searchItem=${searchItem}&searchWord=${searchWord}">◁</a></li>
 
 											<c:forEach var="page" begin="${navi.startPageGroup}"
 												end="${navi.totalPageCount}">
 
 												<c:if test="${page==currentPage}">
-													<li class="active">${page}</li>&nbsp;
-			</c:if>
+													<li><span>${page}</span></li>&nbsp;
+												</c:if>
 
 												<c:if test="${page!=currentPage}">
-													<li><a
-														href="board_1to1?currentPage=${page}&searchItem=${searchItem}&searchWord=${searchWord}">${page}
-													</a></li>&nbsp;
-			</c:if>
+													<li><a href="board_1to1?currentPage=${page}&searchItem=${searchItem}&searchWord=${searchWord}">${page}</a></li>&nbsp;
+												</c:if>
 
 											</c:forEach>
 

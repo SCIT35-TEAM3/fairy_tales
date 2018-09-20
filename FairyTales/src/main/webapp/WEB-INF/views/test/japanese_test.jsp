@@ -207,7 +207,7 @@
 				</div>
 				<!-- /sidebar -->
 				
-				<div class="col-md-9 col-sm-7">
+				<div class="col-md-9 col-sm-7" style="padding-left: 100px">
 					<div class="row">
 						<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■< 문제 >■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
 						<!-- <<<<<<<<<<<<<<< 1번 >>>>>>>>>>>>> -->
@@ -633,8 +633,8 @@
 							</div>
 						</div>
 
-						<div>
-							<button type="button" id="success" class="btn btn-submit">완료</button>
+						<div align="center">
+							<button type="button" id="success" class="btn btn-submit">완 료</button>
 						</div>
 						<div class="blog-pagination">
 						</div>

@@ -197,31 +197,26 @@ function check(){
         </div>       
     </section>
     
+	<!-- footer -->
 	<section id="subscribe">
 		<div class="container" align="center">
 			<!-- <div class="copyright-text text-center"> -->
-			<h2>
-				<i class="fa fa-envelope-o"></i> POFT
-			</h2>
-			<p>
-				513 COEX office Korea International Trade Association, <br>
-				Yeongdong-daero, Gangnam-gu, Seoul
-			</p>
-		</div>
+				<h2>
+					<img src="images/로고.png" alt="logo">
+				</h2>
+				<p>
+					513 COEX office Korea International Trade Association, <br>
+					Yeongdong-daero, Gangnam-gu, Seoul <br>
+					Copyright &copy; SC IT MASTER <br>
+					Designed by C class 3Group
+				</p>
+			</div>
 
-
+		<!-- </div> -->
 
 	</section>
+ 		<!-- /footer -->
 
-
-	<div class="col-sm-12">
-		<div class="copyright-text text-center">
-			<p>Copyright &copy; SC IT MASTER</p>
-			<p>
-				Designed by C class 3Group
-			</p>
-		</div>
-	</div>
     
 
     <script type="text/javascript" src="js/jquery.js"></script>
@@ -241,4 +236,4 @@ function check(){
     </script>
     
 </body>
-</html>s
+</html>
