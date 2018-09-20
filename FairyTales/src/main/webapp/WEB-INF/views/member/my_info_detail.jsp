@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Coming Soon | Triangle</title>
+    <title>My Infomation | POFT</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet"> 
     <link href="css/main.css" rel="stylesheet">
@@ -101,8 +101,7 @@ function check(){
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="./">Home</a></li>
-						<li class="dropdown"><a href="#">Page <i
-								class="fa fa-angle-down"></i></a>
+						<li class="dropdown"><a href="#">Page <i class="fa fa-angle-down"></i></a>
 							<ul role="menu" class="sub-menu">
 								
 								<li><a href="j_test">Japanese Test</a></li>
@@ -110,19 +109,17 @@ function check(){
 								<li><a href="japanese_fairy">Japanese Fairy</a></li>
 								<li><a href="coding_puzzle">Coding Puzzle</a></li>
 							</ul></li>
-						<li class="dropdown"><a href="#">Board<i
-								class="fa fa-angle-down"></i></a>
+						<li class="dropdown"><a href="#">Board<i class="fa fa-angle-down"></i></a>
 							<ul role="menu" class="sub-menu">
 								<li><a href="board_list">Notice</a></li>
-								<li><a href="board_1to1">1:1 CustomerBoard</a></li>
+								<li><a href="board_1to1">1:1 Customer Board</a></li>
 							</ul></li>
 						<!-- 회원 로그인 후-->
 						<c:if test="${sessionScope.loginid != null}">
 
-							<li class="dropdown"><a href="#">MyPage <i
-									class="fa fa-angle-down"></i></a>
+							<li class="active" class="dropdown"><a href="#">MyPage <i class="fa fa-angle-down"></i></a>
 								<ul role="menu" class="sub-menu">
-									<li><a href="my_info_detail">My Infomation</a></li>
+									<li class="active"><a href="my_info_detail">My Infomation</a></li>
 									<li><a href="#">Learning Page</a></li>
 									<li><a href="my_chart_page">My Chart</a></li>
 								</ul></li>
@@ -197,31 +194,26 @@ function check(){
         </div>       
     </section>
     
+	<!-- footer -->
 	<section id="subscribe">
 		<div class="container" align="center">
 			<!-- <div class="copyright-text text-center"> -->
-			<h2>
-				<i class="fa fa-envelope-o"></i> POFT
-			</h2>
-			<p>
-				513 COEX office Korea International Trade Association, <br>
-				Yeongdong-daero, Gangnam-gu, Seoul
-			</p>
-		</div>
+				<h2>
+					<img src="images/로고.png" alt="logo">
+				</h2>
+				<p>
+					513 COEX office Korea International Trade Association, <br>
+					Yeongdong-daero, Gangnam-gu, Seoul <br>
+					Copyright &copy; SC IT MASTER <br>
+					Designed by C class 3Group
+				</p>
+			</div>
 
-
+		<!-- </div> -->
 
 	</section>
+ 		<!-- /footer -->
 
-
-	<div class="col-sm-12">
-		<div class="copyright-text text-center">
-			<p>Copyright &copy; SC IT MASTER</p>
-			<p>
-				Designed by C class 3Group
-			</p>
-		</div>
-	</div>
     
 
     <script type="text/javascript" src="js/jquery.js"></script>
@@ -241,4 +233,4 @@ function check(){
     </script>
     
 </body>
-</html>s
+</html>

@@ -52,16 +52,17 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<!-- 인터셉터 등록
+
 	<beans:bean id="LoginInterceptor" class="global.sesoc.fairytales.interceptor.LoginInterceptor" />
 	
 	<interceptors>
 		<interceptor>
-			<mapping path="/*"/>
+			<mapping path="/write" />
 			<beans:ref bean="LoginInterceptor"/>
 		</interceptor>
 	</interceptors>
-	-->
+	
+	
 	<!-- /인터셉터 등록 -->
 	
 	<context:component-scan base-package="global.sesoc.fairytales" />
