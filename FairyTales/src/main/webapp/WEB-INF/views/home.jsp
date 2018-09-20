@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Home | Triangle</title>
+<title>Home | POFT</title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/font-awesome.min.css" rel="stylesheet">
 <link href="css/animate.min.css" rel="stylesheet">
@@ -70,9 +70,7 @@
 					</button>
 
 					<a class="navbar-brand" href="./">
-						<h1>
-							<img src="images/로고.png" alt="logo">
-						</h1>
+						<h1><img src="images/로고.png" alt="logo"></h1>
 					</a>
 
 				</div>
@@ -87,8 +85,7 @@
 								<li><a href="japanese_fairy">Japanese Fairy</a></li>
 								<li><a href="coding_puzzle">Coding Puzzle</a></li>
 							</ul></li>
-						<li class="dropdown"><a href="#">Board<i
-								class="fa fa-angle-down"></i></a>
+						<li class="dropdown"><a href="#">Board<i class="fa fa-angle-down"></i></a>
 							<ul role="menu" class="sub-menu">
 								<li><a href="board_list">Notice</a></li>
 								<li><a href="board_1to1">1:1 CustomerBoard</a></li>
