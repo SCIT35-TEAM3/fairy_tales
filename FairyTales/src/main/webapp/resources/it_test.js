@@ -126,6 +126,7 @@ jthirteen += '}<br>';
 jthirteen += "</pre>";
 var jfourteen = "다음 Identifier(식별자)를 만드는 규칙으로 틀린 것은?";
 var jfifteen = "다음은 특정 자바 키워드에 대한 설명이다. (ㄱ)에 해당하는 것은?<br>";
+jfifteen += '<br>';
 jfifteen += '<pre style="white-space: pre-wrap;">';
 jfifteen += '두 개 이상의 스레드가 공유 자원에 접근하는 경우, 데이터의 일관성을 위해 (ㄱ)키워드를 이용하여<br>';
 jfifteen += '특정영역에서만 단일 스레드 환경으로 실행하도록 처리할 수 있다. ';
@@ -255,15 +256,15 @@ $(function() {
 		result += '<input type="radio" name="j' + i + '" id="j' + i
 				+ '" value="1">';
 		result += '<label for="j' + i + '">' + selector[i][0]
-				+ '</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+				+ '</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>';
 		result += '<input type="radio" name="j' + i + '" id="j' + i
 				+ '" value="2">';
 		result += '<label for="j' + i + '">' + selector[i][1]
-				+ '</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+				+ '</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>';
 		result += '<input type="radio" name="j' + i + '" id="j' + i
 				+ '" value="3">';
 		result += '<label for="j' + i + '">' + selector[i][2]
-				+ '</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+				+ '</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>';
 		result += '<input type="radio" name="j' + i + '" id="j' + i
 				+ '" value="4">';
 		result += '<label for="j' + i + '">' + selector[i][3]

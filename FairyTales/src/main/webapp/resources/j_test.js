@@ -97,11 +97,11 @@ $(function() {
 		var result =""
 			result += '<div>';
 			result += '<input type="radio" name="j'+i+'" id="j'+i+'" value="1">';
-			result += '<label for="j'+i+'">'+selector[i][0]+'</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+			result += '<label for="j'+i+'">'+selector[i][0]+'</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>';
 			result += '<input type="radio" name="j'+i+'" id="j'+i+'" value="2">';
-			result += '<label for="j'+i+'">'+selector[i][1]+'</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+			result += '<label for="j'+i+'">'+selector[i][1]+'</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>';
 			result += '<input type="radio" name="j'+i+'" id="j'+i+'" value="3">';
-			result += '<label for="j'+i+'">'+selector[i][2]+'</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+			result += '<label for="j'+i+'">'+selector[i][2]+'</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>';
 			result += '<input type="radio" name="j'+i+'" id="j'+i+'" value="4">';
 			result += '<label for="j'+i+'">'+selector[i][3]+'</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
 			result += '</div>';
