@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Coding Puzzle</title>
+<title>Coding | POFT</title>
 
 <meta name="description" content="" />
 <meta name="keywords" content="" />
