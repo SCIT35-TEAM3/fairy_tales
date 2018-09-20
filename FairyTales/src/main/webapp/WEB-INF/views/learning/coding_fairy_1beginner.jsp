@@ -143,14 +143,13 @@ a {
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="./">Home</a></li>
-						<li class="dropdown"><a href="#">Page <i
-								class="fa fa-angle-down"></i></a>
+						<li  class="active" class="dropdown"><a href="#">Page <i class="fa fa-angle-down"></i></a>
 							<ul role="menu" class="sub-menu">
 								<li><a href="j_test">Japanese Test</a></li>
 								<li><a href="it_test">Coding Test</a></li>
 
 								<li><a href="japanese_fairy">Japanese Fairy</a></li>
-								<li><a href="coding_puzzle">Coding Puzzle</a></li>
+								<li class="active"><a href="coding_puzzle">Coding Puzzle</a></li>
 							</ul></li>
 						<li class="dropdown"><a href="#">Board<i
 								class="fa fa-angle-down"></i></a>
@@ -232,8 +231,8 @@ a {
 									<figure>
 										<img src="images/1.png" alt="img05">
 										<figcaption>
-											<h3>초급동화이름1</h3>
-											<span>Jacob Cummings</span> <a href="#">Take a look</a>
+											<h3>장갑</h3>
+											<span>POFT</span> <a href="#">Take a look</a>
 										</figcaption>
 									</figure>
 								</li>

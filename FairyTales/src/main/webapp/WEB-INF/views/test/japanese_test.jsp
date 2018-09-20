@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Java Test | POFT</title>
+<title>Japanese Test | POFT</title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/font-awesome.min.css" rel="stylesheet">
 <link href="css/lightbox.css" rel="stylesheet">
@@ -130,26 +130,23 @@
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="./">Home</a></li>
-						<li class="dropdown"><a href="#">Page <i
-								class="fa fa-angle-down"></i></a>
+						<li class="active" class="dropdown"><a href="#">Page <i class="fa fa-angle-down"></i></a>
 							<ul role="menu" class="sub-menu">
-								<li><a href="j_test">Japanese Test</a></li>
+								<li class="active"><a href="j_test">Japanese Test</a></li>
 								<li><a href="it_test">Coding Test</a></li>
 
 								<li><a href="japanese_fairy">Japanese Fairy</a></li>
 								<li><a href="coding_puzzle">Coding Puzzle</a></li>
 							</ul></li>
-						<li class="dropdown"><a href="#">Board<i
-								class="fa fa-angle-down"></i></a>
+						<li class="dropdown"><a href="#">Board<i class="fa fa-angle-down"></i></a>
 							<ul role="menu" class="sub-menu">
 								<li><a href="board_list">Notice</a></li>
-								<li><a href="board_1to1">1:1 CustomerBoard</a></li>
+								<li><a href="board_1to1">1:1 Customer Board</a></li>
 							</ul></li>
 						<!-- 회원 로그인 후-->
 						<c:if test="${sessionScope.loginid != null}">
 
-							<li class="dropdown"><a href="#">MyPage <i
-									class="fa fa-angle-down"></i></a>
+							<li class="dropdown"><a href="#">MyPage <i class="fa fa-angle-down"></i></a>
 								<ul role="menu" class="sub-menu">
 									<li><a href="my_info_detail">My Infomation</a></li>
 									<li><a href="portfoliofour.html">Learning Page</a></li>

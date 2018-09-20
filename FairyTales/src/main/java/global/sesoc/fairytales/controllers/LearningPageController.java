@@ -29,7 +29,7 @@ public class LearningPageController {
 	@RequestMapping(value = "/japanese_fairy_1beginner", method = RequestMethod.GET)
 	public String japanese_fairy_1beginner() {
 
-		System.out.println("japanese_fairy 페이지 요청");
+		System.out.println("japanese_fairy 초급페이지 요청");
 
 		return "learning/japanese_fairy_1beginner";
 	}
@@ -38,7 +38,7 @@ public class LearningPageController {
 	@RequestMapping(value = "/japanese_fairy_2intermediate", method = RequestMethod.GET)
 	public String japanese_fairy_2intermediate() {
 
-		System.out.println("japanese_fairy 페이지 요청");
+		System.out.println("japanese_fairy 중급페이지 요청");
 
 		return "learning/japanese_fairy_2intermediate";
 	}
@@ -47,7 +47,7 @@ public class LearningPageController {
 	@RequestMapping(value = "/japanese_fairy_3high", method = RequestMethod.GET)
 	public String japanese_fairy_3high() {
 
-		System.out.println("japanese_fairy 페이지 요청");
+		System.out.println("japanese_fairy 고급페이지 요청");
 
 		return "learning/japanese_fairy_3high";
 	}
@@ -65,7 +65,7 @@ public class LearningPageController {
 	@RequestMapping(value = "/coding_fairy_1beginner", method = RequestMethod.GET)
 	public String coding_fairy_1beginner() {
 
-		System.out.println("codding_puzzle 페이지 요청");
+		System.out.println("codding_puzzle 초급페이지 요청");
 
 		return "learning/coding_fairy_1beginner";
 	}
@@ -74,7 +74,7 @@ public class LearningPageController {
 	@RequestMapping(value = "/coding_fairy_2intermediate", method = RequestMethod.GET)
 	public String coding_fairy_2intermediate() {
 
-		System.out.println("codding_puzzle 페이지 요청");
+		System.out.println("codding_puzzle 중급페이지 요청");
 
 		return "learning/coding_fairy_2intermediate";
 	}
@@ -83,7 +83,7 @@ public class LearningPageController {
 	@RequestMapping(value = "/coding_fairy_3high", method = RequestMethod.GET)
 	public String coding_fairy_3high() {
 
-		System.out.println("codding_puzzle 페이지 요청");
+		System.out.println("codding_puzzle 고급페이지 요청");
 
 		return "learning/coding_fairy_3high";
 	}

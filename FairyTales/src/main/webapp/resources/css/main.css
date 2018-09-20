@@ -688,7 +688,7 @@ scale
 .sun {
 	background-image: url(../images/puzzle_background_puzzle.png);
 	background-repeat: no-repeat;
-	background-position: 100% bottom;
+	background-position: 90% bottom;
 }
 
 .single-service {
@@ -2596,7 +2596,7 @@ span.stMainServices, span.stButton_gradient, .stButton .chicklets {
 /* 추가하는 css */
 #user_id_form{
 	padding-top: 17px;  
-	color: #a5732a;
+	color: #d89b4e;
 	padding-left: 15px;
   /*   padding-right: 15px; */
 }
