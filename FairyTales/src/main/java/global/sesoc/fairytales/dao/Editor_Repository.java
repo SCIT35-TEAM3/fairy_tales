@@ -32,4 +32,18 @@ public class Editor_Repository {
 		List<Fairytales> result = mapper.selectFairytales();
 		return result;
 	}
+	
+	// 동화 등록
+	public int update_editor(Fairytales fairytales) {
+		Editor_Mapper mapper = session.getMapper(Editor_Mapper.class);
+		int result = mapper.update_editor(fairytales);
+		return result;
+	}
+	
+	// 동화 삭제
+	public int delete_editor(Integer fairy_pk) {
+		Editor_Mapper mapper = session.getMapper(Editor_Mapper.class);
+		int result = mapper.delete_editor(fairy_pk);
+		return result;
+	}
 }

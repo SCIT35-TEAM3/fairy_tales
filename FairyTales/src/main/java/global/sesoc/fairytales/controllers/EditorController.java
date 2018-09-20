@@ -48,6 +48,16 @@ public class EditorController {
 		return "editorList";
 	}
 	
+	//에디터 리스트
+	@RequestMapping(value = "/editorAdd", method = RequestMethod.GET)
+	public String editorAdd(Model model) {
+		
+		List<Fairytales> fairytales = repository.selectFairytales();
+		System.out.println(fairytales);
+		model.addAttribute("fairytales", fairytales);
+		return "editorAdd";
+	}
+	
 	//에디터
 	@RequestMapping(value = "/editor", method = RequestMethod.GET)
 	public String editor() {
@@ -78,15 +88,33 @@ public class EditorController {
 	@RequestMapping(value = "/inFT", method = RequestMethod.POST)
 	public @ResponseBody String inFT(@RequestBody  Fairytales fairytales)  {
 		
-		System.out.println("fairytales : " + fairytales);
+		int key = 0;
+		if(fairytales.getFairy_pk() != null) {
+			System.out.println("update");
+			key = repository.update_editor(fairytales);
+		}else {
+			System.out.println("insert");
+			key = repository.insert_editor(fairytales);
+		}
 		
-		int key = repository.insert_editor(fairytales);
+		String re = "NO";
+		if(key > 0) {
+			re = "OK";
+		}
 		
-		System.out.println("key : " + key);
-		
-		return "";
+		return re;
 	}
-	
+	//동화 생성
+	@RequestMapping(value = "/deleteFT", method = RequestMethod.POST)
+	public @ResponseBody String deleteFT(Integer fpk)  {
+		int key = repository.delete_editor(fpk);
+		
+		String re = "NO";
+		if(key > 0) {
+			re = "OK";
+		}
+		return re;
+	}
 	//이미지 보기
 	@RequestMapping(value = "/image", method = RequestMethod.GET, produces = "image/jpg")
 	public @ResponseBody byte[] getFile(String tmpImg)  {
