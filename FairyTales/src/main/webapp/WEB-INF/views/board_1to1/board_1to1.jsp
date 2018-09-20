@@ -143,7 +143,7 @@
 									<h3>Board_1to1</h3>
 
 
-									<table class="table">
+									<table class="table text-center">
 
 										<thead>
 											<tr>
