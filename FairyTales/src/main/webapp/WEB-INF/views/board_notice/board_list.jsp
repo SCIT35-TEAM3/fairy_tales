@@ -31,9 +31,9 @@
 	href="images/ico/apple-touch-icon-57-precomposed.png">
 	<style type="text/css">	
 	/* banner */
-	.banner {position:absolute; width: 255px; height: 610px; top: 50px;  margin:0 auto; padding:0; overflow: hidden;}
+	.banner {position:absolute; width: 210px; height: 510px; top: 50px;  margin:0 auto; padding:0; overflow: hidden;}
 	.banner ul {position: absolute; margin: 0px; padding:0; list-style: none; }
-	.banner ul li {float: left; width: 255px; height: 610px; margin:0; padding:0;}
+	.banner ul li {float: left; width: 210px; height: 510px; margin:0; padding:0;}
 
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -283,7 +283,7 @@
 
 
 			<div class="col-md-3 col-sm-5">
-				<div class="sidebar blog-sidebar">
+				<div class="sidebar blog-sidebar" style="width: 210px;">
 					<h3>Comments</h3>
 					<!-- /side bar _____________________________________________-->
 					<div class="contents">

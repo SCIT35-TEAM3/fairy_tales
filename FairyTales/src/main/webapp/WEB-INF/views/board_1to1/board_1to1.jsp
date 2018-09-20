@@ -62,7 +62,9 @@
 					</button>
 
 					<a class="navbar-brand" href="./">
-						<h1><img src="images/로고.png" alt="logo"></h1>
+						<h1>
+							<img src="images/로고.png" alt="logo">
+						</h1>
 					</a>
 
 				</div>
@@ -160,72 +162,72 @@
 
 
 										<tbody>
-										<c:forEach var="board" items="${list}" varStatus="s">
+											<c:forEach var="board" items="${list}" varStatus="s">
 
 
-											<c:choose>
-												<c:when
-													test="${sessionScope.loginid!=board.user_id and board.secret!=null}">
+												<c:choose>
+													<c:when
+														test="${sessionScope.loginid!=board.user_id and board.secret!=null and sessionScope.loginid!='manager'}">
 
-													<tr>
-														<td>
-															<div class="table-data__info">
-																<h6>${s.count}</h6>
-															</div>
-														</td>
+														<tr>
+															<td>
+																<div class="table-data__info">
+																	<h6>${s.count}</h6>
+																</div>
+															</td>
 
-														<td>
-															<div class="table-data__info">
-																<h6>${board.user_id}</h6>
-															</div>
-														</td>
-														<td class="align_left01">비밀글 입니다.</td>
-														<td>
-															<div class="rs-select2--trans rs-select2--sm">
-																<span class="role admin">${board.new_date}</span>
-															</div>
+															<td>
+																<div class="table-data__info">
+																	<h6>${board.user_id}</h6>
+																</div>
+															</td>
+															<td class="align_left01">비밀글 입니다.</td>
+															<td>
+																<div class="rs-select2--trans rs-select2--sm">
+																	<span class="role admin">${board.new_date}</span>
+																</div>
 
-														</td>
-														<td><span class="more"> <i
-																class="zmdi zmdi-more">${board.hitcount}</i>
-														</span></td>
+															</td>
+															<td><span class="more"> <i
+																	class="zmdi zmdi-more">${board.hitcount}</i>
+															</span></td>
 
-													</tr>
+														</tr>
 
-												</c:when>
-												<c:otherwise>
-													<tr>
-														<td>
-															<div class="table-data__info">
-																<h6>${s.count}</h6>
-															</div>
-														</td>
+													</c:when>
+													<c:otherwise>
+														<tr>
+															<td>
+																<div class="table-data__info">
+																	<h6>${s.count}</h6>
+																</div>
+															</td>
 
-														<td>
-															<div class="table-data__info">
-																<h6>${board.user_id}</h6>
-															</div>
-														</td>
-														<td><span class="role admin"><a
-																href="post?board_num=${board.board_num}" onclick="">${board.title}</a></span>
-														</td>
-														<td>
-															<div class="rs-select2--trans rs-select2--sm">
-																<span class="role admin">${board.new_date}</span>
+															<td>
+																<div class="table-data__info">
+																	<h6>${board.user_id}</h6>
+																</div>
+															</td>
+															<td><span class="role admin"><a
+																	href="post?board_num=${board.board_num}" onclick="">${board.title}</a></span>
+															</td>
+															<td>
+																<div class="rs-select2--trans rs-select2--sm">
+																	<span class="role admin">${board.new_date}</span>
 
-															</div>
-														</td>
-														<td><span class="more"> <i
-																class="zmdi zmdi-more">${board.hitcount}</i>
-														</span></td>
-													</tr>
+																</div>
+															</td>
+															<td><span class="more"> <i
+																	class="zmdi zmdi-more">${board.hitcount}</i>
+															</span></td>
+														</tr>
 
-												</c:otherwise>
-											</c:choose>
+													</c:otherwise>
+												</c:choose>
 
 
 
-										</c:forEach>
+											</c:forEach>
 										</tbody>
 									</table>
 
