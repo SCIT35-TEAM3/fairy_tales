@@ -73,7 +73,6 @@ public class Board_1to1_controller {
 	// 글쓰기 진입
 	@RequestMapping(value = "/write")
 	public String write(Model model) {
-		model.addAttribute("login_id", "aa");
 
 		return "board_1to1/write";
 	}
@@ -84,7 +83,6 @@ public class Board_1to1_controller {
 
 		board_1to1.setUser_id(String.valueOf(session.getAttribute("loginid")));
 		String user_id = (String) session.getAttribute("loginid");
-		System.out.println("▶▶▶▶▶ 글쓰기▶▶▶▶▶" + board_1to1 + "▶▶▶▶upload▶▶▶▶" + upload);
 		String origin_file_name = upload.getOriginalFilename();
 		String save_file = FileService.saveFile(upload, UPLOADPATH);
 
@@ -95,7 +93,7 @@ public class Board_1to1_controller {
 
 		int result = board_repository.insert_board_1to1(board_1to1);
 
-		return "redirect:board_1to1/board_1to1";
+		return "redirect:board_1to1";
 
 	}
 
@@ -104,7 +102,6 @@ public class Board_1to1_controller {
 	@RequestMapping(value = "post")
 	public String post(Model model, int board_num) {
 
-		model.addAttribute("login_id", "aa"); // 시험용
 		board_repository.hitcount(board_num);
 		Board_1to1 board_1to1 = new Board_1to1();
 		board_1to1.setBoard_num(board_num);
@@ -166,7 +163,7 @@ public class Board_1to1_controller {
 	@RequestMapping(value = "board_delete")
 	public String delete(int board_num) {
 		int result = board_repository.delete_board_1to1(board_num);
-		return "redirect:board_1to1/board_1to1";
+		return "redirect:board_1to1";
 
 	}
 
@@ -191,7 +188,7 @@ public class Board_1to1_controller {
 		red.addAttribute("board_num", board_num);
 		red.addAttribute("user_id", board_1to12.getUser_id());
 
-		return "redirect:board_1to1/update";
+		return "redirect:update";
 
 	}
 

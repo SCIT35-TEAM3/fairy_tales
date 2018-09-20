@@ -13,7 +13,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Blog Details | Triangle</title>
+<title>1:1 CustomerBoard | POFT</title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/font-awesome.min.css" rel="stylesheet">
 <link href="css/lightbox.css" rel="stylesheet">
@@ -93,7 +93,6 @@ function reply_update() {
 		$('#text').val(reply_text);
 		$('#reply_insert').text('댓글 수정');
 		$('#reply_num').val(reply_num);
-
 		$("#reply_insert").on('click', update);
 		$('#reply_insert').off('click', reply_insert);
 		
@@ -103,10 +102,6 @@ function reply_update() {
 			var user_id = $("#user_id").val();
 			var reply_title = $("#reply_title").val();
 			var text = $("#text").val();
-			
-			
-			user_id= "aa"; //■■■■■■■■■■■■< 임시 >■■■■■■■■■■■■■■■
-			
 			var sendData = {"reply_num":reply_num,"user_id": user_id ,"reply_title":reply_title ,"text":text};
 			
 			$.ajax({
@@ -159,8 +154,6 @@ function reply_update() {
 			, data : 'reply_num='+reply_num
 			, success : init
 		});
-	
-		
 		
 	}
 	
@@ -255,7 +248,7 @@ function reply_update() {
 				<div class="row">
 					<div class="action">
 						<div class="col-sm-12">
-							<h1 class="title">1:1게시판</h1>
+							<h1 class="title">1:1 CustomerBoard</h1>
 							<p></p>
 						</div>
 					</div>

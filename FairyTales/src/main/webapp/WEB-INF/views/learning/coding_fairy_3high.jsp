@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Coding Puzzle</title>
+<title>Coding | POFT</title>
 
 <meta name="description" content="" />
 <meta name="keywords" content="" />
@@ -146,6 +146,8 @@ a {
 						<li class="dropdown"><a href="#">Page <i
 								class="fa fa-angle-down"></i></a>
 							<ul role="menu" class="sub-menu">
+								<li><a href="j_test">Japanese Test</a></li>
+								<li><a href="it_test">Coding Test</a></li>
 
 								<li><a href="japanese_fairy">Japanese Fairy</a></li>
 								<li><a href="coding_puzzle">Coding Puzzle</a></li>
@@ -159,8 +161,7 @@ a {
 						<!-- 회원 로그인 후-->
 						<c:if test="${sessionScope.loginid != null}">
 
-							<li class="dropdown"><a href="#">MyPage <i
-									class="fa fa-angle-down"></i></a>
+							<li class="dropdown"><a href="#">MyPage <i class="fa fa-angle-down"></i></a>
 								<ul role="menu" class="sub-menu">
 									<li><a href="my_info_detail">My Infomation</a></li>
 									<li><a href="#">Learning Page</a></li>

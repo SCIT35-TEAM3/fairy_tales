@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Blog Default | Triangle</title>
+<title>1:1 CustomerBoard | POFT</title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/font-awesome.min.css" rel="stylesheet">
 <link href="css/lightbox.css" rel="stylesheet">
@@ -91,8 +91,9 @@
                         <li><a href="./">Home</a></li>
                         <li class="dropdown"><a href="#">Page <i class="fa fa-angle-down"></i></a>
                             <ul role="menu" class="sub-menu">
-                            	<li><a href="it_test">Coding Test</a></li>
+                            
 								<li><a href="j_test">Japanese Test</a></li>
+									<li><a href="it_test">Coding Test</a></li>
                             
                             	<li><a href="japanese_fairy">Japanese Fairy</a></li>
                                 <li><a href="coding_puzzle">Coding Puzzle</a></li>
@@ -138,8 +139,8 @@
 				<div class="row">
 					<div class="action">
 						<div class="col-sm-12">
-							<h1 class="title">Notice</h1>
-							<p>Notice with right sidebar</p>
+							<h1 class="title">1:1 CustomerBoard</h1>
+							<p>write</p>
 						</div>
 					</div>
 				</div>
@@ -165,8 +166,7 @@
 									<form action="write" method="post" id="form"
 										enctype="multipart/form-data">
 										<input name="user_id" value="${sessionScope.loginid}"
-											type="hidden"> <input type="hidden" name="user_id"
-											value="${sessionScope.loginid}" id="user_id">
+											type="hidden"> 
 										<table class="table">
 											<thead>
 												<tr>

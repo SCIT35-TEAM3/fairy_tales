@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Blog Default | Triangle</title>
+<title>Notice | POFT</title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/font-awesome.min.css" rel="stylesheet">
 <link href="css/lightbox.css" rel="stylesheet">
@@ -31,9 +31,9 @@
 	href="images/ico/apple-touch-icon-57-precomposed.png">
 	<style type="text/css">	
 	/* banner */
-	.banner {position:absolute; width: 255px; height: 610px; top: 50px;  margin:0 auto; padding:0; overflow: hidden;}
+	.banner {position:absolute; width: 210px; height: 510px; top: 50px;  margin:0 auto; padding:0; overflow: hidden;}
 	.banner ul {position: absolute; margin: 0px; padding:0; list-style: none; }
-	.banner ul li {float: left; width: 255px; height: 610px; margin:0; padding:0;}
+	.banner ul li {float: left; width: 210px; height: 510px; margin:0; padding:0;}
 
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -178,7 +178,7 @@
 					<div class="action">
 						<div class="col-sm-12">
 							<h1 class="title">Notice</h1>
-							<p>Notice with right sidebar</p>
+							
 						</div>
 					</div>
 				</div>
@@ -238,32 +238,25 @@
 									<!-- 페이징  -->
 									<div class="blog-pagination">
 										<ul class="pagination">
-											<li><a
-												href="board_list?currentPage=${navi.currentPage - navi.pagePerGroup}&searchItem=${searchItem}&searchWord=${searchWord}">◀◀</a></li>
-											<li><a
-												href="board_list?currentPage=${navi.currentPage - 1}&searchItem=${searchItem}&searchWord=${searchWord}">◁</a></li>
-											<li>&nbsp;&nbsp;</li>
+											<li><a href="board_list?currentPage=${navi.currentPage - navi.pagePerGroup}&searchItem=${searchItem}&searchWord=${searchWord}">◁</a></li>
+											<li><a href="board_list?currentPage=${navi.currentPage - 1}&searchItem=${searchItem}&searchWord=${searchWord}">◁</a></li>
+											
 
-											<c:forEach var="page" begin="${navi.startPageGroup}"
-												end="${navi.endPageGroup}">
+											<c:forEach var="page" begin="${navi.startPageGroup}" end="${navi.endPageGroup}">
 												<c:if test="${page == currentPage}">
-													<li><span>${page}</span></li>
-													<li>&nbsp;</li>
+													<li><span>${page}</span></li>&nbsp;
+													
 												</c:if>
+												
 												<c:if test="${page != currentPage}">
-
-
 													<!-- listboard를 누르면 페이지를 요청하는데, 링크건 ${page}값을 받아온다. -->
-													<li><a
-														href="board_list?currentPage=${page}&searchItem=${searchItem}&searchWord=${searchWord}">${page}</a></li>
+													<li><a href="board_list?currentPage=${page}&searchItem=${searchItem}&searchWord=${searchWord}">${page}</a></li>&nbsp;
 													<!-- 한칸 띄우기 -->
 												</c:if>
 											</c:forEach>
-											<li>&nbsp;&nbsp;</li>
-											<li><a
-												href="board_list?currentPage=${navi.currentPage + 1}&searchItem=${searchItem}&searchWord=${searchWord}">▷</a></li>
-											<li><a
-												href="board_list?currentPage=${navi.currentPage + navi.pagePerGroup}&searchItem=${searchItem}&searchWord=${searchWord}">▶▶</a></li>
+										
+											<li><a href="board_list?currentPage=${navi.currentPage + 1}&searchItem=${searchItem}&searchWord=${searchWord}">▷</a></li>
+											<li><a href="board_list?currentPage=${navi.currentPage + navi.pagePerGroup}&searchItem=${searchItem}&searchWord=${searchWord}">▶▶</a></li>
 										</ul>
 									</div>
 									<!-- /페이징  -->
@@ -283,7 +276,7 @@
 
 
 			<div class="col-md-3 col-sm-5">
-				<div class="sidebar blog-sidebar">
+				<div class="sidebar blog-sidebar" style="width: 210px;">
 					<h3>Comments</h3>
 					<!-- /side bar _____________________________________________-->
 					<div class="contents">

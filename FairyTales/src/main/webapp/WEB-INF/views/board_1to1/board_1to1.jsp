@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Blog Default | Triangle</title>
+<title>1:1 CustomerBoard | POFT</title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/font-awesome.min.css" rel="stylesheet">
 <link href="css/lightbox.css" rel="stylesheet">
@@ -62,24 +62,23 @@
 					</button>
 
 					<a class="navbar-brand" href="./">
-						<h1><img src="images/로고.png" alt="logo"></h1>
+						<h1>
+							<img src="images/로고.png" alt="logo">
+						</h1>
 					</a>
 
 				</div>
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="./">Home</a></li>
-						<li class="dropdown"><a href="#">Page <i
-								class="fa fa-angle-down"></i></a>
+						<li class="dropdown"><a href="#">Page <i class="fa fa-angle-down"></i></a>
 							<ul role="menu" class="sub-menu">
-								<li><a href="it_test">Coding Test</a></li>
 								<li><a href="j_test">Japanese Test</a></li>
-
+								<li><a href="it_test">Coding Test</a></li>
 								<li><a href="japanese_fairy">Japanese Fairy</a></li>
 								<li><a href="coding_puzzle">Coding Puzzle</a></li>
 							</ul></li>
-						<li class="dropdown"><a href="#">Board<i
-								class="fa fa-angle-down"></i></a>
+						<li class="dropdown"><a href="#">Board<i class="fa fa-angle-down"></i></a>
 							<ul role="menu" class="sub-menu">
 								<li><a href="board_list">Notice</a></li>
 								<li><a href="board_1to1">1:1 CustomerBoard</a></li>
@@ -118,8 +117,7 @@
 				<div class="row">
 					<div class="action">
 						<div class="col-sm-12">
-							<h1 class="title">Notice</h1>
-							<p>Notice with right sidebar</p>
+							<h1 class="title">1:1 CustomerBoard</h1>
 						</div>
 					</div>
 				</div>
@@ -143,7 +141,7 @@
 									<h3>Board_1to1</h3>
 
 
-									<table class="table">
+									<table class="table text-center">
 
 										<thead>
 											<tr>
@@ -162,72 +160,72 @@
 
 
 										<tbody>
-										<c:forEach var="board" items="${list}" varStatus="s">
+											<c:forEach var="board" items="${list}" varStatus="s">
 
 
-											<c:choose>
-												<c:when
-													test="${sessionScope.login_id!=board.user_id and board.secret!=null}">
+												<c:choose>
+													<c:when
+														test="${sessionScope.loginid!=board.user_id and board.secret!=null and sessionScope.loginid!='manager'}">
 
-													<tr>
-														<td>
-															<div class="table-data__info">
-																<h6>${s.count}</h6>
-															</div>
-														</td>
+														<tr>
+															<td>
+																<div class="table-data__info">
+																	<h6>${s.count}</h6>
+																</div>
+															</td>
 
-														<td>
-															<div class="table-data__info">
-																<h6>${board.user_id}</h6>
-															</div>
-														</td>
-														<td class="align_left01">비밀글 입니다.</td>
-														<td>
-															<div class="rs-select2--trans rs-select2--sm">
-																<span class="role admin">${board.new_date}</span>
-															</div>
+															<td>
+																<div class="table-data__info">
+																	<h6>${board.user_id}</h6>
+																</div>
+															</td>
+															<td class="align_left01">비밀글 입니다.</td>
+															<td>
+																<div class="rs-select2--trans rs-select2--sm">
+																	<span class="role admin">${board.new_date}</span>
+																</div>
 
-														</td>
-														<td><span class="more"> <i
-																class="zmdi zmdi-more">${board.hitcount}</i>
-														</span></td>
+															</td>
+															<td><span class="more"> <i
+																	class="zmdi zmdi-more">${board.hitcount}</i>
+															</span></td>
 
-													</tr>
+														</tr>
 
-												</c:when>
-												<c:otherwise>
-													<tr>
-														<td>
-															<div class="table-data__info">
-																<h6>${s.count}</h6>
-															</div>
-														</td>
+													</c:when>
+													<c:otherwise>
+														<tr>
+															<td>
+																<div class="table-data__info">
+																	<h6>${s.count}</h6>
+																</div>
+															</td>
 
-														<td>
-															<div class="table-data__info">
-																<h6>${board.user_id}</h6>
-															</div>
-														</td>
-														<td><span class="role admin"><a
-																href="post?board_num=${board.board_num}" onclick="">${board.title}</a></span>
-														</td>
-														<td>
-															<div class="rs-select2--trans rs-select2--sm">
-																<span class="role admin">${board.new_date}</span>
+															<td>
+																<div class="table-data__info">
+																	<h6>${board.user_id}</h6>
+																</div>
+															</td>
+															<td><span class="role admin"><a
+																	href="post?board_num=${board.board_num}" onclick="">${board.title}</a></span>
+															</td>
+															<td>
+																<div class="rs-select2--trans rs-select2--sm">
+																	<span class="role admin">${board.new_date}</span>
 
-															</div>
-														</td>
-														<td><span class="more"> <i
-																class="zmdi zmdi-more">${board.hitcount}</i>
-														</span></td>
-													</tr>
+																</div>
+															</td>
+															<td><span class="more"> <i
+																	class="zmdi zmdi-more">${board.hitcount}</i>
+															</span></td>
+														</tr>
 
-												</c:otherwise>
-											</c:choose>
+													</c:otherwise>
+												</c:choose>
 
 
 
-										</c:forEach>
+											</c:forEach>
 										</tbody>
 									</table>
 
@@ -241,23 +239,19 @@
 
 									<div class="blog-pagination">
 										<ul class="pagination">
-											<li><a
-												href="board_1to1?currentPage=${navi.currentPage - navi.pagePerGroup}&searchItem=${searchItem}&searchWord=${searchWord}">◁</a></li>
-											<li><a
-												href="board_1to1?currentPage=${navi.currentPage-1}&searchItem=${searchItem}&searchWord=${searchWord}">◁</a></li>
+											<li><a href="board_1to1?currentPage=${navi.currentPage - navi.pagePerGroup}&searchItem=${searchItem}&searchWord=${searchWord}">◁</a></li>
+											<li><a href="board_1to1?currentPage=${navi.currentPage-1}&searchItem=${searchItem}&searchWord=${searchWord}">◁</a></li>
 
 											<c:forEach var="page" begin="${navi.startPageGroup}"
 												end="${navi.totalPageCount}">
 
 												<c:if test="${page==currentPage}">
-													<li class="active">${page}</li>&nbsp;
-			</c:if>
+													<li><span>${page}</span></li>&nbsp;
+												</c:if>
 
 												<c:if test="${page!=currentPage}">
-													<li><a
-														href="board_1to1?currentPage=${page}&searchItem=${searchItem}&searchWord=${searchWord}">${page}
-													</a></li>&nbsp;
-			</c:if>
+													<li><a href="board_1to1?currentPage=${page}&searchItem=${searchItem}&searchWord=${searchWord}">${page}</a></li>&nbsp;
+												</c:if>
 
 											</c:forEach>
 

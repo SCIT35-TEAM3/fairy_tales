@@ -4,19 +4,12 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<style type="text/css">
-.nav>li>div {
-	position: relative;
-	padding: 10px 15px;
-}
-</style>
-
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Home | Triangle</title>
+<title>Home | POFT</title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/font-awesome.min.css" rel="stylesheet">
 <link href="css/animate.min.css" rel="stylesheet">
@@ -77,9 +70,7 @@
 					</button>
 
 					<a class="navbar-brand" href="./">
-						<h1>
-							<img src="images/로고.png" alt="logo">
-						</h1>
+						<h1><img src="images/로고.png" alt="logo"></h1>
 					</a>
 
 				</div>
@@ -89,13 +80,12 @@
 						<li class="dropdown"><a href="#">Page <i
 								class="fa fa-angle-down"></i></a>
 							<ul role="menu" class="sub-menu">
-								<li><a href="it_test">Coding Test</a></li>
 								<li><a href="j_test">Japanese Test</a></li>
+								<li><a href="it_test">Coding Test</a></li>
 								<li><a href="japanese_fairy">Japanese Fairy</a></li>
 								<li><a href="coding_puzzle">Coding Puzzle</a></li>
 							</ul></li>
-						<li class="dropdown"><a href="#">Board<i
-								class="fa fa-angle-down"></i></a>
+						<li class="dropdown"><a href="#">Board<i class="fa fa-angle-down"></i></a>
 							<ul role="menu" class="sub-menu">
 								<li><a href="board_list">Notice</a></li>
 								<li><a href="board_1to1">1:1 CustomerBoard</a></li>
@@ -158,11 +148,11 @@
 					<div class="single-service">
 						<div class="wow scaleIn" data-wow-duration="500ms"
 							data-wow-delay="300ms">
-							<a href="#"><img src="images/home/icon1.png" alt=""></a>
+							<a href="j_test"><img src="images/test_icon.png" alt=""></a>
 						</div>
-						<h2>사전 학습</h2>
+						<h2>사전 TEST</h2>
 						<p>
-							사전학습을 통해 <br />자신의 레벨을 테스트 해 보세요.
+							사전 TEST을 통해 <br />자신의 레벨을 확인해 보세요.
 						</p>
 					</div>
 				</div>
@@ -208,8 +198,7 @@
 						<div class="col-sm-7 wow fadeInLeft" data-wow-duration="500ms"
 							data-wow-delay="300ms">
 							<h1 class="title">Peace Of Fairy Tale</h1>
-							<p>A responsive, retina-ready &amp; wide multipurpose
-								template.</p>
+							<p>Learn Japanese and Java through various fairy tales</p>
 						</div>
 						<div class="col-sm-5 text-center wow fadeInRight"
 							data-wow-duration="500ms" data-wow-delay="300ms">

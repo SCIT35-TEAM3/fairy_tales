@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Blog Default | Triangle</title>
+<title>Java Test | POFT</title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/font-awesome.min.css" rel="stylesheet">
 <link href="css/lightbox.css" rel="stylesheet">
@@ -37,6 +37,7 @@
 
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="resources/j_test.js"></script>
 
 <script >
 
@@ -87,6 +88,7 @@
 	}); 
 
 </script>
+
 </head>
 <!--/head-->
 
@@ -131,8 +133,8 @@
 						<li class="dropdown"><a href="#">Page <i
 								class="fa fa-angle-down"></i></a>
 							<ul role="menu" class="sub-menu">
-							<li><a href="j_test">Japanese Test</a></li>
-							<li><a href="it_test">Coding Test</a></li>
+								<li><a href="j_test">Japanese Test</a></li>
+								<li><a href="it_test">Coding Test</a></li>
 
 								<li><a href="japanese_fairy">Japanese Fairy</a></li>
 								<li><a href="coding_puzzle">Coding Puzzle</a></li>
@@ -189,95 +191,23 @@
 	<section id="blog" class="padding-top">
 		<div class="container">
 			<div class="row">
+			
+				<!-- sidebar -->
 				<div class="col-md-3 col-sm-5">
-					<div class="sidebar blog-sidebar">
-						<div class="sidebar-item  recent">
-							<h3>Comments</h3>
-							<div class="media">
-								<div class="pull-left">
-									<a href="#"><img src="images/portfolio/project1.jpg" alt=""></a>
-								</div>
-								<div class="media-body">
-									<h4>
-										<a href="#">Lorem ipsum dolor sit amet consectetur
-											adipisicing elit,</a>
-									</h4>
-									<p>posted on 07 March 2014</p>
-								</div>
-							</div>
-							<div class="media">
-								<div class="pull-left">
-									<a href="#"><img src="images/portfolio/project2.jpg" alt=""></a>
-								</div>
-								<div class="media-body">
-									<h4>
-										<a href="#">Lorem ipsum dolor sit amet consectetur
-											adipisicing elit,</a>
-									</h4>
-									<p>posted on 07 March 2014</p>
-								</div>
-							</div>
-							<div class="media">
-								<div class="pull-left">
-									<a href="#"><img src="images/portfolio/project3.jpg" alt=""></a>
-								</div>
-								<div class="media-body">
-									<h4>
-										<a href="#">Lorem ipsum dolor sit amet consectetur
-											adipisicing elit,</a>
-									</h4>
-									<p>posted on 07 March 2014</p>
-								</div>
-							</div>
-						</div>
-						<div class="sidebar-item categories">
-							<h3>Categories</h3>
-							<ul class="nav navbar-stacked">
-								<li><a href="#">Lorem ipsum<span class="pull-right">(1)</span></a></li>
-								<li class="active"><a href="#">Dolor sit amet<span
-										class="pull-right">(8)</span></a></li>
-								<li><a href="#">Adipisicing elit<span
-										class="pull-right">(4)</span></a></li>
-								<li><a href="#">Sed do<span class="pull-right">(9)</span></a></li>
-								<li><a href="#">Eiusmod<span class="pull-right">(3)</span></a></li>
-								<li><a href="#">Mockup<span class="pull-right">(4)</span></a></li>
-								<li><a href="#">Ut enim ad minim <span
-										class="pull-right">(2)</span></a></li>
-								<li><a href="#">Veniam, quis nostrud <span
-										class="pull-right">(8)</span></a></li>
-							</ul>
-						</div>
-						<div class="sidebar-item tag-cloud">
-							<h3>Tag Cloud</h3>
-							<ul class="nav nav-pills">
-								<li><a href="#">Corporate</a></li>
-								<li><a href="#">Joomla</a></li>
-								<li><a href="#">Abstract</a></li>
-								<li><a href="#">Creative</a></li>
-								<li><a href="#">Business</a></li>
-								<li><a href="#">Product</a></li>
-							</ul>
-						</div>
-						<div class="sidebar-item popular">
-							<h3>Latest Photos</h3>
-							<ul class="gallery">
-								<li><a href="#"><img
-										src="images/portfolio/popular1.jpg" alt=""></a></li>
-								<li><a href="#"><img
-										src="images/portfolio/popular2.jpg" alt=""></a></li>
-								<li><a href="#"><img
-										src="images/portfolio/popular3.jpg" alt=""></a></li>
-								<li><a href="#"><img
-										src="images/portfolio/popular4.jpg" alt=""></a></li>
-								<li><a href="#"><img
-										src="images/portfolio/popular5.jpg" alt=""></a></li>
-								<li><a href="#"><img
-										src="images/portfolio/popular1.jpg" alt=""></a></li>
-							</ul>
-						</div>
+                   <div class="sidebar blog-sidebar">
+                   	 <div class="sidebar-item categories">
+                           <h3>Test</h3>
+                            <ul class="nav navbar-stacked">
+                                <li class="active"><a href="j_test">Japanese Test<span class="pull-right"><i class="fa fa-arrow-right"></i></span></a></li>
+                                <li><a href="it_test">Coding Test<span class="pull-right"><i class="fa fa-arrow-right"></i></span></a></li>
+                             
+                            </ul>
+                        </div>
 					</div>
 				</div>
-				<div class="col-md-9 col-sm-7">
+				<!-- /sidebar -->
+				
+				<div class="col-md-9 col-sm-7" style="padding-left: 100px">
 					<div class="row">
 						<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■< 문제 >■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
 						<!-- <<<<<<<<<<<<<<< 1번 >>>>>>>>>>>>> -->
@@ -703,89 +633,61 @@
 							</div>
 						</div>
 
-						<div>
-							<button type="button" id="success" class="btn">완료</button>
+						<div align="center">
+							<button type="button" id="success" class="btn btn-submit">완 료</button>
 						</div>
 						<div class="blog-pagination">
-							<!-- <ul class="pagination">
-							<li><a href="#">left</a></li>
-							<li><a href="#">1</a></li>
-							<li><a href="#">2</a></li>
-							<li class="active"><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">5</a></li>
-							<li><a href="#">6</a></li>
-							<li><a href="#">7</a></li>
-							<li><a href="#">8</a></li>
-							<li><a href="#">9</a></li>
-							<li><a href="#">right</a></li>
-						</ul> -->
 						</div>
 
 						<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■< 문제 >■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
 					</div>
 				</div>
-			</div>
-	</section>
+				
+            </div>
+        </div>
+    </section>
+
 	<!--/#blog-->
 
+	<!-- footer -->
 	<footer id="footer">
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-12 text-center bottom-separator">
-					<img src="images/home/under.png" class="img-responsive inline"
-						alt="">
-				</div>
-				<div class="col-md-4 col-sm-6">
-					<div class="testimonial bottom">
-						<h2>Testimonial</h2>
-						<div class="media">
-							<div class="pull-left">
-								<a href="#"><img src="images/home/profile1.png" alt=""></a>
-							</div>
-							<div class="media-body">
-								<blockquote>Nisi commodo bresaola, leberkas venison
-									eiusmod bacon occaecat labore tail.</blockquote>
-								<h3>
-									<a href="#">- Jhon Kalis</a>
-								</h3>
-							</div>
-						</div>
-						<div class="media">
-							<div class="pull-left">
-								<a href="#"><img src="images/home/profile2.png" alt=""></a>
-							</div>
-							<div class="media-body">
-								<blockquote>Capicola nisi flank sed minim sunt
-									aliqua rump pancetta leberkas venison eiusmod.</blockquote>
-								<h3>
-									<a href="">- Abraham Josef</a>
-								</h3>
-							</div>
-						</div>
+				<div class="row">
+					<div class="col-sm-12 text-center bottom-separator">
+						<img src="images/home/under.png" class="img-responsive inline"
+							alt="">
 					</div>
 				</div>
-				<div class="col-md-3 col-sm-6">
-					<div class="contact-info bottom">
-						<h2>Contacts</h2>
-						<address>
-							E-mail: <a href="mailto:someone@example.com">email@email.com</a>
-							<br> Phone: +1 (123) 456 7890 <br> Fax: +1 (123) 456
-							7891 <br>
-						</address>
+				<div class="row">
+					<div class="col-md-4 col-sm-4">
+						<div class="contact-info bottom">
+							<h2>Contacts</h2>
+							<address>
+								E-mail: <a href="mailto:jungim0547@gmail.com">jungim0547@gmail.com</a>
+								<br> Phone: 1566-5114 <br>
+							</address>
 
-						<h2>Address</h2>
-						<address>
-							Unit C2, St.Vincent's Trading Est., <br> Feeder Road, <br>
-							Bristol, BS2 0UY <br> United Kingdom <br>
-						</address>
+							<h2>Address</h2>
+							<address>
+								513 COEX office<br> Korea International Trade Association,
+								<br> Yeongdong-daero, <br> Gangnam-gu, <br> Seoul
+								<br>
+							</address>
+						</div>
+					</div>
+					<div class="col-md-8 col-sm-8">
+						<iframe width="100%" height="300" frameborder="0" scrolling="no"
+							marginheight="0"
+							src="https://maps.google.com/maps?q=coex&t=&z=13&ie=UTF8&iwloc=&output=embed"
+							marginwidth="0"> </iframe>
 					</div>
 				</div>
-				<div class="col-md-4 col-sm-12">
+				<!-- <div class="col-md-4 col-sm-12">
 					<div class="contact-form bottom">
 						<h2>Send a message</h2>
 						<form id="main-contact-form" name="contact-form" method="post"
-							action="sendemail.php">
+							action="MAILTO:jungim0547@gmail.com">
 							<div class="form-group">
 								<input type="text" name="name" class="form-control"
 									required="required" placeholder="Name">
@@ -804,12 +706,17 @@
 							</div>
 						</form>
 					</div>
-				</div>
+						<div id="map-container">
+						<h2 class="page-header">Google Map</h2>
+						<div id="gmap"></div>
+					</div>
+					/#map-container
+				</div> -->
 				<div class="col-sm-12">
 					<div class="copyright-text text-center">
-						<p>&copy; Your Company 2014. All Rights Reserved.</p>
+						<p>Copyright &copy; SC IT MASTER</p>
 						<p>
-							Designed by <a target="_blank" href="http://www.themeum.com">Themeum</a>
+							Designed by C class 3Group</a>
 						</p>
 					</div>
 				</div>
@@ -817,7 +724,6 @@
 		</div>
 	</footer>
 	<!--/#footer-->
-
 
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>

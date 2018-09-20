@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Blog Masonry | Triangle</title>
+<title>Japanese | POFT</title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/font-awesome.min.css" rel="stylesheet">
 <link href="css/lightbox.css" rel="stylesheet">
@@ -117,6 +117,8 @@
 						<li class="dropdown"><a href="#">Page <i
 								class="fa fa-angle-down"></i></a>
 							<ul role="menu" class="sub-menu">
+								<li><a href="j_test">Japanese Test</a></li>
+								<li><a href="it_test">Coding Test</a></li>
 
 								<li><a href="japanese_fairy">Japanese Fairy</a></li>
 								<li><a href="coding_puzzle">Coding Puzzle</a></li>
@@ -130,8 +132,7 @@
 						<!-- 회원 로그인 후-->
 						<c:if test="${sessionScope.loginid != null}">
 
-							<li class="dropdown"><a href="#">MyPage <i
-									class="fa fa-angle-down"></i></a>
+							<li class="dropdown"><a href="#">MyPage <i class="fa fa-angle-down"></i></a>
 								<ul role="menu" class="sub-menu">
 									<li><a href="my_info_detail">My Infomation</a></li>
 									<li><a href="#">Learning Page</a></li>
@@ -284,12 +285,36 @@
 							<span></span>
 						</nav>
 					</li>
+					<li>
+						<h3>중급동화 4</h3>
+						<div class="bb-bookblock">
+							<div class="bb-item">
+								<a href="#"><img src="images/demo3/1.jpg" alt="image01" /></a>
+							</div>
+							<div class="bb-item">
+								<a href="#"><img src="images/demo3/2.jpg" alt="image02" /></a>
+							</div>
+							<div class="bb-item">
+								<a href="#"><img src="images/demo3/3.jpg" alt="image03" /></a>
+							</div>
+							<div class="bb-item">
+								<a href="#"><img src="images/demo3/4.jpg" alt="image04" /></a>
+							</div>
+							<div class="bb-item">
+								<a href="#"><img src="images/demo3/5.jpg" alt="image05" /></a>
+							</div>
+						</div>
+						<nav>
+							<span class="bb-current"></span> <span></span> <span></span> <span></span>
+							<span></span>
+						</nav>
+					</li>
 				</ul>
 			</div>
 		</div>
 	<!-- /페이지 넘기기 -->
 
-	<div class="col-md-9 col-sm-9" style="padding-top: 70px">
+<!-- 	<div class="col-md-9 col-sm-9" style="padding-top: 70px">
 		<section id="grid" class="grid clearfix cross-1">
 
 			<a href="#" data-path-hover="m 180,34.57627 -180,0 L 0,0 180,0 z"
@@ -330,7 +355,7 @@
 				</figure>
 			</a>
 		</section>
-	</div>
+	</div> -->
 	<!--/Japanese Fairy animation-->
 
 	<!-- footer -->

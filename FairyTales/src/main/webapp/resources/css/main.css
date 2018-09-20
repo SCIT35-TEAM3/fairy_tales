@@ -504,6 +504,7 @@ scale
 	border-bottom: 3px solid #a56617;
 	box-shadow: none;
 	padding: 10px;
+	width: 170px;
 }
 
 .btn-submit:hover, .btn-submit:focus {
@@ -1143,6 +1144,7 @@ ul.elements li>i {
 	padding: 5px 10px;
 	border-radius: 5px;
 	border: 1px solid #fff;
+	padding-bottom: 7px;
 }
 
 .pagination li:first-child a {
@@ -2595,4 +2597,6 @@ span.stMainServices, span.stButton_gradient, .stButton .chicklets {
 #user_id_form{
 	padding-top: 17px;  
 	color: #a5732a;
+	padding-left: 15px;
+  /*   padding-right: 15px; */
 }
