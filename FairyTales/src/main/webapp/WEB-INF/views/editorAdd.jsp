@@ -187,83 +187,19 @@
 						<div class="user-data m-b-30">
 							<div class="sidebar blog-sidebar">
 								<div class="sidebar-item  recent">
-									<h3>동화 리스트</h3>
-									<table class="table text-center">
-										<thead>
-											<tr>
-												<td class="col-sm-1 col-md-1">동화번호</td>
-												<td class="col-sm-1 col-md-1">분류</td>
-												<td class="col-sm-1 col-md-1">레벨</td>
-												<td class="col-sm-6 col-md-6">동화명</td>
-												<td class="col-sm-1 col-md-1">총챕터수</td>
-												<td class="col-sm-2 col-md-2"></td>
-											</tr>
-										</thead>
-										<%--게시판--%>
-										<tbody>
-											<c:if test="${empty fairytales}">
-												<tr>
-													<td colspan="6">
-														등록된 동화가 없습니다.
-													</td>
-												</tr>
-											</c:if>
-											<c:if test="${!empty fairytales}">
-												<c:forEach items="${fairytales}" var="fairy">
-													<tr>
-														<td class="fpk"><c:out value="${fairy.fairy_pk}" /></td>
-														<td	class="fcode"><c:out value="${fairy.fairy_code}" /></td>
-														<td class="flevel"><c:out value="${fairy.fairy_level}" /></td>
-														<td class="fname"><a href="#"><c:out value="${fairy.fairy_name}" /></a></td>
-														<td class="fchapter"><c:out value="${fairy.fairy_chapter}" /></td>
-														<td>
-														<a href="#layer2" class="btn-popup"><i class="fa fa-wrench"></i>&nbsp;&nbsp;MODIFY</a>
-														</td>
-													</tr>
-												</c:forEach>
-											</c:if>
-										</tbody>
-										<tfoot>
-											<tr>
-												<td colspan="6" ></td>
-											</tr>
-										</tfoot>
-									</table>
-
-									<div class="user-data__footer" align="center">
-										<%-- 새로등록 --%>
-										<a href="#layer1" class="btn btn-submit btn-popup">Register</a>
+									<!-- <h3>동화 챕터 추가</h3> -->
+									<div id="chapter">
+										<div class="col-sm-12 text-center">
+											<img src="images/addChapter.png" class="margin-bottom" alt="">
+											<h1 class="margin-bottom">About Our Company</h1>
+											<p>Pork chop duis eu pig, labore sausage venison. Shankle fugiat duis, filet mignon tri-tip venison beef shank ribeye<br> aliqua cillum dolore sed do in.</p>
+										</div>
+										<div class="col-sm-12 text-center">
+											<img src="images/aboutus/5.png" class="margin-bottom" alt="">
+											<h1 class="margin-bottom">About Our Company</h1>
+											<p>Pork chop duis eu pig, labore sausage venison. Shankle fugiat duis, filet mignon tri-tip venison beef shank ribeye<br> aliqua cillum dolore sed do in.</p>
+										</div>
 									</div>
-									<c:if test="${sessionScope.user_level eq '1'}">
-									</c:if>
-									<%--<<<페이징>>>
-									<div class="blog-pagination">
-										<ul class="pagination">
-											<li><a
-												href="board_1to1?currentPage=${navi.currentPage - navi.pagePerGroup}&searchItem=${searchItem}&searchWord=${searchWord}">◁</a></li>
-											<li><a
-												href="board_1to1?currentPage=${navi.currentPage-1}&searchItem=${searchItem}&searchWord=${searchWord}">◁</a></li>
-
-											<c:forEach var="page" begin="${navi.startPageGroup}"
-												end="${navi.totalPageCount}">
-
-												<c:if test="${page==currentPage}">
-													<li class="active">${page}</li>&nbsp;
-												</c:if>
-
-												<c:if test="${page!=currentPage}">
-													<li><a
-														href="board_1to1?currentPage=${page}&searchItem=${searchItem}&searchWord=${searchWord}">${page}
-													</a></li>&nbsp;
-												</c:if>
-											</c:forEach>
-											<li><a
-												href="board_1to1?currentPage=${navi.currentPage+1}&searchItem=${searchItem}&searchWord=${searchWord}">▷</a></li>
-											<li><a
-												href="board_1to1?currentPage=${navi.currentPage+navi.pagePerGroup}&searchItem=${searchItem}&searchWord=${searchWord}">▷▷</a></li>
-										</ul>
-									</div>
-									--%>
 								</div>
 							</div>
 						</div>
