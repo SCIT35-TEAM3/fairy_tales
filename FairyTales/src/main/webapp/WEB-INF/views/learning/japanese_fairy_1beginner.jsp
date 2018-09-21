@@ -283,6 +283,30 @@
 							<span></span>
 						</nav>
 					</li>
+					<li>
+						<h3>초급동화 3</h3>
+						<div class="bb-bookblock">
+							<div class="bb-item">
+								<a href="#"><img src="images/demo3/1.jpg" alt="image01" /></a>
+							</div>
+							<div class="bb-item">
+								<a href="#"><img src="images/demo3/2.jpg" alt="image02" /></a>
+							</div>
+							<div class="bb-item">
+								<a href="#"><img src="images/demo3/3.jpg" alt="image03" /></a>
+							</div>
+							<div class="bb-item">
+								<a href="#"><img src="images/demo3/4.jpg" alt="image04" /></a>
+							</div>
+							<div class="bb-item">
+								<a href="#"><img src="images/demo3/5.jpg" alt="image05" /></a>
+							</div>
+						</div>
+						<nav>
+							<span class="bb-current"></span> <span></span> <span></span> <span></span>
+							<span></span>
+						</nav>
+					</li>
 				</ul>
 			</div>
 		</div>
