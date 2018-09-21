@@ -215,7 +215,7 @@
 						<h3>신데렐라</h3>
 						<div class="bb-bookblock">
 							<div class="bb-item">
-								<a href="cendrillon_screen1" onClick="window.open(this.href, '', 'width=1120, height=630, top=30%,left=30%'); return false;"><img src="images/demo3/1.jpg" alt="image01" /></a>
+								<a href="cendrillon_screen1"  onClick="window.open(this.href, '', 'width=1120, height=630, top=30%,left=30%'); return false;"><img src="images/demo3/1.jpg" alt="image01" /></a>
 							</div>
 							<div class="bb-item">
 								<a href="#"><img src="images/demo3/2.jpg" alt="image02" /></a>
