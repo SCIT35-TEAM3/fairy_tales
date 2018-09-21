@@ -8,13 +8,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>1:1 CustomerBoard | POFT</title>
+<title>Blog Masonry | Triangle</title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/font-awesome.min.css" rel="stylesheet">
 <link href="css/lightbox.css" rel="stylesheet">
 <link href="css/animate.min.css" rel="stylesheet">
 <link href="css/main.css" rel="stylesheet">
 <link href="css/responsive.css" rel="stylesheet">
+<link href="css/component.css" rel="stylesheet">
+<!-- <link href="css/demo.css" rel="stylesheet"> -->
+<link href="css/normalize.css" rel="stylesheet">
+<link href="css/animate.min.css" rel="stylesheet">
+<script type="text/javascript" src="js/snap.svg-min.js"></script>
+<script type="text/javascript" src="js/anime.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script> 
+
 
 <!--[if lt IE 9]>
 	    <script src="js/html5shiv.js"></script>
@@ -29,29 +37,37 @@
 	href="images/ico/apple-touch-icon-72-precomposed.png">
 <link rel="apple-touch-icon-precomposed"
 	href="images/ico/apple-touch-icon-57-precomposed.png">
+
+<!-- 팝업창 css -->
+<style>
+#popupDiv { /* 팝업창 css */
+	top: 0px;
+	position: absolute;
+	background-image: url("resources/images/배경.png");
+	width: 1200px;
+	height: 800px;
+	display: none;
+}
+
+#popup_mask { /* 팝업 배경 css */
+	position: fixed;
+	width: 100%;
+	height: 1000px;
+	top: 0px;
+	right: 0px;
+	display: none;
+	background-color: #000;
+	opacity: 0.8;	
+}
+
+#popCloseBtn{
+
+}
+</style>
+<!-- /팝업창 css -->
+
 </head>
 <!--/head-->
-<!-- script -->
-<script src="resources/jquery-3.3.1.min.js"></script>
-<script type="text/javascript">
-	function formCheck() {
-		var titie = document.getElementById("title");
-		var content = document.getElementById("text");
-
-		if (title.value == "") {
-			alert("제목을 입력해주세요.");
-			title.focus();
-			return false;
-		}
-		if (content.value == "") {
-			alert("내용을 입력해주세요.");
-			content.focus();
-			return false;
-		}
-		return true;
-	}
-</script>
-<!-- /script -->
 
 <body>
 <!--header-->
@@ -92,17 +108,14 @@
                         <li class="dropdown"><a href="#">Page <i class="fa fa-angle-down"></i></a>
                             <ul role="menu" class="sub-menu">
                             
-								<li><a href="j_test">Japanese Test</a></li>
-									<li><a href="it_test">Coding Test</a></li>
-                            
                             	<li><a href="japanese_fairy">Japanese Fairy</a></li>
                                 <li><a href="coding_puzzle">Coding Puzzle</a></li>
                             </ul>
                         </li>                    
-                        <li class="active" class="dropdown"><a href="#">Board<i class="fa fa-angle-down"></i></a>
+                        <li class="dropdown"><a href="#">Board<i class="fa fa-angle-down"></i></a>
                             <ul role="menu" class="sub-menu">
                                 <li><a href="board_list">Notice</a></li>
-                                <li class="active"><a href="board_1to1">1:1 Customer Board</a></li>
+                                <li><a href="board_1to1">1:1 CustomerBoard</a></li>
                             </ul>
                         </li>
                         <!-- 회원 로그인 후-->
@@ -115,7 +128,7 @@
                                 <li><a href="my_chart_page">My Chart</a></li>
                             </ul>
                         </li>
-                        <li><div id="user_id_form">${sessionScope.loginid}님,</div></li>
+                        <li><div>${sessionScope.loginid}</div></li>
                         <li><a href="logout">Logout</a></li>
 						</c:if>
 						<!-- 로그인 전  -->
@@ -139,179 +152,100 @@
 				<div class="row">
 					<div class="action">
 						<div class="col-sm-12">
-							<h1 class="title">1:1 CustomerBoard</h1>
-							<p>write</p>
+							<h1 class="title">Japanese Fairy</h1>
+
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
+	<!--/#action-->
+	
+	
+	
+	<div>
+	<!-- 	<button id="popOpenBtn">Popup Open</button>-->
+		<div id="popup_mask"></div>
+		<!-- 팝업 배경 DIV -->
 
-	<!--/#page-breadcrumb-->
-
-	<section id="blog" class="padding-top">
-		<div class="container">
-
-			<div class="col-md-9 col-sm-7">
-				<div class="row">
-					<!-- Notice Board -->
-					<div class="col-sm-12 col-md-12">
-						<div class="user-data m-b-30">
-
-							<div class="sidebar blog-sidebar">
-								<div class="sidebar-item  recent">
-									<h3>1:1 문의</h3>
-
-									<form action="write" method="post" id="form"
-										enctype="multipart/form-data">
-										<input name="user_id" value="${sessionScope.loginid}"
-											type="hidden"> 
-										<table class="table">
-											<thead>
-												<tr>
-													<th>글 제목</th>
-													<td><input type="text" name="title"
-														class="form-control" id="title"></td>
-												</tr>
-											</thead>
-
-											<tbody>
-												<tr>
-													<th>내용</th>
-													<td><textarea rows="15" cols="80" class="form-control"
-															name="text" id="text"></textarea></td>
-												</tr>
-												<tr>
-													<th scope="row">첨부파일</th>
-													<td> <input type="file" id="file" name="upload"
-														 class="btn btn-default">
-
-														<div class="margin_top10 font_11">
-															* 이미지 파일만 첨부가능합니다. (jpg, gif, bmp, png 형식만 가능)<br>
-															* 파일 첨부시 개인정보가 포함되지 않도록 주의해 주세요.<br>
-														</div></td>
-												</tr>
-												<tr>
-													<th><label for="secret" class="txt">비밀글</label></th>
-													<td><div class="secret">
-															<input type="checkbox" id="secret" name="secret"
-																class="check">
-														</div></td>
-												</tr>
-
-											</tbody>
-										</table>
-
-
-										<div class="user-data__footer" align="center">
-											<button type="submit" class="btn btn-submit"
-												onclick="return formCheck()">Ok</button>
-											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-											<button type="reset" class="btn btn-submit">Cancel</button>
-										</div>
-
-									</form>
-								</div>
-							</div>
-						</div>
-						<!-- /Notice Board -->
-					</div>
-				</div>
-			</div>
-
-
-			<div class="col-md-3 col-sm-5">
-				<div class="sidebar blog-sidebar">
-					<div class="sidebar-item  recent">
-						<h3>Comments</h3>
-						<div class="media">
-							<div class="pull-left">
-								<a href="#"><img src="images/portfolio/project1.jpg" alt=""></a>
-							</div>
-							<div class="media-body">
-								<h4>
-									<a href="#">Lorem ipsum dolor sit amet consectetur
-										adipisicing elit,</a>
-								</h4>
-								<p>posted on 07 March 2014</p>
-							</div>
-						</div>
-						<div class="media">
-							<div class="pull-left">
-								<a href="#"><img src="images/portfolio/project2.jpg" alt=""></a>
-							</div>
-							<div class="media-body">
-								<h4>
-									<a href="#">Lorem ipsum dolor sit amet consectetur
-										adipisicing elit,</a>
-								</h4>
-								<p>posted on 07 March 2014</p>
-							</div>
-						</div>
-						<div class="media">
-							<div class="pull-left">
-								<a href="#"><img src="images/portfolio/project3.jpg" alt=""></a>
-							</div>
-							<div class="media-body">
-								<h4>
-									<a href="#">Lorem ipsum dolor sit amet consectetur
-										adipisicing elit,</a>
-								</h4>
-								<p>posted on 07 March 2014</p>
-							</div>
-						</div>
-					</div>
-					<div class="sidebar-item categories">
-						<h3>Categories</h3>
-						<ul class="nav navbar-stacked">
-							<li><a href="#">Lorem ipsum<span class="pull-right">(1)</span></a></li>
-							<li class="active"><a href="#">Dolor sit amet<span
-									class="pull-right">(8)</span></a></li>
-							<li><a href="#">Adipisicing elit<span class="pull-right">(4)</span></a></li>
-							<li><a href="#">Sed do<span class="pull-right">(9)</span></a></li>
-							<li><a href="#">Eiusmod<span class="pull-right">(3)</span></a></li>
-							<li><a href="#">Mockup<span class="pull-right">(4)</span></a></li>
-							<li><a href="#">Ut enim ad minim <span
-									class="pull-right">(2)</span></a></li>
-							<li><a href="#">Veniam, quis nostrud <span
-									class="pull-right">(8)</span></a></li>
-						</ul>
-					</div>
-					<div class="sidebar-item tag-cloud">
-						<h3>Tag Cloud</h3>
-						<ul class="nav nav-pills">
-							<li><a href="#">Corporate</a></li>
-							<li><a href="#">Joomla</a></li>
-							<li><a href="#">Abstract</a></li>
-							<li><a href="#">Creative</a></li>
-							<li><a href="#">Business</a></li>
-							<li><a href="#">Product</a></li>
-						</ul>
-					</div>
-					<div class="sidebar-item popular">
-						<h3>Latest Photos</h3>
-						<ul class="gallery">
-							<li><a href="#"><img src="images/portfolio/popular1.jpg"
-									alt=""></a></li>
-							<li><a href="#"><img src="images/portfolio/popular2.jpg"
-									alt=""></a></li>
-							<li><a href="#"><img src="images/portfolio/popular3.jpg"
-									alt=""></a></li>
-							<li><a href="#"><img src="images/portfolio/popular4.jpg"
-									alt=""></a></li>
-							<li><a href="#"><img src="images/portfolio/popular5.jpg"
-									alt=""></a></li>
-							<li><a href="#"><img src="images/portfolio/popular1.jpg"
-									alt=""></a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
+		<div id="popupDiv" align="right">
+			<!-- 팝업창 -->
+			<button id="popCloseBtn">close</button>
 		</div>
-	</section>
-	<!--/#blog-->
+	</div>
+	<!-- /팝업창  -->
+	
+	<div class="col-md-3 col-sm-3">
+		<section id="projects" class="padding-top">
+			<div class="container">
+				<div class="row" style="padding-left: 200px">
+					<div class="col-md-3 col-sm-4" >
+						<div class="sidebar portfolio-sidebar">
+							<div class="sidebar-item categories">
+								<h3>Fairy Level</h3>
+								<ul class="nav navbar-stacked">
+									<li><a href="#">초급<span class="pull-right">(4)</span></a></li>
+									<li><a href="#">중급<span class="pull-right">(9)</span></a></li>
+									<li><a href="#">고급<span class="pull-right">(3)</span></a></li>
+									
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+	<!--/Fairy Level sidebar-->
 
+	<div class="col-md-9 col-sm-9" style="padding-top: 70px">
+		<section id="grid" class="grid clearfix cross-1">
+		<!-- 초급 -->
+			<a href="#" data-path-hover="m 180,34.57627 -180,0 L 0,0 180,0 z" class="popOpen">
+				<figure>
+					<img src="images/img/1.png" />
+					<svg viewBox="0 0 180 320" preserveAspectRatio="none">
+						<path d="M 180,160 0,218 0,0 180,0 z" /></svg>
+					<figcaption>
+						<h2>초급</h2>
+						<p>장갑</p>
+						<button >View</button>
+					</figcaption>
+				</figure>
+			</a> <!-- /초급 -->
+	
+			<!-- 중급 -->
+			<a href="#" data-path-hover="m 180,34.57627 -180,0 L 0,0 180,0 z" class="popOpen">
+				<figure>
+					<img src="images/img/2.png" />
+					<svg viewBox="0 0 180 320" preserveAspectRatio="none">
+						<path d="M 180,160 0,218 0,0 180,0 z" /></svg>
+					<figcaption>
+						<h2>중급</h2>
+						<p>신데렐라</p>
+						<button>View</button>
+					</figcaption>
+				</figure>
+			</a><!-- /중급 -->
+	
+			<!-- 고급 -->			
+			<a href="#" data-path-hover="m 180,34.57627 -180,0 L 0,0 180,0 z" class="popOpen">
+				<figure>
+					<img src="images/img/1.png" />
+					<svg viewBox="0 0 180 320" preserveAspectRatio="none">
+						<path d="M 180,160 0,218 0,0 180,0 z" /></svg>
+					<figcaption>
+						<h2>고급</h2>
+						<p>장화신은 고양이</p>
+						<button>View</button>
+					</figcaption>
+				</figure>
+			</a><!-- /고급 -->	
+		</section>
+	</div>
+	<!--/Japanese Fairy animation-->
+	
 <!-- footer -->
     <footer id="footer">
         <div class="container">
@@ -391,6 +325,81 @@
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/lightbox.min.js"></script>
 	<script type="text/javascript" src="js/wow.min.js"></script>
-	<script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript" src="js/audio.min.js"></script>
+	<script>
+		audiojs.events.ready(function() {
+			var as = audiojs.createAll();
+		});
+	</script>
+	<script type="text/javascript" src="js/masonry.min.js"></script>
+	<script type="text/javascript" src="js/hovers.js"></script>
+	<script type="text/javascript" src="js/main1.js"></script>
+
+	<script>
+		(function() {
+
+			function init() {
+				var speed = 250, easing = mina.easeinout;
+
+				[].slice.call(document.querySelectorAll('#grid > a')).forEach(
+						function(el) {
+							var s = Snap(el.querySelector('svg')), path = s
+									.select('path'), pathConfig = {
+								from : path.attr('d'),
+								to : el.getAttribute('data-path-hover')
+							};
+
+							el.addEventListener('mouseenter', function() {
+								path.animate({
+									'path' : pathConfig.to
+								}, speed, easing);
+							});
+
+							el.addEventListener('mouseleave', function() {
+								path.animate({
+									'path' : pathConfig.from
+								}, speed, easing);
+							});
+						});
+			}
+
+			init();
+
+		})();
+	</script>
+	
+	<!-- 팝업창 스크립트 -->
+	 <script>
+    
+    $(document).ready(function(){
+        
+        $(".popOpen").click(function(event){  //팝업 Open 버튼 클릭 시 
+ 
+             $("#popupDiv").css({
+                "top": (($(window).height()-$("#popupDiv").outerHeight())/2+$(window).scrollTop())+"px",
+                "left": (($(window).width()-$("#popupDiv").outerWidth())/2+$(window).scrollLeft())+"px"
+                //팝업창을 가운데로 띄우기 위해 현재 화면의 가운데 값과 스크롤 값을 계산하여 팝업창 CSS 설정
+             
+             }); 
+             $("#popupDiv").css({"zIndex":13});
+
+            $("#popup_mask").css("display","block"); //팝업 뒷배경 display block
+            $("#popupDiv").css("display","block"); //팝업창 display block
+            
+            $("body").css("overflow","hidden");//body 스크롤바 없애기
+        });
+        
+        //
+        $("#popCloseBtn").click(function(event){
+            $("#popup_mask").css("display","none"); //팝업창 뒷배경 display none
+            $("#popupDiv").css("display","none"); //팝업창 display none
+            $("body").css("overflow","auto");//body 스크롤바 생성
+
+        });
+    });
+ 
+ 
+    </script><!-- /팝업창 스크립트 -->
+
 </body>
 </html>

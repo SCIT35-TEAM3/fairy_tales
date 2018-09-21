@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+body{
+	margin: 0px;
+	padding: 0px;
+}
+
+#background{
+	background-size : contain;
+	background-position : center;
+	background-origin : content-box;
+	position: absolute;
+	width: 100%; 
+	height:  100%;
+	display: none;
+}
+
+#background_around{
+	background-size : contain;
+	background-position : center;
+	background-origin : content-box;
+	position: absolute;
+	width: 100%; 
+	height:  100%;
+	display: none;
+}
+
+#script_around{
+	position:absolute;
+	width : 80%;
+	height: 80%;
+	top	: -10%;
+	left : 8%;
+	display: none;
+}
+

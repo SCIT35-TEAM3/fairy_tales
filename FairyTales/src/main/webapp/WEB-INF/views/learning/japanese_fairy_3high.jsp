@@ -114,19 +114,18 @@
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="./">Home</a></li>
-						<li class="dropdown"><a href="#">Page <i
-								class="fa fa-angle-down"></i></a>
+						<li class="active" class="dropdown"><a href="#">Page <i class="fa fa-angle-down"></i></a>
 							<ul role="menu" class="sub-menu">
 								<li><a href="j_test">Japanese Test</a></li>
 								<li><a href="it_test">Coding Test</a></li>
 
-								<li><a href="japanese_fairy">Japanese Fairy</a></li>
+								<li class="active"><a href="japanese_fairy">Japanese Fairy</a></li>
 								<li><a href="coding_puzzle">Coding Puzzle</a></li>
 							</ul></li>
 						<li class="dropdown"><a href="#">Board<i class="fa fa-angle-down"></i></a>
 							<ul role="menu" class="sub-menu">
 								<li><a href="board_list">Notice</a></li>
-								<li><a href="board_1to1">1:1 CustomerBoard</a></li>
+								<li><a href="board_1to1">1:1 Customer Board</a></li>
 							</ul></li>
 						<!-- 회원 로그인 후-->
 						<c:if test="${sessionScope.loginid != null}">
@@ -213,10 +212,10 @@
 			<div class="main clearfix">
 				<ul class="bb-custom-grid" id="bb-custom-grid">
 					<li>
-						<h3>고급동화 1</h3>
+						<h3>신데렐라</h3>
 						<div class="bb-bookblock">
 							<div class="bb-item">
-								<a href="#"><img src="images/demo3/1.jpg" alt="image01" /></a>
+								<a href="cendrillon_screen1"  onClick="window.open(this.href, '', 'width=1120, height=630, top=30%,left=30%'); return false;"><img src="images/demo3/1.jpg" alt="image01" /></a>
 							</div>
 							<div class="bb-item">
 								<a href="#"><img src="images/demo3/2.jpg" alt="image02" /></a>

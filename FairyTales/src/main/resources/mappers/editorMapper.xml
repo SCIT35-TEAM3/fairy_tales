@@ -37,4 +37,16 @@
 			)
 	</insert>
 	
+	<update id="update_editor" parameterType="Fairytales">
+	UPDATE FAIRYTALES
+	   SET FAIRY_NAME		=	#{fairy_name}
+		  ,FAIRY_CODE		=	#{fairy_code}
+		  ,FAIRY_LEVEL		=	#{fairy_level}
+	 WHERE FAIRY_PK			=	#{fairy_pk}
+	</update>
+	
+	<delete id="delete_editor" parameterType="Integer">
+	DELETE FROM FAIRYTALES WHERE FAIRY_PK = #{fairy_pk}
+	</delete>
+	
 </mapper>

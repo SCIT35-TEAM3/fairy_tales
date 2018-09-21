@@ -93,16 +93,16 @@ function formCheck(){
                                 <li><a href="coding_puzzle">Coding Puzzle</a></li>
                             </ul>
                         </li>                    
-                        <li class="dropdown"><a href="#">Board<i class="fa fa-angle-down"></i></a>
+                        <li class="active" class="dropdown"><a href="#">Board<i class="fa fa-angle-down"></i></a>
                             <ul role="menu" class="sub-menu">
-                                <li><a href="board_list">Notice</a></li>
-                                <li><a href="board_1to1">1:1 CustomerBoard</a></li>
+                                <li class="active"><a href="board_list">Notice</a></li>
+                                <li><a href="board_1to1">1:1 Customer Board</a></li>
                             </ul>
                         </li>
                         <!-- 회원 로그인 후-->
 						<c:if test="${sessionScope.loginid != null}">
 						
-                        <li class="dropdown"><a href="#">MyPage <i class="fa fa-angle-down"></i></a>
+                        <li class="dropdown"><a href="#">My Page <i class="fa fa-angle-down"></i></a>
                             <ul role="menu" class="sub-menu">
                                 <li><a href="my_info_detail">My Infomation</a></li>
                                 <li><a href="portfoliofour.html">Learning Page</a></li>
