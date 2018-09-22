@@ -31,6 +31,7 @@ public class ReplyController {
 	@ResponseBody
 	@RequestMapping(value = "reply_write", method = RequestMethod.POST)
 	public Integer insert_reply(@RequestBody Reply_1to1 reply_1to1) {
+		reply_1to1.setReply_title("aaa");
 		return repository.insert_reply_1to1(reply_1to1);
 
 	}

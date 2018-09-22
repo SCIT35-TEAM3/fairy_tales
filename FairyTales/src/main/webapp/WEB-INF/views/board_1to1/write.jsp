@@ -32,6 +32,64 @@
 </head>
 <!--/head-->
 <!-- script -->
+<style type="text/css">	
+	/* banner */
+	.banner {position:absolute; width: 210px; height: 510px; top: 50px;  margin:0 auto; padding:0; overflow: hidden;}
+	.banner ul {position: absolute; margin: 0px; padding:0; list-style: none; }
+	.banner ul li {float: left; width: 210px; height: 510px; margin:0; padding:0;}
+
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script >
+
+	$(document).ready(function() {
+		var $banner = $(".banner").find("ul");
+		
+
+		var $bannerWidth = $banner.children().outerWidth();//이미지의 폭
+		var $bannerHeight = $banner.children().outerHeight(); // 높이
+		var $length = $banner.children().length;//이미지의 갯수
+		var rollingId;
+
+		//정해진 초마다 함수 실행
+		rollingId = setInterval(function() { rollingStart(); }, 3000);//다음 이미지로 롤링 애니메이션 할 시간차
+    
+		function rollingStart() {
+			$banner.css("width", $bannerWidth * $length + "px");
+			$banner.css("height", $bannerHeight + "px");
+			//alert(bannerHeight);
+			//배너의 좌측 위치를 옮겨 준다.
+			$banner.animate({left: - $bannerWidth + "px"}, 1500, function() { //숫자는 롤링 진행되는 시간이다.
+				//첫번째 이미지를 마지막 끝에 복사(이동이 아니라 복사)해서 추가한다.
+				$(this).append("<li>" + $(this).find("li:first").html() + "</li>");
+				//뒤로 복사된 첫번재 이미지는 필요 없으니 삭제한다.
+				$(this).find("li:first").remove();
+				//다음 움직임을 위해서 배너 좌측의 위치값을 초기화 한다.
+				$(this).css("left", 0);
+				//이 과정을 반복하면서 계속 롤링하는 배너를 만들 수 있다.
+			});
+		}
+		var floatPosition = parseInt($("#banner").css('top'));
+		// 250px 이런식으로 가져오므로 여기서 숫자만 가져온다. parseInt( 값 );
+
+		$(window).scroll(function() {
+			// 현재 스크롤 위치를 가져온다.
+			var scrollTop = $(window).scrollTop();
+			var newPosition = scrollTop + floatPosition + "px";
+
+			/* 애니메이션 없이 바로 따라감
+			 $("#floatMenu").css('top', newPosition);
+			 */
+
+			$("#banner").stop().animate({
+				"top" : newPosition
+			}, 500);
+
+		}).scroll();
+	}); 
+
+</script>
 <script src="resources/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 	function formCheck() {
@@ -219,93 +277,31 @@
 					</div>
 				</div>
 			</div>
-
-
 			<div class="col-md-3 col-sm-5">
-				<div class="sidebar blog-sidebar">
-					<div class="sidebar-item  recent">
-						<h3>Comments</h3>
-						<div class="media">
-							<div class="pull-left">
-								<a href="#"><img src="images/portfolio/project1.jpg" alt=""></a>
-							</div>
-							<div class="media-body">
-								<h4>
-									<a href="#">Lorem ipsum dolor sit amet consectetur
-										adipisicing elit,</a>
-								</h4>
-								<p>posted on 07 March 2014</p>
-							</div>
-						</div>
-						<div class="media">
-							<div class="pull-left">
-								<a href="#"><img src="images/portfolio/project2.jpg" alt=""></a>
-							</div>
-							<div class="media-body">
-								<h4>
-									<a href="#">Lorem ipsum dolor sit amet consectetur
-										adipisicing elit,</a>
-								</h4>
-								<p>posted on 07 March 2014</p>
-							</div>
-						</div>
-						<div class="media">
-							<div class="pull-left">
-								<a href="#"><img src="images/portfolio/project3.jpg" alt=""></a>
-							</div>
-							<div class="media-body">
-								<h4>
-									<a href="#">Lorem ipsum dolor sit amet consectetur
-										adipisicing elit,</a>
-								</h4>
-								<p>posted on 07 March 2014</p>
-							</div>
+				<div class="sidebar blog-sidebar" style="width: 210px;">
+					<h3>Comments</h3>
+					<!-- /side bar _____________________________________________-->
+					<div class="contents">
+						<div class="banner">
+							<ul>
+								<li><img src="resources/images/leader.png" width="210"
+									height="510"></li>
+								<li><img
+									src="resources/images/0001.jpeg"
+									width="210px" height="510px"></li>
+								<li><img
+									src="resources/images/0002.jpeg"
+									width="210" height="510px"></li>
+								<li><img
+									src="resources/images/0003.jpeg"
+									width="210" height="510px"></li>
+								<li><img
+									src="resources/images/image4.jpg"
+									width="210" height="510"></li>
+							</ul>
 						</div>
 					</div>
-					<div class="sidebar-item categories">
-						<h3>Categories</h3>
-						<ul class="nav navbar-stacked">
-							<li><a href="#">Lorem ipsum<span class="pull-right">(1)</span></a></li>
-							<li class="active"><a href="#">Dolor sit amet<span
-									class="pull-right">(8)</span></a></li>
-							<li><a href="#">Adipisicing elit<span class="pull-right">(4)</span></a></li>
-							<li><a href="#">Sed do<span class="pull-right">(9)</span></a></li>
-							<li><a href="#">Eiusmod<span class="pull-right">(3)</span></a></li>
-							<li><a href="#">Mockup<span class="pull-right">(4)</span></a></li>
-							<li><a href="#">Ut enim ad minim <span
-									class="pull-right">(2)</span></a></li>
-							<li><a href="#">Veniam, quis nostrud <span
-									class="pull-right">(8)</span></a></li>
-						</ul>
-					</div>
-					<div class="sidebar-item tag-cloud">
-						<h3>Tag Cloud</h3>
-						<ul class="nav nav-pills">
-							<li><a href="#">Corporate</a></li>
-							<li><a href="#">Joomla</a></li>
-							<li><a href="#">Abstract</a></li>
-							<li><a href="#">Creative</a></li>
-							<li><a href="#">Business</a></li>
-							<li><a href="#">Product</a></li>
-						</ul>
-					</div>
-					<div class="sidebar-item popular">
-						<h3>Latest Photos</h3>
-						<ul class="gallery">
-							<li><a href="#"><img src="images/portfolio/popular1.jpg"
-									alt=""></a></li>
-							<li><a href="#"><img src="images/portfolio/popular2.jpg"
-									alt=""></a></li>
-							<li><a href="#"><img src="images/portfolio/popular3.jpg"
-									alt=""></a></li>
-							<li><a href="#"><img src="images/portfolio/popular4.jpg"
-									alt=""></a></li>
-							<li><a href="#"><img src="images/portfolio/popular5.jpg"
-									alt=""></a></li>
-							<li><a href="#"><img src="images/portfolio/popular1.jpg"
-									alt=""></a></li>
-						</ul>
-					</div>
+
 				</div>
 			</div>
 		</div>
@@ -317,7 +313,7 @@
         <div class="container">
             <div class="row">
             	<div class="row">
-	                <div class="col-sm-12 text-center bottom-separator"><br/><br/><br/><br/><br/><br/><br/><br/>
+	                <div class="col-sm-12 text-center bottom-separator"> 
 	                    <img src="images/home/under.png" class="img-responsive inline" alt="">
 	                </div>
                 </div>

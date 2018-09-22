@@ -282,13 +282,13 @@
 								<li><img src="resources/images/leader.png" width="210"
 									height="510"></li>
 								<li><img
-									src="resources/images/image2.png"
+									src="resources/images/0001.jpeg"
 									width="210px" height="510px"></li>
 								<li><img
-									src="resources/images/image3.jpg"
+									src="resources/images/0002.jpeg"
 									width="210" height="510px"></li>
 								<li><img
-									src="resources/images/black.png"
+									src="resources/images/0003.jpeg"
 									width="210" height="510px"></li>
 								<li><img
 									src="resources/images/image4.jpg"
