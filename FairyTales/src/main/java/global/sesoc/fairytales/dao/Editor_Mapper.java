@@ -14,8 +14,10 @@ public interface Editor_Mapper {
 	
 	//동화 넣기
 	public int insert_editor(Fairytales fairytales);
-	//동화 가져오기
+	//동화 가져오기 전체
 	public List<Fairytales> selectFairytales();
+	//동화 가져오기
+	public Fairytales selectFairytales(Fairytales fairy_pk);
 	//동화 수정
 	public int update_editor(Fairytales fairytales);
 	//동화 삭제

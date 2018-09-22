@@ -3,6 +3,7 @@ package global.sesoc.fairytales.controllers;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.lang.ProcessBuilder.Redirect;
 import java.util.List;
 
 import javax.imageio.ImageIO;
@@ -38,22 +39,29 @@ public class EditorController {
 	static final String FT_UPLOAD_PATH = "/FairyTales/";
 	
 	
-	//에디터 리스트
+	//동화 전체 리스트
 	@RequestMapping(value = "/editorList", method = RequestMethod.GET)
 	public String editorList(Model model) {
 		
 		List<Fairytales> fairytales = repository.selectFairytales();
-		System.out.println(fairytales);
 		model.addAttribute("fairytales", fairytales);
 		return "editorList";
 	}
 	
-	//에디터 리스트
+	//동화 챕터리스트 리스트
 	@RequestMapping(value = "/editorAdd", method = RequestMethod.GET)
-	public String editorAdd(Model model) {
+	public String editorAdd(Integer fpk, Model model) {
 		
-		List<Fairytales> fairytales = repository.selectFairytales();
-		System.out.println(fairytales);
+		//넘어온 pk가 없을경우
+		if(fpk == null) {
+			return "redirect:/editorList";
+		}
+		
+		Fairytales ft = new Fairytales();
+		ft.setFairy_pk(fpk);
+		Fairytales fairytales = repository.selectFairytales(ft);
+		System.out.println("fairytales : " + fairytales);
+
 		model.addAttribute("fairytales", fairytales);
 		return "editorAdd";
 	}

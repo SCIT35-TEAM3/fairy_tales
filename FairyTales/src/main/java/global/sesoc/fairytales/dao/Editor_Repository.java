@@ -25,11 +25,16 @@ public class Editor_Repository {
 		int result = mapper.insert_editor(fairytales);
 		return result;
 	}
-	
-	// 동화 전체 가져오기
+	// 동화 전체 가져오기 전체
 	public List<Fairytales> selectFairytales(){
 		Editor_Mapper mapper = session.getMapper(Editor_Mapper.class);
 		List<Fairytales> result = mapper.selectFairytales();
+		return result;
+	}
+	// 동화 전체 가져오기
+	public Fairytales selectFairytales(Fairytales fairy_pk){
+		Editor_Mapper mapper = session.getMapper(Editor_Mapper.class);
+		Fairytales result = mapper.selectFairytales(fairy_pk);
 		return result;
 	}
 	

@@ -188,17 +188,16 @@
 							<div class="sidebar blog-sidebar">
 								<div class="sidebar-item  recent">
 									<!-- <h3>동화 챕터 추가</h3> -->
-									<div id="chapter">
-										<div class="col-sm-12 text-center">
-											<img src="images/addChapter.png" class="margin-bottom" alt="">
-											<h1 class="margin-bottom">About Our Company</h1>
-											<p>Pork chop duis eu pig, labore sausage venison. Shankle fugiat duis, filet mignon tri-tip venison beef shank ribeye<br> aliqua cillum dolore sed do in.</p>
-										</div>
-										<div class="col-sm-12 text-center">
-											<img src="images/aboutus/5.png" class="margin-bottom" alt="">
-											<h1 class="margin-bottom">About Our Company</h1>
-											<p>Pork chop duis eu pig, labore sausage venison. Shankle fugiat duis, filet mignon tri-tip venison beef shank ribeye<br> aliqua cillum dolore sed do in.</p>
-										</div>
+									<div id="chapters">
+										<%-- <c:forEach item="${fairy_chapter}"> --%>
+										<c:forEach begin="1" end="${fairytales.fairy_chapter}" step="1" var="fNum">
+											<div class="col-sm-12 text-center">
+												<a href="editor" class="btn">
+													<img src="images/addChapter.png"  width="190px" height="215px" alt="챕터추가">
+													<h1 class="margin-bottom">챕터 <c:out value="${fNum}"/></h1>
+												</a>
+											</div>
+										</c:forEach>
 									</div>
 								</div>
 							</div>
@@ -208,10 +207,7 @@
 			</div>
 		</div>
 	</section>
-
-
 	<!--/#blog-->
-
 	<!-- footer -->
 	<footer id="footer">
 		<div class="container">
@@ -257,10 +253,6 @@
 			</div>
 		</div>
 	</footer>
-	
-	
-	
-	
 	<!-- 팝업 HTML -->
 	<div class="dim-layer">
 	    <div class="dimBg"></div>
@@ -340,8 +332,11 @@
 				var $href = $(this).attr('href');
 				layer_popup($href,$(this));
 			});
-			
-			$('#btnSubmit').click(function(){insertFt(); return false;});
+			/* 
+			$('#addChapter').click(function(){
+				alert("!");
+				return false;
+			}); */
 		});
 		
 		function layer_popup(el,$element){
@@ -401,27 +396,9 @@
 			});
 		};
 		
-		//저장 수정
-		function insertFt(){
-			var fpk	= $("#fpk").val();
-			var flevel = $("#flevel").val();
-			var fname = $("#fname").val();
-			var fchapter = $("#fchapter").val();
-			var fcode = $("#fcode").val();
-			
-			var parameter = {"fairy_level":flevel,"fairy_name":fname,"fairy_chapter":fchapter,"fairy_code":fcode,"fairy_pk":fpk};
-			
-			$.ajax({
-					  url		: "inFT"
-					, type		: "post"			
-					, data		: JSON.stringify(parameter)
-					, contentType	:	"application/json; charset=utf-8"
-					, dataType	: "text"
-					, success	: function (response) {
-						alert(response);
-						window.location.href='editorList';
-					}
-			});
+		//챕터추가
+		function addChapter(){
+			alert("클릭");
 		}
 		
 		//삭제

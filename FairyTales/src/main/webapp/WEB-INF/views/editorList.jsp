@@ -214,10 +214,10 @@
 														<td class="fpk"><c:out value="${fairy.fairy_pk}" /></td>
 														<td	class="fcode"><c:out value="${fairy.fairy_code}" /></td>
 														<td class="flevel"><c:out value="${fairy.fairy_level}" /></td>
-														<td class="fname"><a href="#"><c:out value="${fairy.fairy_name}" /></a></td>
+														<td class="fname"><a href="editorAdd?fpk=${fairy.fairy_pk}"><c:out value="${fairy.fairy_name}" /></a></td>
 														<td class="fchapter"><c:out value="${fairy.fairy_chapter}" /></td>
 														<td>
-														<a href="#layer2" class="btn-popup"><i class="fa fa-wrench"></i>&nbsp;&nbsp;MODIFY</a>
+															<a href="#layer2" class="btn-popup"><i class="fa fa-wrench"></i>&nbsp;&nbsp;MODIFY</a>
 														</td>
 													</tr>
 												</c:forEach>
@@ -282,8 +282,7 @@
 			<div class="row">
 				<div class="row">
 					<div class="col-sm-12 text-center bottom-separator">
-						<img src="images/home/under.png" class="img-responsive inline"
-							alt="">
+						<img src="images/home/under.png" class="img-responsive inline" alt="">
 					</div>
 				</div>
 				<div class="row">

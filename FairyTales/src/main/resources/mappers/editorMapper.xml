@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="global.sesoc.fairytales.dao.Editor_Mapper">
 
-	<select id="selectFairytales" resultType="Fairytales">
+	<select id="selectFairytales" resultType="Fairytales" parameterType="Fairytales">
 		SELECT 
 			 FAIRY_PK
 			,FAIRY_NAME
@@ -13,11 +13,14 @@
 			,FAIRY_POSITION
 			,FAIRY_LEVEL
 		FROM FAIRYTALES
+		<if test="fairy_pk != null">
+			WHERE FAIRY_PK = #{fairy_pk}
+		</if>
 		ORDER BY FAIRY_PK
 	</select>
 	
 	<insert id="insert_editor" parameterType="Fairytales">
-		<selectKey keyProperty="fairy_pk" resultType="integer" order="BEFORE">
+		<selectKey keyProperty="fairy_pk" resultType="Integer" order="BEFORE">
 			SELECT fairytales_seq.nextval FROM DUAL
 		</selectKey>
 	INSERT INTO FAIRYTALES (
