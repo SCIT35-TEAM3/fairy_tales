@@ -166,7 +166,6 @@
 													
 													<!-- 차트 1개 넓이는 450px -->
 													<div style="position: relative; height: 450px; width: 700px">
-													
 														<canvas id="fairyChart"></canvas>
 														<br> <br> <br> <br> <br> <br>
 													</div>
@@ -176,7 +175,12 @@
 														<!-- 오답률 -->
 														<canvas id="allWorngChart"></canvas>
 														<br> <br> <br> <br> <br> <br>
-														<canvas id="levelWorngChart"></canvas>
+														<canvas id="jpnLevelWorngChart"></canvas>
+														<br> <br> <br> <br> <br> <br>
+														<canvas id="javaLevelWorngChart"></canvas>
+													</div>
+													<div style="position: relative; height: 450px; width: 700px">
+
 													</div>
 													<div style="position: relative; height: 450px; width: 700px">
 														<!-- 출석률 -->
@@ -290,15 +294,13 @@
 				backgroundColor : 'rgba(255,99,132,0.2)',
 				borderColor : 'rgba(255,99,132,1)',
 				borderWidth : 1,
-				data : [ 9, 7 ]
-			//진행한 챕터수 data에 들어갈 값들은 쿼리에서 계산해서 꽂아주기
+				data : [ ${jpnProgressed}, ${javaProgressed} ]
 			}, {
 				label : '미진행 챕터',
 				backgroundColor : 'rgba(54, 162, 235, 0.2)',
 				borderColor : 'rgba(54, 162, 235, 1)',
 				borderWidth : 1,
-				data : [ 36 - 9, 36 - 7 ]
-			//전체 챕터수 - 미진행 챕터수
+				data : [ ${jpnChapter}-${jpnProgressed}, ${javaChapter}-${javaProgressed} ]
 			} ]
 		},
 		options : {
@@ -340,13 +342,13 @@
 				backgroundColor : 'rgba(255,99,132,0.2)',
 				borderColor : 'rgba(255,99,132,1)',
 				borderWidth : 1,
-				data : [ 2, 4, 6 ]
+				data : [ ${jpnLevelProgress[0]}, ${jpnLevelProgress[1]}, ${jpnLevelProgress[2]} ]
 			}, {
 				label : 'JAVA',
 				backgroundColor : 'rgba(54, 162, 235, 0.2)',
 				borderColor : 'rgba(54, 162, 235, 1)',
 				borderWidth : 1,
-				data : [ 9 - 2, 12 - 4, 15 - 6 ]
+				data : [ ${javaLevelProgress[0]}, ${javaLevelProgress[1]}, ${javaLevelProgress[2]} ]
 			} ]
 		},
 		options : {
@@ -384,13 +386,13 @@
 				backgroundColor : 'rgba(255,99,132,0.2)',
 				borderColor : 'rgba(255,99,132,1)',
 				borderWidth : 1,
-				data : [ 2, 1, 3 ]
+				data : [ ${jpnFairyProgress[0]}, ${jpnFairyProgress[1]}, ${jpnFairyProgress[2]} ]
 			}, {
 				label : '자바학습',
 				backgroundColor : 'rgba(54, 162, 235, 0.2)',
 				borderColor : 'rgba(54, 162, 235, 1)',
 				borderWidth : 1,
-				data : [ 2, 3, 5 ]
+				data : [ ${javaFairyProgress[0]}, ${javaFairyProgress[1]}, ${javaFairyProgress[2]} ]
 			} ]
 		},
 		options : {
@@ -417,26 +419,24 @@
 		}
 	});
 
-	//전체 오답률
+	//일본어 오답률
 	var ctx = document.getElementById("allWorngChart");
 	var allWorngChart = new Chart(ctx, {
 		type : 'horizontalBar',
 		data : {
 			labels : [ "일본어 학습", "JAVA학습" ],
 			datasets : [ {
-				label : '정답률',
+				label : '전체 문제수',
 				backgroundColor : 'rgba(54, 162, 235, 0.2)',
 				borderColor : 'rgba(54, 162, 235, 1)',
 				borderWidth : 1,
-				data : [ 80, 70 ]
-			//((전체 문제수 - 오답수)/전체문제)*100
+				data : [ ${jpnQuestion}, ${javaQuestion} ]
 			}, {
-				label : '오답률',
+				label : '오답수',
 				backgroundColor : 'rgba(255,99,132,0.2)',
 				borderColor : 'rgba(255,99,132,1)',
 				borderWidth : 1,
-				data : [ 20, 30 ]
-			//(오답수/전체문제)*100
+				data : [ ${jpnWrong}, ${javaWrong} ]
 			} ]
 		},
 		options : {
@@ -463,30 +463,74 @@
 		}
 	});
 
-	//레벨별 오답률
-	var ctx = document.getElementById("levelWorngChart");
+	//일본어 레벨별 오답률
+	var ctx = document.getElementById("jpnLevelWorngChart");
 	var levelWorngChart = new Chart(ctx, {
 		type : 'horizontalBar',
 		data : {
 			labels : [ "초급", "중급", "고급" ],
 			datasets : [ {
-				label : '정답률',
+				label : '일본어 레벨별 문제수',
 				backgroundColor : 'rgba(54, 162, 235, 0.2)',
 				borderColor : 'rgba(54, 162, 235, 1)',
 				borderWidth : 1,
-				data : [ 80, 70, 50 ]
+				data : [ ${jpnLevelQuestion[0]}, ${jpnLevelQuestion[1]}, ${jpnLevelQuestion[2]} ]
 			}, {
-				label : '오답률',
+				label : '일본어 레벨별 오답수',
 				backgroundColor : 'rgba(255,99,132,0.2)',
 				borderColor : 'rgba(255,99,132,1)',
 				borderWidth : 1,
-				data : [ 20, 30, 50 ]
+				data : [ ${jpnLevelWrong[0]}, ${jpnLevelWrong[1]}, ${jpnLevelWrong[2]} ]
 			} ]
 		},
 		options : {
 			title : {
 				display : true,
-				text : '레벨별 오답률'
+				text : '일본어 레벨별 오답률'
+			},
+			layout : {
+				padding : {
+					left : 30,
+					right : 0,
+					top : 0,
+					bottom : 0
+				}
+			},
+			scales : {
+				xAxes : [ {
+					ticks : {
+						beginAtZero : true
+					//true로 해야 0부터 시작
+					}
+				} ]
+			}
+		}
+	});
+	
+	//JAVA 레벨별 오답률
+	var ctx = document.getElementById("javaLevelWorngChart");
+	var levelWorngChart = new Chart(ctx, {
+		type : 'horizontalBar',
+		data : {
+			labels : [ "초급", "중급", "고급" ],
+			datasets : [ {
+				label : 'JAVA 레벨별 문제수',
+				backgroundColor : 'rgba(54, 162, 235, 0.2)',
+				borderColor : 'rgba(54, 162, 235, 1)',
+				borderWidth : 1,
+				data : [ ${javaLevelQuestion[0]}, ${javaLevelQuestion[1]}, ${javaLevelQuestion[2]} ]
+			}, {
+				label : 'JAVA 레벨별 오답수',
+				backgroundColor : 'rgba(255,99,132,0.2)',
+				borderColor : 'rgba(255,99,132,1)',
+				borderWidth : 1,
+				data : [ ${javaLevelWrong[0]}, ${javaLevelWrong[1]}, ${javaLevelWrong[2]} ]
+			} ]
+		},
+		options : {
+			title : {
+				display : true,
+				text : 'JAVA 레벨별 오답률'
 			},
 			layout : {
 				padding : {
@@ -512,13 +556,13 @@
 	var attendChart = new Chart(ctx, {
 		type : 'line',
 		data : {
-			labels : ["이번달", "1개월 전", "2개월 전", "3개월 전", "4개월 전", "5개월 전", "6개월 전"],
+			labels : [ "6개월 전", "5개월 전", "4개월 전", "3개월 전", "2개월 전", "1개월 전", "이번달" ],
 			datasets : [ {
 				label : '출석일',
 				backgroundColor : 'rgba(153, 102, 255, 0.2)',
 				borderColor : 'rgba(153, 102, 255, 1)',
 				borderWidth : 1,
-				data : [${attendThisMon}, ${oneMonAttend}, ${twoMonAttend}, ${threeMonAttend}, ${fourMonAttend}, ${fiveMonAttend}, ${sixMonAttend}]
+				data : [ ${sixMonAttend}, ${fiveMonAttend}, ${fourMonAttend}, ${threeMonAttend}, ${twoMonAttend}, ${oneMonAttend}, ${attendThisMon} ]
 			} ]
 		},
 		options : {

@@ -167,6 +167,52 @@ public class MemberController {
 	public String my_chart_page(HttpSession httpsession, Model model) {
 		String user_id = (String) httpsession.getAttribute("loginid");
 		
+	
+		//전체진행율
+		int jpnChapter = chartRepository.jpnChapter();
+		int jpnProgressed = chartRepository.jpnProgressed(user_id);
+		int javaChapter = chartRepository.javaChapter();
+		int javaProgressed = chartRepository.javaProgressed(user_id);
+		
+		model.addAttribute("jpnChapter", jpnChapter);
+		model.addAttribute("jpnProgressed", jpnProgressed);
+		model.addAttribute("javaChapter", javaChapter);
+		model.addAttribute("javaProgressed", javaProgressed);
+		
+		//레벨별 진행 챕터
+		List<Integer> jpnLevelProgress = chartRepository.jpnLevelProgress(user_id);
+		List<Integer> javaLevelProgress = chartRepository.javaLevelProgress(user_id);
+		
+		model.addAttribute("jpnLevelProgress", jpnLevelProgress);
+		model.addAttribute("javaLevelProgress", javaLevelProgress);
+		
+		//동화별 진행 챕터
+		List<Integer> jpnFairyProgress = chartRepository.jpnFairyProgress(user_id);
+		List<Integer> javaFairyProgress = chartRepository.javaFairyProgress(user_id);
+		
+		model.addAttribute("jpnFairyProgress", jpnFairyProgress);
+		model.addAttribute("javaFairyProgress", javaFairyProgress);
+		
+		//오답
+		int jpnQuestion = chartRepository.jpnQuestion();
+		int javaQuestion = chartRepository.javaQuestion();
+		int jpnWrong = chartRepository.jpnWrong(user_id);
+		int javaWrong = chartRepository.javaWrong(user_id);
+		List<Integer> jpnLevelQuestion = chartRepository.jpnLevelQuestion();
+		List<Integer> javaLevelQuestion = chartRepository.javaLevelQuestion();
+		List<Integer> jpnLevelWrong = chartRepository.jpnLevelWrong(user_id);
+		List<Integer> javaLevelWrong = chartRepository.javaLevelWrong(user_id);
+		
+		model.addAttribute("jpnQuestion", jpnQuestion);
+		model.addAttribute("javaQuestion", javaQuestion);
+		model.addAttribute("jpnWrong", jpnWrong);
+		model.addAttribute("javaWrong", javaWrong);
+		model.addAttribute("jpnLevelQuestion", jpnLevelQuestion);
+		model.addAttribute("javaLevelQuestion", javaLevelQuestion);
+		model.addAttribute("jpnLevelWrong", jpnLevelWrong);
+		model.addAttribute("javaLevelWrong", javaLevelWrong);
+		
+		//출석횟수
 		int attendThisMon = chartRepository.attendThisMon(user_id);
 		int oneMonAttend = chartRepository.oneMonAttend(user_id);
 		int twoMonAttend = chartRepository.twoMonAttend(user_id);
