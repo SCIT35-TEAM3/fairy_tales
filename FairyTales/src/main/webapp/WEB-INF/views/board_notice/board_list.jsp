@@ -31,7 +31,7 @@
 	href="images/ico/apple-touch-icon-57-precomposed.png">
 	<style type="text/css">	
 	/* banner */
-	.banner {position:absolute; width: 210px; height: 510px; top: 50px;  margin:0 auto; padding:0; overflow: hidden;}
+	.banner {position:absolute; width: 210px; height: 510px; top: 50px; margin:0 auto; padding:0; overflow: hidden;}
 	.banner ul {position: absolute; margin: 0px; padding:0; list-style: none; }
 	.banner ul li {float: left; width: 210px; height: 510px; margin:0; padding:0;}
 
@@ -271,32 +271,24 @@
 				</div>
 			</div>
 
-
-			<div class="col-md-3 col-sm-5">
-				<div class="sidebar blog-sidebar" style="width: 210px;">
+				<!-- /side bar _____________________________________________-->
+			<div class="col-md-3 col-sm-5" style="width: 210px; height: 510px;">
+				<div class="banner" class="sidebar-item  recent">
 					
-					<!-- /side bar _____________________________________________-->
-					<div class="contents">
-						<div class="banner">
-							<ul>
-								<li><img src="resources/images/leader.png" width="210"
-									height="510"></li>
-								<li><img
-									src="resources/images/0001.jpeg"
-									width="210px" height="510px"></li>
-								<li><img
-									src="resources/images/0002.jpeg"
-									width="210" height="510px"></li>
-								<li><img
-									src="resources/images/0003.jpeg"
-									width="210" height="510px"></li>
-								<li><img
-									src="resources/images/image4.jpg"
-									width="210" height="510"></li>
-							</ul>
-						</div>
-					</div>
-
+						<ul>
+							<li><img src="resources/images/leader.png" width="210" height="510"></li>
+							<li><img src="resources/images/0001.jpeg" width="210px" height="510px"></li>
+							<li><img
+								src="resources/images/0002.jpeg"
+								width="210" height="510px"></li>
+							<li><img
+								src="resources/images/0003.jpeg"
+								width="210" height="510px"></li>
+							<li><img
+								src="resources/images/image4.jpg"
+								width="210" height="510"></li>
+						</ul>
+					
 				</div>
 			</div>
 		</div>
