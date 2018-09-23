@@ -169,7 +169,7 @@
 					<div class="action">
 						<div class="col-sm-12">
 							<h1 class="title">Notice</h1>
-							<p>Notice with right sidebar</p>
+							
 						</div>
 					</div>
 				</div>
@@ -267,7 +267,7 @@
 				</div>
 				<div class="col-md-3 col-sm-5">
 					<div class="sidebar blog-sidebar" style="width: 210px;">
-						<h3>Comments</h3>
+						
 						<!-- /side bar _____________________________________________-->
 						<div class="contents">
 							<div class="banner">

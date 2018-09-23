@@ -148,10 +148,8 @@
 							data-wow-delay="300ms">
 							<a href="j_test"><img src="images/test_icon.png" alt=""></a>
 						</div>
-						<h2>사전 TEST</h2>
-						<p>
-							사전 TEST을 통해 <br />자신의 레벨을 확인해 보세요.
-						</p>
+						<h2>TEST</h2>
+						<p>TEST을 통해 <br />자신의 레벨을 확인해 보세요.</p>
 					</div>
 				</div>
 				<div class="col-sm-4 text-center padding wow fadeIn"
@@ -164,7 +162,7 @@
 						</div>
 						<h2>Japanese Fairy</h2>
 						<p>
-							수준별 다양한 동화를 통한 <br />일본어 학습을 할 수 있습니다.
+							수준별 다양한 동화를 통한 <br/>일본어 학습을 할 수 있습니다.
 						</p>
 					</div>
 				</div>
@@ -178,7 +176,7 @@
 						</div>
 						<h2>Coding Puzzle</h2>
 						<p>
-							수준별 다양한 동화를 통한 <br />JAVA를 공부할 수 있습니다.
+							수준별 다양한 동화를 통한 <br/>JAVA를 공부할 수 있습니다.
 						</p>
 					</div>
 				</div>
@@ -193,13 +191,11 @@
 			<div class="container">
 				<div class="row">
 					<div class="action take-tour">
-						<div class="col-sm-7 wow fadeInLeft" data-wow-duration="500ms"
-							data-wow-delay="300ms">
+						<div class="col-sm-7 wow fadeInLeft" data-wow-duration="500ms" data-wow-delay="300ms">
 							<h1 class="title">Peace Of Fairy Tale</h1>
 							<p>Learn Japanese and Java through various fairy tales</p>
 						</div>
-						<div class="col-sm-5 text-center wow fadeInRight"
-							data-wow-duration="500ms" data-wow-delay="300ms">
+						<div class="col-sm-5 text-center wow fadeInRight" data-wow-duration="500ms" data-wow-delay="300ms">
 							<div class="tour-button"></div>
 						</div>
 					</div>

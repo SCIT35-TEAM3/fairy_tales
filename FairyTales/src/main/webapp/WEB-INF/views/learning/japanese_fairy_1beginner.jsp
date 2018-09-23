@@ -223,20 +223,13 @@
 							<div class="bb-item">
 								<a href="#"><img src="images/demo3/3.jpg" alt="image03" /></a>
 							</div>
-							<div class="bb-item">
-								<a href="#"><img src="images/demo3/4.jpg" alt="image04" /></a>
-							</div>
-							<div class="bb-item">
-								<a href="#"><img src="images/demo3/5.jpg" alt="image05" /></a>
-							</div>
 						</div>
 						<nav>
-							<span class="bb-current"></span> <span></span> <span></span> <span></span>
-							<span></span>
+							<span class="bb-current"></span> <span></span> <span></span>
 						</nav>
 					</li>
 					<li>
-						<h3>초급동화 2</h3>
+						<h3>인어공주</h3>
 						<div class="bb-bookblock">
 							<div class="bb-item">
 								<a href="#"><img src="images/demo3/6.jpg" alt="image06" /></a>
@@ -247,20 +240,13 @@
 							<div class="bb-item">
 								<a href="#"><img src="images/demo3/8.jpg" alt="image08" /></a>
 							</div>
-							<div class="bb-item">
-								<a href="#"><img src="images/demo3/9.jpg" alt="image09" /></a>
-							</div>
-							<div class="bb-item">
-								<a href="#"><img src="images/demo3/10.jpg" alt="image10" /></a>
-							</div>
 						</div>
 						<nav>
-							<span class="bb-current"></span> <span></span> <span></span> <span></span>
-							<span></span>
+							<span class="bb-current"></span> <span></span> <span></span>
 						</nav>
 					</li>
 					<li>
-						<h3>초급동화 3</h3>
+						<h3>백설공주</h3>
 						<div class="bb-bookblock">
 							<div class="bb-item">
 								<a href="#"><img src="images/demo3/1.jpg" alt="image01" /></a>
@@ -271,20 +257,13 @@
 							<div class="bb-item">
 								<a href="#"><img src="images/demo3/3.jpg" alt="image03" /></a>
 							</div>
-							<div class="bb-item">
-								<a href="#"><img src="images/demo3/4.jpg" alt="image04" /></a>
-							</div>
-							<div class="bb-item">
-								<a href="#"><img src="images/demo3/5.jpg" alt="image05" /></a>
-							</div>
 						</div>
 						<nav>
-							<span class="bb-current"></span> <span></span> <span></span> <span></span>
-							<span></span>
+							<span class="bb-current"></span> <span></span> <span></span> 
 						</nav>
 					</li>
 					<li>
-						<h3>초급동화 3</h3>
+						<h3>엄지공주</h3>
 						<div class="bb-bookblock">
 							<div class="bb-item">
 								<a href="#"><img src="images/demo3/1.jpg" alt="image01" /></a>
@@ -295,16 +274,9 @@
 							<div class="bb-item">
 								<a href="#"><img src="images/demo3/3.jpg" alt="image03" /></a>
 							</div>
-							<div class="bb-item">
-								<a href="#"><img src="images/demo3/4.jpg" alt="image04" /></a>
-							</div>
-							<div class="bb-item">
-								<a href="#"><img src="images/demo3/5.jpg" alt="image05" /></a>
-							</div>
 						</div>
 						<nav>
-							<span class="bb-current"></span> <span></span> <span></span> <span></span>
-							<span></span>
+							<span class="bb-current"></span> <span></span> <span></span> 
 						</nav>
 					</li>
 				</ul>

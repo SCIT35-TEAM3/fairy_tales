@@ -274,7 +274,7 @@
 
 			<div class="col-md-3 col-sm-5">
 				<div class="sidebar blog-sidebar" style="width: 210px;">
-					<h3>Comments</h3>
+					
 					<!-- /side bar _____________________________________________-->
 					<div class="contents">
 						<div class="banner">
