@@ -86,8 +86,8 @@ function formCheck(){
                         <li><a href="./">Home</a></li>
                         <li class="dropdown"><a href="#">Page <i class="fa fa-angle-down"></i></a>
                             <ul role="menu" class="sub-menu">
-                            	<li><a href="it_test">Coding Test</a></li>
 								<li><a href="j_test">Japanese Test</a></li>
+								<li><a href="it_test">Coding Test</a></li>
                             
                             	<li><a href="japanese_fairy">Japanese Fairy</a></li>
                                 <li><a href="coding_puzzle">Coding Puzzle</a></li>
@@ -134,7 +134,7 @@ function formCheck(){
                     <div class="action">
                         <div class="col-sm-12">
                             <h1 class="title">Notice</h1>
-                            <p>Notice with right sidebar</p>
+                            
                         </div>
                     </div>
                 </div>

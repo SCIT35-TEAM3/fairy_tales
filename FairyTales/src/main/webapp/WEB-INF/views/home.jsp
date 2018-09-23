@@ -119,8 +119,8 @@
 		<div class="container">
 			<div class="main-slider">
 				<div class="slide-text">
-					<h1>Peace Of Fairy Taleへ</h1>
-					<p style="font-size: 22px;">ようこそ。</p>
+					<h1>Welcome To<br/> Peace Of Fairy Tale</h1>
+					<!-- <p style="font-size: 22px;">ようこそ。</p> -->
 				</div>
 				<img src="images/castle2.png" class="img-responsive slider-house"
 					alt="slider image">

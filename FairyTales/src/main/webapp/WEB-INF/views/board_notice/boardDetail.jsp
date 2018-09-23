@@ -122,14 +122,13 @@
 						<li class="dropdown"><a href="#">Page <i
 								class="fa fa-angle-down"></i></a>
 							<ul role="menu" class="sub-menu">
-								<li><a href="it_test">Coding Test</a></li>
 								<li><a href="j_test">Japanese Test</a></li>
-
+								<li><a href="it_test">Coding Test</a></li>
+								
 								<li><a href="japanese_fairy">Japanese Fairy</a></li>
 								<li><a href="coding_puzzle">Coding Puzzle</a></li>
 							</ul></li>
-						<li class="active" class="dropdown"><a href="#">Board<i
-								class="fa fa-angle-down"></i></a>
+						<li class="active" class="dropdown"><a href="#">Board<i class="fa fa-angle-down"></i></a>
 							<ul role="menu" class="sub-menu">
 								<li class="active"><a href="board_list">Notice</a></li>
 								<li><a href="board_1to1">1:1 Customer Board</a></li>
