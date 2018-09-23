@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+
 <style type="text/css">
 </style>
 
@@ -34,7 +34,7 @@
 	href="images/ico/apple-touch-icon-72-precomposed.png">
 <link rel="apple-touch-icon-precomposed"
 	href="images/ico/apple-touch-icon-57-precomposed.png">
-	<style type="text/css">	
+<style type="text/css">	
 	/* banner */
 	.banner {position:absolute; width: 210px; height: 510px; top: 50px;  margin:0 auto; padding:0; overflow: hidden;}
 	.banner ul {position: absolute; margin: 0px; padding:0; list-style: none; }
@@ -255,8 +255,7 @@ function reply_update() {
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="./">Home</a></li>
-						<li class="dropdown"><a href="#">Page <i
-								class="fa fa-angle-down"></i></a>
+						<li class="dropdown"><a href="#">Page <i class="fa fa-angle-down"></i></a>
 							<ul role="menu" class="sub-menu">
 								<li><a href="it_test">Coding Test</a></li>
 								<li><a href="j_test">Japanese Test</a></li>
@@ -272,7 +271,7 @@ function reply_update() {
 						<!-- 회원 로그인 후-->
 						<c:if test="${sessionScope.loginid != null}">
 
-							<li class="dropdown"><a href="#">MyPage <i class="fa fa-angle-down"></i></a>
+							<li class="dropdown"><a href="#">My Page <i class="fa fa-angle-down"></i></a>
 								<ul role="menu" class="sub-menu">
 									<li><a href="my_info_detail">My Infomation</a></li>
 									<li><a href="#">Learning Page</a></li>
@@ -314,127 +313,134 @@ function reply_update() {
 	<!---■■■■■■■■■■■■■■■■■■ #page list ■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
 	<section id="blog-details" class="padding-top">
 		<div class="container">
-			
-				<div class="col-md-9 col-sm-7">
-					<div class="row">
-						<div class="col-md-12 col-sm-12">
-							<div class="single-blog blog-details two-column">
-								<table class="table">
 
-									<thead align="center">
-										<tr>
-											<td width="100px">NO.</td>
-											<td>${board_1to1.board_num}</td>
-											<td width="100px">작성자</td>
-											<td>${board_1to1.user_id}</td>
-											<td width="100px">날짜</td>
-											<td width="150px">${board_1to1.new_date}</td>
-											<td width="100px">조회수</td>
-											<td width="100px">${board_1to1.hitcount}</td>
-										</tr>
-									</thead>
+			<div class="col-md-9 col-sm-7">
+				<div class="row">
+					<div class="col-md-12 col-sm-12">
+						<div class="single-blog blog-details two-column">
+							<table class="table">
 
-									<tbody>
-										<tr>
-											<td width="100px" align="center">글제목</td>
-											<td colspan="7">${board_1to1.title}</td>
-										</tr>
-									</tbody>
-									<tbody>
-										<tr>
-											<td width="100px" align="center">글내용</td>
-											<td colspan="8">
-												<div class="form-control" name="text" id="text"
-													style="height: 300px;">${board_1to1.text}</div>
-											</td>
+								<thead align="center">
+									<tr>
+										<td width="100px">NO.</td>
+										<td>${board_1to1.board_num}</td>
+										<td width="100px">작성자</td>
+										<td>${board_1to1.user_id}</td>
+										<td width="100px">날짜</td>
+										<td width="150px">${board_1to1.new_date}</td>
+										<td width="100px">조회수</td>
+										<td width="100px">${board_1to1.hitcount}</td>
+									</tr>
+								</thead>
 
-										</tr>
-									</tbody>
+								<tbody>
+									<tr>
+										<td width="100px" align="center">글제목</td>
+										<td colspan="7">${board_1to1.title}</td>
+									</tr>
+								</tbody>
+								<tbody>
+									<tr>
+										<td width="100px" align="center">글내용</td>
+										<td colspan="8">
+											<div class="form-control" name="text" id="text" style="height: 300px;">${board_1to1.text}</div>
+										</td>
 
-								</table>
+									</tr>
+								</tbody>
 
-								<div class="post-bottom overflow">
-									<ul class="nav navbar-nav post-nav">
-										<li><c:if test="${not empty board_1to1.origin_file_name}">
-												<a href="download?board_num=${board_1to1.board_num}"><i
-													class="fa fa-tag"></i>${board_1to1.origin_file_name}</a>
-											</c:if> <c:if test="${empty board_1to1.origin_file_name}">
-												<a href="#"><i class="fa fa-tag"></i>첨부파일 없음</a>
-											</c:if></li>
-										<li><a
-											href="board_update?board_num=${board_1to1.board_num}"
-											id="update"><i class="fa fa-pencil"></i>수정</a></li>
-										<li><a
-											href="board_delete?board_num=${board_1to1.board_num}"
-											id="delete"><i class="fa fa-bomb"></i>삭제</a></li>
-									</ul>
-								</div>
-							</div>
+							</table>
 
-							<!--■■■■■■■■■■■■■■■■■■■■ 댓글 ■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
-
-							<div class="reply_write">
-								<div class="col-md-4 col-sm-12">
-									<div class="contact-form bottom">
-										<h2>답변</h2>
-
-										<form method="post" action="reply_write">
-											<input type="hidden" value="${board_1to1.board_num}"
-												name="board_num" id="board_num"> <input
-												type="hidden" value="${sessionScope.loginid}" name="user_id"
-												id="user_id"> <input id="reply_num" type="hidden"
-												value="" name="reply_num">
-											<div class="form-group">
-												<input type="hidden" name="reply_title" id="reply_title"
-													class="form-control" required="required" placeholder="제목" value="a">
-											</div>
-
-											<div class="form-group">
-												<textarea name="text" id="teply_text" required="required"
-													class="form-control" rows="8" placeholder="Your text here"></textarea>
-											</div>
-
-										</form>
-										<div class="form-group" align="center">
-											<button type="button" class="btn btn-submit"
-												id="reply_insert">등록</button>
-										</div>
-									</div>
-								</div>
-								<div></div>
-								<div class="comment"></div>
+							<div class="post-bottom overflow">
+								<ul class="nav navbar-nav post-nav">
+									<li><c:if test="${not empty board_1to1.origin_file_name}">
+											<a href="download?board_num=${board_1to1.board_num}"><i class="fa fa-tag"></i>${board_1to1.origin_file_name}</a>
+										</c:if> <c:if test="${empty board_1to1.origin_file_name}">
+											<a href="#"><i class="fa fa-tag"></i>첨부파일 없음</a>
+										</c:if></li>
+									<li><a href="board_update?board_num=${board_1to1.board_num}" id="update">
+									<i class="fa fa-pencil"></i>수정</a></li>
+									<li><a href="board_delete?board_num=${board_1to1.board_num}" id="delete">
+									<i class="fa fa-bomb"></i>삭제</a></li>
+								</ul>
 							</div>
 						</div>
+
+						<!--■■■■■■■■■■■■■■■■■■■■ 댓글 ■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
+
+						<div class="reply_write">
+							<div class="col-md-12 col-sm-12">
+								<div class="contact-form bottom">
+									<h2>답변</h2>
+
+									<form method="post" action="reply_write">
+										<input type="hidden" value="${board_1to1.board_num}"
+											name="board_num" id="board_num"> <input type="hidden"
+											value="${sessionScope.loginid}" name="user_id" id="user_id">
+										<input id="reply_num" type="hidden" value="" name="reply_num">
+										<div class="form-group">
+											<input type="hidden" name="reply_title" id="reply_title"
+												class="form-control" required="required" placeholder="제목"
+												value="a">
+										</div>
+
+										<div class="form-group">
+											<textarea name="text" id="teply_text" required="required"
+												class="form-control" rows="4" placeholder="Your text here"></textarea>
+										</div>
+
+									</form>
+									<div class="form-group" align="center">
+										<button type="button" class="btn btn-submit" id="reply_insert">등록</button>
+									</div>
+								</div>
+							</div>
+							<!-- 답변 달리는 부분 -->
+							<div class="comment"></div>
+							<!-- /답변 달리는 부분 -->
+						</div>
+						<!--//■■■■■■■■■■■■■■■■■■■■ 댓글 ■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
 					</div>
 				</div>
-			
+			</div>
+
 			<!-- /1:1 board -->
 
 			<div class="col-md-3 col-sm-5">
-				<div class="sidebar blog-sidebar" style="width: 210px;">
-					<h3>Comments</h3>
-					<!-- /side bar _____________________________________________-->
-					<div class="contents">
-						<div class="banner">
-							<ul>
-								<li><img src="resources/images/leader.png" width="210"
-									height="510"></li>
-								<li><img
-									src="resources/images/0001.jpeg"
-									width="210px" height="510px"></li>
-								<li><img
-									src="resources/images/0002.jpeg"
-									width="210" height="510px"></li>
-								<li><img
-									src="resources/images/0003.jpeg"
-									width="210" height="510px"></li>
-								<li><img
-									src="resources/images/image4.jpg"
-									width="210" height="510"></li>
-							</ul>
-						</div>
-					</div>
-
+				<div class="sidebar blog-sidebar">
+					
+					<div class="sidebar-item popular">
+                            <h3>Learning shortcuts</h3>
+                            <ul class="gallery">
+                                <li><a href="j_test"><img src="images/test_icon.png" alt=""></a></li>
+                                <li><a href="japanese_fairy"><img src="images/main_icon_jap.png" alt=""></a></li>
+                                <li><a href="coding_puzzle"><img src="images/main_icon_java.png" alt=""></a></li>
+                                
+                            </ul>
+                    </div>
+				</div>
+			</div>
+				<!-- /side bar _____________________________________________-->
+			<div class="col-md-3 col-sm-5" style="width: 210px; height: 510px;">
+				<div class="banner" class="sidebar-item  recent">
+					
+						<ul>
+							<li><img src="resources/images/leader.png" width="210"
+								height="510"></li>
+							<li><img
+								src="resources/images/0001.jpeg"
+								width="210px" height="510px"></li>
+							<li><img
+								src="resources/images/0002.jpeg"
+								width="210" height="510px"></li>
+							<li><img
+								src="resources/images/0003.jpeg"
+								width="210" height="510px"></li>
+							<li><img
+								src="resources/images/image4.jpg"
+								width="210" height="510"></li>
+						</ul>
+					
 				</div>
 			</div>
 		</div>
@@ -446,11 +452,10 @@ function reply_update() {
 	<!-- footer -->
 	<footer id="footer">
 		<div class="container">
-			<div class="row">
-				<div class="row">
+            <div class="row">
 					<div class="col-sm-12 text-center bottom-separator">
-						<br /><br /><br /> <img
-							src="images/home/under.png" class="img-responsive inline" alt="">
+						<br/><br/><br/>
+						<img src="images/home/under.png" class="img-responsive inline" alt="">
 					</div>
 				</div>
 				<div class="row">
