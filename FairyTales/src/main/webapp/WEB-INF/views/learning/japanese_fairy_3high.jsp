@@ -338,8 +338,8 @@
 			<div class="row">
 				<div class="row">
 					<div class="col-sm-12 text-center bottom-separator">
-						<br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <img
-							src="images/home/under.png" class="img-responsive inline" alt="">
+						<br/><br/><br/>
+						<img src="images/home/under.png" class="img-responsive inline" alt="">
 					</div>
 				</div>
 				<div class="row">

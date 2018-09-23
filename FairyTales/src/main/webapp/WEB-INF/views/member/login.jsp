@@ -128,7 +128,7 @@
                 <div class="col-sm-8 col-sm-offset-2">                    
                     <div class="contact-form bottom" align="center">
                         <h2>Login</h2>
-                        <form id="login" name="login" method="post" action="login">
+                        <form id="login" name="login" method="post" action="login" style="height: 320px;">
                             <div class="form-group">
                                 <input type="text" name="user_id" id="user_id" class="form-control" required="required" placeholder="ID">
                             </div>

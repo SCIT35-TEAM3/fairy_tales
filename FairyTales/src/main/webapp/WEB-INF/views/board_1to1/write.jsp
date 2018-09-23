@@ -242,8 +242,7 @@
 												</tr>
 												<tr>
 													<th scope="row">첨부파일</th>
-													<td> <input type="file" id="file" name="upload"
-														 class="btn btn-default">
+													<td> <input type="file" id="file" name="upload" class="btn btn-default" >
 
 														<div class="margin_top10 font_11">
 															* 이미지 파일만 첨부가능합니다. (jpg, gif, bmp, png 형식만 가능)<br>
@@ -308,15 +307,16 @@
 	</section>
 	<!--/#blog-->
 
+
 <!-- footer -->
     <footer id="footer">
         <div class="container">
-            <div class="row">
-            	<div class="row">
-	                <div class="col-sm-12 text-center bottom-separator"> 
-	                    <img src="images/home/under.png" class="img-responsive inline" alt="">
-	                </div>
-                </div>
+        	<div class="row">
+           		 <div class="row">
+					<div class="col-sm-12 text-center bottom-separator">
+						<img src="images/home/under.png" class="img-responsive inline" alt="">
+					</div>
+				</div>
                 <div class="row">
 	                <div class="col-md-4 col-sm-4">
 	                    <div class="contact-info bottom">

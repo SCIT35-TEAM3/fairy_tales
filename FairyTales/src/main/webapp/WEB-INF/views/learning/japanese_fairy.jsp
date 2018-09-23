@@ -251,10 +251,11 @@
         <div class="container">
             <div class="row">
             	<div class="row">
-	                <div class="col-sm-12 text-center bottom-separator"><br/><br/><br/><br/><br/><br/><br/><br/>
-	                    <img src="images/home/under.png" class="img-responsive inline" alt="">
-	                </div>
-                </div>
+					<div class="col-sm-12 text-center bottom-separator">
+						<br/><br/><br/>
+						<img src="images/home/under.png" class="img-responsive inline" alt="">
+					</div>
+				</div>
                 <div class="row">
 	                <div class="col-md-4 col-sm-4">
 	                    <div class="contact-info bottom">

@@ -146,7 +146,7 @@ function check(){
                 <div class="col-sm-8 col-sm-offset-2">                    
                     <div class="contact-form bottom" align="center">
                         <h2>My Infomation</h2>
-                        <form action="my_info_update" method="get" id="my_info_form">
+                        <form action="my_info_update" method="get" id="my_info_form"     style="height: 600px">
 							<input type="hidden" id="user_id" value="${memberdetail.user_id}">
                             <div class="form-group">
                                 <div class="form-control" align="left">${memberdetail.user_id}</div>

@@ -259,6 +259,7 @@ a {
 					<!-- /col-md-9 col-sm-9 -->
 				</div>
 				<!-- /초급동화 애니메이션 -->
+			</div>
 		</section>
 	</div>
 	<!-- /Japanese Fairy  -->
