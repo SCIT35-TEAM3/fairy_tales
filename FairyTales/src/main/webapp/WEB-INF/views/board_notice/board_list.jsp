@@ -213,10 +213,10 @@
 										</thead>
 
 										<tbody>
-											<c:forEach var="board" items="${list}">
+											<c:forEach var="board" items="${list}" varStatus="stastus">
 												<%-- <c:if test="${sessionScope.loginid != null}">  --%>
 												<tr align="center">
-													<td>${board.board_num}</td>
+													<td>${stastus.count + navi.startRecord}</td>
 													<td>${board.user_id}</td>
 													<td width="300px"><a
 														href="boardDetail?board_num=${board.board_num}">${board.title}</a></td>

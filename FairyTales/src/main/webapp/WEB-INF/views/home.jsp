@@ -210,8 +210,7 @@
 			<div class="row">
 				<div class="timeline-blog overflow padding-top">
 					<div class="timeline-date text-center">
-						<a href="#japanese_Fairy" class="btn btn-common uppercase"
-							id="learning">LEARNING</a>
+						<a href="#japanese_Fairy" class="btn btn-common uppercase" id="learning">LEARNING</a>
 					</div>
 					<div class="timeline-divider overflow padding-bottom">
 						<div class="col-sm-6 padding-right arrow-right wow fadeInLeft"

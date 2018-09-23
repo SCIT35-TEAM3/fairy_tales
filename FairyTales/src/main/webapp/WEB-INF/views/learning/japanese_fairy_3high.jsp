@@ -264,7 +264,7 @@
 						</nav>
 					</li>
 					<li>
-						<h3>빨간모자</h3>
+						<h3>이상한 나라의 앨리스</h3>
 						<div class="bb-bookblock">
 							<div class="bb-item">
 								<a href="#"><img src="images/demo3/1.jpg" alt="image01" /></a>
