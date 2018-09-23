@@ -375,8 +375,8 @@
 							<tr>
 								<td colspan="2">
 									<br>
-									<a href="#" id="btnDelet" hidden class="btn btn-submit btn-layer">Delete</a>
 									<a href="#" id="btnSubmit" class="btn btn-submit btn-layer">Register</a>
+									<a href="#" id="btnDelet" class="btn btn-submit btn-layer">Delete</a>
 		                			<a href="#" id="btnClose" class="btn btn-submit btn-layer">Close</a>
 								</td>
 							</tr>
@@ -402,6 +402,7 @@
 			$('.btn-popup').click(function(){
 				var $href = $(this).attr('href');
 				layer_popup($href,$(this));
+				return false;
 			});
 			
 			$('#btnSubmit').click(function(){insertFt(); return false;});
