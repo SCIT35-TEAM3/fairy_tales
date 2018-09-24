@@ -5,7 +5,7 @@
 <mapper namespace="global.sesoc.fairytales.dao.ChartMapper">
 	
 	<!-- 일본어 동화 챕터 전체 -->
-	<select id="jpnChapter" resultType="int">
+	<select id="jpnChapter" resultType="Integer">
 	SELECT
 		SUM(fairy_chapter) as fairy_chapter
 	FROM
@@ -15,7 +15,7 @@
 	</select>
 	
 	<!-- 일본어 진행 챕터-->
-	<select id="jpnProgressed" parameterType="String" resultType="int">
+	<select id="jpnProgressed" parameterType="String" resultType="Integer">
 	SELECT 
 		SUM(mf.chapter) AS chapter
 	FROM 
@@ -30,7 +30,7 @@
 	</select>
 	
 	<!-- JAVA 전체 챕터 -->
-	<select id="javaChapter" resultType="int">
+	<select id="javaChapter" resultType="Integer">
 	SELECT
 		SUM(fairy_chapter) AS fairy_chapter
 	FROM
@@ -40,7 +40,7 @@
 	</select>
 	
 	<!-- JAVA 진행 챕터 -->
-	<select id="javaProgressed" parameterType="String" resultType="int">
+	<select id="javaProgressed" parameterType="String" resultType="Integer">
 	SELECT 
 		SUM(mf.chapter) AS chapter
 	FROM 
@@ -55,9 +55,9 @@
 	</select>
 	
 	<!-- 일본어 레벨별 진행 챕터 -->
-	<select id="jpnLevelProgress" parameterType="String" resultType="int">
+	<select id="jpnLevelProgress" parameterType="String" resultType="Integer">
 	SELECT
-    	SUM(mf.chapter) AS chapter 
+		(case when SUM(mf.chapter) = null then 0 else SUM(mf.chapter) end) AS chapter
 	FROM 
    		member m
     	,fairytales f
@@ -71,7 +71,7 @@
 	</select>
 	
 	<!-- JAVA 레벨별 진행 챕터 -->
-	<select id="javaLevelProgress" parameterType="String" resultType="int">
+	<select id="javaLevelProgress" parameterType="String" resultType="Integer">
 	SELECT
     	SUM(mf.chapter) AS chapter 
 	FROM 
@@ -87,7 +87,7 @@
 	</select>
 
 	<!-- 일본어 동화별 진행 챕터 -->
-	<select id="jpnFairyProgress" parameterType="String" resultType="int">
+	<select id="jpnFairyProgress" parameterType="String" resultType="Integer">
 	SELECT
     	SUM(mf.chapter) AS chapter
 	FROM 
@@ -103,7 +103,7 @@
 	</select>
 	
 	<!-- JAVA 동화별 진행 챕터 -->
-	<select id="javaFairyProgress" parameterType="String" resultType="int">
+	<select id="javaFairyProgress" parameterType="String" resultType="Integer">
 	SELECT
     	SUM(mf.chapter) AS chapter
 	FROM 
@@ -120,7 +120,7 @@
 	<!-- NULL이 치환이 안되서 오류나면 CASE 써볼것 -->
 	
 	<!-- 일본어 문제수 -->
-	<select id="jpnQuestion" resultType="int">
+	<select id="jpnQuestion" resultType="Integer">
 	SELECT    
    	 	sum(case when f.fairy_code = 'jp' then 1 else 0 end) as jpnAllQ
 	FROM
@@ -132,7 +132,7 @@
 	<!-- <쓸 때  <![CDATA[조건식]]>이런 식으로 써야함 -->
 
 	<!-- JAVA 문제수 -->
-	<select id="javaQuestion" resultType="int">
+	<select id="javaQuestion" resultType="Integer">
 	SELECT    
    	 	sum(case when f.fairy_code = 'cd' then 1 else 0 end) as javaAllQ
 	FROM
@@ -143,7 +143,7 @@
 	</select>
 	
 	<!-- 일본어 오답수 -->
-	<select id="jpnWrong" parameterType="String" resultType="int">
+	<select id="jpnWrong" parameterType="String" resultType="Integer">
 	SELECT
     	sum(case when f.fairy_code = 'jp' then 1 else 0 end) as jpnWrong
 	FROM
@@ -161,7 +161,7 @@
 	</select>
 	
 	<!-- JAVA 오답수 -->
-	<select id="javaWrong" parameterType="String" resultType="int">
+	<select id="javaWrong" parameterType="String" resultType="Integer">
 	SELECT
     	sum(case when f.fairy_code = 'cd' then 1 else 0 end) as javaWrong
 	FROM
@@ -179,7 +179,7 @@
 	</select>
 	
 	<!-- 일본어 레벨별 문제수 -->
-	<select id="jpnLevelQuestion" resultType="int">
+	<select id="jpnLevelQuestion" resultType="Integer">
 	SELECT    
     	sum(case when f.fairy_code = 'jp' then 1 else 0 end) as jpnlevelq
 	FROM
@@ -191,7 +191,7 @@
     </select>
     
     <!-- JAVA 레벨별 문제수 -->
-	<select id="javaLevelQuestion" resultType="int">
+	<select id="javaLevelQuestion" resultType="Integer">
 	SELECT    
     	sum(case when f.fairy_code = 'cd' then 1 else 0 end) as javalevelq
 	FROM
@@ -203,7 +203,7 @@
     </select>
     
     <!-- 일본어 레벨별 오답수 -->
-    <select id="jpnLevelWrong" parameterType="String" resultType="int">
+    <select id="jpnLevelWrong" parameterType="String" resultType="Integer">
     SELECT
     	SUM(CASE WHEN f.fairy_code = 'jp' THEN 1 ELSE 0 END) AS jpnLevelWrong
 	FROM
@@ -222,7 +222,7 @@
     </select>
     
     <!-- JAVA 레벨별 오답수 -->
-    <select id="javaLevelWrong" parameterType="String" resultType="int">
+    <select id="javaLevelWrong" parameterType="String" resultType="Integer">
     SELECT
     	SUM(CASE WHEN f.fairy_code = 'cd' THEN 1 ELSE 0 END) AS javaLevelWrong
 	FROM
@@ -241,7 +241,7 @@
     </select>
 	
 	<!-- 이번달 출석률 -->
-	<select id="attendThisMon" parameterType="String" resultType="int">
+	<select id="attendThisMon" parameterType="String" resultType="Integer">
 	SELECT 
 		count(member_access) as member_access
     FROM
@@ -262,7 +262,7 @@
 	</select>
 	
 	<!-- 한 달 전 출석횟수 -->
-	<select id="oneMonAttend" parameterType="String" resultType="int">
+	<select id="oneMonAttend" parameterType="String" resultType="Integer">
 	SELECT 
 		count(member_access) as member_access
     FROM
@@ -282,7 +282,7 @@
             	GROUP BY user_id
 	</select>
 	
-	<select id="twoMonAttend" parameterType="String" resultType="int">
+	<select id="twoMonAttend" parameterType="String" resultType="Integer">
 	SELECT 
 		count(member_access) as member_access
     FROM
@@ -302,7 +302,7 @@
             	GROUP BY user_id
 	</select>
 	
-	<select id="threeMonAttend" parameterType="String" resultType="int">
+	<select id="threeMonAttend" parameterType="String" resultType="Integer">
 	SELECT 
 		count(member_access) as member_access
     FROM
@@ -322,7 +322,7 @@
             	GROUP BY user_id
 	</select>
 	
-	<select id="fourMonAttend" parameterType="String" resultType="int">
+	<select id="fourMonAttend" parameterType="String" resultType="Integer">
 	SELECT 
 		count(member_access) as member_access
     FROM
@@ -342,7 +342,7 @@
             	GROUP BY user_id
 	</select>
 	
-	<select id="fiveMonAttend" parameterType="String" resultType="int">
+	<select id="fiveMonAttend" parameterType="String" resultType="Integer">
 	SELECT 
 		count(member_access) as member_access
     FROM
@@ -362,7 +362,7 @@
             	GROUP BY user_id	
 	</select>
 	
-	<select id="sixMonAttend" parameterType="String" resultType="int">
+	<select id="sixMonAttend" parameterType="String" resultType="Integer">
 	SELECT 
 		count(member_access) as member_access
     FROM
