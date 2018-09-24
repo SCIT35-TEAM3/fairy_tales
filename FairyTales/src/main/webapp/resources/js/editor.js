@@ -8,7 +8,7 @@ var keydownSet;
 var keyAniVal;
 // 컨트롤 눌러있는지 유무
 var ctrlSet = false;
-var shiftSet = false;
+var shiftSet = false; 
 // 오브젝트 배열(Json)
 var objList = [];
 // 챕터 screen 의 집합, 챕터 대표 이미지, 총 레이어 수 *레이어 삭제시 관련된 정보 모두 삭제
@@ -180,9 +180,6 @@ $(document).ready(function(){
 	//layer radio event
 	$("#screensView").on("change",changeScreen);
 	
-	//scene
-	$("input[name='scene']").on("click",changeScene)
-	
 	//img file upload click
 	$("#imgFileBtn").on("click",function(){$("#fileUp").click();});
 	
@@ -220,7 +217,7 @@ $(document).ready(function(){
 					
 					//selectTarget = element;
 					//scene 선택
-					changeScene(element);		
+					changeScene(element);
 				}
 				//stop
 				return false;
@@ -262,6 +259,7 @@ $(document).ready(function(){
 	//add object Text object
 	$("#addObjTxtBtn").on("click", addObjTxt);
 	
+	//오브젝트 사용
 	$("#addObjectBtn").on("click", addObject);
 	
 	//object delete
@@ -384,13 +382,14 @@ function changeScreen(){
 		$(objList).each(function(index,obj){
 			if(obj.objId == scene.objId){
 				if(obj.objType == "img"){
-					console.dir("scene : " + JSON.stringify(scene));
-					//console.dir("obj : " + JSON.stringify(obj));
-					addImgObject (obj.obj,obj.objId,scene);
-				}else if(obj.objType == "text"){
-					// 택스트로 올때인데 문제는 제외해야겠지?
-					//document.createElement("span");
+					addImgObject (obj.obj,scene);
+				}else if(obj.objType == "text" ||  obj.objType == "question"){
+					addTxtObject(obj.obj,obj.objType,scene);
 				};
+				/*
+				addImgObject(obj.obj,null,obj.view,obj.objId);
+				addTxtObject(obj.obj,question,null,obj.objId);
+				*/
 			};
 		});
 	});
@@ -415,19 +414,30 @@ function getBTWN(target){
 }
 
 //add object 
-// 오브젝트 복사
+// 오브젝트 사용
 function addObject(){
+	console.log("!!asdasdas");
 	$(".objCheck").each(function(index,check){
 		if($(check).prop('checked')){
+			console.log("!!check " + $(check).val());
 			$(objList).each(function(index,obj){
 				if(obj.objId == $(check).val()){
+					console.log("!!obj " + obj);
 					switch(obj.objType){
 						//keyAniVal reSet
 						case "img" :
-							addImgObject(obj.obj,obj.objId);
+							console.log("!!img");
+							//addImgObject (file,scene,view,objId)
+							addImgObject(obj.obj,null,obj.view,obj.objId);
 							break;
-						case "text" : 
-							addTxtObject();
+						case "text" : case "question" :
+							console.log("!!text");
+							//addTxtObject(value,question,scene,objId)
+							var question = false;
+							if(obj.objType == "question"){
+								question = true;
+							}
+							addTxtObject(obj.obj,question,null,obj.objId);
 							break;
 					};
 				};
@@ -640,7 +650,7 @@ function imgFilePut(files){
 			, dataType	: 'text'
 			, success	: function (response) {
 				alert("./image?tmpImg="+response);
-				addImgObject("./image?tmpImg="+response,null,null,fileName);
+				addImgObject("./image?tmpImg="+response,null,fileName);
 				$("input[type=file]").val("");
 				
 				//ie
@@ -654,13 +664,12 @@ function imgFilePut(files){
 };
 
 //add image
-function addImgObject (file,objId,scene,original){
+function addImgObject (file,scene,view,objId){
 	
 	var image = new Image();
 	image.src = file;
 	image.onload = function(){
-		
-		if(scene == null){
+		if(scene == null){// 기존 scene 정보가 없다면 새로 그리기
 			//image size set
 			while(true){
 				if((this.width > $(".fairyTale").width()) || (this.height > $(".fairyTale").height())){
@@ -671,7 +680,11 @@ function addImgObject (file,objId,scene,original){
 					break;
 				}
 			}
-		}else{
+			if(objId == null){//file 파일 위치값 obj.obj
+				objId = objPush("img",file,view);
+			}
+			
+		}else{ // 기존 scene 정보가 있다면 기존 정보로 그리기
 			var ftWidth		= $(".fairyTale").width();
 			var ftHeigth	= $(".fairyTale").height();
 			$(this).css(
@@ -684,15 +697,14 @@ function addImgObject (file,objId,scene,original){
 				}
 			);
 		}
-		$(this).data("objId", objId == null ? objMaxNum() : objId ).css("position", "absolute");
+		
+		//오브젝트 아이디
+		$(this).data("objId", scene == null ? objId : scene.objId).css("position", "absolute");
+		
 		var layerGroupNum = (scene == null ? layerSelector() : scene.layerNum);
-		//console.log("layerGroupNum : " + layerGroupNum);
-		if(objId == null){
-			objId = objPush("img",file,original);
-		};
-		var sceneNum
-		//처음 들어가는 것 Scene 만들기
+		var sceneNum ="";
 		if(scene == null){
+			// 기존 scene 정보가 없다면 새로 등록
 			//초기화playAnimateSet(target,screenNum,objId,layerNum,animate,time,latency)
 			//appear 첫번째는 나타나는 이벤트만
 			//두번째 scene에는 이동및 없어지는 이벤트만
@@ -701,7 +713,10 @@ function addImgObject (file,objId,scene,original){
 			//복사해온 것 sceneNum 지정
 			sceneNum = scene.sceneNum;
 		}
+		
+		//sceneNum 넣기
 		$(this).data("sceneNum", sceneNum);
+		
 		
 		$(".move.group"+layerGroupNum).append(this);
 		//객체 선택
@@ -712,7 +727,7 @@ function addImgObject (file,objId,scene,original){
 		sceneViewList();
 		//object view
 		objViewList();
-		//객체 크기 setting
+		//객체 크기 json setting
 		setWHLT(this);
 	};
 
@@ -721,7 +736,7 @@ function addImgObject (file,objId,scene,original){
 //object push objList
 /*!! 주의 !! objMaxNum()의 실행 순서에의 해 오류가 발생할 수 있으니
   마지막에 실행하던가 검증하여 정확히 입력하도록하자 !!*/
-function objPush(objType,obj,original){
+function objPush(objType,obj,view){
 	var objId = objMaxNum();
 	objList.push({
 					  "objId"	: objId
@@ -729,8 +744,8 @@ function objPush(objType,obj,original){
 					, "objType"	: objType
 					//원본
 					, "obj"		: obj
-					//이미지 원본 이름
-					, "original": original
+					//에디터 표시될 명칭
+					, "view"	: view
 				});
 	
 	return objId;
@@ -838,10 +853,12 @@ function objViewList(){
 		if(obj.objType == "img"){
 			icon = "fa-file-image-o";
 		}else if(obj.objType == "text"){
+			icon = "fa-file-text-o";
+		}else if(obj.objType == "question"){
 			icon = "fa-file-text";
 		}
 		
-		putInfo += "<input type='checkbox' class='objCheck' value='1' />&nbsp;ID : " + obj.objId + "&nbsp;<i class='fa "+icon+"'>&nbsp;"+ obj.original +"</i>&nbsp;";
+		putInfo += "<input type='checkbox' class='objCheck' value='"+obj.objId+"' />&nbsp;ID : " + obj.objId + "&nbsp;<i class='fa "+icon+"'>&nbsp;"+ obj.view +"</i>&nbsp;";
 	});
 	$("#objList").html(putInfo);
 };
@@ -871,7 +888,7 @@ function addObjTxt(){
 	}
 	
 	//Text object
-	var sceneNum = addTxtObject($("#objText").val());
+	var sceneNum = addTxtObject($("#objText").val(),$("#qOnOff").prop("checked"));
 	
 	if($("#qOnOff").prop("checked")){
 		//체크된 상태라면 
@@ -914,22 +931,66 @@ function addObjTxt(){
 	*/
 };
 
-//텍스트 여기
+//텍스트 넣기 (문제)
 // add text object
-function addTxtObject(value){
+function addTxtObject(value,question,scene,objId){
 	var span = document.createElement("span");
-	$(span).html(value).css("position", "absolute");
-	//add objList
-	objId = objPush("text",value);
+	if(scene == null){ // 기본 scene 정보가 없다면
+		$(span).html(value).css("position", "absolute");
+		
+		var view = "";
+		if(value.length > 3){
+			view = value.substring(0,3)+"..";
+		}else{
+			view = value
+		}
+		
+		var type = "text"					//일반 텍스트
+		if(question){type = "question"}		//문제 텍스트
+		
+		if(objId == null){
+			objId = objPush(type,value,view);
+		}
+	}else{	// 기본 scene가 있다면
+		$(objList).each(function(index,obj){
+			if(obj.objId == scene.objId){
+				$(span).html(obj.obj);
+				return false;
+			};
+		});
+		var ftWidth		= $(".fairyTale").width();
+		var ftHeigth	= $(".fairyTale").height();
+		$(span).css(
+			{
+				  "width"	: ftWidth	* scene.width
+				, "height"	: ftHeigth	* scene.height
+				, "left"	: ftWidth	* scene.left
+				, "top"		: ftHeigth	* scene.top
+				, "position" : "absolute"
+			}
+		);
+	}
 	
-	sceneNum = playAnimateSet(span,screenSelector(),objId,layerSelector(),"fadeIn",0,0);
+	var sceneNum ="";
 	
-	$(span).data("objId",objId);
+	var layerGroupNum = (scene == null ? layerSelector() : scene.layerNum);
+	if(scene == null){
+		// 기존 scene 정보가 없다면 새로 등록
+		//appear 첫번째는 나타나는 이벤트만
+		//두번째 scene에는 이동및 없어지는 이벤트만
+		sceneNum = playAnimateSet(span,screenSelector(),objId,layerGroupNum,"fadeIn",0,0);
+	}else{
+		//복사해온 것 sceneNum 지정
+		sceneNum = scene.sceneNum;
+	}
+	
+	//오브젝트 아이디 넣기
+	$(span).data("objId",scene == null ? objId : scene.objId);
+	
+	//sceneNum 넣기
 	$(span).data("sceneNum",sceneNum);
 	
-	alert($(span).data("objId"));
-	
-	$(".move.group"+layerSelector()).append(span);
+	$(".move.group"+layerGroupNum).append(span);
 	
 	//객체 선택
 	selectTarget = span;
@@ -939,6 +1000,8 @@ function addTxtObject(value){
 	sceneViewList();
 	//object view
 	objViewList();
+	//객체 크기 json setting
+	setWHLT(span);
 	
 	return sceneNum;
 }
@@ -1048,12 +1111,13 @@ function addScreen(){
 
 //scene 선택
 function changeScene(element){
-	
+	console.log("sceneNum");
 	//objId img 와 radio 구분
 	//selectTarget 선택	
 	if($(element).is("img")||$(element).is("span")){
 		selectTarget = element;
 	}else{
+		console.log("sceneNum :" + $(this).data("sceneNum"));
 		var sceneNum = $(this).data("sceneNum");
 		$(".layer").children().each(function(index,obj){
 			if($(obj).data("sceneNum") == sceneNum){
@@ -1065,7 +1129,7 @@ function changeScene(element){
 	
 	//scene 선택
 	$("input[name='scene']").each(function(index,sRadio){
-		if($(sRadio).val() == $(selectTarget).data("objId")){
+		if($(sRadio).data("sceneNum") == $(selectTarget).data("sceneNum")){
 			$(sRadio).prop('checked',true);
 			return false;
 		}
@@ -1107,6 +1171,9 @@ function sceneViewList(){
 	});
 	var last = $($(chapter.screen).get(screenSelector()).scene).length;
 	sceneInfoSet($($(chapter.screen).get(screenSelector()).scene).get(last-1))
+	
+	//scene
+	$("input[name='scene']").on("click",changeScene);
 }
 
 //width height left top setting 객체 크기
@@ -1114,7 +1181,7 @@ function setWHLT(target){
 	
 	//데이터 넣기
 	$($(chapter.screen).get(screenSelector()).scene).each(function(index,scene){
-		if(scene.objId == $(target).data("objId")){
+		if(scene.sceneNum == $(target).data("sceneNum")){
 			scene.width		= $(target).width() / $(".fairyTale").width();
 			scene.height	= $(target).height() / $(".fairyTale").height();
 			scene.left		= $(target).position().left / $(".fairyTale").width();
@@ -1179,6 +1246,8 @@ function submitEdit(){
 function jsonView(){
 	$("#chapterJsonView").val(JSON.stringify(chapter));
 	$("#objListJsonView").val(JSON.stringify(objList));
+	$("#exampleBoxJsonView").val(JSON.stringify(exampleBox));
+	$("#anwserBoxJsonView").val(JSON.stringify(anwserBox));
 }
 
 function saveFairy(){

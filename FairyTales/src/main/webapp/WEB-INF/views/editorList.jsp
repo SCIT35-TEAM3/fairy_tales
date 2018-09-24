@@ -320,10 +320,6 @@
 			</div>
 		</div>
 	</footer>
-	
-	
-	
-	
 	<!-- 팝업 HTML -->
 	<div class="dim-layer">
 	    <div class="dimBg"></div>

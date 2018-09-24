@@ -68,7 +68,10 @@ public class EditorController {
 	
 	//에디터
 	@RequestMapping(value = "/editor", method = RequestMethod.GET)
-	public String editor() {
+	public String editor(Integer fpk, Integer chapter, Model model) {
+		
+		model.addAttribute("fpk", fpk);
+		model.addAttribute("chapter", chapter);
 		return "editor";
 	}
 	
@@ -85,9 +88,11 @@ public class EditorController {
 	}
 	
 	@RequestMapping(value = "/saveFairy", method = RequestMethod.POST)
-	public String saveFairy(String chapter,String objList){
+	public String saveFairy(String chapter,String objList,String exampleBox,String anwserBox){
 		FileService.saveJson(chapter,FT_UPLOAD_PATH + "/chapter.json");
 		FileService.saveJson(objList,FT_UPLOAD_PATH + "/objList.json");
+		FileService.saveJson(exampleBox,FT_UPLOAD_PATH + "/example.json");
+		FileService.saveJson(anwserBox,FT_UPLOAD_PATH + "/anwser.json");
 		
 		return "redirect:/";
 	}
