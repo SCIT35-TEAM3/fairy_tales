@@ -224,9 +224,18 @@
 							<div class="bb-item">
 								<a href="#"><img src="images/demo3/3.jpg" alt="image03" /></a>
 							</div>
+							<div class="bb-item">
+								<a href="#"><img src="images/demo3/3.jpg" alt="image03" /></a>
+							</div>
+							<div class="bb-item">
+								<a href="#"><img src="images/demo3/3.jpg" alt="image03" /></a>
+							</div>
+							<div class="bb-item">
+								<a href="#"><img src="images/demo3/3.jpg" alt="image03" /></a>
+							</div>
 						</div>
 						<nav>
-							<span class="bb-current"></span> <span></span> <span></span>
+							<span class="bb-current"></span> <span></span> <span></span><span></span><span></span><span></span>
 						</nav>
 					</li>
 					<li>

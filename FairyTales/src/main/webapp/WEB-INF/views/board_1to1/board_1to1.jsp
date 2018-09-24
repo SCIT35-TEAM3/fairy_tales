@@ -358,7 +358,7 @@
 					<div class="copyright-text text-center">
 						<p>Copyright &copy; SC IT MASTER</p>
 						<p>
-							Designed by C class 3Group</a>
+							Designed by C class 3Group
 						</p>
 					</div>
 				</div>

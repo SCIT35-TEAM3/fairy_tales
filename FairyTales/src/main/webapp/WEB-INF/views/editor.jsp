@@ -33,6 +33,10 @@
 
 <!-- 팝업 css -->
 <style type="text/css">
+	b {
+		color : #a5732a;
+	}
+		
 	.pop-layer .pop-container {
 	  padding: 20px 25px;
 	}
@@ -314,8 +318,9 @@
 													 -->
 													<input type="button" id="imgFileBtn" value="이미지파일"/>
 													<input type="file" id="fileUp" onchange="imgFilePut(this.files)" style="display: none;"/>
-													<input type="text" id="objText"/>
-													<input type="button" id="addObjTxtBtn" value="새 텍스트 추가"/>
+													<!-- <input type="text" id="objText"/> -->
+													<a href="#layer1" class="btn-popup">word add</a>
+													<!-- <input type="button" id="addObjTxtBtn" value="word add"/> -->
 													
 													<select id ="effect" name="effect">
 														<option value="effect1" >눈</option>
@@ -456,10 +461,7 @@
 			</div>
 		</div>
 	</section>
-
-
 	<!--/#blog-->
-
 	<!-- footer -->
 	<footer id="footer">
 		<div class="container">
@@ -505,10 +507,6 @@
 			</div>
 		</div>
 	</footer>
-	
-	
-	
-	
 	<!-- 팝업 HTML -->
 	<div class="dim-layer">
 	    <div class="dimBg"></div>
@@ -517,6 +515,44 @@
 	            <div class="pop-conts">
 	            	<!-- <form method="post" id="pop"> -->
 						<input type="hidden" id="fpk" name="fpk">
+						<table class="table text-center">
+							<thead>
+								<tr>
+									<td>
+										<b>Content</b><br>
+										<textarea id="objText" rows="10" cols="50" style="resize: none;"></textarea>
+										<input type="checkbox" id="qOnOff"><b>Question<b>
+									</td>
+								</tr>
+							</thead>
+							<tbody id="questionBase">
+								<tr>
+									<td>
+										<b>정답</b><br>
+										<input id="anwser" type="text">
+									</td>
+								</tr>
+								<tr>
+									<td id="exampleBase">	
+										<a href="#" class="btn" id="example"><i class="fa fa-plus">보기 추가</i></a><br>
+										<input class="example" type="text">
+									</td>
+								</tr>
+							</tbody>
+							<tfoot>
+								<tr>
+									<td>
+										<br>
+										<!-- <a href="#" id="btnDelet" class="btn btn-submit btn-layer">Delete</a> -->
+										<a href="#" id=addObjTxtBtn class="btn btn-submit btn-layer">Register</a>
+										<!-- btnSubmit 삭제 예정-->
+			                			<a href="#" id="btnClose" class="btn btn-submit btn-layer">Close</a>
+									</td>
+								</tr>
+							</tfoot>
+						</table>
+						
+						<!-- 
 						<table class="table text-center">
 							<tr>
 								<td>
@@ -566,6 +602,7 @@
 								</td>
 							</tr>
 						</table>
+						 -->
 					<!-- </form> -->
 	                <!--// content-->
 	            </div>
@@ -587,30 +624,38 @@
 			$('.btn-popup').click(function(){
 				var $href = $(this).attr('href');
 				layer_popup($href,$(this));
+				return false;
+			});
+			
+			$("#example").on("click",function(){
+				if($(".example").length < 4){
+					$("#exampleBase").append("<input class='example' type='text'>");
+				}else{
+					alert("너무 많습니다.");
+				}
+				return false;
+			});
+			
+			//팝업창 체크 유무
+			$("#qOnOff").on("click",function(){
+				if($("#qOnOff").prop("checked")){
+					$("#questionBase").show();
+				}else{
+					$("#questionBase").hide();
+				}
 			});
 			
 			$('#btnSubmit').click(function(){insertFt(); return false;});
 		});
 		
 		function layer_popup(el,$element){
+			
+			$("#questionBase").hide();
 			<%-- #layer수행번호 --%>
 			if(el.substr(6) == 1){
-				$("#fpk").val('');
-				$("#flevel").val(1);
-				$("#fname").val('');
-				$("#fchapter").val('');
-				$("#fcode").val('jp');
-				$("#btnDelet").hide();
-				$("#btnSubmit").html("Register");
+				//등록
 			}else if(el.substr(6) == 2){
-				var $parent = $element.parent().parent();
-				$("#fpk").val($parent.children('.fpk').html());
-				$("#flevel").val($parent.children('.flevel').html());
-				$("#fname").val($parent.children('.fname').children('a').html());
-				$("#fchapter").val($parent.children('.fchapter').html());
-				$("#fcode").val($parent.children('.fcode').html());
-				$("#btnDelet").show();
-				$("#btnSubmit").html("MODIFY");
+				//수정
 			}
 			
 			var $el = $(el.substr(0,6));				//레이어의 id를 $el 변수에 저장

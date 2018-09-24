@@ -17,6 +17,19 @@ var chapter = {
 				, "img"		: null
 				, "maxLayer": 1
 			  };
+
+// 보기 배열
+var exampleBox = [];
+// 정답 배열
+var anwserBox = [];
+/*
+ * 
+ * var tAnwser = {
+				"sceneNum" : ""
+				"answer"
+				
+			 };
+*/
 // 이전 width
 var oldWidth;
 var fPercent;
@@ -370,11 +383,11 @@ function changeScreen(){
 		//scene.objId
 		$(objList).each(function(index,obj){
 			if(obj.objId == scene.objId){
-				if(obj.objNm == "img"){
+				if(obj.objType == "img"){
 					console.dir("scene : " + JSON.stringify(scene));
 					//console.dir("obj : " + JSON.stringify(obj));
 					addImgObject (obj.obj,obj.objId,scene);
-				}else if(obj.objNm == "text"){
+				}else if(obj.objType == "text"){
 					// 택스트로 올때인데 문제는 제외해야겠지?
 					//document.createElement("span");
 				};
@@ -402,12 +415,13 @@ function getBTWN(target){
 }
 
 //add object 
+// 오브젝트 복사
 function addObject(){
 	$(".objCheck").each(function(index,check){
 		if($(check).prop('checked')){
 			$(objList).each(function(index,obj){
 				if(obj.objId == $(check).val()){
-					switch(obj.objNm){
+					switch(obj.objType){
 						//keyAniVal reSet
 						case "img" :
 							addImgObject(obj.obj,obj.objId);
@@ -423,6 +437,7 @@ function addObject(){
 	//view set
 	objViewList();
 };
+
 //selected obj clear
 function selectClear(){
 	selectTarget = null;
@@ -706,12 +721,12 @@ function addImgObject (file,objId,scene,original){
 //object push objList
 /*!! 주의 !! objMaxNum()의 실행 순서에의 해 오류가 발생할 수 있으니
   마지막에 실행하던가 검증하여 정확히 입력하도록하자 !!*/
-function objPush(objNm,obj,original){
+function objPush(objType,obj,original){
 	var objId = objMaxNum();
 	objList.push({
 					  "objId"	: objId
 					// 오브젝트 이름
-					, "objNm"	: objNm
+					, "objType"	: objType
 					//원본
 					, "obj"		: obj
 					//이미지 원본 이름
@@ -819,7 +834,14 @@ function sceneMaxNum(screenNum){
 function objViewList(){
 	var putInfo = "";
 	$(objList).each(function(index,obj){
-		putInfo += "<input type='checkbox' class='objCheck' value='1' />&nbsp;ID : " + obj.objId + "&nbsp;<i class='fa fa-file-image-o'>&nbsp;"+ obj.original +"</i>&nbsp;";
+		var icon = "";
+		if(obj.objType == "img"){
+			icon = "fa-file-image-o";
+		}else if(obj.objType == "text"){
+			icon = "fa-file-text";
+		}
+		
+		putInfo += "<input type='checkbox' class='objCheck' value='1' />&nbsp;ID : " + obj.objId + "&nbsp;<i class='fa "+icon+"'>&nbsp;"+ obj.original +"</i>&nbsp;";
 	});
 	$("#objList").html(putInfo);
 };
@@ -829,10 +851,51 @@ function addObjTxt(){
 	
 	if($("#objText").val().length < 1){
 		alert("글을 입력하세요.");
-	}else{
-		//Text object
-		addTxtObject($("#objText").val());
+		return false;
 	}
+	if($("#qOnOff").prop("checked")){
+		if($("#anwser").val().length < 1){
+			alert("정답을 넣으세요.");
+			return false;
+		}
+		var check = false;
+		$(".example").each(function(index,example){
+			if($(example).val().length < 1){
+				check = true;
+			}
+		});
+		if(check){
+			alert("모든 보기를 입력하세요.");
+			return false;
+		}
+	}
+	
+	//Text object
+	var sceneNum = addTxtObject($("#objText").val());
+	
+	if($("#qOnOff").prop("checked")){
+		//체크된 상태라면 
+		var anwser = $("#anwser").val();
+		//정답 저장
+		anwserBox.push({
+				 "sceneNum"	: sceneNum
+				,"answer"	: anwser
+		});
+		
+		var exJson = '{ "sceneNum":"'+sceneNum+'"'; 
+		$(".example").each(function(index,ex){
+			var answer = $(ex).val();
+			exJson += ', "answer'+index+'":"' + answer + '"';
+		});
+		exJson += '}';
+		//보기 저장
+		exampleBox.push(JSON.parse(exJson));
+	};
+	
+	return false;
+	
+	
+	
 	////////여기여기
 	/*
 	$("input[name='object']").each(function(index,object){
@@ -876,6 +939,8 @@ function addTxtObject(value){
 	sceneViewList();
 	//object view
 	objViewList();
+	
+	return sceneNum;
 }
 
 //선택된 scene
@@ -1033,7 +1098,6 @@ function sceneViewList(){
 		$(input).addClass("sceneCheck");
 		$(input).data("objId",scene.objId);
 		$(input).data("sceneNum",scene.sceneNum);
-		$(input).change(changeScene);
 		
 		$(i).append(input);
 		$(i).append("&nbsp;ID : " + scene.objId);
