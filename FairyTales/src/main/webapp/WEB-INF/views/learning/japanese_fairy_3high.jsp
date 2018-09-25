@@ -133,7 +133,6 @@
 							<li class="dropdown"><a href="#">My Page <i class="fa fa-angle-down"></i></a>
 								<ul role="menu" class="sub-menu">
 									<li><a href="my_info_detail">My Infomation</a></li>
-									<li><a href="#">Learning Page</a></li>
 									<li><a href="my_chart_page">My Chart</a></li>
 								</ul></li>
 							<li><div id="user_id_form">${sessionScope.loginid}님,</div></li>
@@ -216,16 +215,16 @@
 						<div class="bb-bookblock">
 							<div class="bb-item">
 								<a href="cendrillon_screen1"  onClick="window.open(this.href, '', 'width=1120, height=630, top=30%,left=30%'); return false;">
-								<img src="images/demo3/1.jpg" alt="image01" /></a>
+								<img src="images/learningPage/신데렐라1.png" alt="image01" /></a>
 							</div>
 							<div class="bb-item">
-								<a href="#"><img src="images/demo3/2.jpg" alt="image02" /></a>
+								<a href="#"><img src="images/learningPage/신데렐라2.png" alt="image02" /></a>
 							</div>
 							<div class="bb-item">
-								<a href="#"><img src="images/demo3/3.jpg" alt="image03" /></a>
+								<a href="#"><img src="images/learningPage/신데렐라3.png" alt="image03" /></a>
 							</div>
 							<div class="bb-item">
-								<a href="#"><img src="images/demo3/3.jpg" alt="image03" /></a>
+								<a href="#"><img src="images/learningPage/신데렐라3.png" alt="image03" /></a>
 							</div>
 							<div class="bb-item">
 								<a href="#"><img src="images/demo3/3.jpg" alt="image03" /></a>
@@ -242,10 +241,10 @@
 						<h3>어린 왕자</h3>
 						<div class="bb-bookblock">
 							<div class="bb-item">
-								<a href="#"><img src="images/demo3/1.jpg" alt="image01" /></a>
+								<a href="#"><img src="images/learningPage/어린왕자1.png" alt="image01" /></a>
 							</div>
 							<div class="bb-item">
-								<a href="#"><img src="images/demo3/2.jpg" alt="image02" /></a>
+								<a href="#"><img src="images/learningPage/어린왕자2.png" alt="image02" /></a>
 							</div>
 							<div class="bb-item">
 								<a href="#"><img src="images/demo3/3.jpg" alt="image03" /></a>
@@ -259,10 +258,10 @@
 						<h3>오즈의 마법사</h3>
 						<div class="bb-bookblock">
 							<div class="bb-item">
-								<a href="#"><img src="images/demo3/1.jpg" alt="image01" /></a>
+								<a href="#"><img src="images/learningPage/오즈의 마법사1.png" alt="image01" /></a>
 							</div>
 							<div class="bb-item">
-								<a href="#"><img src="images/demo3/2.jpg" alt="image02" /></a>
+								<a href="#"><img src="images/learningPage/오즈의 마법사2.png" alt="image02" /></a>
 							</div>
 							<div class="bb-item">
 								<a href="#"><img src="images/demo3/3.jpg" alt="image03" /></a>
@@ -276,10 +275,10 @@
 						<h3>이상한 나라의 앨리스</h3>
 						<div class="bb-bookblock">
 							<div class="bb-item">
-								<a href="#"><img src="images/demo3/1.jpg" alt="image01" /></a>
+								<a href="#"><img src="images/learningPage/이상한 나라의 앨리스1.png" alt="image01" /></a>
 							</div>
 							<div class="bb-item">
-								<a href="#"><img src="images/demo3/2.jpg" alt="image02" /></a>
+								<a href="#"><img src="images/learningPage/이상한 나라의 앨리스2.png" alt="image02" /></a>
 							</div>
 							<div class="bb-item">
 								<a href="#"><img src="images/demo3/3.jpg" alt="image03" /></a>

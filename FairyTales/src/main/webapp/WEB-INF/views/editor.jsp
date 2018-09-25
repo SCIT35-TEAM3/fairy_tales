@@ -439,14 +439,22 @@
 													<textarea rows="20" cols="100" id="chapterJsonView"></textarea>
 													<p> objList 출력 JSON</p>
 													<textarea rows="20" cols="100" id="objListJsonView"></textarea>
+													<p> xampleBox 출력 JSON</p>
+													<textarea rows="20" cols="100" id="exampleBoxJsonView"></textarea>
+													<p> anwserBox 출력 JSON</p>
+													<textarea rows="20" cols="100" id="anwserBoxJsonView"></textarea>
 												</td>
 											</tr>
 											<tr>
 												<td colspan = "2">
 													<form action="saveFairy" method="post" onsubmit="return saveFairy()">
-														<input type="submit" value="저장">
-														<input type="text" id="saveChapter" name="chapter">
-														<input type="text" id="saveObjList" name="objList">
+														<input type="submit" value="저장"/>
+														<input type="hidden"  name="fpk" value="${fpk}"/>
+														<input type="hidden"  name="chapter" value="${chapter}"/>
+														<input type="text" id="saveChapter" name="chapter"/>
+														<input type="text" id="saveObjList" name="objList"/>
+														<input type="text" id="saveExample" name="exampleBox"/>
+														<input type="text" id="saveAnwser" name="anwserBox"/>
 													</form>
 												</td>
 											</tr>

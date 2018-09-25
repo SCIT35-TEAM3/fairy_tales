@@ -133,7 +133,6 @@
 							<li class="dropdown"><a href="#">My Page <i class="fa fa-angle-down"></i></a>
 								<ul role="menu" class="sub-menu">
 									<li><a href="my_info_detail">My Infomation</a></li>
-									<li><a href="#">Learning Page</a></li>
 									<li><a href="my_chart_page">My Chart</a></li>
 								</ul></li>
 							<li><div id="user_id_form">${sessionScope.loginid}님,</div></li>
@@ -241,10 +240,10 @@
 						<h3>인어공주</h3>
 						<div class="bb-bookblock">
 							<div class="bb-item">
-								<a href="#"><img src="images/demo3/6.jpg" alt="image06" /></a>
+								<a href="#"><img src="images/learningPage/인어공주1.png" alt="image06" /></a>
 							</div>
 							<div class="bb-item">
-								<a href="#"><img src="images/demo3/7.jpg" alt="image07" /></a>
+								<a href="#"><img src="images/learningPage/인어공주2.png" alt="image07" /></a>
 							</div>
 							<div class="bb-item">
 								<a href="#"><img src="images/demo3/8.jpg" alt="image08" /></a>
@@ -258,13 +257,13 @@
 						<h3>백설공주</h3>
 						<div class="bb-bookblock">
 							<div class="bb-item">
-								<a href="#"><img src="images/demo3/1.jpg" alt="image01" /></a>
+								<a href="#"><img src="images/learningPage/백설공주1.png" alt="image01" /></a>
 							</div>
 							<div class="bb-item">
-								<a href="#"><img src="images/demo3/2.jpg" alt="image02" /></a>
+								<a href="#"><img src="images/learningPage/백설공주2.png" alt="image02" /></a>
 							</div>
 							<div class="bb-item">
-								<a href="#"><img src="images/demo3/3.jpg" alt="image03" /></a>
+								<a href="#"><img src="images/learningPage/백설공주3.png" alt="image03" /></a>
 							</div>
 						</div>
 						<nav>
@@ -275,10 +274,10 @@
 						<h3>빨간모자</h3>
 						<div class="bb-bookblock">
 							<div class="bb-item">
-								<a href="#"><img src="images/demo3/1.jpg" alt="image01" /></a>
+								<a href="#"><img src="images/learningPage/빨간모자1.png" alt="image01" /></a>
 							</div>
 							<div class="bb-item">
-								<a href="#"><img src="images/demo3/2.jpg" alt="image02" /></a>
+								<a href="#"><img src="images/learningPage/빨간모자2.png" alt="image02" /></a>
 							</div>
 							<div class="bb-item">
 								<a href="#"><img src="images/demo3/3.jpg" alt="image03" /></a>
