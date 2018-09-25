@@ -169,7 +169,7 @@
 														<tr>
 															<td>
 																<div class="table-data__info">
-																	<h6>${s.count}</h6>
+																	<h6>${s.count+navi.startRecord}</h6>
 																</div>
 															</td>
 
@@ -196,7 +196,7 @@
 														<tr>
 															<td>
 																<div class="table-data__info">
-																	<h6>${s.count}</h6>
+																	<h6>${s.count+navi.startRecord}</h6>
 																</div>
 															</td>
 

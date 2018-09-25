@@ -157,7 +157,7 @@ function reply_update() {
 		
 		var reply_num = $(this).attr("data-dno");
 		
-		alert("delete>>>"+reply_num);
+		alert("삭제되었습니다.");
 		$.ajax({
 			method : 'get'
 			, url  : 'reply_delete'
