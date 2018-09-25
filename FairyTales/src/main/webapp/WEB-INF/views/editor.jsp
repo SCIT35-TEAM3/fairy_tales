@@ -217,7 +217,8 @@
 										<thead>
 											<tr>
 												<td colspan="2">
-													<i class="fa fa-files-o">&nbsp;Layer</i>&nbsp;&nbsp;<input type="button" id = "addLayer" value="레이어 추가"/>
+													<i class="fa fa-files-o">&nbsp;Layer</i>&nbsp;&nbsp;
+													<a href="#layer" id="addLayer" class="btn">Add Layer</a>
 													<div class="layerSelector"  style="width:100%; height:50px; overflow-x: scroll; white-space: nowrap;">
 													<span><input type="radio" name="layer" value="1" checked />Layer1</span>
 													</div>
@@ -246,7 +247,7 @@
 												<i class="fa fa-film"></i>
 												<select id="screensView" name="screen">
 													<option value="0">Screen 1</option>
-												</select>&nbsp;&nbsp;<input type="button" id = "addScreen" onclick="addScreen()" value="스크린 추가"/>
+												</select>&nbsp;&nbsp;<a href="#screen" id="addScreen" class="btn">Add Screen</a>
 												<div id="sceneList"  style="width:100%; height:50px; overflow-x: scroll; white-space: nowrap;"></div>
 												</td>
 											</tr>
@@ -265,25 +266,66 @@
 														</div>
 													</div>
 													<div class="col-md-3 col-sm-3">
-														선택된 objId <br/>
-														<input type="number" id="sObjId" disabled/>
-														<br/> 시간 / 대기 시간 <br/>
-														<input type="number" id="sTime"		placeholder="시간"/>
-														<input type="number" id="sLatency"	placeholder="대기시간"/>
-														<br/> top / left <br/>
-														<input type="number" id="top"		placeholder="top"/>
-														<input type="number" id="left"		placeholder="left"/>
-														<br/> width / height <br/>
-														<input type="number" id="width"		placeholder="width"/>
-														<input type="number" id="height"	placeholder="height"/>
-														<br/> 오브젝트 이벤트 <br/>
-														<select id ="animate" name="animate">
-															<option value="animate" >animate(움직임)</option>
-															<option value="fadeIn" >fadeIn(나타남)</option>
-															<option value="fadeOut" >fadeOut(없어짐)</option>
-														</select>
-														<br/><br/>
-														<input type="button" id="sceneSet" value="입력" />
+														<table class="table" >
+															<thead>
+															<tr>
+																<td>
+																	<p>Object</p>
+																</td>
+																<td>
+																	<input type="number" id="sObjId" placeholder="Object Seleted" disabled/>
+																</td>
+															</tr>
+															</thead>
+															<tbody>
+															<tr>
+																<td>
+																	<p>Time</p>
+																	<p>Latency</p>
+																</td>
+																<td>
+																	<input type="number" id="sTime"		placeholder="시간"/>
+																	<input type="number" id="sLatency"	placeholder="대기시간"/>
+																</td>
+															</tr>
+															<tr>
+																<td>
+																	<p>Top</p>
+																	<p>Left</p>
+																</td>
+																<td>
+																	<input type="number" id="top"		placeholder="top" style="width: 70%; text-align:right;"/> %
+																	<input type="number" id="left"		placeholder="left"style="width: 70%; text-align:right;"/> %
+																</td>
+															</tr>
+															<tr>
+																<td>
+																	<p>Width</p>
+																	<p>Height</p>
+																</td>
+																<td>
+																	<input type="number" id="width"		placeholder="width" style="width: 70%; text-align:right;"/> %
+																	<input type="number" id="height"	placeholder="height"style="width: 70%; text-align:right;"/> %
+																</td>
+															</tr>
+															<tr>
+																<td colspan="2">
+																	<p>Animate Event</p>
+																	<select id ="animate" name="animate">
+																		<option value="fadeIn" >fadeIn(나타남)</option>
+																		<option value="animate" >animate(움직임)</option>
+																		<option value="" >유지</option>
+																		<option value="fadeOut" >fadeOut(없어짐)</option>
+																	</select>
+																</td>
+															</tr>
+															<tr>
+																<td colspan="2">
+																	<a href="#save" id="sceneSet" class="btn"><i class="fa fa-save">&nbsp;&nbsp;Save Info</i></a>
+																</td>
+															</tr>
+															</tbody>
+														</table>
 													</div>
 												</td>
 												<!-- 
@@ -303,7 +345,9 @@
 										<tbody>
 											<tr >
 												<td colspan = "2">
-												<span><i class="fa fa-cubes">  Object List</i></span>&nbsp;&nbsp;<input type="button" id="addObjectBtn" value="오브젝트 사용"/>&nbsp;&nbsp;<input type="button" id="objCheckBtn" value="오브젝트 삭제"/>
+												<span><i class="fa fa-cubes">  Object List</i></span>&nbsp;&nbsp;
+												<a href="#use" id="addObjectBtn" class="btn">Use Object</a>&nbsp;&nbsp;
+												<a href="#delete" id="objCheckBtn" class="btn">Delete Object</a>
 												<div id="objList"  style="width:100%; height:50px; overflow-x: scroll; white-space: nowrap;"></div>
 												</td>
 											</tr>
@@ -316,19 +360,22 @@
 														<span><input type="radio" value="effect" name="object" />효과</span>
 													</div>
 													 -->
-													<input type="button" id="imgFileBtn" value="이미지파일"/>
+													<i class="fa fa-dropbox">&nbsp;&nbsp;Add Object</i>
+													<a href="#imgae" id="imgFileBtn" class="btn">Image</a>
 													<input type="file" id="fileUp" onchange="imgFilePut(this.files)" style="display: none;"/>
 													<!-- <input type="text" id="objText"/> -->
-													<a href="#layer1" class="btn-popup">word add</a>
+													<a href="#layer1" class="btn btn-popup ">Word/Question</a>
 													<!-- <input type="button" id="addObjTxtBtn" value="word add"/> -->
 													
+													<!-- 눈 비 안개 효과.. 보류
 													<select id ="effect" name="effect">
 														<option value="effect1" >눈</option>
 														<option value="effect2" >비</option>
 														<option value="effect3" >안개</option>
 													</select>
-													
+													 
 													<input type="button" id="effectAddBtn" value="효과추가"/>
+													-->
 													<!-- file  
 													<form action="#" method="post" id="editForm" enctype="multipart/mixed">
 														<input type="file" onchange="imgFilePut(this.files)" />
@@ -636,7 +683,7 @@
 			});
 			
 			$("#example").on("click",function(){
-				if($(".example").length < 4){
+				if($(".example").length < 3){
 					$("#exampleBase").append("<input class='example' type='text'>");
 				}else{
 					alert("너무 많습니다.");
@@ -657,11 +704,23 @@
 		});
 		
 		function layer_popup(el,$element){
-			
+			alert("el : " + el);
 			$("#questionBase").hide();
 			<%-- #layer수행번호 --%>
 			if(el.substr(6) == 1){
 				//등록
+				$("#objText").val('');
+				$("#anwser").val('');
+				$(".example").each(function(index,example){
+					if(index != 0){
+						//삭제
+						$(example).remove();
+					}else{
+						//내용 삭제
+						$(example).val('');
+					}
+				});
+				$("#qOnOff").prop("checked",false);
 			}else if(el.substr(6) == 2){
 				//수정
 			}
@@ -685,22 +744,37 @@
 			} else {
 				$el.css({top: 0, left: 0});
 			}
-			  
-			$el.find('#btnClose').click(function(){
-				isDim ? $('.dim-layer').fadeOut() : $el.fadeOut(); // 레이어 닫기
-				return false;
-			});
 			
-			$el.find('#btnDelet').click(function(){
-				deleteFt();
-				return false;
-			});
 			
-			$('.layer .dimBg').click(function(){
-				$('.dim-layer').fadeOut();
-				return false;
-			});
 		};
+		
+		$('.layer .dimBg').click(function(){
+			$('.dim-layer').fadeOut();
+			return false;
+		});
+		//닫기
+		$("#layer").find('#btnClose').click(function(){
+			closePop();
+			return false;
+		});
+		//텍스트 퀴즈 넣기
+		$("#layer").find('#addObjTxtBtn').click(function(){
+			addObjTxt();
+			closePop();
+			return false;
+		});
+		//지우기
+		$("#layer").find('#btnDelet').click(function(){
+			deleteFt();
+			closePop();
+			return false;
+		});
+		
+		//팝업 닫기
+		function closePop(){
+			var isDim = $("#layer").prev().hasClass('dimBg');	//dimmed 레이어를 감지하기 위한 boolean 변수
+			isDim ? $('.dim-layer').fadeOut() : $("#layer").fadeOut();
+		}
 		
 		//저장 수정
 		function insertFt(){

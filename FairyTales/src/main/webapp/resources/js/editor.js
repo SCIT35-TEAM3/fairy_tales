@@ -183,6 +183,9 @@ $(document).ready(function(){
 	//img file upload click
 	$("#imgFileBtn").on("click",function(){$("#fileUp").click();});
 	
+	//스크린 추가
+	$("#addScreen").on("click",addScreen);
+	
 	//select object
 	$(".fairyTale").mousedown(function(events){
 		$($(".move.group"+layerSelector()).children().get().reverse()).each(function(index,element){
@@ -256,15 +259,12 @@ $(document).ready(function(){
 		$("input[name='layer']").on("click",selectClear);
 	});
 	
-	//add object Text object
-	$("#addObjTxtBtn").on("click", addObjTxt);
-	
 	//오브젝트 사용
 	$("#addObjectBtn").on("click", addObject);
 	
 	//object delete
 	$("#objCheckBtn").on("click", objCheck);
-	
+	objCheck
 	//keypad set
 	$(document).keydown(function(event){
 		var keydown = event.which;
@@ -308,27 +308,29 @@ $(document).ready(function(){
 			
 			switch(keydown){
 				//keypad
+				/*	폰트 크기
 				case 107 :
 					var fontSize = Number.parseInt($(selectTarget).css("font-size"));
 					$(selectTarget).css("font-size",(fontSize + 1) + "px").css("white-space","normal");
 					break;
-				case 38 : fMovement("+=0","-="+keyAniVal,0);
+				 */
+				case 104 : fMovement("+=0","-="+keyAniVal,0);
 					break;
-				case 40 : fMovement("+=0","+="+keyAniVal,0);
+				case 98 : fMovement("+=0","+="+keyAniVal,0);
 					break;
-				case 37 : fMovement("-="+keyAniVal,"+=0",0);
+				case 100 : fMovement("-="+keyAniVal,"+=0",0);
 					break;
-				case 39 : fMovement("+="+keyAniVal,"+=0",0);
+				case 102 : fMovement("+="+keyAniVal,"+=0",0);
 					break;
-				case 36 : fMovement("-="+keyAniVal,"-="+keyAniVal,0);
+				case 103 : fMovement("-="+keyAniVal,"-="+keyAniVal,0);
 					break;
-				case 33 : fMovement("+="+keyAniVal,"-="+keyAniVal,0);
+				case 105 : fMovement("+="+keyAniVal,"-="+keyAniVal,0);
 					break;
-				case 34 : fMovement("+="+keyAniVal,"+="+keyAniVal,0);
+				case 99 : fMovement("+="+keyAniVal,"+="+keyAniVal,0);
 					break;
-				case 35 : fMovement("-="+keyAniVal,"+="+keyAniVal,0);
+				case 97 : fMovement("-="+keyAniVal,"+="+keyAniVal,0);
 					break;
-				case 12 : 
+				case 101 : 
 					//var centerX = $(".fairyTale").offset().left + (($(".fairyTale").width() / 2) - ($(selectTarget).width() / 2));
 					//var centerY = $(".fairyTale").offset().top + (($(".fairyTale").height() / 2) - ($(selectTarget).height() / 2));
 					
@@ -339,7 +341,9 @@ $(document).ready(function(){
 					break;
 				case 46 :
 					//Delete key
-					selectTarget.remove();
+					sceneDelete(selectTarget);
+					
+					//selectTarget.remove();
 					selectClear();
 					//object view
 					objViewList();
@@ -446,16 +450,25 @@ function addObject(){
 	});
 	//view set
 	objViewList();
+	
+	return false;
 };
 
 //selected obj clear
 function selectClear(){
 	selectTarget = null;
 	$("#fElementTarget").remove();
+	$("#sObjId").val("");
+	$("#sTime").val("");
+	$("#sLatency").val("");
+	$("#top").val("");
+	$("#left").val("");
+	$("#width").val("");
+	$("#height").val("");
 	//green box
 	greenBox();
 }
-//checkbox
+//오브젝트 삭제
 function objCheck(){
 	var tf = confirm("정말 삭제하시겠습니까?");
 	if(tf){
@@ -469,6 +482,7 @@ function objCheck(){
 		//children green box;
 		greenBox(selectTarget);
 	};
+	return false;
 };
 //object delete
 function objDelete(delObjNum){
@@ -689,10 +703,10 @@ function addImgObject (file,scene,view,objId){
 			var ftHeigth	= $(".fairyTale").height();
 			$(this).css(
 				{
-					  "width"	: ftWidth	* scene.width
-					, "height"	: ftHeigth	* scene.height
-					, "left"	: ftWidth	* scene.left
-					, "top"		: ftHeigth	* scene.top
+					  "width"	: ftWidth	* (scene.width/100)
+					, "height"	: ftHeigth	* (scene.height/100)
+					, "left"	: ftWidth	* (scene.left/100)
+					, "top"		: ftHeigth	* (scene.top/100)
 					, "position" : "absolute"
 				}
 			);
@@ -908,11 +922,7 @@ function addObjTxt(){
 		//보기 저장
 		exampleBox.push(JSON.parse(exJson));
 	};
-	
 	return false;
-	
-	
-	
 	////////여기여기
 	/*
 	$("input[name='object']").each(function(index,object){
@@ -962,10 +972,10 @@ function addTxtObject(value,question,scene,objId){
 		var ftHeigth	= $(".fairyTale").height();
 		$(span).css(
 			{
-				  "width"	: ftWidth	* scene.width
-				, "height"	: ftHeigth	* scene.height
-				, "left"	: ftWidth	* scene.left
-				, "top"		: ftHeigth	* scene.top
+				  "width"	: ftWidth	* (scene.width/100)
+				, "height"	: ftHeigth	* (scene.height/100)
+				, "left"	: ftWidth	* (scene.left/100)
+				, "top"		: ftHeigth	* (scene.top/100)
 				, "position" : "absolute"
 			}
 		);
@@ -1042,12 +1052,16 @@ function setSScene(targetObj,sceneInfo){
 	var ftWidth		= $(".fairyTale").width();
 	var ftHeigth	= $(".fairyTale").height();
 	
+	console.log("width : " + sceneInfo.width);
+	console.log("sceneInfo : " + (sceneInfo.width / 100));
+	
+	
 	$(targetObj).css(
 		{
-			  "width" 		: ftWidth	* sceneInfo.width
-			, "height"		: ftHeigth	* sceneInfo.height
-			, "left"		: ftWidth	* sceneInfo.left
-			, "top"			: ftHeigth	* sceneInfo.top
+			  "width" 		: ftWidth	* (sceneInfo.width / 100)
+			, "height"		: ftHeigth	* (sceneInfo.height / 100)
+			, "left"		: ftWidth	* (sceneInfo.left / 100)
+			, "top"			: ftHeigth	* (sceneInfo.top / 100)
 			, "position"	: "absolute"
 		}
 	)
@@ -1107,6 +1121,8 @@ function addScreen(){
 	*/
 	//스크린 변경
 	changeScreen();
+	
+	return false;
 }
 
 //scene 선택
@@ -1170,7 +1186,10 @@ function sceneViewList(){
 		
 	});
 	var last = $($(chapter.screen).get(screenSelector()).scene).length;
-	sceneInfoSet($($(chapter.screen).get(screenSelector()).scene).get(last-1))
+	if(last > 0){
+		sceneInfoSet($($(chapter.screen).get(screenSelector()).scene).get(last-1));
+	}
+	
 	
 	//scene
 	$("input[name='scene']").on("click",changeScene);
@@ -1182,11 +1201,12 @@ function setWHLT(target){
 	//데이터 넣기
 	$($(chapter.screen).get(screenSelector()).scene).each(function(index,scene){
 		if(scene.sceneNum == $(target).data("sceneNum")){
-			scene.width		= $(target).width() / $(".fairyTale").width();
-			scene.height	= $(target).height() / $(".fairyTale").height();
-			scene.left		= $(target).position().left / $(".fairyTale").width();
-			scene.top		= $(target).position().top / $(".fairyTale").height();
+			scene.width		= ($(target).width() / $(".fairyTale").width() * 100).toFixed(1);
+			scene.height	= ($(target).height() / $(".fairyTale").height() * 100).toFixed(1);
+			scene.left		= ($(target).position().left / $(".fairyTale").width() * 100).toFixed(1);
+			scene.top		= ($(target).position().top / $(".fairyTale").height() * 100).toFixed(1);
 			
+			console.log("scene : " + scene);
 			//scene 정보 표시
 			sceneInfoSet(scene);
 			return false;
@@ -1254,4 +1274,24 @@ function saveFairy(){
 	$("#saveChapter").val(JSON.stringify(chapter));
 	$("#saveObjList").val(JSON.stringify(objList));			
 	return true;
+}
+
+function sceneDelete(target){
+	var scenes = $(chapter.screen).get(screenSelector()).scene; 
+	
+	$(scenes).each(function(index,scene){
+		if($(target).data("sceneNum") == scene.sceneNum){
+			console.log("sceneNum : " + scene.sceneNum);
+			scenes.splice(index,1);
+			return false;
+		}
+	});
+	//타겟 삭제
+	$(target).remove();
+	//뷰리스트
+	sceneViewList();
+	//object view
+	objViewList();
+	//children green box;
+	greenBox();
 }
