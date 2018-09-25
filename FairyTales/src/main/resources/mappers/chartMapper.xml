@@ -56,34 +56,50 @@
 	
 	<!-- 일본어 레벨별 진행 챕터 -->
 	<select id="jpnLevelProgress" parameterType="String" resultType="Integer">
-	SELECT
-		(case when SUM(mf.chapter) = null then 0 else SUM(mf.chapter) end) AS chapter
-	FROM 
-   		member m
-    	,fairytales f
-    	, member_fairy mf
-	WHERE 
-    	m.user_id = #{user_id}
-    	AND m.user_id = mf.user_id
-    	AND f.fairy_code = 'jp'
-    	AND mf.fairy_pk = f.fairy_pk
-        	GROUP BY f.fairy_level
+	SELECT    
+	    DECODE(SUM(CHAPTER),null,0,SUM(CHAPTER)) AS CHAPTER
+	FROM (
+          SELECT
+          		  F.FAIRY_LEVEL
+        		, MF.CHAPTER
+          FROM 
+              FAIRYTALES F 
+              LEFT OUTER JOIN (SELECT 
+            					FAIRY_PK, CHAPTER 
+                               FROM 
+                             	 MEMBER_FAIRY
+                               WHERE 
+                             	 USER_ID = #{user_id}) MF
+                ON F.FAIRY_PK = MF.FAIRY_PK
+            	WHERE 
+            		F.FAIRY_CODE = 'jp'
+          )
+    GROUP BY FAIRY_LEVEL
+    ORDER BY FAIRY_LEVEL
 	</select>
 	
 	<!-- JAVA 레벨별 진행 챕터 -->
 	<select id="javaLevelProgress" parameterType="String" resultType="Integer">
-	SELECT
-    	SUM(mf.chapter) AS chapter 
-	FROM 
-   		member m
-    	,fairytales f
-    	, member_fairy mf
-	WHERE 
-    	m.user_id = #{user_id}
-    	AND m.user_id = mf.user_id
-    	AND f.fairy_code = 'cd'
-    	AND mf.fairy_pk = f.fairy_pk
-        	GROUP BY f.fairy_level
+	SELECT    
+	    DECODE(SUM(CHAPTER),null,0,SUM(CHAPTER)) AS CHAPTER
+	FROM (
+          SELECT
+          		  F.FAIRY_LEVEL
+        		, MF.CHAPTER
+          FROM 
+              FAIRYTALES F 
+              LEFT OUTER JOIN (SELECT 
+            					FAIRY_PK, CHAPTER 
+                               FROM 
+                             	 MEMBER_FAIRY
+                               WHERE 
+                             	 USER_ID = #{user_id}) MF
+                ON F.FAIRY_PK = MF.FAIRY_PK
+            	WHERE 
+            		F.FAIRY_CODE = 'cd'
+          )
+    GROUP BY FAIRY_LEVEL
+    ORDER BY FAIRY_LEVEL
 	</select>
 
 	<!-- 일본어 동화별 진행 챕터 -->

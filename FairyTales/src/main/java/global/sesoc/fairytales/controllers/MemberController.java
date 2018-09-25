@@ -190,16 +190,10 @@ public class MemberController {
 		List<Integer> jpnLevelProgress = chartRepository.jpnLevelProgress(user_id);
 		List<Integer> javaLevelProgress = chartRepository.javaLevelProgress(user_id);
 		
-		System.out.println();
-		
-		/*for(int i = 0; i <= jpnLevelProgress.size(); i++) {
-			if(jpnLevelProgress.get(i) == null) {
-				jpnLevelProgress.get(i) = 0;
-			}
-		}*/
-		
 		model.addAttribute("jpnLevelProgress", jpnLevelProgress);
 		model.addAttribute("javaLevelProgress", javaLevelProgress);
+		
+		System.out.println("얏따~~~~~~!!!!!!!!!!!!!!!!!!!");
 		
 		//동화별 진행 챕터
 		List<Integer> jpnFairyProgress = chartRepository.jpnFairyProgress(user_id);
