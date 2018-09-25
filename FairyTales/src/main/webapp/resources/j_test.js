@@ -164,14 +164,18 @@ function total() {
 
 	if (40 > parseInt(total)) {
 		alert("초급");
-	} else if (40 < parseInt(total) & 70 > parseInt(total)) {
+		location.href = "japanese_fairy";
+		return;
+	} else if (40 <= parseInt(total) && 70 > parseInt(total)) {
 		alert("중급");
+		location.href = "japanese_fairy";
+		return;
 	} else {
 		alert("고급");
 	}
 
 	// 이동할 페이지
-	location.href = "board_1to1";
+	location.href = "japanese_fairy";
 
 	/*
 	 * if (one === undefined || one === undefined || one === undefined) // 선택을

@@ -167,7 +167,7 @@ jeighteen+='<pre style="white-space: pre-wrap;">';
 jeighteen+=' ServerSocket serverSocket = new ServerSocket(5555);<br>';
 jeighteen+=' Socket socket = serverSocket.(ㄱ);<br>';
 jeighteen+=' InputStream ir = socket.getInputStream();<br>';
-jeighteen+=' BufferedReader br= new BufferedReader(new (ㄴ)(ir));<br>';
+jeighteen+=' BufferedReader br= new BufferedReader(new (ㄴ));<br>';
 jeighteen+='';
 jeighteen+='</pre>';
 
@@ -198,14 +198,14 @@ var selector4 = [ "(a) 인터페이스는 다중상속의 장점인 다양한 �
 		"(c) 하나의 클래스느느 여러 개의 인터페이스를 구현 할 수 있다.",
 		"(d) 인터페이스는 다른 인터페이스를 상속할 수 있다." ]
 var selector5 = [ "(a) 　123456　", "(b)　65432　", "(c)　654321", "(d)　실행시 예외 발생" ]
-var selector6 = [ "(a) 　홍길동 　", "(b)　임꺽정　 ", "(c)　손오공　", "(d) null" ]
+var selector6 = [ "(a) 　홍길동 　", "(b)　임꺽정　 ", "(c)　손오공　", "(d)  null" ]
 var selector7 = [ "(a) 　java.lang　", "(b)　java.util　 ", "(c)　java.io　",
 		"(d)　java.sql" ]
 var selector8 = [ "(a) 　15　", "(b)　21　 ", "(c)　14　",
 		"(d)　Map의 Key가 중복되므로 Exception이 발생한다." ]
 var selector9 = [ "(a) 　Set　", "(b)　Map　 ", "(c)　List　", "(d)　Iterator" ]
 var selector10 = [ "(a) 　Runnable, final　", "(b)　Runnable, transient　 ",
-		"Serializable, private　", "(d)　Serializable, transient" ]
+		"(c) Serializable, private　", "(d)　Serializable, transient" ]
 var selector11 = [ "(a) 　public　", "(b)　protected ", "(c)　private　",
 		"(d)　default" ]
 var selector12 = [ "(a) 　try: 예외 발생 가능성 있는 소스코드 부분이 들어가는 Keyword이다　",
@@ -327,14 +327,18 @@ function total() {
 
 	if (40 > parseInt(total)) {
 		alert("초급");
-	} else if (40 < parseInt(total) && 70 > parseInt(total)) {
+		location.href = "coding_puzzle";
+		return;
+	} else if (40 <= parseInt(total) && 70 > parseInt(total)) {
 		alert("중급");
+		location.href = "coding_puzzle";
+		return;
 	} else {
 		alert("고급");
 	}
 
 	// 이동할 페이지
-	location.href = "board_1to1";
+	location.href = "coding_puzzle";
 
 	/*
 	 * if (one === undefined || one === undefined || one === undefined) // 선택을
