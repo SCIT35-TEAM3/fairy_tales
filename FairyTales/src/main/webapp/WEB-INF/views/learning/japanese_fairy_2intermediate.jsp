@@ -241,13 +241,13 @@
 						<h3>피터팬</h3>
 						<div class="bb-bookblock">
 							<div class="bb-item">
-								<a href="#"><img src="images/demo3/1.jpg" alt="image01" /></a>
+								<a href="#"><img src="images/learningPage/피터팬1.png" alt="image01" /></a>
 							</div>
 							<div class="bb-item">
-								<a href="#"><img src="images/demo3/2.jpg" alt="image02" /></a>
+								<a href="#"><img src="images/learningPage/피터팬2.png" alt="image02" /></a>
 							</div>
 							<div class="bb-item">
-								<a href="#"><img src="images/demo3/3.jpg" alt="image03" /></a>
+								<a href="#"><img src="images/learningPage/피터팬3.png" alt="image03" /></a>
 							</div>
 						</div>
 						<nav>
@@ -258,10 +258,10 @@
 						<h3>미녀와 야수</h3>
 						<div class="bb-bookblock">
 							<div class="bb-item">
-								<a href="#"><img src="images/demo3/1.jpg" alt="image01" /></a>
+								<a href="#"><img src="images/learningPage/미녀와 야수1.png" alt="image01" /></a>
 							</div>
 							<div class="bb-item">
-								<a href="#"><img src="images/demo3/2.jpg" alt="image02" /></a>
+								<a href="#"><img src="images/learningPage/미녀와 야수2.png" alt="image02" /></a>
 							</div>
 							<div class="bb-item">
 								<a href="#"><img src="images/demo3/3.jpg" alt="image03" /></a>
@@ -275,10 +275,10 @@
 						<h3>모모타로</h3>
 						<div class="bb-bookblock">
 							<div class="bb-item">
-								<a href="#"><img src="images/demo3/1.jpg" alt="image01" /></a>
+								<a href="#"><img src="images/learningPage/모모타로1.png" alt="image01" /></a>
 							</div>
 							<div class="bb-item">
-								<a href="#"><img src="images/demo3/2.jpg" alt="image02" /></a>
+								<a href="#"><img src="images/learningPage/모모타로2.png" alt="image02" /></a>
 							</div>
 							<div class="bb-item">
 								<a href="#"><img src="images/demo3/3.jpg" alt="image03" /></a>
