@@ -176,9 +176,12 @@ function check(){
 								<div class="form-control" align="left">${memberdetail.address}</div>
 							</div>
 							<div class="form-group">
-								<input class="subject" type="checkbox" name="subject" value="japan"> 일본어 동화 
-								<input class="subject" type="checkbox" name="subject" value="codding"> 코딩 퍼즐
+							<div id="checkbox_fairy1" style="float: left"> * fairy search</div>
+							<div id="checkbox_fairy2" style="float: center">
+								<input class="subject" type="checkbox" name="subject" value="Japanese Fairy"> Japanese Fairy 
+								<input class="subject" type="checkbox" name="subject" value="Codding Puzzle"> Coding Fairy
 							    <input id="subject" type="hidden" name="subject" value="" />
+							</div>
 							</div>
 							<div class="form-group" align="center">
                                 <input type="button" id="btn" class="btn btn-submit" value="OK" onclick="check();">

@@ -45,7 +45,7 @@ CREATE TABLE member
 	user_level number(2,0) DEFAULT 2,
 	new_date date DEFAULT sysdate,
 	-- 일어동화, 퍼즐코딩
-	subject varchar2(20),
+	subject varchar2(100),
 	PRIMARY KEY (user_id)
 );
 
