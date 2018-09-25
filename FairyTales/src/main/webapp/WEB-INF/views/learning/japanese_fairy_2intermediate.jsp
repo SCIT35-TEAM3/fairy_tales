@@ -214,7 +214,7 @@
 						<h3>장화신은 고양이</h3>
 						<div class="bb-bookblock">
 							<div class="bb-item">
-								<a href="#"><img src="images/demo3/1.jpg" alt="image01" /></a>
+								<a href="#"><img src="images/learningPage/장화신은 고양이1.png" alt="image01" /></a>
 							</div>
 							<div class="bb-item">
 								<a href="#"><img src="images/demo3/2.jpg" alt="image02" /></a>
