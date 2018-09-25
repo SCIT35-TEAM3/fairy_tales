@@ -274,6 +274,7 @@ function reply_update() {
 							<li class="dropdown"><a href="#">My Page <i class="fa fa-angle-down"></i></a>
 								<ul role="menu" class="sub-menu">
 									<li><a href="my_info_detail">My Infomation</a></li>
+									<li><a href="#">Learning Page</a></li>
 									<li><a href="my_chart_page">My Chart</a></li>
 								</ul></li>
 							<li><div id="user_id_form">${sessionScope.loginid}님,</div></li>
@@ -353,14 +354,16 @@ function reply_update() {
 							<div class="post-bottom overflow">
 								<ul class="nav navbar-nav post-nav">
 									<li><c:if test="${not empty board_1to1.origin_file_name}">
-											<a href="download?board_num=${board_1to1.board_num}"><i class="fa fa-tag"></i>${board_1to1.origin_file_name}</a>
+											<a href="download?board_num=${board_1to1.board_num}"><i class="fa fa-file"></i>${board_1to1.origin_file_name}</a>
 										</c:if> <c:if test="${empty board_1to1.origin_file_name}">
-											<a href="#"><i class="fa fa-tag"></i>첨부파일 없음</a>
+											<a href="#"><i class="fa fa-file"></i>첨부파일 없음</a>
 										</c:if></li>
+									<c:if test="${sessionScope.loginid eq board_1to1.user_id}">
 									<li><a href="board_update?board_num=${board_1to1.board_num}" id="update">
 									<i class="fa fa-pencil"></i>수정</a></li>
 									<li><a href="board_delete?board_num=${board_1to1.board_num}" id="delete">
 									<i class="fa fa-bomb"></i>삭제</a></li>
+									</c:if>
 								</ul>
 							</div>
 						</div>
