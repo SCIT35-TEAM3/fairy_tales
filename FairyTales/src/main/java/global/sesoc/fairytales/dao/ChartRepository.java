@@ -13,33 +13,33 @@ public class ChartRepository {
 	@Autowired SqlSession sqlsession;
 	
 	//일본어 전체 챕터
-	public int jpnChapter() {
+	public Integer jpnChapter() {
 		ChartMapper chartmapper = sqlsession.getMapper(ChartMapper.class);
-		int result = chartmapper.jpnChapter();
+		Integer result = chartmapper.jpnChapter();
 		
 		return result;
 	}
 		
 	//일본어 진행 챕터
-	public int jpnProgressed(String user_id) {
+	public Integer jpnProgressed(String user_id) {
 		ChartMapper chartmapper = sqlsession.getMapper(ChartMapper.class);
-		int result = chartmapper.jpnProgressed(user_id);
+		Integer result = chartmapper.jpnProgressed(user_id);
 		
 		return result;
 	}
 		
 	//JAVA 전체 챕터
-	public int javaChapter() {
+	public Integer javaChapter() {
 		ChartMapper chartmapper = sqlsession.getMapper(ChartMapper.class);
-		int result = chartmapper.javaChapter();
+		Integer result = chartmapper.javaChapter();
 		
 		return result;
 	}
 		
 	//JAVA 진행 챕터
-	public int javaProgressed(String user_id) {
+	public Integer javaProgressed(String user_id) {
 		ChartMapper chartmapper = sqlsession.getMapper(ChartMapper.class);
-		int result = chartmapper.javaProgressed(user_id);
+		Integer result = chartmapper.javaProgressed(user_id);
 		
 		return result;
 	}
@@ -77,33 +77,33 @@ public class ChartRepository {
 	}
 		
 	//일본어 문제수
-	public int jpnQuestion() {
+	public Integer jpnQuestion() {
 		ChartMapper chartmapper = sqlsession.getMapper(ChartMapper.class);
-		int result = chartmapper.jpnQuestion();
+		Integer result = chartmapper.jpnQuestion();
 		
 		return result;
 	}
 
 	//JAVA 문제수
-	public int javaQuestion() {
+	public Integer javaQuestion() {
 		ChartMapper chartmapper = sqlsession.getMapper(ChartMapper.class);
-		int result = chartmapper.javaQuestion();
+		Integer result = chartmapper.javaQuestion();
 		
 		return result;
 	}
 		
 	//일본어 오답수
-	public int jpnWrong(String user_id) {
+	public Integer jpnWrong(String user_id) {
 		ChartMapper chartmapper = sqlsession.getMapper(ChartMapper.class);
-		int result = chartmapper.jpnWrong(user_id);
+		Integer result = chartmapper.jpnWrong(user_id);
 		
 		return result;
 	}
 
 	//JAVA 오답수
-	public int javaWrong(String user_id) {
+	public Integer javaWrong(String user_id) {
 		ChartMapper chartmapper = sqlsession.getMapper(ChartMapper.class);
-		int result = chartmapper.javaWrong(user_id);
+		Integer result = chartmapper.javaWrong(user_id);
 		
 		return result;
 	}
@@ -141,57 +141,57 @@ public class ChartRepository {
 	}
 		
 	//이번달 출석횟수
-	public int attendThisMon(String user_id) {
+	public Integer attendThisMon(String user_id) {
 		ChartMapper chartmapper = sqlsession.getMapper(ChartMapper.class); 
-		int result = chartmapper.attendThisMon(user_id);
+		Integer result = chartmapper.attendThisMon(user_id);
 		
 		return result;
 	}
 
 	//지난달 전 출석횟수
-	public int oneMonAttend(String user_id) {
+	public Integer oneMonAttend(String user_id) {
 		ChartMapper chartmapper = sqlsession.getMapper(ChartMapper.class); 
-		int result = chartmapper.oneMonAttend(user_id);
+		Integer result = chartmapper.oneMonAttend(user_id);
 		
 		return result;
 	}
 
 	//2개월 전 출석횟수
-	public int twoMonAttend(String user_id) {
+	public Integer twoMonAttend(String user_id) {
 		ChartMapper chartmapper = sqlsession.getMapper(ChartMapper.class); 
-		int result = chartmapper.twoMonAttend(user_id);
+		Integer result = chartmapper.twoMonAttend(user_id);
 		
 		return result;
 	}
 
 	//3개월 전 출석횟수
-	public int threeMonAttend(String user_id) {
+	public Integer threeMonAttend(String user_id) {
 		ChartMapper chartmapper = sqlsession.getMapper(ChartMapper.class); 
-		int result = chartmapper.threeMonAttend(user_id);
+		Integer result = chartmapper.threeMonAttend(user_id);
 		
 		return result;
 	}
 
 	//4개월 전 출석횟수
-	public int fourMonAttend(String user_id) {
+	public Integer fourMonAttend(String user_id) {
 		ChartMapper chartmapper = sqlsession.getMapper(ChartMapper.class); 
-		int result = chartmapper.fourMonAttend(user_id);
+		Integer result = chartmapper.fourMonAttend(user_id);
 		
 		return result;
 	}
 
 	//5개월 전 출석횟수
-	public int fiveMonAttend(String user_id) {
+	public Integer fiveMonAttend(String user_id) {
 		ChartMapper chartmapper = sqlsession.getMapper(ChartMapper.class); 
-		int result = chartmapper.fiveMonAttend(user_id);
+		Integer result = chartmapper.fiveMonAttend(user_id);
 		
 		return result;
 	}
 
 	//6개월 전 출석횟수
-	public int sixMonAttend(String user_id) {
+	public Integer sixMonAttend(String user_id) {
 		ChartMapper chartmapper = sqlsession.getMapper(ChartMapper.class); 
-		int result = chartmapper.sixMonAttend(user_id);
+		Integer result = chartmapper.sixMonAttend(user_id);
 		
 		return result;
 	}

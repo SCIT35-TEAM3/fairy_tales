@@ -246,7 +246,6 @@ $(function() {
 							<li class="dropdown"><a href="#">My Page <i class="fa fa-angle-down"></i></a>
 								<ul role="menu" class="sub-menu">
 									<li><a href="my_info_detail">My Infomation</a></li>
-									<li><a href="#">Learning Page</a></li>
 									<li><a href="my_chart_page">My Chart</a></li>
 								</ul></li>
 							<li><div id="user_id_form">${sessionScope.loginid}님,</div></li>
@@ -310,10 +309,13 @@ $(function() {
 							<div class="form-group">
 								<input type="text" id="address" name="address" class="form-control" required="required" placeholder=" * Address">
 							</div>
-							<div class="form-group">
-								<input class="subject" type="checkbox" name="subject" value="Japanese Fairy"> 일본어 동화 
-								<input class="subject" type="checkbox" name="subject" value="Codding Puzzle"> 코딩 퍼즐
+							<div class="form-group" >
+							<div id="checkbox_fairy1" style="float: left"> * fairy search</div>
+							<div id="checkbox_fairy2" style="float: center">
+								<input class="subject" type="checkbox" name="subject" value="Japanese Fairy"> Japanese Fairy 
+								<input class="subject" type="checkbox" name="subject" value="Codding Puzzle"> Coding Fairy
 							    <input id="subject" type="hidden" name="subject" value="" />
+							</div>
 							</div>
 							<div class="form-group" align="center">
                                 <input type="submit" id="btn" name="submit" class="btn btn-submit" value="Join">

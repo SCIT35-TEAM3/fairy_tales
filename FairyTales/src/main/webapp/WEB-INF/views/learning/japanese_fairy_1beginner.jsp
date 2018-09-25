@@ -133,7 +133,6 @@
 							<li class="dropdown"><a href="#">My Page <i class="fa fa-angle-down"></i></a>
 								<ul role="menu" class="sub-menu">
 									<li><a href="my_info_detail">My Infomation</a></li>
-									<li><a href="#">Learning Page</a></li>
 									<li><a href="my_chart_page">My Chart</a></li>
 								</ul></li>
 							<li><div id="user_id_form">${sessionScope.loginid}님,</div></li>
@@ -215,7 +214,7 @@
 						<h3>장갑</h3>
 						<div class="bb-bookblock">
 							<div class="bb-item">
-								<a href="#"><img src="images/demo3/1.jpg" alt="image01" /></a>
+								<a href="#"><img src="images/learningPage/장갑1.png" alt="image01" /></a>
 							</div>
 							<div class="bb-item">
 								<a href="#"><img src="images/demo3/2.jpg" alt="image02" /></a>
