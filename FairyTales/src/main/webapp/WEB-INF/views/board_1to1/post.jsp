@@ -134,8 +134,6 @@ function reply_update() {
 		var reply_title = $("#reply_title").val();
 		var teply_text = $("#teply_text").val();
 		
-		alert("user_id ::"+ user_id + "::reply_title: "+ reply_title+"::teply_text"+teply_text);
-		
 		if(text.length == 0) {
 			alert("댓글을 입력하세요.");
 			
@@ -358,11 +356,12 @@ function reply_update() {
 										</c:if> <c:if test="${empty board_1to1.origin_file_name}">
 											<a href="#"><i class="fa fa-file"></i>첨부파일 없음</a>
 										</c:if></li>
-									<c:if test="${sessionScope.loginid eq board_1to1.user_id}">
+									<c:if test="${sessionScope.loginid eq board_1to1.user_id or sessionScope.loginid=='manager'}">
 									<li><a href="board_update?board_num=${board_1to1.board_num}" id="update">
 									<i class="fa fa-pencil"></i>수정</a></li>
 									<li><a href="board_delete?board_num=${board_1to1.board_num}" id="delete">
 									<i class="fa fa-bomb"></i>삭제</a></li>
+								
 									</c:if>
 								</ul>
 							</div>

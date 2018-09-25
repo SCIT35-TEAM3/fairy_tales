@@ -106,7 +106,7 @@ public class Board_1to1_controller {
 		Board_1to1 board_1to1 = new Board_1to1();
 		board_1to1.setBoard_num(board_num);
 		Board_1to1 board_1to12 = board_repository.select_one_board_1to1(board_1to1);
-
+System.out.println(board_1to12);
 		model.addAttribute("board_1to1", board_1to12);
 
 		String full_path = null;

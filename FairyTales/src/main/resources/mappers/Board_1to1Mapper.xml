@@ -49,6 +49,8 @@
 		,title
 		,text
 		,secret
+		,origin_file_name
+		,save_file_name
 		from board_1to1
 		where
 		board_num=#{board_num}
