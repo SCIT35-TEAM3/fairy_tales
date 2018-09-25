@@ -15,7 +15,6 @@
 		<typeAlias type="global.sesoc.fairytales.dto.Reply_1to1" alias="Reply_1to1"/>	
 		<typeAlias type="global.sesoc.fairytales.dto.Member" alias="Member"/>
 		<typeAlias type="global.sesoc.fairytales.dto.Board" alias="Board"/>
-		<typeAlias type="global.sesoc.fairytales.dto.ChartValue" alias="ChartValue"/>
 		<typeAlias type="global.sesoc.fairytales.dto.Fairytales" alias="Fairytales"/>
 		<typeAlias type="global.sesoc.fairytales.dto.SinScreen" alias="SinScreen"/>
 	</typeAliases>
