@@ -28,7 +28,7 @@ public class AnswerController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "/first_answer", method = RequestMethod.POST)	//받는곳
+	@RequestMapping(value = "/first_answer", method = RequestMethod.POST)	// 빈칸 2개짜리 받는곳
 	public String first_answer(String answer) {
 		boolean ret_value = true;		//비교리턴값
 		String[] st = answer.split(",");
@@ -45,9 +45,7 @@ public class AnswerController {
 		int second_num = Integer.parseInt(st[st.length-4]);
 		int first_answer = Integer.parseInt(answer_list)/10;
 		int second_answer = Integer.parseInt(answer_list)%10;
-		
-		System.out.println(first_num + " : " + first_answer);
-		System.out.println(second_num + " : " + second_answer);
+
 		if(first_num == first_answer) {
 			if(second_num == second_answer) {
 				return "1";
@@ -61,10 +59,9 @@ public class AnswerController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "/second_answer", method = RequestMethod.POST)	//받는곳
+	@RequestMapping(value = "/second_answer", method = RequestMethod.POST)	//빈칸 1개짜리 받는곳
 	public String second_answer(String answer) {
 		
-		boolean ret_value = true;		//비교리턴값
 		String[] st = answer.split(",");
 		System.out.println("혼자값 : " + answer);
 		
@@ -74,7 +71,7 @@ public class AnswerController {
 		ss.setSinNum(st[st.length-2]);
 		ss.setFairy_Pk(st[st.length-1]);
 		
-		String answer_list = answer_repository.getAnswer(ss);
+		String answer_list = answer_repository.getAnswer_one(ss);
 		
 		int first_num = Integer.parseInt(st[st.length-4]);
 		int first_answer = Integer.parseInt(answer_list)%10;
@@ -82,7 +79,7 @@ public class AnswerController {
 		System.out.println(first_num + " : " + first_answer);
 		//여기서 디비에서 값 기져와서 비교
 
-		if(ret_value) {
+		if(first_num == first_answer) {
 			return "1";
 		}else {
 			return "0";

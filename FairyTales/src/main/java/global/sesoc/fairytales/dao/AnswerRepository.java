@@ -31,5 +31,15 @@ public class AnswerRepository {
 		return list;
 	}
 	
+	public String getAnswer_one(SinScreen ss) {
+		
+		AnswerMapper mapper = session.getMapper(AnswerMapper.class);
+		
+		System.out.println(ss);
+		String list = mapper.selectAnswerOne(ss);
+		System.out.println(list);
+		return list;
+	}
+	
 }
 

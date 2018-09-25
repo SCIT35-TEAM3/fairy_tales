@@ -11,4 +11,11 @@
 		from question 
 		where chapter=#{screenNum} and screen=#{sinNum} and fairy_pk=#{fairy_Pk}
 	</select>
+	
+	<select id="selectAnswerOne" resultType="String">
+		select 
+		answer
+		from question 
+		where chapter=#{screenNum} and screen=#{sinNum} and fairy_pk=#{fairy_Pk}
+	</select>
 </mapper>

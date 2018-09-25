@@ -12,5 +12,7 @@ import global.sesoc.fairytales.dto.SinScreen;
 public interface AnswerMapper {
 
 	String selectAnswer(SinScreen ss);
+
+	String selectAnswerOne(SinScreen ss);
 	
 }
