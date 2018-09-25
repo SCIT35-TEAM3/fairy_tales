@@ -17,6 +17,7 @@
 		<typeAlias type="global.sesoc.fairytales.dto.Board" alias="Board"/>
 		<typeAlias type="global.sesoc.fairytales.dto.Fairytales" alias="Fairytales"/>
 		<typeAlias type="global.sesoc.fairytales.dto.SinScreen" alias="SinScreen"/>
+		<typeAlias type="global.sesoc.fairytales.dto.Code" alias="Code"/>
 	</typeAliases>
 	<mappers>
 
@@ -29,5 +30,6 @@
 		<mapper resource="mappers/chartMapper.xml"/>
 		<mapper resource="mappers/editorMapper.xml"/>
 		<mapper resource="mappers/answerMapper.xml"/>
+		<mapper resource="mappers/codeanswerMapper.xml"/>
 	</mappers>
 </configuration>
