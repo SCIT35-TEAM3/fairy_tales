@@ -3,7 +3,7 @@ package global.sesoc.fairytales.controllers;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.lang.ProcessBuilder.Redirect;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.imageio.ImageIO;
@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import global.sesoc.fairytales.dao.Editor_Repository;
 import global.sesoc.fairytales.dto.Fairytales;
@@ -33,8 +34,9 @@ public class EditorController {
 	@Autowired
 	Editor_Repository repository;
 	
-	// 임시 저장소
+	/*/ 임시 저장소 폐쇠
 	static final String FT_TEMP_PATH = "/FairyTales/TEMP/";
+	*/
 	// 저장소
 	static final String FT_UPLOAD_PATH = "/FairyTales/";
 	
@@ -69,7 +71,6 @@ public class EditorController {
 	//에디터
 	@RequestMapping(value = "/editor", method = RequestMethod.GET)
 	public String editor(Integer fpk, Integer chapter, Model model) {
-		
 		model.addAttribute("fpk", fpk);
 		model.addAttribute("chapter", chapter);
 		return "editor";
@@ -78,21 +79,30 @@ public class EditorController {
 	// 이미지 저장
 	@ResponseBody
 	@RequestMapping(value = "/editdata", method = RequestMethod.POST, produces = "text/plain;charset=utf-8")
-	public String editdata(MultipartFile file) {
-		System.out.println("file : " + file);
-
-		// String origin_file_name = file.getOriginalFilename();
-		String save_file = FileService.saveFile(file, FT_TEMP_PATH);
-
+	public String editdata(MultipartHttpServletRequest multi) {
+		
+		String fpkNum = multi.getParameter("fpkNum");
+		String chapterNum = multi.getParameter("chapterNum");
+		
+		MultipartFile file = null;
+		//파일불러오기
+		Iterator<String> files = multi.getFileNames();
+		while(files.hasNext()){
+			String uploadFile = files.next();
+			file = multi.getFile(uploadFile);
+		}
+		
+		String save_file = FileService.saveFile(file, FT_UPLOAD_PATH + fpkNum + "/" + chapterNum + "/");
+		
 		return save_file;
 	}
 	
 	@RequestMapping(value = "/saveFairy", method = RequestMethod.POST)
-	public String saveFairy(String chapter,String objList,String exampleBox,String anwserBox){
-		FileService.saveJson(chapter,FT_UPLOAD_PATH + "/chapter.json");
-		FileService.saveJson(objList,FT_UPLOAD_PATH + "/objList.json");
-		FileService.saveJson(exampleBox,FT_UPLOAD_PATH + "/example.json");
-		FileService.saveJson(anwserBox,FT_UPLOAD_PATH + "/anwser.json");
+	public String saveFairy(String fpkNum, String chapterNum,String chapter,String objList,String exampleBox,String anwserBox){
+		FileService.saveJson(chapter,FT_UPLOAD_PATH + fpkNum + "/" + chapterNum + "/chapter.json");
+		FileService.saveJson(objList,FT_UPLOAD_PATH + fpkNum + "/" + chapterNum +  "/objList.json");
+		FileService.saveJson(exampleBox,FT_UPLOAD_PATH + fpkNum + "/" + chapterNum +  "/example.json");
+		FileService.saveJson(anwserBox,FT_UPLOAD_PATH + fpkNum + "/" + chapterNum +  "/anwser.json");
 		
 		return "redirect:/";
 	}
@@ -130,7 +140,7 @@ public class EditorController {
 	}
 	//이미지 보기
 	@RequestMapping(value = "/image", method = RequestMethod.GET, produces = "image/jpg")
-	public @ResponseBody byte[] getFile(String tmpImg)  {
+	public @ResponseBody byte[] getFile(String tmpImg,Integer fpk, Integer chapter)  {
 		if(tmpImg == null || tmpImg.equals("")) {
 			return null;
 		}
@@ -138,9 +148,9 @@ public class EditorController {
 		
 	    try {
 	        // Retrieve image from the classpath.
-	        //InputStream is = this.getClass().getResourceAsStream(FT_TEMP_PATH + tmpImg); 
+	        //InputStream is = this.getClass().getResourceAsStream(FT_UPLOAD_PATH + tmpImg); 
 	        
-	        File path = new File(FT_TEMP_PATH + tmpImg);
+	        File path = new File(FT_UPLOAD_PATH + fpk + "/" + chapter + "/" + tmpImg);
 			if (!path.isDirectory()) {
 				path.mkdirs();
 			}

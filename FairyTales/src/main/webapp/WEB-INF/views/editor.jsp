@@ -219,6 +219,10 @@
 												<td colspan="2">
 													<i class="fa fa-files-o">&nbsp;Layer</i>&nbsp;&nbsp;
 													<a href="#layer" id="addLayer" class="btn">Add Layer</a>
+													<a href="#imgae" id="BGIBtn" class="btn">Back Ground Image</a>
+													<input type="file" id="backGroundUp" onchange="imgFilePut(this.files,'back')" style="display: none;"/>
+													<a href="#imgae" id="CIBtn" class="btn">Chapter Image</a>
+													<input type="file" id="ChapterUp" onchange="imgFilePut(this.files,'chapter')" style="display: none;"/>
 													<div class="layerSelector"  style="width:100%; height:50px; overflow-x: scroll; white-space: nowrap;">
 													<span><input type="radio" name="layer" value="1" checked />Layer1</span>
 													</div>
@@ -247,7 +251,7 @@
 												<i class="fa fa-film"></i>
 												<select id="screensView" name="screen">
 													<option value="0">Screen 1</option>
-												</select>&nbsp;&nbsp;<a href="#screen" id="addScreen" class="btn">Add Screen</a>
+												</select>&nbsp;&nbsp;<a href="#screen" id="addScreen" class="btn">Add Screen</a> <a href="#screen" id="cNextScreen" class="btn">Copy To Next Screen</a>
 												<div id="sceneList"  style="width:100%; height:50px; overflow-x: scroll; white-space: nowrap;"></div>
 												</td>
 											</tr>
@@ -259,7 +263,7 @@
 												</td> -->
 												<td colspan = "2">
 													<div class="col-md-9 col-sm-9">
-														<div class="fairyTale">
+														<div class="fairyTale" id="fairyTale">
 															<div class="layer fEdit"></div>
 															<div class="layer move group1"></div>
 															<div class="layer effect group1"></div>
@@ -312,10 +316,10 @@
 																<td colspan="2">
 																	<p>Animate Event</p>
 																	<select id ="animate" name="animate">
-																		<option value="fadeIn" >fadeIn(나타남)</option>
-																		<option value="animate" >animate(움직임)</option>
-																		<option value="" >유지</option>
-																		<option value="fadeOut" >fadeOut(없어짐)</option>
+																		<option value="fadeIn" >SHOW</option>
+																		<option value="animate" >MOVE</option>
+																		<option value="" >STOP</option>
+																		<option value="fadeOut" >REMOVE</option>
 																	</select>
 																</td>
 															</tr>
@@ -362,7 +366,7 @@
 													 -->
 													<i class="fa fa-dropbox">&nbsp;&nbsp;Add Object</i>
 													<a href="#imgae" id="imgFileBtn" class="btn">Image</a>
-													<input type="file" id="fileUp" onchange="imgFilePut(this.files)" style="display: none;"/>
+													<input type="file" id="fileUp" onchange="imgFilePut(this.files,'img')" style="display: none;"/>
 													<!-- <input type="text" id="objText"/> -->
 													<a href="#layer1" class="btn btn-popup ">Word/Question</a>
 													<!-- <input type="button" id="addObjTxtBtn" value="word add"/> -->
@@ -496,8 +500,8 @@
 												<td colspan = "2">
 													<form action="saveFairy" method="post" onsubmit="return saveFairy()">
 														<input type="submit" value="저장"/>
-														<input type="hidden"  name="fpk" value="${fpk}"/>
-														<input type="hidden"  name="chapter" value="${chapter}"/>
+														<input type="text"  name="fpkNum" id="fpkNum" value="${fpk}"/>
+														<input type="text"  name="chapterNum" id="chapterNum" value="${chapter}"/>
 														<input type="text" id="saveChapter" name="chapter"/>
 														<input type="text" id="saveObjList" name="objList"/>
 														<input type="text" id="saveExample" name="exampleBox"/>
@@ -508,6 +512,8 @@
 										</tbody>
 									</table>
 								<%-- /본문위치 --%>
+								<input type="button" onclick="aaaaaaimg()" value="이미지 보기">
+								<div id="targetShow"> <div>
 								</div>
 							</div>
 						</div>
@@ -569,7 +575,6 @@
 	        <div class="pop-container">
 	            <div class="pop-conts">
 	            	<!-- <form method="post" id="pop"> -->
-						<input type="hidden" id="fpk" name="fpk">
 						<table class="table text-center">
 							<thead>
 								<tr>
@@ -704,8 +709,6 @@
 		});
 		
 		function layer_popup(el,$element){
-			alert("el : " + el);
-			$("#questionBase").hide();
 			<%-- #layer수행번호 --%>
 			if(el.substr(6) == 1){
 				//등록
@@ -721,8 +724,48 @@
 					}
 				});
 				$("#qOnOff").prop("checked",false);
-			}else if(el.substr(6) == 2){
-				//수정
+				$("#questionBase").hide();
+			}else{
+				$(objList).each(function(index,obj){
+					if(obj.objId == el.substr(7)){
+						$("#objText").val(obj.obj);
+						if(obj.objType == "text"){
+							$("#qOnOff").prop("checked",false);
+							$("#questionBase").hide();
+						}else{
+							$("#qOnOff").prop("checked",true);
+							$("#questionBase").show();
+						}
+						
+					}
+				});
+				
+				$(anwserBox).each(function(index,anwsers){
+					if(anwsers.objId == el.substr(7)){
+						$("#anwser").val(anwsers.answer);
+					}
+				});
+				
+				//전체 삭제
+				$(".example").each(function(index,example){
+					$(example).remove();
+				});
+				$(exampleBox).each(function(index,example){
+					if(example.objId == el.substr(7)){
+						if(example.answer0){
+							$("#exampleBase").append("<input class='example' type='text' value="+example.answer0+">")
+						}
+						if(example.answer1){
+							$("#exampleBase").append("<input class='example' type='text' value="+example.answer1+">")
+						}
+						if(example.answer2){
+							$("#exampleBase").append("<input class='example' type='text' value="+example.answer2+">")
+						}
+					}
+				});
+				
+				//1.objId 넣어서 수정하고 2.업로드 3.screen 4.레이어 삭제
+			aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa}}}}}}}}
 			}
 			
 			var $el = $(el.substr(0,6));				//레이어의 id를 $el 변수에 저장
