@@ -9,13 +9,13 @@
 		select 
 		answer
 		from question 
-		where chapter=#{screenNum} and screen=#{sinNum} and fairy_pk=#{fairy_Pk}
+		where chapter=#{screenNum} and screen=#{sinNum} and fairy_pk=#{fairy_Pk} and question_type=#{question_type}
 	</select>
 	
 	<select id="selectAnswerOne" resultType="String">
 		select 
 		answer
 		from question 
-		where chapter=#{screenNum} and screen=#{sinNum} and fairy_pk=#{fairy_Pk}
+		where chapter=#{screenNum} and screen=#{sinNum} and fairy_pk=#{fairy_Pk} and question_type=#{question_type}
 	</select>
 </mapper>

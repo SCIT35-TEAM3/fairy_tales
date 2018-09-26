@@ -307,101 +307,20 @@ var scene5 = [
 		"animate" : "fadeIn",	"time" :  "1000",	"latency" : "0","layerNum" : "3"},
 	
 	];
-/* var scene0 = [		
-	{"sceneNum" : "1_background_1","objId" : "background","top" : "0%","left" : "0%","width" : "100%","height" : "100%",
-		"animate" : "fadeIn",	"time" :  "200",	"latency" : "0","layerNum" : "1"},
-	{"sceneNum" : "1_background_around_2","objId" : "background_around","top" : "0%","left" : "0%","width" : "100%","height" : "100%",
-		"animate" : "fadeIn",	"time" :  "1000",	"latency" : "0","layerNum" : "2"},
-	{"sceneNum" : "1_script_around_3","objId" : "script_around","top" : "-10%","left" : "8%","width" : "80%","height" : "80%",
-		"animate" : "fadeIn",	"time" :  "1000",	"latency" : "0","layerNum" : "3"},	
-		
-			
-	{"objId" : "answer1","top" : "50%","left" : "32%","width" : "10%","height" : "6%",
-			"animate" : "fadeIn",	"time" :  "200",	"latency" : "0","layerNum" : "6"},	
-	{"objId" : "answer2","top" : "50%","left" : "47%","width" : "10%","height" : "6%",
-			"animate" : "fadeIn",	"time" :  "200",	"latency" : "0","layerNum" : "6"},	
-	{"objId" : "answer3","top" : "50%","left" : "62%","width" : "10%","height" : "6%",
-			"animate" : "fadeIn",	"time" :  "200",	"latency" : "0","layerNum" : "6"},
-			
-	{"objId" : "script","top" : "15.5%","left" : "22.2%","width" : "54%","height" : "20%",
-			"animate" : "fadeIn",	"time" :  "2000",	"latency" : "0","layerNum" : "4"},
-	{"objId" : "script_hide1","top" : "21.5%","left" : "55%","width" : "4%","height" : "6%",
-			"animate" : "fadeIn",	"time" :  "200",	"latency" : "0","layerNum" : "5"},
-	{"objId" : "script_hide2","top" : "21.5%","left" : "55%","width" : "4%","height" : "6%",
-			"animate" : "fadeIn",	"time" :  "200",	"latency" : "0","layerNum" : "5"},
-																								//여기서 끊는다.
-																								//배경,테두리,스크립트
-
-	{"objId" : "sin_sha","top" : "50%","left" : "20%","width" : "25%","height" : "50%",
-		"animate" : "fadeIn",	"time" :  "1000",	"latency" : "0","layerNum" : "2"},
-	{"objId" : "sin_sha","top" : "47%","left" : "20%","width" : "25%","height" : "50%",
-		"animate" : "animate",	"time" :  "1000",	"latency" : "0","layerNum" : "2"},
-	{"objId" : "sin_sha","top" : "50%","left" : "20%","width" : "25%","height" : "50%",
-		"animate" : "animate",	"time" :  "1000",	"latency" : "0","layerNum" : "2"},
-	{"objId" : "sin_sha","top" : "47%","left" : "20%","width" : "25%","height" : "50%",
-		"animate" : "animate",	"time" :  "1000",	"latency" : "0","layerNum" : "2"},
-	{"objId" : "sin_sha","top" : "50%","left" : "20%","width" : "25%","height" : "50%",
-		"animate" : "animate",	"time" :  "1000",	"latency" : "0","layerNum" : "2"},
-		
-	{"objId" : "sis1_sha","top" : "50%","left" : "40%","width" : "25%","height" : "50%",
-		"animate" : "fadeIn",	"time" :  "1000",	"latency" : "0","layerNum" : "2"},
-	{"objId" : "sis1_sha","top" : "47%","left" : "40%","width" : "25%","height" : "50%",
-		"animate" : "animate",	"time" :  "1000",	"latency" : "0","layerNum" : "2"},
-	{"objId" : "sis1_sha","top" : "50%","left" : "40%","width" : "25%","height" : "50%",
-		"animate" : "animate",	"time" :  "1000",	"latency" : "0","layerNum" : "2"},
-		
-	{"objId" : "sis_ha","top" : "47%","left" : "20%","width" : "45%","height" : "45%",
-		"animate" : "fadeIn",	"time" :  "100",	"latency" : "0","layerNum" : "2"},
-		
-	{"objId" : "sis1_sha","top" : "47%","left" : "40%","width" : "25%","height" : "50%",
-		"animate" : "animate",	"time" :  "1000",	"latency" : "0","layerNum" : "2"},
-	
-	{"objId" : "sis_ha","top" : "47%","left" : "21%","width" : "45%","height" : "45%",
-		"animate" : "animate",	"time" :  "50",	"latency" : "0","layerNum" : "2"},
-		
-	{"objId" : "sis1_sha","top" : "50%","left" : "40%","width" : "25%","height" : "50%",
-		"animate" : "animate",	"time" :  "1000",	"latency" : "0","layerNum" : "2"},
-
-	{"objId" : "sis_ha","top" : "47%","left" : "19%","width" : "45%","height" : "45%",
-		"animate" : "animate",	"time" :  "50",	"latency" : "0","layerNum" : "2"},
-		
-	{"objId" : "sis_ha","top" : "47%","left" : "21%","width" : "45%","height" : "45%",
-		"animate" : "animate",	"time" :  "50",	"latency" : "0","layerNum" : "2"},
-	
-	{"objId" : "sis_ha","top" : "47%","left" : "19%","width" : "45%","height" : "45%",
-		"animate" : "animate",	"time" :  "50",	"latency" : "3000","layerNum" : "2"},
-	
-	{"objId" : "sis_ha","top" : "47%","left" : "21%","width" : "45%","height" : "45%",
-		"animate" : "fadeOut",	"time" :  "50",	"latency" : "0","layerNum" : "2"},
-		
-	{"objId" : "sin_sha","top" : "50%","left" : "10%","width" : "21%","height" : "42%",
-		"animate" : "animate",	"time" :  "2000",	"latency" : "0","layerNum" : "2"},
-	{"objId" : "sis1_sha","top" : "50%","left" : "30%","width" : "21%","height" : "42%",
-		"animate" : "animate",	"time" :  "2000",	"latency" : "5000","layerNum" : "2"},
-		
-	{"objId" : "mother","top" : "50%","left" : "75%","width" : "25%","height" : "50%",
-		"animate" : "fadeIn",	"time" :  "100",	"latency" : "0","layerNum" : "2"},
-	{"objId" : "mother","top" : "50%","left" : "65%","width" : "20%","height" : "50%",
-			"animate" : "animate",	"time" :  "1000",	"latency" : "0","layerNum" : "2"},
-		
-	{"objId" : "mom_AR","top" : "58%","left" : "60%","width" : "20%","height" : "20%",
-		"animate" : "fadeIn",	"time" :  "1000",	"latency" : "0","layerNum" : "2"},	
-	]; */
-
 	
 var questions=[
-	{"scene" : "first_1","text" : "むかしむかし、一人の男の人がいました。%%の人はある女の人と二回目の%%をしたのですが、その女の人はいつもえらそうにしている人でした。"},
-	{"scene" : "first_2","text" : "女の人も二回目の結婚でして、前のだんなさんとの間に二人の娘がいました。その娘達は気まぐれで女の人にすごく%%いたんです。"},
-	{"scene" : "first_3","text" : "同じように男の人にも%%娘がいました。%%よりも心やさしい少女で、世界で一番うつくしい心の持ち主と言ってもいいくらいでした。"},
-	{"scene" : "first_4","text" : "結婚をしてから、まま母は可愛くて人がよい夫の娘がひどくじゃまに思えました。そこで、少女に家のしごとをおしつけ、狭くて%%やねうらの部屋に追いやってしまいました。でも自分の娘達にはそれぞれきれいな部屋に住まわせました。"},
-	{"scene" : "first_5","text" : "かわいそうな少女はがまんするしかありませんでした。お父さんに言っても忙しくて聞いてくれないし、お父さんはまま母の言いなりだからです。少女は家のしごとが%%といつも灰だらけの部屋で座っていたので、みんな少女を「灰かぶり姫」という意味の、「シンデレラ」と呼びました。"},
-	{"scene" : "first_6","text" : "ある日、王子様がダンスパーティを%%ことになりました。お金持ちや有名な人など、色んなな人がまねかれました。シンデレラの二人の姉にも声がかかりました。姉達はとても喜びましたが、彼女達のせわをしなくてはならないシンデレラは嬉しくありませんでした。"}
+	{"qNum" : "48","text" : "むかしむかし、一人の男の人がいました。%%の人はある女の人と二回目の%%をしたのですが、その女の人はいつもえらそうにしている人でした。"},
+	{"qNum" : "49","text" : "女の人も二回目の結婚でして、前のだんなさんとの間に二人の娘がいました。その娘達は気まぐれで女の人にすごく%%いたんです。"},
+	{"qNum" : "50","text" : "同じように男の人にも%%娘がいました。%%よりも心やさしい少女で、世界で一番うつくしい心の持ち主と言ってもいいくらいでした。"},
+	{"qNum" : "51","text" : "結婚をしてから、まま母は可愛くて人がよい夫の娘がひどくじゃまに思えました。そこで、少女に家のしごとをおしつけ、狭くて%%やねうらの部屋に追いやってしまいました。でも自分の娘達にはそれぞれきれいな部屋に住まわせました。"},
+	{"qNum" : "52","text" : "かわいそうな少女はがまんするしかありませんでした。お父さんに言っても忙しくて聞いてくれないし、お父さんはまま母の言いなりだからです。少女は家のしごとが%%といつも灰だらけの部屋で座っていたので、みんな少女を「灰かぶり姫」という意味の、「シンデレラ」と呼びました。"},
+	{"qNum" : "53","text" : "ある日、王子様がダンスパーティを%%ことになりました。お金持ちや有名な人など、色んなな人がまねかれました。シンデレラの二人の姉にも声がかかりました。姉達はとても喜びましたが、彼女達のせわをしなくてはならないシンデレラは嬉しくありませんでした。"}
 	];
 
 var answer = [
 	{"scene" : "first_1","answer1" : "結婚","answer2" : "人", "answer3" : "男"},
 	{"scene" : "first_2","answer1" : "結婚","answer2" : "似て", "answer3" : "男"},
-	{"scene" : "first_3","answer1" : "結婚","answer2" : "人", "answer3" : "幼い"},
+	{"scene" : "first_3","answer1" : "少女","answer2" : "人", "answer3" : "幼い"},
 	{"scene" : "first_4","answer1" : "暗い","answer2" : "人", "answer3" : "男"},
 	{"scene" : "first_5","answer1" : "結婚","answer2" : "終わる", "answer3" : "男"},
 	{"scene" : "first_6","answer1" : "結婚","answer2" : "人", "answer3" : "開く"},
@@ -437,10 +356,7 @@ var answer_offset=[]	//문제상자 이동용
 var hide2_decide = 2;
 var scene_count = 0;
 var answer_count = answer.length-1;	//종료버튼 띄우기용
-/* screen.push(scene0);
-screen.push(scene1);
-screen.push(scene2);
- */
+
 for(var i = 0 ; i < 6 ; i++){
 
 	screen.push(eval('scene'+i));
@@ -463,20 +379,11 @@ alert(screen[2].length) */
   */
 	
  
-/*  screen.push(scene0);
- screen.push(scene1);
- screen.push(scene2);
- screen.push(scene2); */
- 
+
 
  
  start:
-		  /* wholeWindow: true,
-		  backgroundColor: "blue",
-		  fadeLevel: 1,
-		  fadeInTime: 1000,
-		  image: 'images/loader4.gif',
-		  hideAfter: 1500 */
+
 		
 	 
 	 for(var i in screen[sinId]){
@@ -516,22 +423,7 @@ alert(screen[2].length) */
 		},4000)
 		story()
 	}); 
- 
-/* function sleep(num){
 
-	 var now = new Date();
-
-	  var stop = now.getTime() + num;
-
-	   while(true){
-
-		 now = new Date();
-
-		 if(now.getTime() > stop)return;
-
-	   }
-
-} */
 
 
 function story(){
@@ -563,22 +455,7 @@ loop: for(var i in screen[sinId]){
 				"display":"none",
 				"z-index" : screen[sinId][i].layerNum*1
 			}).fadeIn(screen[sinId][i].time*1);
-		/*  ($('#background').width*1) */
-		/* (($('#script').width() / $(".background").width())*100)+"%",
-		(($('#script').height() / $(".background").height())*100)+"%",
-		var lent = '';
-		alert(screen[sinId][i].width.length);
-		for(var p = 0 ; p < screen[sinId][i].width.length-1;p++){
-			lent += screen[sinId][i].width[p];
-		}
-		
-		alert(lent);
-		alert( (screen[sinId][i].width)) */
-		
-	/* 	scene.width		= target.width / $(".fairyTale").width();
-		scene.height	= target.height / $(".fairyTale").height();
-		scene.left		= $(target).position().left / $(".fairyTale").width();
-		scene.top		= $(target).position().top / $(".fairyTale").height(); */
+
 		inputtext = questions[text_count].text;
 		
 			var count = 0;
@@ -910,9 +787,10 @@ loop: for(var i in screen[sinId]){
 				if(div1&div2){
 					//여기 페이지번호 바꿔야함 ! (스크린번호/씬번호 푸쉬)
 
-					answer_save.push(1);											//	페이지 번호를 의미 [정답,정답,페이지번호]
-					answer_save.push(1);											// 씬 번호
+					answer_save.push(sinId+1);											//	페이지 번호를 의미 [정답,정답,페이지번호]
+					answer_save.push(1);										// 씬 번호
 					answer_save.push(4);											// 동화 번호
+
 					  $.ajax({
 						method	: 'POST',
 						url		: 'first_answer',
@@ -1064,7 +942,7 @@ loop: for(var i in screen[sinId]){
 			}
 			 if(div1){
 
-				answer_save.push(2);											//	페이지 번호를 의미 [정답,정답,페이지번호]
+				answer_save.push(sinId+1);											//	페이지 번호를 의미 [정답,정답,페이지번호]
 				answer_save.push(1);											// 씬번호
 				answer_save.push(4);											// 동화 번호
 				  $.ajax({

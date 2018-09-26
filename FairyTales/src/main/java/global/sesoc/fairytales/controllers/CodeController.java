@@ -30,13 +30,14 @@ public class CodeController {
 		String[] st = answer.split(",");
 		
 		Code c = new Code();
-		c.setQuestion_num(st[st.length-1]);
-		c.setFairy_Pk(st[st.length-2]);
-		c.setSinNum(st[st.length-3]);
-		c.setScreenNum(st[st.length-4]);
+
+		c.setFairy_Pk(st[st.length-1]);
+		c.setSinNum(st[st.length-2]);
+		c.setScreenNum(st[st.length-3]);
+		c.setQuestion_type("2");
+		System.out.println(c);
 		String answer_list = answer_repository.getAnswer(c);
-		System.out.println(answer);
-		System.out.println(answer_list);
+		
 		int first_num = Integer.parseInt(st[0]);
 		int second_num = Integer.parseInt(st[1]);
 		int third_num = Integer.parseInt(st[2]);

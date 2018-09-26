@@ -4,7 +4,7 @@ public class Code {
 	private String sinNum;
 	private String screenNum;
 	private String fairy_Pk;
-	private String question_num;
+	private String question_type;
 	
 	public Code() {
 		// TODO Auto-generated constructor stub
@@ -34,19 +34,20 @@ public class Code {
 		this.fairy_Pk = fairy_Pk;
 	}
 
-	public String getQuestion_num() {
-		return question_num;
+	public String getQuestion_type() {
+		return question_type;
 	}
 
-	public void setQuestion_num(String question_num) {
-		this.question_num = question_num;
+	public void setQuestion_type(String question_type) {
+		this.question_type = question_type;
 	}
 
 	@Override
 	public String toString() {
-		return "Code [sinNum=" + sinNum + ", screenNum=" + screenNum + ", fairy_Pk=" + fairy_Pk + ", question_num="
-				+ question_num + "]";
+		return "Code [sinNum=" + sinNum + ", screenNum=" + screenNum + ", fairy_Pk=" + fairy_Pk + ", question_type="
+				+ question_type + "]";
 	}
+
 	
 	
 }

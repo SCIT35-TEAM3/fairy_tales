@@ -38,7 +38,10 @@ public class AnswerController {
 		ss.setScreenNum(st[st.length-3]);
 		ss.setSinNum(st[st.length-2]);
 		ss.setFairy_Pk(st[st.length-1]);
-
+		ss.setQuestion_type("1");
+		
+		System.out.println(ss);
+		
 		String answer_list = answer_repository.getAnswer(ss);
 		
 		int first_num = Integer.parseInt(st[st.length-5]);
@@ -70,6 +73,7 @@ public class AnswerController {
 		ss.setScreenNum(st[st.length-3]);
 		ss.setSinNum(st[st.length-2]);
 		ss.setFairy_Pk(st[st.length-1]);
+		ss.setQuestion_type("1");
 		
 		String answer_list = answer_repository.getAnswer_one(ss);
 		

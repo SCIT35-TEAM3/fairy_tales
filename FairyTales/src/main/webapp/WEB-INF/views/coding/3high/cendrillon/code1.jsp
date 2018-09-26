@@ -198,17 +198,25 @@ var scene3 = [
 		"animate" : "fadeIn",	"time" :  "1000",	"latency" : "0","layerNum" : "3"},	
 		
 			
-	{"objId" : "answer1","top" : "50%","left" : "32%","width" : "10%","height" : "6%",
+	{"objId" : "answer1","top" : "80%","left" : "28%","width" : "10%","height" : "6%",
 			"animate" : "fadeIn",	"time" :  "200",	"latency" : "0","layerNum" : "6"},	
-	{"objId" : "answer2","top" : "50%","left" : "47%","width" : "10%","height" : "6%",
+	{"objId" : "answer2","top" : "80%","left" : "44%","width" : "10%","height" : "6%",
 			"animate" : "fadeIn",	"time" :  "200",	"latency" : "0","layerNum" : "6"},	
-	{"objId" : "answer3","top" : "50%","left" : "62%","width" : "10%","height" : "6%",
+	{"objId" : "answer3","top" : "80%","left" : "60%","width" : "10%","height" : "6%",
 			"animate" : "fadeIn",	"time" :  "200",	"latency" : "0","layerNum" : "6"},
 			
 	{"objId" : "script","top" : "15.5%","left" : "22.2%","width" : "54%","height" : "20%",
+			"animate" : "fadeIn",	"time" :  "2000",	"latency" : "0","layerNum" : "4"},		
+	
+	{"objId" : "code","top" : "45%","left" : "34%","width" : "31%","height" : "30%",
 			"animate" : "fadeIn",	"time" :  "2000",	"latency" : "0","layerNum" : "4"},
+			
 	{"objId" : "script_hide1","top" : "21.5%","left" : "55%","width" : "4%","height" : "6%",
 			"animate" : "fadeIn",	"time" :  "200",	"latency" : "0","layerNum" : "5"},
+	{"objId" : "script_hide2","top" : "21.5%","left" : "55%","width" : "4%","height" : "6%",
+			"animate" : "fadeIn",	"time" :  "200",	"latency" : "0","layerNum" : "5"},
+	{"objId" : "script_hide3","top" : "21.5%","left" : "55%","width" : "4%","height" : "6%",
+		"animate" : "fadeIn",	"time" :  "200",	"latency" : "0","layerNum" : "5"},	
 																								//여기서 끊는다.
 																								//배경,테두리,스크립트
 	{"objId" : "sis2_sha","top" : "45%","left" : "5%","width" : "25%","height" : "50%",
@@ -256,17 +264,25 @@ var scene4 = [
 		"animate" : "fadeIn",	"time" :  "1000",	"latency" : "0","layerNum" : "3"},	
 		
 			
-	{"objId" : "answer1","top" : "50%","left" : "32%","width" : "10%","height" : "6%",
+	{"objId" : "answer1","top" : "80%","left" : "28%","width" : "10%","height" : "6%",
 			"animate" : "fadeIn",	"time" :  "200",	"latency" : "0","layerNum" : "6"},	
-	{"objId" : "answer2","top" : "50%","left" : "47%","width" : "10%","height" : "6%",
+	{"objId" : "answer2","top" : "80%","left" : "44%","width" : "10%","height" : "6%",
 			"animate" : "fadeIn",	"time" :  "200",	"latency" : "0","layerNum" : "6"},	
-	{"objId" : "answer3","top" : "50%","left" : "62%","width" : "10%","height" : "6%",
+	{"objId" : "answer3","top" : "80%","left" : "60%","width" : "10%","height" : "6%",
 			"animate" : "fadeIn",	"time" :  "200",	"latency" : "0","layerNum" : "6"},
 			
 	{"objId" : "script","top" : "15.5%","left" : "22.2%","width" : "54%","height" : "20%",
+			"animate" : "fadeIn",	"time" :  "2000",	"latency" : "0","layerNum" : "4"},		
+	
+	{"objId" : "code","top" : "45%","left" : "34%","width" : "31%","height" : "30%",
 			"animate" : "fadeIn",	"time" :  "2000",	"latency" : "0","layerNum" : "4"},
+			
 	{"objId" : "script_hide1","top" : "21.5%","left" : "55%","width" : "4%","height" : "6%",
 			"animate" : "fadeIn",	"time" :  "200",	"latency" : "0","layerNum" : "5"},
+	{"objId" : "script_hide2","top" : "21.5%","left" : "55%","width" : "4%","height" : "6%",
+			"animate" : "fadeIn",	"time" :  "200",	"latency" : "0","layerNum" : "5"},
+	{"objId" : "script_hide3","top" : "21.5%","left" : "55%","width" : "4%","height" : "6%",
+		"animate" : "fadeIn",	"time" :  "200",	"latency" : "0","layerNum" : "5"},	
 																								//여기서 끊는다.
 																								//배경,테두리,스크립트
 	{"objId" : "sin_sad1","top" : "45%","left" : "65%","width" : "25%","height" : "50%",
@@ -306,19 +322,25 @@ var scene5 = [
 		"animate" : "fadeIn",	"time" :  "1000",	"latency" : "0","layerNum" : "3"},	
 		
 			
-	{"objId" : "answer1","top" : "50%","left" : "32%","width" : "10%","height" : "6%",
+	{"objId" : "answer1","top" : "80%","left" : "28%","width" : "10%","height" : "6%",
 			"animate" : "fadeIn",	"time" :  "200",	"latency" : "0","layerNum" : "6"},	
-	{"objId" : "answer2","top" : "50%","left" : "47%","width" : "10%","height" : "6%",
+	{"objId" : "answer2","top" : "80%","left" : "44%","width" : "10%","height" : "6%",
 			"animate" : "fadeIn",	"time" :  "200",	"latency" : "0","layerNum" : "6"},	
-	{"objId" : "answer3","top" : "50%","left" : "62%","width" : "10%","height" : "6%",
+	{"objId" : "answer3","top" : "80%","left" : "60%","width" : "10%","height" : "6%",
 			"animate" : "fadeIn",	"time" :  "200",	"latency" : "0","layerNum" : "6"},
 			
 	{"objId" : "script","top" : "15.5%","left" : "22.2%","width" : "54%","height" : "20%",
+			"animate" : "fadeIn",	"time" :  "2000",	"latency" : "0","layerNum" : "4"},		
+	
+	{"objId" : "code","top" : "45%","left" : "34%","width" : "31%","height" : "30%",
 			"animate" : "fadeIn",	"time" :  "2000",	"latency" : "0","layerNum" : "4"},
+			
 	{"objId" : "script_hide1","top" : "21.5%","left" : "55%","width" : "4%","height" : "6%",
 			"animate" : "fadeIn",	"time" :  "200",	"latency" : "0","layerNum" : "5"},
 	{"objId" : "script_hide2","top" : "21.5%","left" : "55%","width" : "4%","height" : "6%",
 			"animate" : "fadeIn",	"time" :  "200",	"latency" : "0","layerNum" : "5"},
+	{"objId" : "script_hide3","top" : "21.5%","left" : "55%","width" : "4%","height" : "6%",
+		"animate" : "fadeIn",	"time" :  "200",	"latency" : "0","layerNum" : "5"},	
 																								//여기서 끊는다.
 																								//배경,테두리,스크립트
 	{"objId" : "sin_normal","top" : "47%","left" : "65%","width" : "25%","height" : "50%",
@@ -341,20 +363,20 @@ var questions=[
 
 var code_questions=[
 	{"qNum" : "45","text" : "for(%%;%%;%%){<br/>&nbsp&nbsp&nbspHello World<br/>&nbsp&nbsp&nbsp안녕하세요<br/>&nbsp&nbsp&nbspこんにちは。<br/>}"},
-	{"qNum" : "46","text" : "if((A %% B) %% (B %% C)){<br/>&nbsp&nbsp&nbspHello World<br/>}"},
-	{"qNum" : "47","text" : "int i = 0; <br/> while(true){<br/>&nbsp&nbsp&nbspif(i %% 3)&nbsp&nbsp&nbsp{<br/>&nbsp&nbsp&nbsp%%<bt/>&nbsp&nbsp&nbsp}<br/>&nbsp&nbsp&nbsp%%<br/>}"},
-	{"qNum" : "48","text" : "結婚をしてから、まま母は可愛くて人がよい夫の娘がひどくじゃまに思えました。そこで、少女に家のしごとをおしつけ、狭くて暗いやねうらの部屋に追いやってしまいました。でも自分の娘達にはそれぞれきれいな部屋に住まわせました。"},
-	{"qNum" : "49","text" : "かわいそうな少女はがまんするしかありませんでした。お父さんに言っても忙しくて聞いてくれないし、お父さんはまま母の言いなりだからです。少女は家のしごとが終わるといつも灰だらけの部屋で座っていたので、みんな少女を「灰かぶり姫」という意味の、「シンデレラ」と呼びました。"},
-	{"qNum" : "50","text" : "ある日、王子様がダンスパーティを開くことになりました。お金持ちや有名な人など、色んなな人がまねかれました。シンデレラの二人の姉にも声がかかりました。姉達はとても喜びましたが、彼女達のせわをしなくてはならないシンデレラは嬉しくありませんでした。。"}
+	{"qNum" : "46","text" : "if((1 %% 1) %% (A %% B)){<br/>&nbsp&nbsp&nbspHello World<br/>}"},
+	{"qNum" : "47","text" : "int i = 0; <br/> while(true){<br/>&nbsp&nbsp&nbspif(i %% 3)&nbsp&nbsp&nbsp{<br/>&nbsp&nbsp&nbsp%%<br/>&nbsp&nbsp&nbsp}<br/>&nbsp&nbsp&nbsp%%<br/>}"},
+	{"qNum" : "48","text" : "%%(1 < 10){<br/>&nbsp&nbsp&nbspHello world<br/>}%%(5 > 3){<br/>&nbsp&nbsp&nbsp안녕하세요<br/>}%%{<br/>&nbsp&nbsp&nbspこんいちは。<br/>}"},
+	{"qNum" : "49","text" : "<br/>int i = %%.parseInt(abc);<br/><br/>%% dump = String.%%(123); "},
+	{"qNum" : "50","text" : "<br/>%% i = 1;<br/>%% p = 1.0;<br/> %% q = abc;"}
 	];    
 	
 var answer = [
 	{"scene" : "first_1","answer1" : "i=0","answer2" : "i++", "answer3" : "i<10"},		//문제
 	{"scene" : "first_2","answer1" : "==","answer2" : "||", "answer3" : "!="},
-	{"scene" : "first_3","answer1" : "<","answer2" : "break;", "answer3" : "i++"},
-	{"scene" : "first_4","answer1" : "暗い","answer2" : "人", "answer3" : "男"},
-	{"scene" : "first_5","answer1" : "結婚","answer2" : "終わる", "answer3" : "男"},
-	{"scene" : "first_6","answer1" : "結婚","answer2" : "人", "answer3" : "開く"},
+	{"scene" : "first_3","answer1" : ">","answer2" : "break;", "answer3" : "i++"},
+	{"scene" : "first_4","answer1" : "else if","answer2" : "else", "answer3" : "if"},
+	{"scene" : "first_5","answer1" : "valueOf","answer2" : "Integer", "answer3" : "String"},
+	{"scene" : "first_6","answer1" : "String","answer2" : "double", "answer3" : "int"},
 	]
 	
 	
@@ -542,6 +564,7 @@ loop: for(var i in screen[sinId]){
 				"top":screen[sinId][i].top,
 				"left":screen[sinId][i].left,
 				"background-color": "white",
+				"opacity": "0.8",
 				"border":"0px solid #999",
 				"display":"block",
 				"z-index" : screen[sinId][i].layerNum*1	,
@@ -881,10 +904,10 @@ loop: for(var i in screen[sinId]){
 				if(div1&div2&div3){
 					//여기 페이지번호 바꿔야함 ! (스크린번호/씬번호 푸쉬)
 
-					answer_save.push(1);											//	페이지 번호를 의미 [정답,정답,페이지번호]
+					answer_save.push(sinId+1);											//	페이지 번호를 의미 [정답,정답,페이지번호]
 					answer_save.push(1);											// 씬 번호
 					answer_save.push(4);											// 동화 번호
-					answer_save.push(code_questions[sinId].qNum)
+					
 					  $.ajax({
 						method	: 'POST',
 						url		: 'first_code_answer',
