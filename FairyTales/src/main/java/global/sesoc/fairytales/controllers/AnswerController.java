@@ -27,6 +27,11 @@ public class AnswerController {
 		return "./fairy/3high/cendrillon/screen1";
 	}
 	
+	@RequestMapping(value = "/cendrillon_screen2")
+	public String write2(Model model) {
+		return "./fairy/3high/cendrillon/screen2";
+	}
+	
 	@ResponseBody
 	@RequestMapping(value = "/first_answer", method = RequestMethod.POST)	// 빈칸 2개짜리 받는곳
 	public String first_answer(String answer) {
@@ -38,7 +43,10 @@ public class AnswerController {
 		ss.setScreenNum(st[st.length-3]);
 		ss.setSinNum(st[st.length-2]);
 		ss.setFairy_Pk(st[st.length-1]);
-
+		ss.setQuestion_type("1");
+		
+		System.out.println(ss);
+		
 		String answer_list = answer_repository.getAnswer(ss);
 		
 		int first_num = Integer.parseInt(st[st.length-5]);
@@ -70,6 +78,7 @@ public class AnswerController {
 		ss.setScreenNum(st[st.length-3]);
 		ss.setSinNum(st[st.length-2]);
 		ss.setFairy_Pk(st[st.length-1]);
+		ss.setQuestion_type("1");
 		
 		String answer_list = answer_repository.getAnswer_one(ss);
 		

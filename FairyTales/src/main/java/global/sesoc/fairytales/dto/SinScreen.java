@@ -4,6 +4,8 @@ public class SinScreen {
 	private String sinNum;
 	private String screenNum;
 	private String fairy_Pk;
+	private String question_type;
+	
 	
 	public SinScreen() {
 		// TODO Auto-generated constructor stub
@@ -37,12 +39,21 @@ public class SinScreen {
 	}
 
 
-	@Override
-	public String toString() {
-		return "SinScreen [sinNum=" + sinNum + ", screenNum=" + screenNum + ", fairy_Pk=" + fairy_Pk + "]";
+	public String getQuestion_type() {
+		return question_type;
 	}
 
-	
-	
+
+	public void setQuestion_type(String question_type) {
+		this.question_type = question_type;
+	}
+
+
+	@Override
+	public String toString() {
+		return "SinScreen [sinNum=" + sinNum + ", screenNum=" + screenNum + ", fairy_Pk=" + fairy_Pk
+				+ ", question_type=" + question_type + "]";
+	}
+
 	
 }

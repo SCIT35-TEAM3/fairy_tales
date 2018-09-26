@@ -25,6 +25,7 @@ public class CodeAnswerRepository {
 		CodeAnswerMapper mapper = session.getMapper(CodeAnswerMapper.class);
 		
 		String list = mapper.selectAnswer(c);
+		System.out.println(list);
 		return list;
 	}
 	

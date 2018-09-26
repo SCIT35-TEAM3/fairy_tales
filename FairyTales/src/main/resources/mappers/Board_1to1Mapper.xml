@@ -103,7 +103,7 @@
 		board_1to1
 		where
 		${searchItem} like '%' || #{searchWord} || '%'
-		order by new_date desc
+		order by board_num desc
 
 
 	</select>
