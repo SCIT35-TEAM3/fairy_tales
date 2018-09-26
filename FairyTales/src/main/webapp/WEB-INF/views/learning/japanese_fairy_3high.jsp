@@ -218,7 +218,8 @@
 								<img src="images/learningPage/신데렐라1.png" alt="image01" /></a>
 							</div>
 							<div class="bb-item">
-								<a href="#"><img src="images/learningPage/신데렐라2.png" alt="image02" /></a>
+								<a href="cendrillon_screen2"  onClick="window.open(this.href, '', 'width=1120, height=630, top=30%,left=30%'); return false;">
+								<img src="images/learningPage/신데렐라2.png" alt="image02" /></a>
 							</div>
 							<div class="bb-item">
 								<a href="#"><img src="images/learningPage/신데렐라3.png" alt="image03" /></a>

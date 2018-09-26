@@ -27,6 +27,11 @@ public class AnswerController {
 		return "./fairy/3high/cendrillon/screen1";
 	}
 	
+	@RequestMapping(value = "/cendrillon_screen2")
+	public String write2(Model model) {
+		return "./fairy/3high/cendrillon/screen2";
+	}
+	
 	@ResponseBody
 	@RequestMapping(value = "/first_answer", method = RequestMethod.POST)	// 빈칸 2개짜리 받는곳
 	public String first_answer(String answer) {
