@@ -19,8 +19,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import global.sesoc.fairytales.dao.Editor_Repository;
 import global.sesoc.fairytales.dto.Fairytales;
+import global.sesoc.fairytales.dto.Question;
 import global.sesoc.fairytales.util.FileService;
 
 /**
@@ -97,12 +103,43 @@ public class EditorController {
 		return save_file;
 	}
 	
+	/*@RequestMapping(value = "/saveFairy", method = RequestMethod.POST)
+	public String saveFairy(String fpkNum, String chapterNum,String chapter,String objList,String exampleBox,String anwserBox){
+		FileService.saveJson(chapter,FT_UPLOAD_PATH + fpkNum + "/" + chapterNum + "/chapter.json");
+		FileService.saveJson(objList,FT_UPLOAD_PATH + fpkNum + "/" + chapterNum +  "/objList.json");
+		FileService.saveJson(exampleBox,FT_UPLOAD_PATH + fpkNum + "/" + chapterNum +  "/example.json");
+		FileService.saveJson(anwserBox,FT_UPLOAD_PATH + fpkNum + "/" + chapterNum +  "/anwser.json");
+		
+		return "redirect:/";
+	}*/
+	
 	@RequestMapping(value = "/saveFairy", method = RequestMethod.POST)
 	public String saveFairy(String fpkNum, String chapterNum,String chapter,String objList,String exampleBox,String anwserBox){
 		FileService.saveJson(chapter,FT_UPLOAD_PATH + fpkNum + "/" + chapterNum + "/chapter.json");
 		FileService.saveJson(objList,FT_UPLOAD_PATH + fpkNum + "/" + chapterNum +  "/objList.json");
 		FileService.saveJson(exampleBox,FT_UPLOAD_PATH + fpkNum + "/" + chapterNum +  "/example.json");
 		FileService.saveJson(anwserBox,FT_UPLOAD_PATH + fpkNum + "/" + chapterNum +  "/anwser.json");
+		
+		ObjectMapper mapper = new ObjectMapper();
+		
+		try {
+			
+			List<Question> qt = mapper.readValue(anwserBox, new TypeReference<List<Question>>(){});
+			
+			System.out.println("Answer" + qt.toString());
+			
+		} catch (JsonParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		System.out.println("anwserBox : " + anwserBox);
 		
 		return "redirect:/";
 	}
@@ -148,7 +185,7 @@ public class EditorController {
 		
 	    try {
 	        // Retrieve image from the classpath.
-	        //InputStream is = this.getClass().getResourceAsStream(FT_UPLOAD_PATH + tmpImg); 
+	    	//InputStream is = this.getClass().getResourceAsStream(FT_UPLOAD_PATH + tmpImg); 
 	        
 	        File path = new File(FT_UPLOAD_PATH + fpk + "/" + chapter + "/" + tmpImg);
 			if (!path.isDirectory()) {

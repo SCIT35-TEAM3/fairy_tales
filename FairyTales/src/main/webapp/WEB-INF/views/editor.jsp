@@ -219,6 +219,7 @@
 												<td colspan="2">
 													<i class="fa fa-files-o">&nbsp;Layer</i>&nbsp;&nbsp;
 													<a href="#layer" id="addLayer" class="btn">Add Layer</a>
+													<a href="#layer" id="delLayer" class="btn">Delete Layer</a>
 													<a href="#imgae" id="BGIBtn" class="btn">Back Ground Image</a>
 													<input type="file" id="backGroundUp" onchange="imgFilePut(this.files,'back')" style="display: none;"/>
 													<a href="#imgae" id="CIBtn" class="btn">Chapter Image</a>
@@ -251,7 +252,9 @@
 												<i class="fa fa-film"></i>
 												<select id="screensView" name="screen">
 													<option value="0">Screen 1</option>
-												</select>&nbsp;&nbsp;<a href="#screen" id="addScreen" class="btn">Add Screen</a> <a href="#screen" id="cNextScreen" class="btn">Copy To Next Screen</a>
+												</select>&nbsp;&nbsp;<a href="#screen" id="addScreen" class="btn">Add Screen</a>
+												<a href="#screen" id="cNextScreen" class="btn">Copy To Next Screen</a>
+												<a href="#screen" id="delScreen" class="btn">Delete Screen</a>
 												<div id="sceneList"  style="width:100%; height:50px; overflow-x: scroll; white-space: nowrap;"></div>
 												</td>
 											</tr>
@@ -574,6 +577,7 @@
 	    <div id="layer" class="pop-layer">
 	        <div class="pop-container">
 	            <div class="pop-conts">
+	            	<input type="hidden" id="popObjID">
 	            	<!-- <form method="post" id="pop"> -->
 						<table class="table text-center">
 							<thead>
@@ -603,9 +607,8 @@
 								<tr>
 									<td>
 										<br>
-										<!-- <a href="#" id="btnDelet" class="btn btn-submit btn-layer">Delete</a> -->
 										<a href="#" id=addObjTxtBtn class="btn btn-submit btn-layer">Register</a>
-										<!-- btnSubmit 삭제 예정-->
+										<a href="#" id="btnDelet" class="btn btn-submit btn-layer">Delete</a>
 			                			<a href="#" id="btnClose" class="btn btn-submit btn-layer">Close</a>
 									</td>
 								</tr>
@@ -712,6 +715,9 @@
 			<%-- #layer수행번호 --%>
 			if(el.substr(6) == 1){
 				//등록
+				$("#btnDelet").hide();
+				$("#addObjTxtBtn").html('Register');
+				$("#popObjID").val('');
 				$("#objText").val('');
 				$("#anwser").val('');
 				$(".example").each(function(index,example){
@@ -726,6 +732,9 @@
 				$("#qOnOff").prop("checked",false);
 				$("#questionBase").hide();
 			}else{
+				//수정
+				$("#btnDelet").show();
+				$("#addObjTxtBtn").html('Modify');
 				$(objList).each(function(index,obj){
 					if(obj.objId == el.substr(7)){
 						$("#objText").val(obj.obj);
@@ -739,6 +748,8 @@
 						
 					}
 				});
+				
+				$("#popObjID").val(el.substr(7));
 				
 				$(anwserBox).each(function(index,anwsers){
 					if(anwsers.objId == el.substr(7)){
@@ -765,7 +776,6 @@
 				});
 				
 				//1.objId 넣어서 수정하고 2.업로드 3.screen 4.레이어 삭제
-			aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa}}}}}}}}
 			}
 			
 			var $el = $(el.substr(0,6));				//레이어의 id를 $el 변수에 저장
@@ -808,7 +818,30 @@
 		});
 		//지우기
 		$("#layer").find('#btnDelet').click(function(){
-			deleteFt();
+			var objId = $("#popObjID").val();
+			objDelete(objId);
+			
+			$(anwserBox).each(function(index,anwsers){
+				if(anwsers.objId == objId){
+					anwserBox.splice(index,1);
+				}
+			});
+			
+			$(exampleBox).each(function(index,example){
+				if(example.objId == objId){
+					exampleBox.splice(index,1);
+				}
+			});
+			
+			//선택 초기화;
+			selectClear();
+			//뷰리스트
+			sceneViewList();
+			//object view
+			objViewList();
+			//다시그려
+			changeScreen();
+			//팝업 닫기
 			closePop();
 			return false;
 		});
@@ -817,49 +850,6 @@
 		function closePop(){
 			var isDim = $("#layer").prev().hasClass('dimBg');	//dimmed 레이어를 감지하기 위한 boolean 변수
 			isDim ? $('.dim-layer').fadeOut() : $("#layer").fadeOut();
-		}
-		
-		//저장 수정
-		function insertFt(){
-			var fpk	= $("#fpk").val();
-			var flevel = $("#flevel").val();
-			var fname = $("#fname").val();
-			var fchapter = $("#fchapter").val();
-			var fcode = $("#fcode").val();
-			
-			var parameter = {"fairy_level":flevel,"fairy_name":fname,"fairy_chapter":fchapter,"fairy_code":fcode,"fairy_pk":fpk};
-			
-			$.ajax({
-					  url		: "inFT"
-					, type		: "post"			
-					, data		: JSON.stringify(parameter)
-					, contentType	:	"application/json; charset=utf-8"
-					, dataType	: "text"
-					, success	: function (response) {
-						alert(response);
-						window.location.href='editorList';
-					}
-			});
-		}
-		
-		//삭제
-		function deleteFt(){
-			var fpk	= $("#fpk").val();
-			if(fpk == ''){
-				alert("잘못된 선택입니다.");
-				return false;
-			}
-			console.log(fpk);
-			$.ajax({
-					  url		: "deleteFT"
-					, type		: "post"			
-					, data		: {"fpk" : fpk}
-					, dataType	: "text"
-					, success	: function (response) {
-						alert(response);
-						window.location.href='editorList';
-					}
-			});
 		}
 	</script>
 </body>

@@ -193,6 +193,9 @@ $(document).ready(function(){
 	//스크린 추가
 	$("#addScreen").on("click",addScreen);
 	
+	//스크린 삭제
+	$("#delScreen").on("click",delScreen);
+	
 	//scene을 다음 스크린에 복사
 	$("#cNextScreen").on("click",cNextScreen);
 	
@@ -267,6 +270,39 @@ $(document).ready(function(){
 		
 		//selectClear event
 		$("input[name='layer']").on("click",selectClear);
+		$("input[name='layer']").last().prop("checked",true);
+		//green box
+		greenBox();
+	});
+	
+	$("#delLayer").on("click", function(){
+		var lastNum = $(".move").length;
+		
+		if(!(lastNum > 1)){alert("최소 하나의 레이어는 존재하여야 합니다.");return false;};
+		
+		var tf = confirm("마지막 레이어를 삭제 합니다.\n관련된 모든 객체는 삭제됩니다.");
+		if(!tf){return false;};
+		
+		
+		$(".group"+lastNum).remove();
+		
+		$(chapter.screen).each(function(index,screen){
+			var maxScene = screen.scene.length - 1;
+			$($(screen.scene).get().reverse()).each(function(index,scene){
+				if(scene.layerNum == lastNum){
+					screen.scene.splice((maxScene - index),1);
+				};
+			});
+		});
+		
+		chapter.maxLayer = lastNum-1;
+		
+		$("input[name='layer']").last().parent().remove();
+		$("input[name='layer']").last().prop("checked",true);
+		//green box
+		greenBox();
+		
+		return false;
 	});
 	
 	//오브젝트 사용
@@ -953,19 +989,71 @@ function addObjTxt(){
 			return false;
 		}
 	}
+	var objId = null;
 	
-	//Text object
-	var objId = addTxtObject($("#objText").val(),$("#qOnOff").prop("checked"));
+	if($("#popObjID").val() == ''){
+		//등록
+		//Text object
+		objId = addTxtObject($("#objText").val(),$("#qOnOff").prop("checked"));
+
+		if($("#qOnOff").prop("checked")){
+			//체크된 상태라면 
+			var anwser = $("#anwser").val();
+			//정답 저장
+			anwserBox.push({
+					 "objId"	: objId
+					,"answer"	: anwser
+			});
+			
+			/*aaaaaaaaaaaaaaaaaaaaaaa
+			"question_pk;
+			"fairy_pk;
+			"answer;
+			"chapter;
+			"Ascreen;
+			*/
+			
+			var exJson = '{ "objId":"'+objId+'"'; 
+			$(".example").each(function(index,ex){
+				var answer = $(ex).val();
+				exJson += ', "answer'+index+'":"' + answer + '"';
+			});
+			exJson += '}';
+			//보기 저장
+			exampleBox.push(JSON.parse(exJson));
+		};
 	
-	if($("#qOnOff").prop("checked")){
-		//체크된 상태라면 
-		var anwser = $("#anwser").val();
-		//정답 저장
-		anwserBox.push({
-				 "objId"	: objId
-				,"answer"	: anwser
+	}else{
+		//수정
+		objId = $("#popObjID").val();
+		
+		$(objList).each(function(index,obj){
+			if(obj.objId == objId){
+				var value = $("#objText").val();
+				obj.obj = value;
+				var view = '';
+				if(value.length > 3){
+					view = value.substring(0,3)+"..";
+				}else{
+					view = value
+				}
+				obj.view = view;
+			}
 		});
 		
+		$(anwserBox).each(function(index,anwsers){
+			if(anwsers.objId == objId){
+				anwsers.answer = $("#anwser").val();
+			}
+		});
+		
+		//삭제후
+		$(exampleBox).each(function(index,example){
+			if(example.objId == objId){
+				exampleBox.splice(index,1);
+			};
+		});
+		//새로 생성
 		var exJson = '{ "objId":"'+objId+'"'; 
 		$(".example").each(function(index,ex){
 			var answer = $(ex).val();
@@ -974,7 +1062,16 @@ function addObjTxt(){
 		exJson += '}';
 		//보기 저장
 		exampleBox.push(JSON.parse(exJson));
-	};
+	}
+	
+	//뷰리스트
+	sceneViewList();
+	//object view
+	objViewList();
+	//다시그려
+	changeScreen();
+	//팝업 닫기
+	closePop();
 	return false;
 	////////여기여기
 	/*
@@ -1183,6 +1280,26 @@ function addScreen(){
 	return false;
 }
 
+//스크린 삭제
+function delScreen(){
+	var length =  $(chapter.screen).length;
+	
+	if(!(length > 1)){alert("최소 하나의 스크린은 존재하여야 합니다.");return false;};
+	var tf = confirm("마지막 스크린을 삭제 합니다.\n관련된 모든 객체는 삭제됩니다.");
+	if(!tf){return false;};
+	
+	
+	chapter.screen.splice(length-1,1);
+	
+	$("#screensView").children("option").last().remove();
+	$("#screensView").children("option").last().prop("selected","selected");
+	
+	//스크린 변경
+	changeScreen();
+	
+	return false;
+}
+
 //scene을 다음 스크린에 복사
 function cNextScreen(){
 	var sceneNum = null;
@@ -1378,7 +1495,9 @@ function jsonView(){
 
 function saveFairy(){
 	$("#saveChapter").val(JSON.stringify(chapter));
-	$("#saveObjList").val(JSON.stringify(objList));			
+	$("#saveObjList").val(JSON.stringify(objList));
+	$("#saveExample").val(JSON.stringify(exampleBox));
+	$("#saveAnwser").val(JSON.stringify(anwserBox));		
 	return true;
 }
 
