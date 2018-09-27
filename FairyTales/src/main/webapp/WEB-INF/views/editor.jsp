@@ -86,14 +86,19 @@
 	  font-size: 13px;
 	  line-height: 25px;
 	}
+	
+	.padding-top2 {
+	  padding-top: 35px;
+	}
 </style>
 <!-- 팝업 css -->
 
 <!-- editor css -->
 <style>
 	.fairyTale{
-		border:1px solid gold;
+		border:1px solid #a5732c;
 	}
+	/* 
 	.move{
 		border:1px solid rad;
 	}
@@ -103,6 +108,7 @@
 	.fEdit{
 		border:1px solid green;
 	}
+	 */
 </style>
 
 <script src="resources/jquery-3.3.1.min.js"></script>
@@ -194,8 +200,8 @@
 				<div class="row">
 					<div class="action">
 						<div class="col-sm-12">
-							<h1 class="title">FairyTales</h1>
-							<p>FairyTales List</p>
+							<h1 class="title">Editor</h1>
+							<p>FairyTales Editor</p>
 						</div>
 					</div>
 				</div>
@@ -203,7 +209,7 @@
 		</div>
 	</section>
 	<!--/#page-breadcrumb-->
-	<section id="blog" class="padding-top">
+	<section id="blog" class="padding-top2">
 		<div class="container">
 			<div class="col-md-12 col-sm-12">
 				<div class="row">
@@ -291,8 +297,8 @@
 																	<p>Latency</p>
 																</td>
 																<td>
-																	<input type="number" id="sTime"		placeholder="시간"/>
-																	<input type="number" id="sLatency"	placeholder="대기시간"/>
+																	<input type="number" id="sTime"		placeholder="Time"/>
+																	<input type="number" id="sLatency"	placeholder="Waiting Time"/>
 																</td>
 															</tr>
 															<tr>
@@ -329,6 +335,7 @@
 															<tr>
 																<td colspan="2">
 																	<a href="#save" id="sceneSet" class="btn"><i class="fa fa-save">&nbsp;&nbsp;Save Info</i></a>
+																	<a href="#save" id="saveChapter" class="btn"><i class="fa fa-edit">&nbsp;&nbsp;Save Chapter</i></a>
 																</td>
 															</tr>
 															</tbody>
@@ -486,6 +493,7 @@
 												</td>
 											</tr>
 											-->
+											<!-- 
 											<tr>
 												<td colspan = "2">
 													<input type="button" onclick="jsonView()" value="출력">
@@ -499,24 +507,23 @@
 													<textarea rows="20" cols="100" id="anwserBoxJsonView"></textarea>
 												</td>
 											</tr>
+											 -->
 											<tr>
 												<td colspan = "2">
-													<form action="saveFairy" method="post" onsubmit="return saveFairy()">
-														<input type="submit" value="저장"/>
-														<input type="text"  name="fpkNum" id="fpkNum" value="${fpk}"/>
-														<input type="text"  name="chapterNum" id="chapterNum" value="${chapter}"/>
-														<input type="text" id="saveChapter" name="chapter"/>
-														<input type="text" id="saveObjList" name="objList"/>
-														<input type="text" id="saveExample" name="exampleBox"/>
-														<input type="text" id="saveAnwser" name="anwserBox"/>
+													<form id="saveFairy" action="saveFairy" method="post" onsubmit="return saveFairy()">
+														<!-- <input type="submit" value="저장"/> -->
+														<input type="hidden"  name="fpkNum" id="fpkNum" value="${fpk}"/>
+														<input type="hidden"  name="chapterNum" id="chapterNum" value="${chapter}"/>
+														<input type="hidden" id="saveChapter" name="chapter"/>
+														<input type="hidden" id="saveObjList" name="objList"/>
+														<input type="hidden" id="saveExample" name="exampleBox"/>
+														<input type="hidden" id="saveAnwser" name="anwserBox"/>
 													</form>
 												</td>
 											</tr>
 										</tbody>
 									</table>
 								<%-- /본문위치 --%>
-								<input type="button" onclick="aaaaaaimg()" value="이미지 보기">
-								<div id="targetShow"> <div>
 								</div>
 							</div>
 						</div>
@@ -721,14 +728,10 @@
 				$("#objText").val('');
 				$("#anwser").val('');
 				$(".example").each(function(index,example){
-					if(index != 0){
-						//삭제
-						$(example).remove();
-					}else{
-						//내용 삭제
-						$(example).val('');
-					}
+					//전부 삭제
+					$(example).remove();
 				});
+				$("#exampleBase").append("<input class='example' type='text'>");
 				$("#qOnOff").prop("checked",false);
 				$("#questionBase").hide();
 			}else{
@@ -745,7 +748,6 @@
 							$("#qOnOff").prop("checked",true);
 							$("#questionBase").show();
 						}
-						
 					}
 				});
 				
@@ -761,19 +763,25 @@
 				$(".example").each(function(index,example){
 					$(example).remove();
 				});
+				var exampleCheck = true; 
 				$(exampleBox).each(function(index,example){
 					if(example.objId == el.substr(7)){
+						exampleCheck = false;
 						if(example.answer0){
-							$("#exampleBase").append("<input class='example' type='text' value="+example.answer0+">")
+							$("#exampleBase").append("<input class='example' type='text' value="+example.answer0+">");
 						}
 						if(example.answer1){
-							$("#exampleBase").append("<input class='example' type='text' value="+example.answer1+">")
+							$("#exampleBase").append("<input class='example' type='text' value="+example.answer1+">");
 						}
 						if(example.answer2){
-							$("#exampleBase").append("<input class='example' type='text' value="+example.answer2+">")
+							$("#exampleBase").append("<input class='example' type='text' value="+example.answer2+">");
 						}
 					}
 				});
+				//example 없으면 기본적인 하나 생성 수정!! 해야 할것 택스트에서 문제로 전환 및 문제에서 텍스트로 전환
+				if(exampleCheck){
+					$("#exampleBase").append("<input class='example' type='text'>");
+				}
 				
 				//1.objId 넣어서 수정하고 2.업로드 3.screen 4.레이어 삭제
 			}

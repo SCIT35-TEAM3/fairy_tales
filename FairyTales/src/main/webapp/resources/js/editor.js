@@ -175,6 +175,9 @@ $(document).ready(function(){
 	//sceneSet scene 저장
 	$("#sceneSet").on("click",sceneSet);
 	
+	//sceneSet scene 저장
+	$("#saveChapter").on("click",saveChapter);
+	
 	//layer radio event
 	$("input[name='layer']").on("click",selectClear);
 	
@@ -1238,6 +1241,10 @@ function screenSet(scene){
 };
 //Deep copy 복사
 function deepCopy(obj){
+	
+
+	console.log("deepCopy :" + $(obj).length);
+	
 	//Deep copy *
 	var clone = JSON.parse(JSON.stringify(obj));
 	return clone;
@@ -1519,4 +1526,8 @@ function sceneDelete(target){
 	objViewList();
 	//children green box;
 	greenBox();
+}
+
+function saveChapter(){
+	$("#saveFairy").submit();
 }

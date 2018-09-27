@@ -141,7 +141,7 @@ public class EditorController {
 		
 		System.out.println("anwserBox : " + anwserBox);
 		
-		return "redirect:/";
+		return "redirect:/editorList";
 	}
 	
 	//동화 생성

@@ -95,7 +95,13 @@
 							<li class="dropdown"><a href="#">My Page <i class="fa fa-angle-down"></i></a>
 								<ul role="menu" class="sub-menu">
 									<li><a href="my_info_detail">My Infomation</a></li>
-									<li><a href="my_chart_page">My Chart</a></li>
+									<c:if test="${sessionScope.user_level != 1}">
+										<li><a href="my_chart_page">My Chart</a></li>
+									</c:if>
+									<c:if test="${sessionScope.user_level == 1}">
+										<li><a href="my_chart_page">Member Chart</a></li>
+										<li><a href="editorList">FairyTales</a></li>
+									</c:if>
 								</ul></li>
 							<li><div id="user_id_form">${sessionScope.loginid}님,</div></li>
 							<li><a href="logout">Logout</a></li>
