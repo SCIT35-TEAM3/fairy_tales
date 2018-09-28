@@ -212,8 +212,16 @@
 												<c:forEach items="${fairytales}" var="fairy">
 													<tr>
 														<td class="fpk"><c:out value="${fairy.fairy_pk}" /></td>
-														<td	class="fcode"><c:out value="${fairy.fairy_code}" /></td>
-														<td class="flevel"><c:out value="${fairy.fairy_level}" /></td>
+														<td class="fcode">
+															<input class="fcode" type="hidden" value="${fairy.fairy_code}"/>
+															<c:if test="${fairy.fairy_code == 'jp' }">日本語</c:if>
+															<c:if test="${fairy.fairy_code == 'cd'}">JAVA</c:if>
+														</td>
+														<td class="flevel">
+															<input class="flevel" type="hidden" value="${fairy.fairy_level}"/>
+															<c:if test="${fairy.fairy_level == 1}">초급</c:if>
+															<c:if test="${fairy.fairy_level == 2}">중급</c:if>
+															<c:if test="${fairy.fairy_level == 3}">고급</c:if>
 														<td class="fname"><a href="editorAdd?fpk=${fairy.fairy_pk}"><c:out value="${fairy.fairy_name}" /></a></td>
 														<td class="fchapter"><c:out value="${fairy.fairy_chapter}" /></td>
 														<td>
@@ -335,7 +343,7 @@
 								</td>
 								<td>
 									<select id="fcode" name = "fcode">
-										<option value="jp">일본어
+										<option value="jp">日本語
 										<option value="cd">JAVA
 									</select>
 								</td>
@@ -417,10 +425,10 @@
 			}else if(el.substr(6) == 2){
 				var $parent = $element.parent().parent();
 				$("#fpk").val($parent.children('.fpk').html());
-				$("#flevel").val($parent.children('.flevel').html());
+				$("#flevel").val($parent.children('.flevel').children('.flevel').val());
 				$("#fname").val($parent.children('.fname').children('a').html());
 				$("#fchapter").val($parent.children('.fchapter').html());
-				$("#fcode").val($parent.children('.fcode').html());
+				$("#fcode").val($parent.children('.fcode').children('.fcode').val());
 				$("#btnDelet").show();
 				$("#btnSubmit").html("MODIFY");
 			}
@@ -478,7 +486,7 @@
 					, contentType	:	"application/json; charset=utf-8"
 					, dataType	: "text"
 					, success	: function (response) {
-						alert(response);
+						//alert(response);
 						window.location.href='editorList';
 					}
 			});
@@ -498,7 +506,7 @@
 					, data		: {"fpk" : fpk}
 					, dataType	: "text"
 					, success	: function (response) {
-						alert(response);
+						//alert(response);
 						window.location.href='editorList';
 					}
 			});

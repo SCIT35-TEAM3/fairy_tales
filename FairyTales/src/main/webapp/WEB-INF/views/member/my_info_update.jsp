@@ -152,7 +152,7 @@ function check(){
             <div class="row">
                 <div class="col-sm-8 col-sm-offset-2">                    
                     <div class="contact-form bottom" align="center">
-                        <h2>My Infomation</h2>
+                        <h2>My Infomation Update</h2>
                         <form action="gomain" method="get" id="updateform">
                         
                             <div class="form-group">

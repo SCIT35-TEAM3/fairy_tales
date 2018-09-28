@@ -169,8 +169,8 @@
 				<div class="row">
 					<div class="action">
 						<div class="col-sm-12">
-							<h1 class="title">FairyTales</h1>
-							<p>FairyTales List</p>
+							<h1 class="title">Chapter</h1>
+							<p>FairyTales Chapter</p>
 						</div>
 					</div>
 				</div>
@@ -189,6 +189,8 @@
 								<div class="sidebar-item  recent">
 									<!-- <h3>동화 챕터 추가</h3> -->
 									<div id="chapters">
+										<h1 class="text-center">${fairytales.fairy_name}</h1>
+										<h3></h3><br/><br/>
 										<%-- <c:forEach item="${fairy_chapter}"> --%>
 										<c:forEach begin="1" end="${fairytales.fairy_chapter}" step="1" var="fNum">
 											<div class="col-sm-12 text-center">

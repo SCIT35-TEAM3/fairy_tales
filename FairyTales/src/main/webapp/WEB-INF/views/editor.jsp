@@ -86,14 +86,19 @@
 	  font-size: 13px;
 	  line-height: 25px;
 	}
+	
+	.padding-top2 {
+	  padding-top: 35px;
+	}
 </style>
 <!-- 팝업 css -->
 
 <!-- editor css -->
 <style>
 	.fairyTale{
-		border:1px solid gold;
+		border:1px solid #a5732c;
 	}
+	/* 
 	.move{
 		border:1px solid rad;
 	}
@@ -103,6 +108,7 @@
 	.fEdit{
 		border:1px solid green;
 	}
+	 */
 </style>
 
 <script src="resources/jquery-3.3.1.min.js"></script>
@@ -194,8 +200,8 @@
 				<div class="row">
 					<div class="action">
 						<div class="col-sm-12">
-							<h1 class="title">FairyTales</h1>
-							<p>FairyTales List</p>
+							<h1 class="title">Editor</h1>
+							<p>FairyTales Editor</p>
 						</div>
 					</div>
 				</div>
@@ -203,7 +209,7 @@
 		</div>
 	</section>
 	<!--/#page-breadcrumb-->
-	<section id="blog" class="padding-top">
+	<section id="blog" class="padding-top2">
 		<div class="container">
 			<div class="col-md-12 col-sm-12">
 				<div class="row">
@@ -219,6 +225,11 @@
 												<td colspan="2">
 													<i class="fa fa-files-o">&nbsp;Layer</i>&nbsp;&nbsp;
 													<a href="#layer" id="addLayer" class="btn">Add Layer</a>
+													<a href="#layer" id="delLayer" class="btn">Delete Layer</a>
+													<a href="#imgae" id="BGIBtn" class="btn">Back Ground Image</a>
+													<input type="file" id="backGroundUp" onchange="imgFilePut(this.files,'back')" style="display: none;"/>
+													<a href="#imgae" id="CIBtn" class="btn">Chapter Image</a>
+													<input type="file" id="ChapterUp" onchange="imgFilePut(this.files,'chapter')" style="display: none;"/>
 													<div class="layerSelector"  style="width:100%; height:50px; overflow-x: scroll; white-space: nowrap;">
 													<span><input type="radio" name="layer" value="1" checked />Layer1</span>
 													</div>
@@ -248,6 +259,8 @@
 												<select id="screensView" name="screen">
 													<option value="0">Screen 1</option>
 												</select>&nbsp;&nbsp;<a href="#screen" id="addScreen" class="btn">Add Screen</a>
+												<a href="#screen" id="cNextScreen" class="btn">Copy To Next Screen</a>
+												<a href="#screen" id="delScreen" class="btn">Delete Screen</a>
 												<div id="sceneList"  style="width:100%; height:50px; overflow-x: scroll; white-space: nowrap;"></div>
 												</td>
 											</tr>
@@ -259,7 +272,7 @@
 												</td> -->
 												<td colspan = "2">
 													<div class="col-md-9 col-sm-9">
-														<div class="fairyTale">
+														<div class="fairyTale" id="fairyTale">
 															<div class="layer fEdit"></div>
 															<div class="layer move group1"></div>
 															<div class="layer effect group1"></div>
@@ -284,8 +297,8 @@
 																	<p>Latency</p>
 																</td>
 																<td>
-																	<input type="number" id="sTime"		placeholder="시간"/>
-																	<input type="number" id="sLatency"	placeholder="대기시간"/>
+																	<input type="number" id="sTime"		placeholder="Time"/>
+																	<input type="number" id="sLatency"	placeholder="Waiting Time"/>
 																</td>
 															</tr>
 															<tr>
@@ -312,16 +325,17 @@
 																<td colspan="2">
 																	<p>Animate Event</p>
 																	<select id ="animate" name="animate">
-																		<option value="fadeIn" >fadeIn(나타남)</option>
-																		<option value="animate" >animate(움직임)</option>
-																		<option value="" >유지</option>
-																		<option value="fadeOut" >fadeOut(없어짐)</option>
+																		<option value="fadeIn" >SHOW</option>
+																		<option value="animate" >MOVE</option>
+																		<option value="" >STOP</option>
+																		<option value="fadeOut" >REMOVE</option>
 																	</select>
 																</td>
 															</tr>
 															<tr>
 																<td colspan="2">
 																	<a href="#save" id="sceneSet" class="btn"><i class="fa fa-save">&nbsp;&nbsp;Save Info</i></a>
+																	<a href="#save" id="saveChapter" class="btn"><i class="fa fa-edit">&nbsp;&nbsp;Save Chapter</i></a>
 																</td>
 															</tr>
 															</tbody>
@@ -362,7 +376,7 @@
 													 -->
 													<i class="fa fa-dropbox">&nbsp;&nbsp;Add Object</i>
 													<a href="#imgae" id="imgFileBtn" class="btn">Image</a>
-													<input type="file" id="fileUp" onchange="imgFilePut(this.files)" style="display: none;"/>
+													<input type="file" id="fileUp" onchange="imgFilePut(this.files,'img')" style="display: none;"/>
 													<!-- <input type="text" id="objText"/> -->
 													<a href="#layer1" class="btn btn-popup ">Word/Question</a>
 													<!-- <input type="button" id="addObjTxtBtn" value="word add"/> -->
@@ -479,6 +493,7 @@
 												</td>
 											</tr>
 											-->
+											<!-- 
 											<tr>
 												<td colspan = "2">
 													<input type="button" onclick="jsonView()" value="출력">
@@ -492,16 +507,17 @@
 													<textarea rows="20" cols="100" id="anwserBoxJsonView"></textarea>
 												</td>
 											</tr>
+											 -->
 											<tr>
 												<td colspan = "2">
-													<form action="saveFairy" method="post" onsubmit="return saveFairy()">
-														<input type="submit" value="저장"/>
-														<input type="hidden"  name="fpk" value="${fpk}"/>
-														<input type="hidden"  name="chapter" value="${chapter}"/>
-														<input type="text" id="saveChapter" name="chapter"/>
-														<input type="text" id="saveObjList" name="objList"/>
-														<input type="text" id="saveExample" name="exampleBox"/>
-														<input type="text" id="saveAnwser" name="anwserBox"/>
+													<form id="saveFairy" action="saveFairy" method="post" onsubmit="return saveFairy()">
+														<!-- <input type="submit" value="저장"/> -->
+														<input type="hidden"  name="fpkNum" id="fpkNum" value="${fpk}"/>
+														<input type="hidden"  name="chapterNum" id="chapterNum" value="${chapter}"/>
+														<input type="hidden" id="saveChapter" name="chapter"/>
+														<input type="hidden" id="saveObjList" name="objList"/>
+														<input type="hidden" id="saveExample" name="exampleBox"/>
+														<input type="hidden" id="saveAnwser" name="anwserBox"/>
 													</form>
 												</td>
 											</tr>
@@ -568,8 +584,8 @@
 	    <div id="layer" class="pop-layer">
 	        <div class="pop-container">
 	            <div class="pop-conts">
+	            	<input type="hidden" id="popObjID">
 	            	<!-- <form method="post" id="pop"> -->
-						<input type="hidden" id="fpk" name="fpk">
 						<table class="table text-center">
 							<thead>
 								<tr>
@@ -598,9 +614,8 @@
 								<tr>
 									<td>
 										<br>
-										<!-- <a href="#" id="btnDelet" class="btn btn-submit btn-layer">Delete</a> -->
 										<a href="#" id=addObjTxtBtn class="btn btn-submit btn-layer">Register</a>
-										<!-- btnSubmit 삭제 예정-->
+										<a href="#" id="btnDelet" class="btn btn-submit btn-layer">Delete</a>
 			                			<a href="#" id="btnClose" class="btn btn-submit btn-layer">Close</a>
 									</td>
 								</tr>
@@ -704,25 +719,71 @@
 		});
 		
 		function layer_popup(el,$element){
-			alert("el : " + el);
-			$("#questionBase").hide();
 			<%-- #layer수행번호 --%>
 			if(el.substr(6) == 1){
 				//등록
+				$("#btnDelet").hide();
+				$("#addObjTxtBtn").html('Register');
+				$("#popObjID").val('');
 				$("#objText").val('');
 				$("#anwser").val('');
 				$(".example").each(function(index,example){
-					if(index != 0){
-						//삭제
-						$(example).remove();
-					}else{
-						//내용 삭제
-						$(example).val('');
+					//전부 삭제
+					$(example).remove();
+				});
+				$("#exampleBase").append("<input class='example' type='text'>");
+				$("#qOnOff").prop("checked",false);
+				$("#questionBase").hide();
+			}else{
+				//수정
+				$("#btnDelet").show();
+				$("#addObjTxtBtn").html('Modify');
+				$(objList).each(function(index,obj){
+					if(obj.objId == el.substr(7)){
+						$("#objText").val(obj.obj);
+						if(obj.objType == "text"){
+							$("#qOnOff").prop("checked",false);
+							$("#questionBase").hide();
+						}else{
+							$("#qOnOff").prop("checked",true);
+							$("#questionBase").show();
+						}
 					}
 				});
-				$("#qOnOff").prop("checked",false);
-			}else if(el.substr(6) == 2){
-				//수정
+				
+				$("#popObjID").val(el.substr(7));
+				
+				$(anwserBox).each(function(index,anwsers){
+					if(anwsers.objId == el.substr(7)){
+						$("#anwser").val(anwsers.answer);
+					}
+				});
+				
+				//전체 삭제
+				$(".example").each(function(index,example){
+					$(example).remove();
+				});
+				var exampleCheck = true; 
+				$(exampleBox).each(function(index,example){
+					if(example.objId == el.substr(7)){
+						exampleCheck = false;
+						if(example.answer0){
+							$("#exampleBase").append("<input class='example' type='text' value="+example.answer0+">");
+						}
+						if(example.answer1){
+							$("#exampleBase").append("<input class='example' type='text' value="+example.answer1+">");
+						}
+						if(example.answer2){
+							$("#exampleBase").append("<input class='example' type='text' value="+example.answer2+">");
+						}
+					}
+				});
+				//example 없으면 기본적인 하나 생성 수정!! 해야 할것 택스트에서 문제로 전환 및 문제에서 텍스트로 전환
+				if(exampleCheck){
+					$("#exampleBase").append("<input class='example' type='text'>");
+				}
+				
+				//1.objId 넣어서 수정하고 2.업로드 3.screen 4.레이어 삭제
 			}
 			
 			var $el = $(el.substr(0,6));				//레이어의 id를 $el 변수에 저장
@@ -765,7 +826,30 @@
 		});
 		//지우기
 		$("#layer").find('#btnDelet').click(function(){
-			deleteFt();
+			var objId = $("#popObjID").val();
+			objDelete(objId);
+			
+			$(anwserBox).each(function(index,anwsers){
+				if(anwsers.objId == objId){
+					anwserBox.splice(index,1);
+				}
+			});
+			
+			$(exampleBox).each(function(index,example){
+				if(example.objId == objId){
+					exampleBox.splice(index,1);
+				}
+			});
+			
+			//선택 초기화;
+			selectClear();
+			//뷰리스트
+			sceneViewList();
+			//object view
+			objViewList();
+			//다시그려
+			changeScreen();
+			//팝업 닫기
 			closePop();
 			return false;
 		});
@@ -774,49 +858,6 @@
 		function closePop(){
 			var isDim = $("#layer").prev().hasClass('dimBg');	//dimmed 레이어를 감지하기 위한 boolean 변수
 			isDim ? $('.dim-layer').fadeOut() : $("#layer").fadeOut();
-		}
-		
-		//저장 수정
-		function insertFt(){
-			var fpk	= $("#fpk").val();
-			var flevel = $("#flevel").val();
-			var fname = $("#fname").val();
-			var fchapter = $("#fchapter").val();
-			var fcode = $("#fcode").val();
-			
-			var parameter = {"fairy_level":flevel,"fairy_name":fname,"fairy_chapter":fchapter,"fairy_code":fcode,"fairy_pk":fpk};
-			
-			$.ajax({
-					  url		: "inFT"
-					, type		: "post"			
-					, data		: JSON.stringify(parameter)
-					, contentType	:	"application/json; charset=utf-8"
-					, dataType	: "text"
-					, success	: function (response) {
-						alert(response);
-						window.location.href='editorList';
-					}
-			});
-		}
-		
-		//삭제
-		function deleteFt(){
-			var fpk	= $("#fpk").val();
-			if(fpk == ''){
-				alert("잘못된 선택입니다.");
-				return false;
-			}
-			console.log(fpk);
-			$.ajax({
-					  url		: "deleteFT"
-					, type		: "post"			
-					, data		: {"fpk" : fpk}
-					, dataType	: "text"
-					, success	: function (response) {
-						alert(response);
-						window.location.href='editorList';
-					}
-			});
 		}
 	</script>
 </body>

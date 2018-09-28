@@ -14,7 +14,8 @@ var objList = [];
 // 챕터 screen 의 집합, 챕터 대표 이미지, 총 레이어 수 *레이어 삭제시 관련된 정보 모두 삭제
 var chapter = {
 				  "screen"	: []
-				, "img"		: null
+				, "background" : null
+				, "mainImg"	: null
 				, "maxLayer": 1
 			  };
 
@@ -174,6 +175,9 @@ $(document).ready(function(){
 	//sceneSet scene 저장
 	$("#sceneSet").on("click",sceneSet);
 	
+	//sceneSet scene 저장
+	$("#saveChapter").on("click",saveChapter);
+	
 	//layer radio event
 	$("input[name='layer']").on("click",selectClear);
 	
@@ -183,8 +187,20 @@ $(document).ready(function(){
 	//img file upload click
 	$("#imgFileBtn").on("click",function(){$("#fileUp").click();});
 	
+	//Back Ground file upload click
+	$("#BGIBtn").on("click",function(){$("#backGroundUp").click();});
+	
+	//Chapter file upload click
+	$("#CIBtn").on("click",function(){$("#ChapterUp").click();});
+	
 	//스크린 추가
 	$("#addScreen").on("click",addScreen);
+	
+	//스크린 삭제
+	$("#delScreen").on("click",delScreen);
+	
+	//scene을 다음 스크린에 복사
+	$("#cNextScreen").on("click",cNextScreen);
 	
 	//select object
 	$(".fairyTale").mousedown(function(events){
@@ -257,6 +273,39 @@ $(document).ready(function(){
 		
 		//selectClear event
 		$("input[name='layer']").on("click",selectClear);
+		$("input[name='layer']").last().prop("checked",true);
+		//green box
+		greenBox();
+	});
+	
+	$("#delLayer").on("click", function(){
+		var lastNum = $(".move").length;
+		
+		if(!(lastNum > 1)){alert("최소 하나의 레이어는 존재하여야 합니다.");return false;};
+		
+		var tf = confirm("마지막 레이어를 삭제 합니다.\n관련된 모든 객체는 삭제됩니다.");
+		if(!tf){return false;};
+		
+		
+		$(".group"+lastNum).remove();
+		
+		$(chapter.screen).each(function(index,screen){
+			var maxScene = screen.scene.length - 1;
+			$($(screen.scene).get().reverse()).each(function(index,scene){
+				if(scene.layerNum == lastNum){
+					screen.scene.splice((maxScene - index),1);
+				};
+			});
+		});
+		
+		chapter.maxLayer = lastNum-1;
+		
+		$("input[name='layer']").last().parent().remove();
+		$("input[name='layer']").last().prop("checked",true);
+		//green box
+		greenBox();
+		
+		return false;
 	});
 	
 	//오브젝트 사용
@@ -264,7 +313,7 @@ $(document).ready(function(){
 	
 	//object delete
 	$("#objCheckBtn").on("click", objCheck);
-	objCheck
+	
 	//keypad set
 	$(document).keydown(function(event){
 		var keydown = event.which;
@@ -401,6 +450,9 @@ function changeScreen(){
 	//$("#screensView").html("Screens " + (Number(screenNum) + 1));
 	//선택 초기화;
 	selectClear();
+	//뷰리스트
+	sceneViewList();
+	
 };
 
 //div 범위
@@ -470,22 +522,35 @@ function selectClear(){
 }
 //오브젝트 삭제
 function objCheck(){
-	var tf = confirm("정말 삭제하시겠습니까?");
+	var tf = confirm("정말 삭제하시겠습니까? 관련된 모든 객체는 삭제됩니다.");
 	if(tf){
 		$(".objCheck").each(function(index,check){
 			if($(check).prop('checked')){
 				objDelete($(check).val());
 			};
 		});
+		//선택 초기화;
+		selectClear();
+		//뷰리스트
+		sceneViewList();
 		//object view
 		objViewList();
-		//children green box;
-		greenBox(selectTarget);
+		//다시그려
+		changeScreen();
 	};
 	return false;
 };
 //object delete
 function objDelete(delObjNum){
+	$(chapter.screen).each(function(index,screen){
+		var maxScene = screen.scene.length - 1;
+		$($(screen.scene).get().reverse()).each(function(index,scene){
+			if(scene.objId == delObjNum){
+				screen.scene.splice((maxScene - index),1);
+			};
+		});
+	});
+	
 	$(objList).each(function(index,obj){
 		$(".layer").children().each(function(index,layer){
 			if(layer == selectTarget){
@@ -578,6 +643,8 @@ function resize() {
 			, "height": wWidth / 1.77778
 		}
 	);
+	var size = $(".fairyTale").width() + "px " + $(".fairyTale").height() + "px"
+	$(".fairyTale").css( "background-size", size);
 	
 	//*layer 통합
 	// move resize set!!
@@ -591,19 +658,8 @@ function resize() {
 		}
 	);
 	
-	$(".layer").children().each(function(){
-		//타겟 정보
-		var targetInfo
-		var targetId = $(this).data("objId");
-		$($(chapter.screen).get(screenSelector()).scene).each(function(index,scene){
-			if(scene.objId == targetId){
-				targetInfo = scene;
-				return false;
-			};
-		});
-		//다시그리기
-		setSScene(this,targetInfo);
-	});
+	//다시그려
+	changeScreen();
 };
 
 // z-index set
@@ -649,10 +705,14 @@ function fIndexSet(){
 };
 
 //image file push
-function imgFilePut(files){
+function imgFilePut(files,check){
 	//새 이미지
 	var formData = new FormData();
-	formData.append("file",$(files).get(0));
+	formData.append("file"	 ,$(files).get(0));
+	formData.append("fpkNum"	 ,$("#fpkNum").val());
+	formData.append("chapterNum",$("#chapterNum").val());
+	
+	//console.log("formData : " + JSON.get("fpk"));
 	var fileName = $(files).get(0).name;
 	//이미지 업로드
 	$.ajax({
@@ -663,16 +723,28 @@ function imgFilePut(files){
 			, data		: formData
 			, dataType	: 'text'
 			, success	: function (response) {
-				alert("./image?tmpImg="+response);
-				addImgObject("./image?tmpImg="+response,null,fileName);
-				$("input[type=file]").val("");
-				
-				//ie
-				if (/msie/.test(navigator.userAgent.toLowerCase())) { 
-					$("input[type=file]").replaceWith( $("input[type=file]").clone(true) );
-				} else {
+				var url = "./image?tmpImg="+response+"&fpk=" + $("#fpkNum").val() + "&chapter="+ $("#chapterNum").val();
+				if(check == "img"){
+					addImgObject(url,null,fileName);
 					$("input[type=file]").val("");
+					
+					//ie
+					if (/msie/.test(navigator.userAgent.toLowerCase())) { 
+						$("input[type=file]").replaceWith( $("input[type=file]").clone(true) );
+					} else {
+						$("input[type=file]").val("");
+					}
+				}else if(check == "back"){
+					//배경
+					$(".fairyTale").css( "background" , "url('"+url+"')");
+					var size = $(".fairyTale").width() + "px " + $(".fairyTale").height() + "px"
+					$(".fairyTale").css( "background-size", size);
+					chapter.background = url;
+				}else if(check == "chapter"){
+					//대표 이미지
+					chapter.mainImg = url;
 				}
+				
 			}
 	});
 };
@@ -741,8 +813,9 @@ function addImgObject (file,scene,view,objId){
 		sceneViewList();
 		//object view
 		objViewList();
+		console.log("!! 왜 안먹지");
 		//객체 크기 json setting
-		setWHLT(this);
+		setWHLT(selectTarget);
 	};
 
 };
@@ -770,9 +843,7 @@ function objPush(objType,obj,view){
 //장면추가
 //scene push screen
 function playAnimateSet(target,screenNum,objId,layerNum,animate,time,latency){
-	//console.error("여기 해라 뭐해야되는지는 까먹음");
-	//appear
-	var sceneNum = screenNum + "_" + objId + "_" + sceneMaxNum(screenNum);
+	var sceneNum = screenNum + "_" + objId + "_" + sceneMaxNum(screenNum,objId);
 	var scene = {
 					//sceneNumber 스크린번호 _ 오브젝트아이디 _ 스크린에 쌓인 고유번호
 					  "sceneNum"	: sceneNum
@@ -797,6 +868,7 @@ function playAnimateSet(target,screenNum,objId,layerNum,animate,time,latency){
 	$(chapter.screen).get(screenNum).scene.push(scene);
 	
 	//추가한 screen 다음 screen 존재하는 경우 다음 screen에 scene추가 animate = "fadeOut"으로 추가하자
+	/*
 	var $nextScreen = $(chapter.screen).get(parseInt(screenNum)+1);
 	if($nextScreen != null){
 		//Deep copy *
@@ -805,7 +877,7 @@ function playAnimateSet(target,screenNum,objId,layerNum,animate,time,latency){
 		$nextScreen.scene.push(clone);
 		//* Deep copy
 	};
-	
+	*/
 	return sceneNum;
 };
 
@@ -840,7 +912,7 @@ function objMaxNum(){
 };
 
 //screen Max Number 같은 스크린에 같은 오브젝트의 최대값
-function sceneMaxNum(screenNum){
+function sceneMaxNum(screenNum,objId){
 	var maxNum = 0;
 	if($(chapter.screen).get(screenNum).scene.length != 0){
 		$($(chapter.screen).get(screenNum).scene).each(function(index,scene){
@@ -848,9 +920,9 @@ function sceneMaxNum(screenNum){
 			//스크린번호(0) _ 오브젝트아이디(1) _ 스크린에 쌓인 고유번호(2)
 			//console.log("scene : " + sceneArry[0] + " / "+ sceneArry[1] + " / "+ sceneArry[2]);
 			if(sceneArry[0] == screenNum){
-				if(sceneArry[1] == scene.objId){
-					if(sceneArry[2] >= maxNum){
-						maxNum = parseInt(sceneArry[1]) + 1;
+				if(sceneArry[1] == objId){
+					if(parseInt(sceneArry[2]) >= maxNum){
+						maxNum = parseInt(sceneArry[2]) + 1;
 					};
 				};						
 			};
@@ -862,6 +934,9 @@ function sceneMaxNum(screenNum){
 //view div set objList 
 function objViewList(){
 	var putInfo = "";
+	
+	var event = false;
+	
 	$(objList).each(function(index,obj){
 		var icon = "";
 		if(obj.objType == "img"){
@@ -872,9 +947,26 @@ function objViewList(){
 			icon = "fa-file-text";
 		}
 		
-		putInfo += "<input type='checkbox' class='objCheck' value='"+obj.objId+"' />&nbsp;ID : " + obj.objId + "&nbsp;<i class='fa "+icon+"'>&nbsp;"+ obj.view +"</i>&nbsp;";
+		putInfo += "<input type='checkbox' class='objCheck' value='"+obj.objId+"' />&nbsp;";
+		if(obj.objType == "text" || obj.objType == "question"){
+			putInfo += '<a href="#layer_'+obj.objId+'" class="btn btn-popup ">';
+		};
+		putInfo += "ID : " + obj.objId + "&nbsp;<i class='fa "+icon+"'>&nbsp;"+ obj.view +"</i>&nbsp;";
+		if(obj.objType == "text" || obj.objType == "question"){
+			putInfo += '</a>';
+			event = true;
+		};
 	});
 	$("#objList").html(putInfo);
+	
+	if(event){
+		//팝업 클릭 이벤트
+		$('.btn-popup').click(function(){
+			var $href = $(this).attr('href');
+			layer_popup($href,$(this));
+			return false;
+		});
+	}
 };
 
 //add object text
@@ -900,20 +992,72 @@ function addObjTxt(){
 			return false;
 		}
 	}
+	var objId = null;
 	
-	//Text object
-	var sceneNum = addTxtObject($("#objText").val(),$("#qOnOff").prop("checked"));
+	if($("#popObjID").val() == ''){
+		//등록
+		//Text object
+		objId = addTxtObject($("#objText").val(),$("#qOnOff").prop("checked"));
+
+		if($("#qOnOff").prop("checked")){
+			//체크된 상태라면 
+			var anwser = $("#anwser").val();
+			//정답 저장
+			anwserBox.push({
+					 "objId"	: objId
+					,"answer"	: anwser
+			});
+			
+			/*aaaaaaaaaaaaaaaaaaaaaaa
+			"question_pk;
+			"fairy_pk;
+			"answer;
+			"chapter;
+			"Ascreen;
+			*/
+			
+			var exJson = '{ "objId":"'+objId+'"'; 
+			$(".example").each(function(index,ex){
+				var answer = $(ex).val();
+				exJson += ', "answer'+index+'":"' + answer + '"';
+			});
+			exJson += '}';
+			//보기 저장
+			exampleBox.push(JSON.parse(exJson));
+		};
 	
-	if($("#qOnOff").prop("checked")){
-		//체크된 상태라면 
-		var anwser = $("#anwser").val();
-		//정답 저장
-		anwserBox.push({
-				 "sceneNum"	: sceneNum
-				,"answer"	: anwser
+	}else{
+		//수정
+		objId = $("#popObjID").val();
+		
+		$(objList).each(function(index,obj){
+			if(obj.objId == objId){
+				var value = $("#objText").val();
+				obj.obj = value;
+				var view = '';
+				if(value.length > 3){
+					view = value.substring(0,3)+"..";
+				}else{
+					view = value
+				}
+				obj.view = view;
+			}
 		});
 		
-		var exJson = '{ "sceneNum":"'+sceneNum+'"'; 
+		$(anwserBox).each(function(index,anwsers){
+			if(anwsers.objId == objId){
+				anwsers.answer = $("#anwser").val();
+			}
+		});
+		
+		//삭제후
+		$(exampleBox).each(function(index,example){
+			if(example.objId == objId){
+				exampleBox.splice(index,1);
+			};
+		});
+		//새로 생성
+		var exJson = '{ "objId":"'+objId+'"'; 
 		$(".example").each(function(index,ex){
 			var answer = $(ex).val();
 			exJson += ', "answer'+index+'":"' + answer + '"';
@@ -921,7 +1065,16 @@ function addObjTxt(){
 		exJson += '}';
 		//보기 저장
 		exampleBox.push(JSON.parse(exJson));
-	};
+	}
+	
+	//뷰리스트
+	sceneViewList();
+	//object view
+	objViewList();
+	//다시그려
+	changeScreen();
+	//팝업 닫기
+	closePop();
 	return false;
 	////////여기여기
 	/*
@@ -947,7 +1100,8 @@ function addTxtObject(value,question,scene,objId){
 	var span = document.createElement("span");
 	if(scene == null){ // 기본 scene 정보가 없다면
 		$(span).html(value).css("position", "absolute");
-		
+		$(span).css("font-size", "25px");
+		$(span).css("white-space","pre");
 		var view = "";
 		if(value.length > 3){
 			view = value.substring(0,3)+"..";
@@ -965,6 +1119,8 @@ function addTxtObject(value,question,scene,objId){
 		$(objList).each(function(index,obj){
 			if(obj.objId == scene.objId){
 				$(span).html(obj.obj);
+				$(span).css("font-size", "25px");
+				$(span).css("white-space","pre");
 				return false;
 			};
 		});
@@ -979,6 +1135,8 @@ function addTxtObject(value,question,scene,objId){
 				, "position" : "absolute"
 			}
 		);
+		$(span).css("font-size", "25px");
+		$(span).css("white-space","pre");
 	}
 	
 	var sceneNum ="";
@@ -995,7 +1153,8 @@ function addTxtObject(value,question,scene,objId){
 	}
 	
 	//오브젝트 아이디 넣기
-	$(span).data("objId",scene == null ? objId : scene.objId);
+	objId = scene == null ? objId : scene.objId;
+	$(span).data("objId",objId);
 	
 	//sceneNum 넣기
 	$(span).data("sceneNum",sceneNum);
@@ -1013,7 +1172,7 @@ function addTxtObject(value,question,scene,objId){
 	//객체 크기 json setting
 	setWHLT(span);
 	
-	return sceneNum;
+	return objId;
 }
 
 //선택된 scene
@@ -1052,10 +1211,6 @@ function setSScene(targetObj,sceneInfo){
 	var ftWidth		= $(".fairyTale").width();
 	var ftHeigth	= $(".fairyTale").height();
 	
-	console.log("width : " + sceneInfo.width);
-	console.log("sceneInfo : " + (sceneInfo.width / 100));
-	
-	
 	$(targetObj).css(
 		{
 			  "width" 		: ftWidth	* (sceneInfo.width / 100)
@@ -1086,6 +1241,10 @@ function screenSet(scene){
 };
 //Deep copy 복사
 function deepCopy(obj){
+	
+
+	console.log("deepCopy :" + $(obj).length);
+	
 	//Deep copy *
 	var clone = JSON.parse(JSON.stringify(obj));
 	return clone;
@@ -1095,6 +1254,9 @@ function deepCopy(obj){
 function addScreen(){
 	//Deep copy *
 	var clone = deepCopy($(chapter.screen).get(screenSelector()).scene);
+	$(clone).each(function(index,scene){
+		scene.animate = "";
+	})
 	console.log("clone : " + JSON.stringify(clone));
 	screenSet(clone);
 	//* Deep copy
@@ -1123,6 +1285,72 @@ function addScreen(){
 	changeScreen();
 	
 	return false;
+}
+
+//스크린 삭제
+function delScreen(){
+	var length =  $(chapter.screen).length;
+	
+	if(!(length > 1)){alert("최소 하나의 스크린은 존재하여야 합니다.");return false;};
+	var tf = confirm("마지막 스크린을 삭제 합니다.\n관련된 모든 객체는 삭제됩니다.");
+	if(!tf){return false;};
+	
+	
+	chapter.screen.splice(length-1,1);
+	
+	$("#screensView").children("option").last().remove();
+	$("#screensView").children("option").last().prop("selected","selected");
+	
+	//스크린 변경
+	changeScreen();
+	
+	return false;
+}
+
+//scene을 다음 스크린에 복사
+function cNextScreen(){
+	var sceneNum = null;
+	//선택된 radio 버튼
+	$("input[name='scene']").each(function(index,sRadio){
+		if($(sRadio).prop('checked')){
+			sceneNum = $(sRadio).data("sceneNum");
+			return false;
+		}
+	});
+	
+	var screenNum = Number(screenSelector());
+	if(sceneNum!=null){
+		var MaxScreenNum = $(chapter.screen).length;
+		if((MaxScreenNum - 1) > screenNum){
+			
+			var sceneCheck = false;
+			console.log("screenNum" + screenNum);
+			console.log("screenNum" + (screenNum+1));
+			$($(chapter.screen).get(screenNum+1).scene).each(function(index,scene){
+				if(scene.sceneNum == sceneNum){
+					sceneCheck = true;
+					return false;
+				}
+			})
+			
+			if(sceneCheck){
+				alert("이미 존재합니다.")
+				return false;
+			}
+			
+			///*Deep copy
+			var clone = null;
+			$($(chapter.screen).get(screenNum).scene).each(function(index,scene){
+				if(scene.sceneNum == sceneNum){
+					clone = deepCopy(scene);
+					return false;
+				}
+			})
+			clone.animate = "";
+			$(chapter.screen).get(screenNum+1).scene.push(clone);
+			//Deep copy*/
+		}
+	}
 }
 
 //scene 선택
@@ -1169,6 +1397,7 @@ function changeScene(element){
 function sceneViewList(){
 	$("#sceneList").html("");
 	$($(chapter.screen).get(screenSelector()).scene).each(function(index,scene){
+		var span = document.createElement("span");
 		var i = document.createElement("i");
 		$(i).addClass("fa fa-cube");
 		var input = document.createElement("input");
@@ -1179,10 +1408,11 @@ function sceneViewList(){
 		$(input).data("objId",scene.objId);
 		$(input).data("sceneNum",scene.sceneNum);
 		
-		$(i).append(input);
-		$(i).append("&nbsp;ID : " + scene.objId);
+		$(span).append(input);
+		$(span).append(i);
+		$(span).append("&nbsp;ID : " + scene.sceneNum);
 		
-		$("#sceneList").append(i);
+		$("#sceneList").append(span);
 		
 	});
 	var last = $($(chapter.screen).get(screenSelector()).scene).length;
@@ -1272,7 +1502,9 @@ function jsonView(){
 
 function saveFairy(){
 	$("#saveChapter").val(JSON.stringify(chapter));
-	$("#saveObjList").val(JSON.stringify(objList));			
+	$("#saveObjList").val(JSON.stringify(objList));
+	$("#saveExample").val(JSON.stringify(exampleBox));
+	$("#saveAnwser").val(JSON.stringify(anwserBox));		
 	return true;
 }
 
@@ -1294,4 +1526,8 @@ function sceneDelete(target){
 	objViewList();
 	//children green box;
 	greenBox();
+}
+
+function saveChapter(){
+	$("#saveFairy").submit();
 }
