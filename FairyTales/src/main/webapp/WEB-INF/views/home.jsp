@@ -44,7 +44,7 @@
 <body>
 	<!--header-->
 	<header id="header">
-		<div class="container" a>
+		<div class="container">
 			<div class="row">
 				<div class="col-sm-12 overflow">
 					<div class="social-icons pull-right">
@@ -124,7 +124,7 @@
 		<div class="container">
 			<div class="main-slider">
 				<div class="slide-text">
-					<h1>Welcome To<br/> Peace Of Fairy Tale</h1>
+					<h1>Welcome To<br/> Piece Of Fairy Tale</h1>
 					<!-- <p style="font-size: 22px;">ようこそ。</p> -->
 				</div>
 				<img src="images/castle2.png" class="img-responsive slider-house"
@@ -197,7 +197,7 @@
 				<div class="row">
 					<div class="action take-tour">
 						<div class="col-sm-7 wow fadeInLeft" data-wow-duration="500ms" data-wow-delay="300ms">
-							<h1 class="title">Peace Of Fairy Tale</h1>
+							<h1 class="title">Piece Of Fairy Tale</h1>
 							<p>Learn Japanese and Java through various fairy tales</p>
 						</div>
 						<div class="col-sm-5 text-center wow fadeInRight" data-wow-duration="500ms" data-wow-delay="300ms">
@@ -247,7 +247,7 @@
 							</div>
 						</div>
 						<div>
-							class="col-sm-6 padding-left padding-top arrow-left wow fadeInRight"
+						<div class="col-sm-6 padding-left padding-top arrow-left wow fadeInRight"
 							data-wow-duration="1000ms" data-wow-delay="300ms">
 							<div class="single-blog timeline">
 								<div class="single-blog-wrapper">
@@ -284,6 +284,7 @@
 					</div>
 				</div>
 			</div>
+		</div>
 		</div>
 	</section>
 	<!--/#blog-->
