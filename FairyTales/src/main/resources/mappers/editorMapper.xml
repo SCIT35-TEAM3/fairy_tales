@@ -45,6 +45,7 @@
 	   SET FAIRY_NAME		=	#{fairy_name}
 		  ,FAIRY_CODE		=	#{fairy_code}
 		  ,FAIRY_LEVEL		=	#{fairy_level}
+		  ,FAIRY_CHAPTER	=	#{fairy_chapter}
 	 WHERE FAIRY_PK			=	#{fairy_pk}
 	</update>
 	

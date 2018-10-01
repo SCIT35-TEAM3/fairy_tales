@@ -335,7 +335,7 @@
 															<tr>
 																<td colspan="2">
 																	<a href="#save" id="sceneSet" class="btn"><i class="fa fa-save">&nbsp;&nbsp;Save Info</i></a>
-																	<a href="#save" id="saveChapter" class="btn"><i class="fa fa-edit">&nbsp;&nbsp;Save Chapter</i></a>
+																	<a href="#save" id="saveChapterBtn" class="btn"><i class="fa fa-edit">&nbsp;&nbsp;Save Chapter</i></a>
 																</td>
 															</tr>
 															</tbody>
@@ -858,6 +858,16 @@
 		function closePop(){
 			var isDim = $("#layer").prev().hasClass('dimBg');	//dimmed 레이어를 감지하기 위한 boolean 변수
 			isDim ? $('.dim-layer').fadeOut() : $("#layer").fadeOut();
+		}
+		
+		//initJson
+		function initJson(){
+			chapterJson = '${getChapter}';
+			objListJson = '${getObjList}';
+			exampleJson = '${getExample}';
+			anwserJson  = '${getAnwser}';
+			
+			setJson(chapterJson,objListJson,exampleJson,anwserJson);
 		}
 	</script>
 </body>

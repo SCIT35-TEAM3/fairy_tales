@@ -79,6 +79,19 @@ public class EditorController {
 	public String editor(Integer fpk, Integer chapter, Model model) {
 		model.addAttribute("fpk", fpk);
 		model.addAttribute("chapter", chapter);
+		
+		String chapterJson = FileService.readJson(FT_UPLOAD_PATH + fpk + "/" + chapter + "/chapter.json");
+		String objListJson = FileService.readJson(FT_UPLOAD_PATH + fpk + "/" + chapter + "/objList.json");
+		String exampleJson = FileService.readJson(FT_UPLOAD_PATH + fpk + "/" + chapter + "/example.json");
+		String anwserJson = FileService.readJson(FT_UPLOAD_PATH + fpk + "/" + chapter + "/anwser.json");
+		
+		model.addAttribute("getChapter",chapterJson);
+		model.addAttribute("getObjList",objListJson);
+		model.addAttribute("getExample",exampleJson);
+		model.addAttribute("getAnwser",anwserJson);
+		
+		System.out.println("chapterJson" + chapterJson);
+		
 		return "editor";
 	}
 	
@@ -115,6 +128,7 @@ public class EditorController {
 	
 	@RequestMapping(value = "/saveFairy", method = RequestMethod.POST)
 	public String saveFairy(String fpkNum, String chapterNum,String chapter,String objList,String exampleBox,String anwserBox){
+		
 		FileService.saveJson(chapter,FT_UPLOAD_PATH + fpkNum + "/" + chapterNum + "/chapter.json");
 		FileService.saveJson(objList,FT_UPLOAD_PATH + fpkNum + "/" + chapterNum +  "/objList.json");
 		FileService.saveJson(exampleBox,FT_UPLOAD_PATH + fpkNum + "/" + chapterNum +  "/example.json");
@@ -139,11 +153,8 @@ public class EditorController {
 			e.printStackTrace();
 		}
 		
-		System.out.println("anwserBox : " + anwserBox);
-		
 		return "redirect:/editorList";
 	}
-	
 	//동화 생성
 	@RequestMapping(value = "/inFT", method = RequestMethod.POST)
 	public @ResponseBody String inFT(@RequestBody  Fairytales fairytales)  {

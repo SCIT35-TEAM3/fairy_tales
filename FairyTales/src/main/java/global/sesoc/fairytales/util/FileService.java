@@ -1,7 +1,10 @@
 package global.sesoc.fairytales.util;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Date;
@@ -156,5 +159,31 @@ public class FileService {
 			}
         }
 		return true;
+	}
+	
+	/**
+	 * Json 파일을 읽습니다.
+	 * @param uploadPath
+	 * @return
+	 */
+	public static String readJson(String downloadPath) {
+		
+		String json = "";
+		File file = new File(downloadPath);
+		
+		//파일이 있다면 읽는다.
+		if(file.isFile()) {
+			try {
+				BufferedReader br = new BufferedReader(new FileReader(file));
+				while(br.ready()) {
+					json += br.readLine();
+				}
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		return json;
 	}
 }

@@ -62,7 +62,6 @@ $(document).ready(function(){
 	
 	//첫 챕터 넣기;
 	screenSet();
-	
 	/*fairyTale init*/
 	fIndexSet();
 	resize();
@@ -158,6 +157,14 @@ $(document).ready(function(){
 		};
 	});
 	
+	$("#objText").on("change", function(){
+		if($("#qOnOff").prop("checked")){
+			
+		};
+		//%%체크AAAAAAAAAAAAAAAAAAAAAA
+		alert("!" + $("#objText").val());
+	});
+	
 	$(".fairyTale").mouseup(function(events){
 		//선택해제
 		//클릭하고 있는 상태였다면 해지
@@ -176,7 +183,7 @@ $(document).ready(function(){
 	$("#sceneSet").on("click",sceneSet);
 	
 	//sceneSet scene 저장
-	$("#saveChapter").on("click",saveChapter);
+	$("#saveChapterBtn").on("click",saveChapterBtn);
 	
 	//layer radio event
 	$("input[name='layer']").on("click",selectClear);
@@ -245,38 +252,7 @@ $(document).ready(function(){
 	});
 	
 	//add new layer
-	$("#addLayer").on("click", function(){
-		//레이어 생성
-		var move = document.createElement("div");
-		var effect = document.createElement("div");
-		var newNum = $(".move").length + 1 ;
-		$(move).addClass("layer move group"+newNum);
-		$(effect).addClass("layer effect group"+newNum);
-		
-		$(".fairyTale").append(move,effect);
-		
-		//총레이어 수 업데이트
-		chapter.maxLayer = newNum;
-		
-		//라디오 버튼 생성
-		var newLayer = document.createElement("input");
-		var span = document.createElement("span");
-		$(newLayer).attr("type","radio");
-		$(newLayer).attr("name","layer");
-		$(newLayer).val(newNum);
-		$(span).append(newLayer);
-		$(span).append("&nbsp;Layer"+newNum+"&nbsp;");
-		$(".layerSelector").append(span);
-		
-		resize();
-		fIndexSet();
-		
-		//selectClear event
-		$("input[name='layer']").on("click",selectClear);
-		$("input[name='layer']").last().prop("checked",true);
-		//green box
-		greenBox();
-	});
+	$("#addLayer").on("click",layerAdd);
 	
 	$("#delLayer").on("click", function(){
 		var lastNum = $(".move").length;
@@ -420,8 +396,43 @@ $(document).ready(function(){
 		}
 	});
 	
+	//Json데이터 넣기
+	initJson();
 });
 //***********************************************************************************//
+//레이어 추가
+function layerAdd(){
+	//레이어 생성
+	var move = document.createElement("div");
+	var effect = document.createElement("div");
+	var newNum = $(".move").length + 1 ;
+	$(move).addClass("layer move group"+newNum);
+	$(effect).addClass("layer effect group"+newNum);
+	
+	$(".fairyTale").append(move,effect);
+	
+	//총레이어 수 업데이트
+	chapter.maxLayer = newNum;
+	
+	//라디오 버튼 생성
+	var newLayer = document.createElement("input");
+	var span = document.createElement("span");
+	$(newLayer).attr("type","radio");
+	$(newLayer).attr("name","layer");
+	$(newLayer).val(newNum);
+	$(span).append(newLayer);
+	$(span).append("&nbsp;Layer"+newNum+"&nbsp;");
+	$(".layerSelector").append(span);
+	
+	resize();
+	fIndexSet();
+	
+	//selectClear event
+	$("input[name='layer']").on("click",selectClear);
+	$("input[name='layer']").last().prop("checked",true);
+	//green box
+	greenBox();
+}
 //스크린 변경
 function changeScreen(){
 	var screenNum = screenSelector();
@@ -1002,13 +1013,15 @@ function addObjTxt(){
 		if($("#qOnOff").prop("checked")){
 			//체크된 상태라면 
 			var anwser = $("#anwser").val();
-			//정답 저장
+			//정답 저장	
 			anwserBox.push({
 					 "objId"	: objId
 					,"answer"	: anwser
 			});
 			
-			/*aaaaaaaaaaaaaaaaaaaaaaa
+			/*aaaaaaaaaaaaaaaaaaaaaaa 뭐죠?aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+			 * 
+			 * 임시 뭔가하려다?
 			"question_pk;
 			"fairy_pk;
 			"answer;
@@ -1261,13 +1274,9 @@ function addScreen(){
 	screenSet(clone);
 	//* Deep copy
 	
+	//option 추가;
 	var newNum = $(chapter.screen).length;
-	
-	var option = document.createElement("option");
-	$(option).val(newNum-1);
-	$(option).append("Screen "+newNum);
-	$(option).prop("selected","selected");
-	$("#screensView").append(option);
+	addTagScreen(newNum);
 	/*라디오 버튼 생성
 	var newLayer = document.createElement("input");
 	var span = document.createElement("span");
@@ -1285,6 +1294,15 @@ function addScreen(){
 	changeScreen();
 	
 	return false;
+}
+//option태그 추가
+function addTagScreen(newNum){
+	
+	var option = document.createElement("option");
+	$(option).val(newNum-1);
+	$(option).append("Screen "+newNum);
+	$(option).prop("selected","selected");
+	$("#screensView").append(option);
 }
 
 //스크린 삭제
@@ -1528,6 +1546,55 @@ function sceneDelete(target){
 	greenBox();
 }
 
-function saveChapter(){
+
+//json set
+function setJson(chapterJson,objListJson,exampleJson,anwserJson){
+	//오브젝트
+	if(objListJson.length > 0){
+		objList = JSON.parse(objListJson);
+		//object view
+		objViewList();
+	}
+	//보기
+	if(exampleJson.length > 0){
+		exampleBox = JSON.parse(exampleJson);
+	}
+	//답변
+	if(anwserJson.length > 0){
+		anwserBox = JSON.parse(anwserJson);
+	}
+	//챕터
+	if(chapterJson.length > 0){
+		chapter = JSON.parse(chapterJson);
+		
+		//최대챕터수 layerNum
+		$("#screensView").html("");
+		
+		for(var i=0; i < (chapter.screen.length); ++i){
+			addTagScreen(i+1);
+		}
+		
+		for(var i=0; i < (chapter.maxLayer-1); ++i){
+			console.log("i : " + i);
+			layerAdd();
+		}
+		
+		//green box
+		greenBox();
+		//뷰리스트
+		sceneViewList();
+		//다시 그려
+		changeScreen();
+		//백그라운드
+		var background = chapter.background;
+		if(background.length > 0){
+			$(".fairyTale").css( "background" , "url('"+background+"')");
+			var size = $(".fairyTale").width() + "px " + $(".fairyTale").height() + "px"
+			$(".fairyTale").css( "background-size", size);
+		}
+	}
+}
+
+function saveChapterBtn(){
 	$("#saveFairy").submit();
 }
