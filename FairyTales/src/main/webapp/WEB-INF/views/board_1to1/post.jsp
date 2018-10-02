@@ -133,6 +133,10 @@ function reply_update() {
 	}
 	function reply_insert() {
 		var user_id = $("#user_id").val();
+		if (user_id=="") {
+			location.href="login";
+			return;
+		}
 
 		var reply_title = $("#reply_title").val();
 		var reply_text = $("#reply_text").val();
