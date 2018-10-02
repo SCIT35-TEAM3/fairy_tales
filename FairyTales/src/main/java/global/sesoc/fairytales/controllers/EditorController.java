@@ -44,8 +44,7 @@ public class EditorController {
 	static final String FT_TEMP_PATH = "/FairyTales/TEMP/";
 	*/
 	// 저장소
-	static final String FT_UPLOAD_PATH = "/FairyTales/";
-	
+	static final String FT_UPLOAD_PATH = "/FairyTales/"+File.pathSeparator;
 	
 	//동화 전체 리스트
 	@RequestMapping(value = "/editorList", method = RequestMethod.GET)
