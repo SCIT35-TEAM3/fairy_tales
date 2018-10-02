@@ -50,6 +50,8 @@ public class ReplyController {
 	@ResponseBody
 	@RequestMapping(value = "reply_update", method = RequestMethod.POST)
 	public Integer reply_update(@RequestBody Reply_1to1 reply_1to1) {
+		
+		System.out.println(">>>>>>>UPUPUP");
 
 		return repository.update_reply_1to1(reply_1to1);
 	}

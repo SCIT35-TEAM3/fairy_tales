@@ -13,7 +13,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>1:1 CustomerBoard | POFT</title>
+<title> 1:1 CustomerBoard | POFT</title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/font-awesome.min.css" rel="stylesheet">
 <link href="css/lightbox.css" rel="stylesheet">
@@ -54,6 +54,7 @@ function init() {
 	$("#reply_text").val("");
 	//$("#reply_title").val("")
 	$('#reply_insert').text('등록');
+
 	$.ajax({
 		method : 'post',
 		data : {board_num},
@@ -79,7 +80,6 @@ function init() {
 				str+='</tr>';
 				str+='</table>';
 				str+='</div>';
-			
 			});
 			$(".comment").html(str);
 			$("button#reply_update").click(reply_update);
@@ -92,6 +92,7 @@ function init() {
 $(function () {
 	init();
 	$("#reply_insert").on('click', reply_insert);
+	
 		}
 	)
 	
@@ -101,12 +102,12 @@ function reply_update() {
 	var reply_title = $(this).parent().children(".reply_title").text();
 	var reply_text = $(this).parent().children(".reply_text").text();
 	
-		$('#reply_title').val(reply_title);
+		//$('#reply_title').val(reply_title);
 		$('#reply_text').val(reply_text);
 		$('#reply_insert').text('댓글 수정');
 		$('#reply_num').val(reply_num);
-		$("#reply_insert").on('click', update);
-		$('#reply_insert').off('click', reply_insert);
+		$("#reply_insert").on('click', update );
+		$('#reply_insert').off('click', reply_insert );
 		
 		
 		function update(reply_num) {
@@ -123,23 +124,25 @@ function reply_update() {
 				, dataType : 'json'
 				, contentType : 'application/json; charset=UTF-8'
 				, success : init
-			});	
+			});
+			
+			$('#reply_insert').off('click', update );
+			$("#reply_insert").on('click', reply_insert );
+			
 		}
-		
-	 
-		
 	}
 	function reply_insert() {
 		var user_id = $("#user_id").val();
+
 		var reply_title = $("#reply_title").val();
-		var teply_text = $("#teply_text").val();
+		var reply_text = $("#reply_text").val();
 		
 		if(text.length == 0) {
 			alert("댓글을 입력하세요.");
 			
 			return ;
 		}
-		var sendData = {"board_num":${board_1to1.board_num},"user_id" : user_id, "reply_title" : reply_title, "text" : teply_text };
+		var sendData = {"board_num":${board_1to1.board_num},"user_id" : user_id, "reply_title" : reply_title, "text" : reply_text };
 		
 		$.ajax({
 			method : 'post'
