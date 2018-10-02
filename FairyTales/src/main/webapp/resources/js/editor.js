@@ -157,12 +157,26 @@ $(document).ready(function(){
 		};
 	});
 	
+	// %%체크
 	$("#objText").on("change", function(){
-		if($("#qOnOff").prop("checked")){
-			
-		};
-		//%%체크AAAAAAAAAAAAAAAAAAAAAA
-		alert("!" + $("#objText").val());
+		var content = $("#objText").val();
+		var check = content.match(/%%/g);
+		if(check){
+			var count = check.length;
+		}
+		
+		for(var i=0; i < count; ++i){
+			if( i >= 2){
+				alert("정답은 2개 이상은 사용할 수 없습니다.");
+				break;
+			}else{
+				if(i == 0){
+					$("#anwserBase").html("");
+					$("#anwserBase").append('<b>정답</b><br>');
+				}
+				$("#anwserBase").append('<input class="anwser" type="text">');
+			}
+		}
 	});
 	
 	$(".fairyTale").mouseup(function(events){
@@ -982,17 +996,24 @@ function objViewList(){
 
 //add object text
 function addObjTxt(){
-	
 	if($("#objText").val().length < 1){
 		alert("글을 입력하세요.");
 		return false;
 	}
 	if($("#qOnOff").prop("checked")){
-		if($("#anwser").val().length < 1){
-			alert("정답을 넣으세요.");
-			return false;
-		}
+
 		var check = false;
+		$(".anwser").each(function(index,anwser){
+			if($(anwser).val().length < 1){
+				check = true;
+			}
+		});
+		if(check){
+			alert("모든 정답을 넣으세요.");
+			return false;
+		};
+		
+		check = false;
 		$(".example").each(function(index,example){
 			if($(example).val().length < 1){
 				check = true;
@@ -1012,22 +1033,21 @@ function addObjTxt(){
 
 		if($("#qOnOff").prop("checked")){
 			//체크된 상태라면 
-			var anwser = $("#anwser").val();
+			var anwser = "";
+			$(".anwser").each(function(index,anwser){
+				if($(anwser).val().length < 1){
+					if(index != 0){
+						anwser += ""
+					}
+					anwser += $("#anwser").val();
+				}
+			});
+			
 			//정답 저장	
 			anwserBox.push({
 					 "objId"	: objId
 					,"answer"	: anwser
 			});
-			
-			/*aaaaaaaaaaaaaaaaaaaaaaa 뭐죠?aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-			 * 
-			 * 임시 뭔가하려다?
-			"question_pk;
-			"fairy_pk;
-			"answer;
-			"chapter;
-			"Ascreen;
-			*/
 			
 			var exJson = '{ "objId":"'+objId+'"'; 
 			$(".example").each(function(index,ex){
@@ -1088,7 +1108,7 @@ function addObjTxt(){
 	changeScreen();
 	//팝업 닫기
 	closePop();
-	return false;
+	return true;
 	////////여기여기
 	/*
 	$("input[name='object']").each(function(index,object){

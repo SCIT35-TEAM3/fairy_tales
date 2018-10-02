@@ -598,9 +598,9 @@
 							</thead>
 							<tbody id="questionBase">
 								<tr>
-									<td>
+									<td id="anwserBase">
 										<b>정답</b><br>
-										<input id="anwser" type="text">
+										<input class="anwser" type="text">
 									</td>
 								</tr>
 								<tr>
@@ -820,8 +820,9 @@
 		});
 		//텍스트 퀴즈 넣기
 		$("#layer").find('#addObjTxtBtn').click(function(){
-			addObjTxt();
-			closePop();
+			if(addObjTxt()){
+				closePop();
+			};
 			return false;
 		});
 		//지우기
