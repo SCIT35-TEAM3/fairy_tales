@@ -43,8 +43,6 @@
 	<update id="update_reply_1to1" parameterType="Reply_1to1">
 		update reply_1to1 set
 
-
-		reply_title=#{reply_title},
 		text=#{text},
 		new_date=sysdate
 

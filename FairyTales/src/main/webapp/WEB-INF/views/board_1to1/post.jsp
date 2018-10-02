@@ -51,8 +51,8 @@
 
 function init() {
 	var board_num =${board_1to1.board_num};
-	$("#text").val("");
-	$("#reply_title").val("")
+	$("#reply_text").val("");
+	//$("#reply_title").val("")
 	$('#reply_insert').text('등록');
 	$.ajax({
 		method : 'post',
@@ -102,7 +102,7 @@ function reply_update() {
 	var reply_text = $(this).parent().children(".reply_text").text();
 	
 		$('#reply_title').val(reply_title);
-		$('#text').val(reply_text);
+		$('#reply_text').val(reply_text);
 		$('#reply_insert').text('댓글 수정');
 		$('#reply_num').val(reply_num);
 		$("#reply_insert").on('click', update);
@@ -113,8 +113,8 @@ function reply_update() {
 			var reply_num = $("#reply_num").val();
 			var user_id = $("#user_id").val();
 			var reply_title = $("#reply_title").val();
-			var text = $("#text").val();
-			var sendData = {"reply_num":reply_num,"user_id": user_id ,"reply_title":reply_title ,"text":text};
+			var text = $("#reply_text").val();
+			var sendData = {"reply_num":reply_num,"user_id": user_id ,"text":text};
 			
 			$.ajax({
 				method : 'post'
@@ -386,7 +386,7 @@ function reply_update() {
 										</div>
 
 										<div class="form-group">
-											<textarea name="text" id="teply_text" required="required"
+											<textarea name="text" id="reply_text" required="required"
 												class="form-control" rows="4" placeholder="Your text here"></textarea>
 										</div>
 
