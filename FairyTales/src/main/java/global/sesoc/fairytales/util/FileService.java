@@ -74,7 +74,7 @@ public class FileService {
 		
 		//HDD에 저장할 파일명. 같은 이름의 파일이 있는 경우의 처리
 		while (true) {
-			serverFile = new File(uploadPath + "/" + savedFilename);
+			serverFile = new File(uploadPath + File.separator  + savedFilename);
 			//같은 이름의 파일이 없으면 나감.
 			if ( !serverFile.isFile()) break;	
 			//같은 이름의 파일이 있으면 이름 뒤에 long 타입의 시간정보를 덧붙임.

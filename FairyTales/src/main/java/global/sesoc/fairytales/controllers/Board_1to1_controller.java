@@ -1,5 +1,6 @@
 package global.sesoc.fairytales.controllers;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -44,7 +45,7 @@ public class Board_1to1_controller {
 	Board_1to1_Repository board_repository;
 	
 //파일 경로
-	final String UPLOADPATH = "/boardfile";
+	final String UPLOADPATH = File.pathSeparator +"boardfile";
 
 	// 보드 메인화면
 	@RequestMapping(value = "board_1to1")
