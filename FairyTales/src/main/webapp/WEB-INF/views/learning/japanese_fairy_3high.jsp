@@ -222,7 +222,7 @@
 								<img src="images/learningPage/신데렐라2.png" alt="image02" /></a>
 							</div>
 							<div class="bb-item">
-								<a href="#"><img src="images/learningPage/신데렐라3.png" alt="image03" /></a>
+								<a href="custom_screen1?sin=3&screen=1"><img src="images/learningPage/신데렐라3.png" alt="image03" /></a>
 							</div>
 							<div class="bb-item">
 								<a href="#"><img src="images/learningPage/신데렐라3.png" alt="image03" /></a>

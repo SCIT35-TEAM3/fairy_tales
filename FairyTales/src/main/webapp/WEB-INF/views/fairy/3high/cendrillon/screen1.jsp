@@ -362,23 +362,6 @@ for(var i = 0 ; i < 6 ; i++){
 	screen.push(eval('scene'+i));
 } 
 
-/* alert(screen[1].length)
-alert(screen[2].length) */
-
- //scene0
-
-/*  while(true){
-	 if(!(scene10)){
-		 alert("뿅")
-		alert('scene'+scene_count)
-	 }else{
-		 alert("ㅎ")
-		 alert('scene'+scene_count)
-	 }
- }
-  */
-	
- 
 
 
  
@@ -420,7 +403,7 @@ alert(screen[2].length) */
 		setTimeout(function(){
 			$('#loading').fadeOut(2000);
 			$('#com').fadeIn(4000);
-		},4000)
+		},6000)
 		story()
 	}); 
 
@@ -879,9 +862,12 @@ loop: for(var i in screen[sinId]){
 								
 								if(answer_count != sinId){
 									$('#background').after('<input type="button" id="next" value="다음버튼" onclick="next()" style="position:absolute;top:85%;left:85%;z-index:10"/>')
+									//$('#background').after('<button type="button" class="btn btn-submit" onclick="next()" style="position:absolute;top:85%;left:85%;z-index:10">Next</button>')
+									
 								}
 								else{
 									$('#background').after('<input type="button" id="next" value="종료버튼" onclick="end()" style="position:absolute;top:85%;left:85%;z-index:10"/>')
+									//$('#background').after('<button type="button" class="btn btn-submit" onclick="end()" style="position:absolute;top:85%;left:85%;z-index:10">End</button>')
 								}
 							
 								

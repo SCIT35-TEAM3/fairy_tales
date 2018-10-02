@@ -362,21 +362,7 @@ for(var i = 0 ; i < 6 ; i++){
 	screen.push(eval('scene'+i));
 } 
 
-/* alert(screen[1].length)
-alert(screen[2].length) */
 
- //scene0
-
-/*  while(true){
-	 if(!(scene10)){
-		 alert("뿅")
-		alert('scene'+scene_count)
-	 }else{
-		 alert("ㅎ")
-		 alert('scene'+scene_count)
-	 }
- }
-  */
 	
  
 
@@ -420,7 +406,7 @@ alert(screen[2].length) */
 		setTimeout(function(){
 			$('#loading').fadeOut(2000);
 			$('#com').fadeIn(4000);
-		},4000)
+		},6000)
 		story()
 	}); 
 
