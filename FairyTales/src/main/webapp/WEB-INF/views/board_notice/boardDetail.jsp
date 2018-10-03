@@ -270,17 +270,21 @@
 						<div class="contents">
 							<div class="banner">
 								<ul>
-									<li><img src="resources/images/leader.png" width="210"
-										height="510"></li>
-									<li><img src="resources/images/0001.jpeg" width="210px"
-										height="510px"></li>
-									<li><img src="resources/images/0002.jpeg" width="210"
-										height="510px"></li>
-									<li><img src="resources/images/0003.jpeg" width="210"
-										height="510px"></li>
-									<li><img src="resources/images/image4.jpg" width="210"
-										height="510"></li>
-								</ul>
+							<li><img src="resources/images/100334.png" width="210" height="510"></li>
+							<li><img src="resources/images/1011.png" width="210px" height="510px"></li>
+							<li><img
+								src="resources/images/1012.png"
+								width="210" height="510px"></li>
+							<li><img
+								src="resources/images/1013.png"
+								width="210" height="510px"></li>
+							<li><img
+								src="resources/images/1014.png"
+								width="210" height="510"></li>
+								<li><img
+								src="resources/images/1015.png"
+								width="210" height="510"></li>
+						</ul>
 							</div>
 						</div>
 
