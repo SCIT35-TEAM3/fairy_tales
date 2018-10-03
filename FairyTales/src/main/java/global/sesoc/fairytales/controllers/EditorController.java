@@ -231,11 +231,17 @@ public class EditorController {
 	        // Retrieve image from the classpath.
 	    	//InputStream is = this.getClass().getResourceAsStream(FT_UPLOAD_PATH + tmpImg); 
 	        
-	        File path = new File(FT_UPLOAD_PATH + fpk + "/" + chapter + "/" + tmpImg);
+	    	String getPath = FT_UPLOAD_PATH + "/" + tmpImg;
+	    	if(fpk != null) {
+	    		getPath = FT_UPLOAD_PATH + fpk + "/" + chapter + "/" + tmpImg;
+	    	}
+	    	
+	        File path = new File(getPath);
 			if (!path.isDirectory()) {
 				path.mkdirs();
 			}
 	        
+			System.out.println("path : " + path);
 	        // Prepare buffered image.
 	        BufferedImage img = ImageIO.read(path);
 

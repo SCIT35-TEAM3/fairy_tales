@@ -30,4 +30,7 @@ public interface Editor_Mapper {
 	//문제 수정
 	public int update_question(Question question);
 	
+	//고급동화 가져오기
+	public List<Fairytales> selectFairytalesC3();
+	
 }

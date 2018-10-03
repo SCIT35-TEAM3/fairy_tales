@@ -90,4 +90,19 @@
 	   AND OBJID	=	#{obj_id}
 	</update>
 	
+	<select id="selectFairytalesC3" resultType="Fairytales" >
+		SELECT 
+			 FAIRY_PK
+			,FAIRY_NAME
+			,FAIRY_CODE
+			,FAIRY_CHAPTER
+			,FAIRY_POSITION
+			,FAIRY_LEVEL
+		FROM FAIRYTALES
+		WHERE FAIRY_CODE = 'cd'
+		  AND FAIRY_LEVEL = 3
+		  AND FAIRY_PK >= 70
+		ORDER BY FAIRY_PK
+	</select>
+	
 </mapper>

@@ -5,10 +5,10 @@
 <mapper namespace="global.sesoc.fairytales.dao.CodeAnswerMapper">
 
 	<!-- 게시판 목록 -->
-	<select id="selectAnswer" resultType="String">
+	<select id="selectAnswer" parameterType="Code" resultType="String">
 		select 
 		answer
 		from question 
-		where chapter=#{screenNum} and screen=#{sinNum} and fairy_pk=#{fairy_Pk} and question_type=#{question_type}
+		where chapter=#{chapter} and objId=#{objid} and fairy_pk=#{fairy_Pk} and question_type=#{question_type}
 	</select>
 </mapper>

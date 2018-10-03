@@ -74,5 +74,12 @@ public class Editor_Repository {
 		return result;
 	}
 	
+	//코드 고급동화 가져오기
+	public List<Fairytales> selectFairytalesC3() {
+		Editor_Mapper mapper = session.getMapper(Editor_Mapper.class);
+		List<Fairytales> result = mapper.selectFairytalesC3();
+		return result;
+	};
+	
 	
 }
