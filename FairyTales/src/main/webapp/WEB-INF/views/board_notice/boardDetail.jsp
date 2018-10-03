@@ -271,7 +271,7 @@
 							<div class="banner">
 								<ul>
 							<li><img src="resources/images/100334.png" width="210" height="510"></li>
-							<li><img src="resources/images/1011.png" width="210px" height="510px"></li>
+							<li><img src="resources/images/100.png" width="210px" height="510px"></li>
 							<li><img
 								src="resources/images/1012.png"
 								width="210" height="510px"></li>
@@ -283,6 +283,9 @@
 								width="210" height="510"></li>
 								<li><img
 								src="resources/images/1015.png"
+								width="210" height="510"></li>
+								<li><img
+								src="resources/images/1000.png"
 								width="210" height="510"></li>
 						</ul>
 							</div>
