@@ -361,8 +361,8 @@ var answer_count = answer.length-1;	//종료버튼 띄우기용
 
 for(var i = 0 ; i < 6 ; i++){
 
-	screen.push(eval('scene'+i));
-	//screen.push(${list});
+	//screen.push(eval('scene'+i));
+	//screen.push(${list}.screen);
 } 
 
 
@@ -720,7 +720,7 @@ loop: for(var i in screen[sinId]){
 							"text-align":"center",
 							"line-height":"13px"
 							});													//	제대로 드롭되었으면, 드롭값 div1를 참으로
-						answer_save[0] = 1;											//	첫번째[정답,정답,페이지번호]
+						answer_save[0] = answer[sinId].answer1;										//	첫번째[정답,정답,페이지번호]
 						div1 = true;
 					}else{
 						$("#script_hide2").text('(1)').css({
@@ -728,7 +728,7 @@ loop: for(var i in screen[sinId]){
 							"text-align":"center",
 							"line-height":"13px"
 							});													//	제대로 드롭되었으면, 드롭값 div1를 참으로
-						answer_save[1] = 1;											//	첫번째[정답,정답,페이지번호]
+						answer_save[1] = answer[sinId].answer1;											//	첫번째[정답,정답,페이지번호]
 						div2 = true;
 					}
 					
@@ -739,7 +739,7 @@ loop: for(var i in screen[sinId]){
 							"text-align":"center",
 							"line-height":"13px"
 							});													//	제대로 드롭되었으면, 드롭값 div1를 참으로
-						answer_save[0] = 2;											//	첫번째[정답,정답,페이지번호]
+						answer_save[0] = answer[sinId].answer2;											//	첫번째[정답,정답,페이지번호]
 						div1 = true;
 					}else{
 						$("#script_hide2").text('(2)').css({
@@ -747,7 +747,7 @@ loop: for(var i in screen[sinId]){
 							"text-align":"center",
 							"line-height":"13px"
 							});													//	제대로 드롭되었으면, 드롭값 div1를 참으로
-						answer_save[1] = 2;											//	첫번째[정답,정답,페이지번호]
+						answer_save[1] = answer[sinId].answer2;											//	첫번째[정답,정답,페이지번호]
 						div2 = true;
 					}
 				}else if(d == "answer3"){
@@ -757,7 +757,7 @@ loop: for(var i in screen[sinId]){
 							"text-align":"center",
 							"line-height":"13px"
 							});													//	제대로 드롭되었으면, 드롭값 div1를 참으로
-						answer_save[0] = 3;											//	첫번째[정답,정답,페이지번호]
+						answer_save[0] = answer[sinId].answer3;											//	첫번째[정답,정답,페이지번호]
 						div1 = true;
 					}else{
 						$("#script_hide2").text('(3)').css({
@@ -765,7 +765,7 @@ loop: for(var i in screen[sinId]){
 							"text-align":"center",
 							"line-height":"13px"
 							});													//	제대로 드롭되었으면, 드롭값 div1를 참으로
-						answer_save[1] = 3;											//	첫번째[정답,정답,페이지번호]
+						answer_save[1] = answer[sinId].answer3;											//	첫번째[정답,정답,페이지번호]
 						div2 = true;
 					}
 				}
@@ -773,8 +773,8 @@ loop: for(var i in screen[sinId]){
 				if(div1&div2){
 					//여기 페이지번호 바꿔야함 ! (스크린번호/씬번호 푸쉬)
 
-					answer_save.push(sinId+1);											//	페이지 번호를 의미 [정답,정답,페이지번호]
-					answer_save.push(1);										// 씬 번호
+					answer_save.push(sinId+1);										//	페이지 번호를 의미 [정답,정답,페이지번호]
+					answer_save.push(1);											// 씬 번호
 					answer_save.push(4);											// 동화 번호
 
 					  $.ajax({
@@ -907,7 +907,7 @@ loop: for(var i in screen[sinId]){
 					"text-align":"center",
 					"line-height":"13px"
 					});							//	제대로 드롭되었으면, 드롭값 div1를 참으로
-				answer_save[0] = 1;											//	첫번째[정답,정답,페이지번호]
+				answer_save[0] = answer[sinId].answer1;											//	첫번째[정답,정답,페이지번호]
 				div1 = true;
 			}else if(d == "answer2"){
 				$("#script_hide1").text('(2)').css({
@@ -915,7 +915,7 @@ loop: for(var i in screen[sinId]){
 					"text-align":"center",
 					"line-height":"13px"
 					});	
-				answer_save[0] = 2;											//	첫번째[정답,정답,페이지번호]
+				answer_save[0] = answer[sinId].answer2;											//	첫번째[정답,정답,페이지번호]
 				div1 = true;
 			}else if(d == "answer3"){
 				$("#script_hide1").text('(3)').css({
@@ -923,7 +923,7 @@ loop: for(var i in screen[sinId]){
 					"text-align":"center",
 					"line-height":"13px"
 					});	
-				answer_save[0] = 3;											//	첫번째[정답,정답,페이지번호]
+				answer_save[0] = answer[sinId].answer3;											//	첫번째[정답,정답,페이지번호]
 				div1 = true;
 			}
 			 if(div1){
