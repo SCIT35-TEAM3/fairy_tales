@@ -70,8 +70,8 @@ var scene0 = [
 			"animate" : "fadeIn",	"time" :  "200",	"latency" : "0","layerNum" : "5"},
 	{"objId" : "script_hide2","top" : "21.5%","left" : "55%","width" : "4%","height" : "6%",
 			"animate" : "fadeIn",	"time" :  "200",	"latency" : "0","layerNum" : "5"},
-	{"objId" : "script_hide3","top" : "21.5%","left" : "55%","width" : "4%","height" : "6%",
-		"animate" : "fadeIn",	"time" :  "200",	"latency" : "0","layerNum" : "5"},			
+/* 	{"objId" : "script_hide3","top" : "21.5%","left" : "55%","width" : "4%","height" : "6%",
+		"animate" : "fadeIn",	"time" :  "200",	"latency" : "0","layerNum" : "5"},		 */	
 		
 																								//빈칸 3개
 																								//여기서 끊는다.
@@ -353,12 +353,12 @@ var scene5 = [
 	];
 	
 var questions=[
-	{"scene" : "first_1","text" : "むかしむかし、一人の男の人がいました。男の人はある女の人と二回目の結婚をしたのですが、その女の人はいつもえらそうにしている人でした。"},
-	{"scene" : "first_2","text" : "女の人も二回目の結婚でして、前のだんなさんとの間に二人の娘がいました。その娘達は気まぐれで女の人にすごく似ていたんです。"},
-	{"scene" : "first_3","text" : "同じように男の人にも幼い娘がいました。誰よりも心やさしい少女で、世界で一番うつくしい心の持ち主と言ってもいいくらいでした。。"},
-	{"scene" : "first_4","text" : "結婚をしてから、まま母は可愛くて人がよい夫の娘がひどくじゃまに思えました。そこで、少女に家のしごとをおしつけ、狭くて暗いやねうらの部屋に追いやってしまいました。でも自分の娘達にはそれぞれきれいな部屋に住まわせました。"},
-	{"scene" : "first_5","text" : "かわいそうな少女はがまんするしかありませんでした。お父さんに言っても忙しくて聞いてくれないし、お父さんはまま母の言いなりだからです。少女は家のしごとが終わるといつも灰だらけの部屋で座っていたので、みんな少女を「灰かぶり姫」という意味の、「シンデレラ」と呼びました。"},
-	{"scene" : "first_6","text" : "ある日、王子様がダンスパーティを開くことになりました。お金持ちや有名な人など、色んなな人がまねかれました。シンデレラの二人の姉にも声がかかりました。姉達はとても喜びましたが、彼女達のせわをしなくてはならないシンデレラは嬉しくありませんでした。。"}
+	{"scene" : "first_1","text" : "옛날옛적, 한 남자가 있었습니다. 남자는 어떤 여자와 두번째 결혼을 했는데, 그 여자는 항상 잘난 척을 하는 사람이었습니다."},
+	{"scene" : "first_2","text" : "여자에게도 두번째 결혼이었기 때문에, 전 남편과의 사이에 두 명의 딸이 있었습니다. 그 딸들은 제멋대로여서 여자와 매우 닮은 아이들이었죠."},
+	{"scene" : "first_3","text" : "비슷하게 남자에게도 어린 딸이 있었습니다. 누구보다도 상냥한 아이로 세상에서 제일 아름다운 마음씨를 가졌다고 해도 될 정도의 소녀였습니다."},
+	{"scene" : "first_4","text" : "결혼을 한 뒤로, 계모는 귀엽고 사람이 좋은 남편의 딸을 굉장히 눈엣가시로 여겼습니다. 그래서 소녀에게 집안일을 떠맡기고, 좁고 어두운 다락방으로 쫓아내 버렸습니다. 하지만 자신의 딸들에게는 각각 깨끗한 방에 살게 했어요."},
+	{"scene" : "first_5","text" : "가여운 소녀는 참을 수 밖에 없었습니다. 아버지에게 말해도 바빠서 들어주지 않았기 때문입니다. 게다가 아버지는 계모가 말하는 대로 행동하는 사람이었습니다. 소녀는 집안일이 끝나면 언제나 재투성이인 방에 앉아있었기 때문에 모두들 소녀를 ‘재투성이 아가씨’라는 뜻의 “신데렐라”라고 불렀습니다."},
+	{"scene" : "first_6","text" : "어느 날, 왕자님이 댄스파티를 연다는 소식이 들렸습니다. 부자나 유명한 사람 등, 다양한 사람들이 초대 받았습니다. 신데렐라의 두 언니들도 초대를 받게 되었죠. 언니들은 몹시 기뻐했지만, 그녀들의 뒤치닥거리를 해야했던 신데렐라는 기쁘지 않았습니다."}
 	];
 
 var code_questions=[
@@ -632,7 +632,7 @@ loop: for(var i in screen[sinId]){
 					"z-index" : screen[sinId][i].layerNum*1,
 					"text-align":"center",
 					"line-height":"40px"
-				}).fadeIn(screen[sinId][i].time*1)
+				}).fadeIn(screen[sinId][i].time*1000)
 				
 				answer_offset.push({"top":screen[sinId][i].top,"left":screen[sinId][i].left});
 				
@@ -725,10 +725,10 @@ loop: for(var i in screen[sinId]){
 				}).fadeIn(screen[sinId][i].time*1);
 			}
 		}else if(screen[sinId][i].animate == "animate"){
-			$('#'+screen[sinId][i].objId).animate({"top" : screen[sinId][i].top, "left" : screen[sinId][i].left},screen[sinId][i].time);
+			$('#'+screen[sinId][i].objId).animate({"top" : screen[sinId][i].top, "left" : screen[sinId][i].left},screen[sinId][i].time*1000);
 			setTimeout(screen[sinId][i].latency);
 		}else if(screen[sinId][i].animate == "fadeOut"){
-			$('#'+screen[sinId][i].objId).fadeOut(screen[sinId][i].time*1);
+			$('#'+screen[sinId][i].objId).fadeOut(screen[sinId][i].time*1000);
 			setTimeout(screen[sinId][i].latency);
 		}
 	}
@@ -997,12 +997,12 @@ loop: for(var i in screen[sinId]){
 														"left":screen[sinId][i].left,
 														"display": "none",
 														"z-index" : screen[sinId][i].layerNum
-													}).fadeIn(screen[sinId][i].time*1);
+													}).fadeIn(screen[sinId][i].time*1000);
 											}else if(screen[sinId][i].animate == "animate"){
-												$('#'+screen[sinId][i].objId).animate({"top" : screen[sinId][i].top, "left" : screen[sinId][i].left},screen[sinId][i].time);
+												$('#'+screen[sinId][i].objId).animate({"top" : screen[sinId][i].top, "left" : screen[sinId][i].left},screen[sinId][i].time*1000);
 												setTimeout(screen[sinId][i].latency);
 											}else if(screen[sinId][i].animate == "fadeOut"){
-												$('#'+screen[sinId][i].objId).fadeOut(screen[sinId][i].time*1);
+												$('#'+screen[sinId][i].objId).fadeOut(screen[sinId][i].time*1000);
 												setTimeout(screen[sinId][i].latency);
 											}
 										}

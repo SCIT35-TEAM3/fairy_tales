@@ -1,7 +1,11 @@
 package global.sesoc.fairytales.controllers;
 
+import java.io.FileReader;
 import java.util.List;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,10 +36,75 @@ public class AnswerController {
 		return "./fairy/3high/cendrillon/screen2";
 	}
 	
+	@RequestMapping(value = "/cendrillon_screen3", method = RequestMethod.GET)
+	public String write3(Model model, String ft, String chapter) {
+		
+		System.out.println(ft + " : " + chapter);
+		
+		JSONParser parser = new JSONParser();
+
+		System.out.println("커스텀 스크린");
+
+       try {
+              // myJson.json파일을 읽어와 Object로 파싱 \FairyTales\49\1\json
+       	String link = "C:\\FairyTales\\" + ft + "\\" + chapter + "\\chapter.json";
+       	String objft = "C:\\FairyTales\\" + ft + "\\" + chapter + "\\objList.json";
+       	String example = "C:\\FairyTales\\" + ft + "\\" + chapter + "\\example.json";
+       	String anwser = "C:\\FairyTales\\" + ft + "\\" + chapter + "\\anwser.json";
+       	
+       	System.out.println(ft + " : " + chapter);
+              Object obj1 = parser.parse(new FileReader(link));
+              Object obj2 = parser.parse(new FileReader(objft));
+              Object obj3 = parser.parse(new FileReader(example));
+              Object obj4 = parser.parse(new FileReader(anwser));
+              
+              JSONObject jsonObject1 =(JSONObject) obj1;
+              //JSONObject jsonObject2 =(JSONObject) obj2;
+              // list가져오기
+            
+              JSONArray msgList1 =(JSONArray) jsonObject1.get("screen");
+
+              //JSONArray msgList2 =(JSONArray) jsonObject2.get("objId");
+              //JSONArray msgList3 =(JSONArray) jsonObject2.get("obj");
+              System.out.println(msgList1.size());
+              
+              for(int i = 0 ; i < msgList1.size();i++) {
+           	   System.out.println(msgList1.get(i));
+           	  
+              }
+              System.out.println(obj2);
+          	   System.out.println(obj3);
+          	   System.out.println(obj4);
+          	   System.out.println(obj1);
+          	   
+              model.addAttribute("playlist", msgList1);	//붙임
+              model.addAttribute("objList", obj2);
+              model.addAttribute("questionList", obj3);
+              model.addAttribute("answerList", obj4);
+              model.addAttribute("someList", obj1);
+ 
+              System.out.println("**JsonList**");
+
+             /* while(iterator.hasNext()) {
+
+                     System.out.println(iterator.next());
+
+              }*/
+
+       } catch (Exception e) {
+
+              e.printStackTrace();
+
+       }
+       
+		return "./fairy/3high/cendrillon/screen3";
+	}
+	
 	@ResponseBody
 	@RequestMapping(value = "/first_answer", method = RequestMethod.POST)	// 빈칸 2개짜리 받는곳
 	public String first_answer(String answer) {
 		boolean ret_value = true;		//비교리턴값
+       
 		String[] st = answer.split(",");
 		
 		SinScreen ss = new SinScreen();
@@ -64,6 +133,8 @@ public class AnswerController {
 		}else {
 			return "0";
 		}
+		
+
 	}
 	
 	@ResponseBody
@@ -93,5 +164,15 @@ public class AnswerController {
 		}else {
 			return "0";
 		}
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/editor_answer", method = RequestMethod.POST)	//빈칸 1개짜리 받는곳
+	public String editor_answer(String answer) {
+		
+		String[] st = answer.split(",");
+		System.out.println("혼자값 : " + answer);
+		
+		return "1";
 	}
 }

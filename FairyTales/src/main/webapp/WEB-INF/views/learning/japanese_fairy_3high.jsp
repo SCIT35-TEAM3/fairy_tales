@@ -222,10 +222,11 @@
 								<img src="images/learningPage/신데렐라2.png" alt="image02" /></a>
 							</div>
 							<div class="bb-item">
-								<a href="custom_screen1?sin=3&screen=1"><img src="images/learningPage/신데렐라3.png" alt="image03" /></a>
+								<a href="custom_screen1?ft=67&chpter=1"><img src="images/learningPage/신데렐라3.png" alt="image03" /></a>
 							</div>
 							<div class="bb-item">
-								<a href="#"><img src="images/learningPage/신데렐라3.png" alt="image03" /></a>
+								<a href="cendrillon_screen3?ft=69&chapter=1"  onClick="window.open(this.href, '', 'width=1120, height=630, top=30%,left=30%'); return false;">
+								<img src="images/learningPage/신데렐라3.png" alt="image03" /></a>
 							</div>
 							<div class="bb-item">
 								<a href="#"><img src="images/demo3/3.jpg" alt="image03" /></a>
