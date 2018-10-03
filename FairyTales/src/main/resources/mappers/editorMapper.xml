@@ -70,18 +70,21 @@
 			,ANSWER
 			,CHAPTER
 			,OBJID
+			,QUESTION_TYPE
 		) VALUES (
 			 question_seq.nextval
 			,#{fairy_pk}
 			,#{answer}
 			,#{chapter}
 			,#{obj_id}
+			,#{question_type}
 		)
 	</insert>
 	
 	<update id="update_question" parameterType="Question">
 	UPDATE QUESTION
 	   SET ANSWER	=	#{answer}
+	   	  ,QUESTION_TYPE = #{question_type}
 	 WHERE FAIRY_PK	=	#{fairy_pk}
 	   AND CHAPTER	=	#{chapter}
 	   AND OBJID	=	#{obj_id}

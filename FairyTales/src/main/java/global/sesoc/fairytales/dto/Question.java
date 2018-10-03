@@ -8,6 +8,7 @@ public class Question {
 	private Integer chapter;
 	private Integer obj_id;
 	private String  delidset; // 삭제를위한 objid 세트
+	private String  question_type;// = fairy_code
 	
 	public Integer getQuestion_pk() {
 		return question_pk;
@@ -45,9 +46,15 @@ public class Question {
 	public void setDelidset(String delidset) {
 		this.delidset = delidset;
 	}
+	public String getQuestion_type() {
+		return question_type;
+	}
+	public void setQuestion_type(String question_type) {
+		this.question_type = question_type;
+	}
 	@Override
 	public String toString() {
 		return "Question [question_pk=" + question_pk + ", fairy_pk=" + fairy_pk + ", answer=" + answer + ", chapter="
-				+ chapter + ", obj_id=" + obj_id + ", delidset=" + delidset + "]";
+				+ chapter + ", obj_id=" + obj_id + ", delidset=" + delidset + ", question_type=" + question_type + "]";
 	}
 }

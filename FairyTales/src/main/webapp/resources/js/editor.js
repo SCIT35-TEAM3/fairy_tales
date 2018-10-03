@@ -191,13 +191,6 @@ $(document).ready(function(){
 				}
 				$("#exampleBase").append("<input class='example' type='text'>");
 			}
-		}else{
-			while(true){
-				if($(".example").length == $(".anwser").length){
-					break;
-				}
-				$(".example").last().remove();
-			}
 		}
 	});
 	
@@ -1119,10 +1112,7 @@ function addObjTxt(){
 		//삭제후
 		$(anwserBox).each(function(index,anwsers){
 			if(anwsers.obj_id == objId){
-				console.log("1 :" + JSON.stringify(anwserBox));
 				anwserBox.splice(index,1);
-				console.log("2 :" + JSON.stringify(anwserBox));
-				//dddddddddddddddd
 			};
 		});
 		if($("#qOnOff").prop("checked")){
@@ -1329,7 +1319,7 @@ function screenSet(scene){
 	//var sceneNumber = chapter.length;
 	chapter.screen.push({
 						  "scene"		: scene==null ? [] : scene
-						, "clickEvent"	: null
+						//, "clickEvent"	: null
 					});
 };
 //Deep copy 복사

@@ -67,7 +67,6 @@ public class EditorController {
 		Fairytales ft = new Fairytales();
 		ft.setFairy_pk(fpk);
 		Fairytales fairytales = repository.selectFairytales(ft);
-		System.out.println("fairytales : " + fairytales);
 
 		model.addAttribute("fairytales", fairytales);
 		return "editorAdd";
@@ -76,6 +75,12 @@ public class EditorController {
 	//에디터
 	@RequestMapping(value = "/editor", method = RequestMethod.GET)
 	public String editor(Integer fpk, Integer chapter, Model model) {
+		Fairytales fairytales = new Fairytales();
+		fairytales.setFairy_pk(fpk);
+		fairytales = repository.selectFairytales(fairytales);
+
+		model.addAttribute("fairytales", fairytales);
+		
 		model.addAttribute("fpk", fpk);
 		model.addAttribute("chapter", chapter);
 		
@@ -126,7 +131,7 @@ public class EditorController {
 	}*/
 	
 	@RequestMapping(value = "/saveFairy", method = RequestMethod.POST)
-	public String saveFairy(String fpkNum, String chapterNum,String chapter,String objList,String exampleBox,String anwserBox){
+	public String saveFairy(String questionType, String fpkNum, String chapterNum,String chapter,String objList,String exampleBox,String anwserBox){
 		System.out.println("fpkNum : " + fpkNum + " chapterNum :" + chapterNum);
 		FileService.saveJson(chapter,FT_UPLOAD_PATH + fpkNum + "/" + chapterNum + "/chapter.json");
 		FileService.saveJson(objList,FT_UPLOAD_PATH + fpkNum + "/" + chapterNum +  "/objList.json");
@@ -141,9 +146,18 @@ public class EditorController {
 			
 			String notIn = "";
 			
+			
+			//주의점 정답은 _ 가 안들어가도록 // 동화 setQuestion_type은 동화 타입이 바뀌면 바뀌도록 해야하는데..
 			for(int i = 0; i < qt.size(); ++i) {
 				qt.get(i).setFairy_pk(Integer.parseInt(fpkNum));
 				qt.get(i).setChapter(Integer.parseInt(chapterNum));
+				
+				if(questionType.equals("jp") ) {
+					qt.get(i).setQuestion_type("1");
+				}else {
+					qt.get(i).setQuestion_type("2");
+				}
+				
 				int re = repository.update_question(qt.get(i));
 				System.out.println("qt :" + qt + " re :" + re);
 				if(re == 0){

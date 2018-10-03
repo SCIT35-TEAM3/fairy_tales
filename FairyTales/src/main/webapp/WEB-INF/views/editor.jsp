@@ -200,8 +200,8 @@
 				<div class="row">
 					<div class="action">
 						<div class="col-sm-12">
-							<h1 class="title">Editor</h1>
-							<p>FairyTales Editor</p>
+							<h1 class="title">${fairytales.fairy_name}</h1>
+							<p>FairyTales Editor [Chapter${chapter}]</p>
 						</div>
 					</div>
 				</div>
@@ -514,6 +514,7 @@
 														<!-- <input type="submit" value="저장"/> -->
 														<input type="hidden"  name="fpkNum" id="fpkNum" value="${fpk}"/>
 														<input type="hidden"  name="chapterNum" id="chapterNum" value="${chapter}"/>
+														<input type="hidden"  name="questionType" value="${fairytales.fairy_code}"/>
 														<input type="hidden" id="saveChapter" name="chapter"/>
 														<input type="hidden" id="saveObjList" name="objList"/>
 														<input type="hidden" id="saveExample" name="exampleBox"/>

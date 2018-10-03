@@ -189,7 +189,7 @@
 								<div class="sidebar-item  recent">
 									<!-- <h3>동화 챕터 추가</h3> -->
 									<div id="chapters">
-										<h1 class="text-center">${fairytales.fairy_name}</h1>
+										<h1 class="text-center"><b>${fairytales.fairy_name}</b></h1><br>
 										<h3></h3><br/><br/>
 										<%-- <c:forEach item="${fairy_chapter}"> --%>
 										<c:forEach begin="1" end="${fairytales.fairy_chapter}" step="1" var="fNum">
