@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import global.sesoc.fairytales.dto.Fairytales;
+import global.sesoc.fairytales.dto.Question;
 
 /**
  * 에디터
@@ -51,4 +52,27 @@ public class Editor_Repository {
 		int result = mapper.delete_editor(fairy_pk);
 		return result;
 	}
+	
+	// 문제 삭제
+	public int delete_question(Question question) {
+		Editor_Mapper mapper = session.getMapper(Editor_Mapper.class);
+		int result = mapper.delete_question(question);
+		return result;
+	}
+	
+	// 문제 삽입
+	public int insert_question(Question question) {
+		Editor_Mapper mapper = session.getMapper(Editor_Mapper.class);
+		int result = mapper.insert_question(question);
+		return result;
+	}
+	
+	//문제 수정
+	public int update_question(Question question) {
+		Editor_Mapper mapper = session.getMapper(Editor_Mapper.class);
+		int result = mapper.update_question(question);
+		return result;
+	}
+	
+	
 }

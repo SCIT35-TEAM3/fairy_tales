@@ -44,7 +44,7 @@ public class EditorController {
 	static final String FT_TEMP_PATH = "/FairyTales/TEMP/";
 	*/
 	// 저장소
-	static final String FT_UPLOAD_PATH = "/FairyTales/"+File.pathSeparator;
+	static final String FT_UPLOAD_PATH = "/FairyTales/";
 	
 	//동화 전체 리스트
 	@RequestMapping(value = "/editorList", method = RequestMethod.GET)
@@ -127,19 +127,39 @@ public class EditorController {
 	
 	@RequestMapping(value = "/saveFairy", method = RequestMethod.POST)
 	public String saveFairy(String fpkNum, String chapterNum,String chapter,String objList,String exampleBox,String anwserBox){
-		
+		System.out.println("fpkNum : " + fpkNum + " chapterNum :" + chapterNum);
 		FileService.saveJson(chapter,FT_UPLOAD_PATH + fpkNum + "/" + chapterNum + "/chapter.json");
 		FileService.saveJson(objList,FT_UPLOAD_PATH + fpkNum + "/" + chapterNum +  "/objList.json");
 		FileService.saveJson(exampleBox,FT_UPLOAD_PATH + fpkNum + "/" + chapterNum +  "/example.json");
 		FileService.saveJson(anwserBox,FT_UPLOAD_PATH + fpkNum + "/" + chapterNum +  "/anwser.json");
-		
+		System.out.println("anwserBox : " + anwserBox);
 		ObjectMapper mapper = new ObjectMapper();
 		
 		try {
 			
 			List<Question> qt = mapper.readValue(anwserBox, new TypeReference<List<Question>>(){});
 			
-			System.out.println("Answer" + qt.toString());
+			String notIn = "";
+			
+			for(int i = 0; i < qt.size(); ++i) {
+				qt.get(i).setFairy_pk(Integer.parseInt(fpkNum));
+				qt.get(i).setChapter(Integer.parseInt(chapterNum));
+				int re = repository.update_question(qt.get(i));
+				System.out.println("qt :" + qt + " re :" + re);
+				if(re == 0){
+					repository.insert_question(qt.get(i));
+				}
+				if(i != 0) {
+					notIn += ",";
+				}
+				notIn += qt.get(i).getObj_id();
+			}
+			System.out.println(notIn);
+			Question delQt = new Question();			
+			delQt.setFairy_pk(Integer.parseInt(fpkNum));
+			delQt.setChapter(Integer.parseInt(chapterNum));
+			delQt.setDelidset(notIn);
+			repository.delete_question(delQt);
 			
 		} catch (JsonParseException e) {
 			// TODO Auto-generated catch block

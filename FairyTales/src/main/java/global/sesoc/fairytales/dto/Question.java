@@ -6,15 +6,9 @@ public class Question {
 	private Integer fairy_pk;
 	private String  answer;
 	private Integer chapter;
-	private Integer screen;
-	private Integer objId;
+	private Integer obj_id;
+	private String  delidset; // 삭제를위한 objid 세트
 	
-	public Integer getObjId() {
-		return objId;
-	}
-	public void setObjId(Integer objId) {
-		this.objId = objId;
-	}
 	public Integer getQuestion_pk() {
 		return question_pk;
 	}
@@ -39,15 +33,21 @@ public class Question {
 	public void setChapter(Integer chapter) {
 		this.chapter = chapter;
 	}
-	public Integer getScreen() {
-		return screen;
+	public Integer getObj_id() {
+		return obj_id;
 	}
-	public void setScreen(Integer screen) {
-		this.screen = screen;
+	public void setObj_id(Integer obj_id) {
+		this.obj_id = obj_id;
+	}
+	public String getDelidset() {
+		return delidset;
+	}
+	public void setDelidset(String delidset) {
+		this.delidset = delidset;
 	}
 	@Override
 	public String toString() {
 		return "Question [question_pk=" + question_pk + ", fairy_pk=" + fairy_pk + ", answer=" + answer + ", chapter="
-				+ chapter + ", screen=" + screen + ", objId=" + objId + "]";
+				+ chapter + ", obj_id=" + obj_id + ", delidset=" + delidset + "]";
 	}
 }

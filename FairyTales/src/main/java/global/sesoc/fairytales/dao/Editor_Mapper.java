@@ -4,6 +4,7 @@ package global.sesoc.fairytales.dao;
 import java.util.List;
 
 import global.sesoc.fairytales.dto.Fairytales;
+import global.sesoc.fairytales.dto.Question;
 
 /**
  * 동화
@@ -22,4 +23,11 @@ public interface Editor_Mapper {
 	public int update_editor(Fairytales fairytales);
 	//동화 삭제
 	public int delete_editor(Integer fairy_pk);
+	//문제 삭제
+	public int delete_question(Question question);
+	//문제 삽입
+	public int insert_question(Question question);
+	//문제 수정
+	public int update_question(Question question);
+	
 }

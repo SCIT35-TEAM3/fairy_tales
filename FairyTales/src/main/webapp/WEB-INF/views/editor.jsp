@@ -599,13 +599,21 @@
 							<tbody id="questionBase">
 								<tr>
 									<td id="anwserBase">
-										<b>정답</b><br>
+										<div class="col-md-12 col-sm-12"><b>정답</b></div>
 										<input class="anwser" type="text">
 									</td>
 								</tr>
 								<tr>
 									<td id="exampleBase">	
-										<a href="#" class="btn" id="example"><i class="fa fa-plus">보기 추가</i></a><br>
+										<div class="col-md-4 col-sm-4">
+											<a href="#" class="btn" id="examplePlus"><i class="fa fa-plus-square">&nbsp;&nbsp;추가</i></a>
+										</div>
+										<div class="col-md-4 col-sm-4">
+											<b>보기</b>
+										</div>
+										<div class="col-md-4 col-sm-4">
+											<a href="#" class="btn" id="exampleMinus"><i class="fa fa-minus-square">&nbsp;&nbsp;삭제</i></a>
+										</div>
 										<input class="example" type="text">
 									</td>
 								</tr>
@@ -696,12 +704,21 @@
 				layer_popup($href,$(this));
 				return false;
 			});
-			
-			$("#example").on("click",function(){
+			//보기 추가
+			$("#examplePlus").on("click",function(){
 				if($(".example").length < 3){
 					$("#exampleBase").append("<input class='example' type='text'>");
 				}else{
 					alert("너무 많습니다.");
+				}
+				return false;
+			});
+			//보기 삭제
+			$("#exampleMinus").on("click",function(){
+				if($(".example").length > $(".anwser").length){
+					$(".example").last().remove();
+				}else{
+					alert("정답보다 적을 수는 없습니다.");
 				}
 				return false;
 			});
@@ -726,7 +743,11 @@
 				$("#addObjTxtBtn").html('Register');
 				$("#popObjID").val('');
 				$("#objText").val('');
-				$("#anwser").val('');
+				$(".anwser").each(function(index,anwser){
+					//전부 삭제
+					$(anwser).remove();
+				});
+				$("#anwserBase").append("<input class='anwser' type='text'>");
 				$(".example").each(function(index,example){
 					//전부 삭제
 					$(example).remove();
@@ -753,11 +774,26 @@
 				
 				$("#popObjID").val(el.substr(7));
 				
+				//전체 삭제
+				$(".anwser").each(function(index,anwser){
+					$(anwser).remove();
+				});
+				var anwserCheck = true;
 				$(anwserBox).each(function(index,anwsers){
-					if(anwsers.objId == el.substr(7)){
-						$("#anwser").val(anwsers.answer);
+					if(anwsers.obj_id == el.substr(7)){
+						anwserCheck = false;
+						console.log(anwsers.answer);
+						var anwsplit = anwsers.answer.split("_");
+						console.log(anwsplit.length);
+						$(anwsplit).each(function(index,answer){
+							console.log(answer);
+							$("#anwserBase").append("<input class='anwser' type='text' value="+answer+">");
+						})
 					}
 				});
+				if(anwserCheck){
+					$("#anwserBase").append("<input class='anwser' type='text'>");
+				}
 				
 				//전체 삭제
 				$(".example").each(function(index,example){
@@ -799,7 +835,7 @@
 			// 화면의 중앙에 레이어를 띄운다.
 			if ($elHeight < docHeight || $elWidth < docWidth) {
 			    $el.css({
-			    	  marginTop : -$elHeight/2
+			    	  marginTop : (-$elHeight/2)-55
 			    	, marginLeft: -$elWidth/2
 			    })
 			} else {
@@ -818,7 +854,7 @@
 			closePop();
 			return false;
 		});
-		//텍스트 퀴즈 넣기
+		//텍스트/퀴즈 넣기
 		$("#layer").find('#addObjTxtBtn').click(function(){
 			if(addObjTxt()){
 				closePop();
@@ -831,7 +867,7 @@
 			objDelete(objId);
 			
 			$(anwserBox).each(function(index,anwsers){
-				if(anwsers.objId == objId){
+				if(anwsers.obj_id == objId){
 					anwserBox.splice(index,1);
 				}
 			});
@@ -863,10 +899,10 @@
 		
 		//initJson
 		function initJson(){
-			chapterJson = '${getChapter}';
-			objListJson = '${getObjList}';
-			exampleJson = '${getExample}';
-			anwserJson  = '${getAnwser}';
+			chapterJson = '${getChapter == ""? "{}" : getChapter}';
+			objListJson = ${getObjList == ''? '[]' : getObjList};
+			exampleJson = ${getExample == ''? '[]' : getExample};
+			anwserJson  = ${getAnwser == ''? '[]' : getAnwser};
 			
 			setJson(chapterJson,objListJson,exampleJson,anwserJson);
 		}

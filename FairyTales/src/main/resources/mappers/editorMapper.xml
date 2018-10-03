@@ -53,4 +53,38 @@
 	DELETE FROM FAIRYTALES WHERE FAIRY_PK = #{fairy_pk}
 	</delete>
 	
+	<delete id="delete_question" parameterType="Question">
+	DELETE
+	  FROM QUESTION 
+	 WHERE FAIRY_PK	= #{fairy_pk}
+	   AND CHAPTER = #{chapter}
+	   <if test="delidset != ''">
+	   AND OBJID NOT IN (${delidset})
+	   </if>
+	</delete>
+	
+	<insert id="insert_question" parameterType="Question">
+	INSERT INTO QUESTION (
+			 QUESTION_PK
+			,FAIRY_PK
+			,ANSWER
+			,CHAPTER
+			,OBJID
+		) VALUES (
+			 question_seq.nextval
+			,#{fairy_pk}
+			,#{answer}
+			,#{chapter}
+			,#{obj_id}
+		)
+	</insert>
+	
+	<update id="update_question" parameterType="Question">
+	UPDATE QUESTION
+	   SET ANSWER	=	#{answer}
+	 WHERE FAIRY_PK	=	#{fairy_pk}
+	   AND CHAPTER	=	#{chapter}
+	   AND OBJID	=	#{obj_id}
+	</update>
+	
 </mapper>

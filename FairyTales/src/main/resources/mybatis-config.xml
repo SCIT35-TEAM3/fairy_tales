@@ -18,6 +18,8 @@
 		<typeAlias type="global.sesoc.fairytales.dto.Fairytales" alias="Fairytales"/>
 		<typeAlias type="global.sesoc.fairytales.dto.SinScreen" alias="SinScreen"/>
 		<typeAlias type="global.sesoc.fairytales.dto.Code" alias="Code"/>
+		<typeAlias type="global.sesoc.fairytales.dto.Question" alias="Question"/>
+		
 	</typeAliases>
 	<mappers>
 

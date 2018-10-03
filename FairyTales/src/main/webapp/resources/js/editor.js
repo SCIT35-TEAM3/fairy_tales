@@ -161,20 +161,42 @@ $(document).ready(function(){
 	$("#objText").on("change", function(){
 		var content = $("#objText").val();
 		var check = content.match(/%%/g);
+		var count = 0;
 		if(check){
-			var count = check.length;
+			count = check.length;
+		}else{
+			//없을경우
+			return false;
 		}
 		
-		for(var i=0; i < count; ++i){
-			if( i >= 2){
-				alert("정답은 2개 이상은 사용할 수 없습니다.");
+		if( count > 3){
+			alert("최대 문제는 3개입니다.");
+			count = 3;
+		}
+		
+		while(true){
+			if(count == $(".anwser").length){
 				break;
-			}else{
-				if(i == 0){
-					$("#anwserBase").html("");
-					$("#anwserBase").append('<b>정답</b><br>');
-				}
+			} else if(count < $(".anwser").length){
+				$(".anwser").last().remove();
+			} else if(count > $(".anwser").length){
 				$("#anwserBase").append('<input class="anwser" type="text">');
+			}
+		}
+		
+		if($(".example").length < $(".anwser").length){
+			while(true){
+				if($(".example").length == $(".anwser").length){
+					break;
+				}
+				$("#exampleBase").append("<input class='example' type='text'>");
+			}
+		}else{
+			while(true){
+				if($(".example").length == $(".anwser").length){
+					break;
+				}
+				$(".example").last().remove();
 			}
 		}
 	});
@@ -572,6 +594,20 @@ function objDelete(delObjNum){
 		$($(screen.scene).get().reverse()).each(function(index,scene){
 			if(scene.objId == delObjNum){
 				screen.scene.splice((maxScene - index),1);
+				
+				if(scene.objType == 'question'){
+					$(anwserBox).each(function(index,anwsers){
+						if(anwsers.obj_id == scene.objId){
+							anwserBox.splice(index,1);
+						};
+					});
+					
+					$(exampleBox).each(function(index,example){
+						if(example.objId == scene.objId){
+							exampleBox.splice(index,1);
+						};
+					});
+				};
 			};
 		});
 	});
@@ -1034,18 +1070,16 @@ function addObjTxt(){
 		if($("#qOnOff").prop("checked")){
 			//체크된 상태라면 
 			var anwser = "";
-			$(".anwser").each(function(index,anwser){
-				if($(anwser).val().length < 1){
-					if(index != 0){
-						anwser += ""
-					}
-					anwser += $("#anwser").val();
+			$(".anwser").each(function(index,vlaue){
+				if(index != 0){
+					anwser += "_";
 				}
+				anwser += $(vlaue).val();
 			});
 			
 			//정답 저장	
 			anwserBox.push({
-					 "objId"	: objId
+					 "obj_id"	: objId
 					,"answer"	: anwser
 			});
 			
@@ -1065,6 +1099,11 @@ function addObjTxt(){
 		
 		$(objList).each(function(index,obj){
 			if(obj.objId == objId){
+				
+				var type = "text"										//일반 텍스트
+				if($("#qOnOff").prop("checked")){type = "question"}		//문제 텍스트
+				obj.objType = type;
+				
 				var value = $("#objText").val();
 				obj.obj = value;
 				var view = '';
@@ -1077,27 +1116,48 @@ function addObjTxt(){
 			}
 		});
 		
+		//삭제후
 		$(anwserBox).each(function(index,anwsers){
-			if(anwsers.objId == objId){
-				anwsers.answer = $("#anwser").val();
-			}
+			if(anwsers.obj_id == objId){
+				console.log("1 :" + JSON.stringify(anwserBox));
+				anwserBox.splice(index,1);
+				console.log("2 :" + JSON.stringify(anwserBox));
+				//dddddddddddddddd
+			};
 		});
+		if($("#qOnOff").prop("checked")){
+			//생성
+			var anwser = "";
+			$(".anwser").each(function(index,vlaue){
+				if(index != 0){
+					anwser += "_";
+				}
+				anwser += $(vlaue).val();
+			});
 		
+			//정답 저장	
+			anwserBox.push({
+					 "obj_id"	: objId
+					,"answer"	: anwser
+			});
+		}
 		//삭제후
 		$(exampleBox).each(function(index,example){
 			if(example.objId == objId){
 				exampleBox.splice(index,1);
 			};
 		});
-		//새로 생성
-		var exJson = '{ "objId":"'+objId+'"'; 
-		$(".example").each(function(index,ex){
-			var answer = $(ex).val();
-			exJson += ', "answer'+index+'":"' + answer + '"';
-		});
-		exJson += '}';
-		//보기 저장
-		exampleBox.push(JSON.parse(exJson));
+		if($("#qOnOff").prop("checked")){
+			//새로 생성
+			var exJson = '{ "objId":"'+objId+'"'; 
+			$(".example").each(function(index,ex){
+				var answer = $(ex).val();
+				exJson += ', "answer'+index+'":"' + answer + '"';
+			});
+			exJson += '}';
+			//보기 저장
+			exampleBox.push(JSON.parse(exJson));
+		}
 	}
 	
 	//뷰리스트
@@ -1571,21 +1631,26 @@ function sceneDelete(target){
 function setJson(chapterJson,objListJson,exampleJson,anwserJson){
 	//오브젝트
 	if(objListJson.length > 0){
-		objList = JSON.parse(objListJson);
+		
+		//objList = JSON.parse(objListJson);
+		objList = objListJson;
 		//object view
 		objViewList();
 	}
 	//보기
 	if(exampleJson.length > 0){
-		exampleBox = JSON.parse(exampleJson);
+		//exampleBox = JSON.parse(exampleJson);
+		exampleBox = exampleJson;
 	}
 	//답변
 	if(anwserJson.length > 0){
-		anwserBox = JSON.parse(anwserJson);
+		//anwserBox = JSON.parse(anwserJson);
+		anwserBox = anwserJson;
 	}
 	//챕터
-	if(chapterJson.length > 0){
+	if(chapterJson.length > 2){
 		chapter = JSON.parse(chapterJson);
+		//chapter = chapterJson;
 		
 		//최대챕터수 layerNum
 		$("#screensView").html("");
@@ -1606,7 +1671,10 @@ function setJson(chapterJson,objListJson,exampleJson,anwserJson){
 		//다시 그려
 		changeScreen();
 		//백그라운드
-		var background = chapter.background;
+		var background = "";
+		if(chapter.background){
+			background = chapter.background;
+		};
 		if(background.length > 0){
 			$(".fairyTale").css( "background" , "url('"+background+"')");
 			var size = $(".fairyTale").width() + "px " + $(".fairyTale").height() + "px"
