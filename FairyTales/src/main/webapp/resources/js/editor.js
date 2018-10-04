@@ -108,6 +108,13 @@ $(document).ready(function(){
 					yHPointOld = yHPoint;
 				}else{
 					var height = parseInt($(selectTarget).height()) + parseInt(xWPoint - xWPointOld);
+					/*
+					var selectHeight = $(selectTarget).height();
+					var selectWidth = $(selectTarget).width();
+					var selectHeight = selectHeight + (selectHeight * 0.01);
+					var selectWidth = selectWidth + (selectWidth * 0.01);
+					*/
+					
 					//비율증감
 					$(selectTarget).css(
 						{
@@ -1187,7 +1194,7 @@ function addTxtObject(value,question,scene,objId){
 	if(scene == null){ // 기본 scene 정보가 없다면
 		$(span).html(value).css("position", "absolute");
 		$(span).css("font-size", "25px");
-		$(span).css("white-space","pre");
+		$(span).css("white-space","normal");
 		var view = "";
 		if(value.length > 3){
 			view = value.substring(0,3)+"..";
@@ -1206,7 +1213,7 @@ function addTxtObject(value,question,scene,objId){
 			if(obj.objId == scene.objId){
 				$(span).html(obj.obj);
 				$(span).css("font-size", "25px");
-				$(span).css("white-space","pre");
+				$(span).css("white-space","normal");
 				return false;
 			};
 		});
@@ -1222,7 +1229,7 @@ function addTxtObject(value,question,scene,objId){
 			}
 		);
 		$(span).css("font-size", "25px");
-		$(span).css("white-space","pre");
+		$(span).css("white-space","normal");
 	}
 	
 	var sceneNum ="";
@@ -1628,7 +1635,7 @@ function setJson(chapterJson,objListJson,exampleJson,anwserJson){
 		//objList = JSON.parse(objListJson);
 		objList = objListJson;
 		//object view
-		//objViewList();
+		objViewList();
 	}
 	//보기
 	if(exampleJson.length > 0){
@@ -1662,7 +1669,7 @@ function setJson(chapterJson,objListJson,exampleJson,anwserJson){
 		//뷰리스트
 		sceneViewList();
 		//다시 그려
-		//changeScreen();
+		changeScreen();
 		//백그라운드
 		var background = "";
 		if(chapter.background){
