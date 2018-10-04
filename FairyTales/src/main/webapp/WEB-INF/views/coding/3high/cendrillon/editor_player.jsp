@@ -53,37 +53,56 @@ var scene<c:out value="${status.index}"/> = [
 	{"objId" : "background","top" : "0%","left" : "0%","width" : "100%","height" : "100%",
 		"animate" : "fadeIn",	"time" :  "200",	"latency" : "0","layerNum" : "0","src" : "${chapter.background}"},
 	{"objId" : "background_around","top" : "0%","left" : "0%","width" : "100%","height" : "100%",
-		"animate" : "fadeIn",	"time" :  "1000",	"latency" : "0","layerNum" : "2"},
+		"animate" : "fadeIn",	"time" :  "1000",	"latency" : "0","layerNum" : "9"},
 	{"objId" : "script_around","top" : "-10%","left" : "8%","width" : "80%","height" : "80%",
-		"animate" : "fadeIn",	"time" :  "1000",	"latency" : "0","layerNum" : "3"},	
+		"animate" : "fadeIn",	"time" :  "1000",	"latency" : "0","layerNum" : "10"},	
 		
 			
 	{"objId" : "answer1","top" : "80%","left" : "28%","width" : "10%","height" : "6%",
-			"animate" : "fadeIn",	"time" :  "200",	"latency" : "0","layerNum" : "6"},	
+			"animate" : "fadeIn",	"time" :  "200",	"latency" : "0","layerNum" : "16"},	
 	{"objId" : "answer2","top" : "80%","left" : "44%","width" : "10%","height" : "6%",
-			"animate" : "fadeIn",	"time" :  "200",	"latency" : "0","layerNum" : "6"},	
+			"animate" : "fadeIn",	"time" :  "200",	"latency" : "0","layerNum" : "16"},	
 	{"objId" : "answer3","top" : "80%","left" : "60%","width" : "10%","height" : "6%",
-			"animate" : "fadeIn",	"time" :  "200",	"latency" : "0","layerNum" : "6"},
+			"animate" : "fadeIn",	"time" :  "200",	"latency" : "0","layerNum" : "16"},
 			
 	{"objId" : "script","top" : "15.5%","left" : "22.2%","width" : "54%","height" : "20%",
-			"animate" : "fadeIn",	"time" :  "2000",	"latency" : "0","layerNum" : "4"},		
+			"animate" : "fadeIn",	"time" :  "2000",	"latency" : "0","layerNum" : "14"},		
 	
 	{"objId" : "code","top" : "45%","left" : "29%","width" : "40%","height" : "30%",
-			"animate" : "fadeIn",	"time" :  "2000",	"latency" : "0","layerNum" : "4"},
+			"animate" : "fadeIn",	"time" :  "2000",	"latency" : "0","layerNum" : "14"},
 			
 	{"objId" : "script_hide1","top" : "21.5%","left" : "55%","width" : "4%","height" : "6%",
-			"animate" : "fadeIn",	"time" :  "200",	"latency" : "0","layerNum" : "5"},
+			"animate" : "fadeIn",	"time" :  "200",	"latency" : "0","layerNum" : "15"},
 	{"objId" : "script_hide2","top" : "21.5%","left" : "55%","width" : "4%","height" : "6%",
-			"animate" : "fadeIn",	"time" :  "200",	"latency" : "0","layerNum" : "5"},
+			"animate" : "fadeIn",	"time" :  "200",	"latency" : "0","layerNum" : "15"},
 	{"objId" : "script_hide3","top" : "21.5%","left" : "55%","width" : "4%","height" : "6%",
-		"animate" : "fadeIn",	"time" :  "200",	"latency" : "0","layerNum" : "5"} //, 없으니 주의 할것
+		"animate" : "fadeIn",	"time" :  "200",	"latency" : "0","layerNum" : "15"} //, 없으니 주의 할것
 		
 	<c:forEach items="${screen.scene}" var ="scene" varStatus="sstatus">
 		<c:forEach items="${objectList}" var ="obj">
 			<c:if test="${scene.objId == obj.objId}">
 				<c:if test="${obj.objType eq 'img'}">
+					<%-- 전 스크린 대조하여 붙여 넣기 sceneNum --%>
+					<c:if test="${status.index != 0}">
+						<c:forEach items="${chapter.screen[status.index-1].scene}" var ="fscene">
+							<c:if test="${fscene.sceneNum == scene.sceneNum}">
+								,{
+									"objId" :"img${scene.sceneNum}"
+									,"top" : "${fscene.top}%"
+									,"left" : "${fscene.left}%"
+									,"width" : "${fscene.width}%"
+									,"height" : "${fscene.height}%"
+									,"animate" : "${fscene.animate}"
+									,"time" :  "${fscene.time}"
+									,"latency" : "${fscene.latency}"
+									,"layerNum" : "${fscene.layerNum}"
+									,"src" : "${obj.obj}" <%-- src 추가 이미지 위치 --%>
+								}
+							</c:if>
+						</c:forEach>
+					</c:if>
 				,{
-					"objId" :"img${status.index}${sstatus.index}"
+					"objId" :"img${scene.sceneNum}"
 					,"top" : "${scene.top}%"
 					,"left" : "${scene.left}%"
 					,"width" : "${scene.width}%"

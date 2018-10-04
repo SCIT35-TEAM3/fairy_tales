@@ -68,9 +68,12 @@ $(document).ready(function(){
 	$(".fairyTale").css(
 		{
 			  "background-size": "cover"
-			//, "background" : "url('../신데렐라 정산/배경.png')"
+			, "background" : "url('./images/backimg.png')"
 		}
 	);
+	var size = $(".fairyTale").width() + "px " + $(".fairyTale").height() + "px"
+	$(".fairyTale").css( "background-size", size);
+	
 	
 	//z-index set
 	/*/fairyTale init*/

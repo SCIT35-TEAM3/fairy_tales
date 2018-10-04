@@ -12,8 +12,8 @@ public class Scene {
 	private String animate;
 	private String time;
 	private String latency;
-	
-	private String getSceneNum() {
+
+	public String getSceneNum() {
 		return sceneNum;
 	}
 	public void setSceneNum(String sceneNum) {
