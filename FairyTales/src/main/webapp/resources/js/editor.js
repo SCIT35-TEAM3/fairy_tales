@@ -1628,7 +1628,7 @@ function setJson(chapterJson,objListJson,exampleJson,anwserJson){
 		//objList = JSON.parse(objListJson);
 		objList = objListJson;
 		//object view
-		objViewList();
+		//objViewList();
 	}
 	//보기
 	if(exampleJson.length > 0){
@@ -1662,7 +1662,7 @@ function setJson(chapterJson,objListJson,exampleJson,anwserJson){
 		//뷰리스트
 		sceneViewList();
 		//다시 그려
-		changeScreen();
+		//changeScreen();
 		//백그라운드
 		var background = "";
 		if(chapter.background){
