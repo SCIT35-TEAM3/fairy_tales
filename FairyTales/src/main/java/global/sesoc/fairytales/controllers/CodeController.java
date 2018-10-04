@@ -38,7 +38,7 @@ public class CodeController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "/first_code_answer", method = RequestMethod.POST)	// 빈칸 2개짜리 받는곳
+	@RequestMapping(value = "/first_code_answer2", method = RequestMethod.POST)	// 빈칸 2개짜리 받는곳
 	public String first_code_answer(String answer) {
 		
 		String[] st = answer.split(",");

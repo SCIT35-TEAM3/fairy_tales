@@ -290,62 +290,32 @@
 							<span class="bb-current"></span> <span></span> <span></span>
 						</nav>
 					</li>
-					
-					<li>
-						<h3>이상한 나라의 앨리스</h3>
-						<div class="bb-bookblock">
-							<div class="bb-item">
-								<a href="#"><img src="images/learningPage/이상한 나라의 앨리스1.png" alt="image01" /></a>
-							</div>
-							<div class="bb-item">
-								<a href="#"><img src="images/learningPage/이상한 나라의 앨리스2.png" alt="image02" /></a>
-							</div>
-							<div class="bb-item">
-								<a href="#"><img src="images/demo3/3.jpg" alt="image03" /></a>
-							</div>
-							<div class="bb-item">
-								<a href="#"><img src="images/learningPage/이상한 나라의 앨리스1.png" alt="image01" /></a>
-							</div>
-						</div>
-						<nav>
-							<span class="bb-current"></span> <span></span> <span></span>
-						</nav>
-					</li>
-					
 					<c:forEach items="${ft}" var="fairytales">
 						<li>
 							<h3>${fairytales.fairy_name}</h3>
 							<div class="bb-bookblock">
-								
 								<c:forEach begin="1" end="${fairytales.fairy_chapter}" step="1" varStatus="status" >
-									${status.current}
 									<c:set var="ck" value="ok"/>
 									<c:forEach items="${chapterList}" var="chapter">
 										<c:if test="${fairytales.fairy_pk == chapter.fairy_pk && chapter.chapter == status.current}">
 											<div class="bb-item">
-											<a href="#"><img src="images/learningPage/이상한 나라의 앨리스2.png" alt="${status.current}" /></a>
+											<a href="editor_player?ft=${fairytales.fairy_pk}&chap=${chapter.chapter}&qt=${fairy_code == 'jp' ? 1 : 2 }" onClick="window.open(this.href, '', 'width=1120, height=630, top=30%,left=30%'); return false;"><img src="${chapter.mainImg}" style="width: 100%;height: 100%;" alt="${fairytales.fairy_name} 챕터${status.current}" /></a>
 											</div>
+											<c:set var="ck" value="no"/>
 										</c:if>
-										<c:set var="ck" value="no"/>
 									</c:forEach>
-									<c:if test="${ck == 'ok' }">
+									<c:if test="${ck eq 'ok'}">
 										<div class="bb-item">
-										<a href="#"><img src="images/learningPage/신데렐라2.png" alt="${status.current}" /></a>
+										<img src="images/ready.png" style="width: 100%;height: 100%;" alt="준비중입니다." />
 										</div>
 									</c:if>
 								</c:forEach>
-								<!-- <div class="bb-item">
-									<a href="#"><img src="images/learningPage/이상한 나라의 앨리스1.png" alt="image01" /></a>
-								</div>
-								<div class="bb-item">
-									<a href="#"><img src="images/learningPage/이상한 나라의 앨리스2.png" alt="image02" /></a>
-								</div>
-								<div class="bb-item">
-									<a href="#"><img src="images/demo3/3.jpg" alt="image03" /></a>
-								</div> -->
 							</div>
 							<nav>
-								<span class="bb-current"></span> <span></span> <span></span> <span></span>
+								<span class="bb-current"></span>
+								<c:forEach begin="1" end="${fairytales.fairy_chapter-1}" step="1" varStatus="status" >
+								<span></span>
+								</c:forEach>
 							</nav>
 						</li>
 					</c:forEach>

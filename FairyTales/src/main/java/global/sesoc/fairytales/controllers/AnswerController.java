@@ -153,6 +153,8 @@ public class AnswerController {
 		
 		String answer_list = answer_repository.getAnswer_one(ss);
 		
+		System.out.println("answer_list : " + answer_list);
+		
 		int first_num = Integer.parseInt(st[st.length-4]);
 		int first_answer = Integer.parseInt(answer_list)%10;
 		

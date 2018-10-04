@@ -4,7 +4,7 @@ package global.sesoc.fairytales.dto;
 public class Fairytales {
 	private Integer	fairy_pk;			//동화번호
 	private String	fairy_name;			//동화이름
-	private String	fairy_code;			//01:IT	02:일본어
+	private String	fairy_code;			//cd:IT	jp:일본어
 	private Integer	fairy_chapter;		//최대챕터수
 	private String	fairy_position;		//물리적위치
 	private Integer	fairy_level;		//1초급2중급3고급
