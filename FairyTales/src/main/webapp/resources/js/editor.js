@@ -1,17 +1,27 @@
-// 선택된 오브젝트
+// 選択しているElement
 var selectTarget;
-// 움직임 클릭 체크
+
+// クリック イベント チェック
 var ckMovement = false;
-// 어떤 키가 입력되고 있는지 체크
+
+// 連続した入力チェック
 var keydownSet;
-// 키 이동 간격
+
+// Element移動間隔
 var keyAniVal;
-// 컨트롤 눌러있는지 유무
+
+// CtrlとShift の Click チェック
 var ctrlSet = false;
 var shiftSet = false; 
-// 오브젝트 배열(Json)
+
+// 童話を構成しているオブジェクト(Json)
 var objList = [];
-// 챕터 screen 의 집합, 챕터 대표 이미지, 총 레이어 수 *레이어 삭제시 관련된 정보 모두 삭제
+
+// 童話のチャプター
+// screen : 個々の場面  < scene : 画面を構成するシーン
+// background : 背景
+// mainImg : チャプターの代表画面
+// maxLayer : レイヤーの総数			** レイヤーはDivにZ-index属性を付与して具現しました。** レイヤー == Divと考えても大丈夫です。
 var chapter = {
 				  "screen"	: []
 				, "background" : null
@@ -19,155 +29,184 @@ var chapter = {
 				, "maxLayer": 1
 			  };
 
-// 보기 배열
+// 問題の選択項目
 var exampleBox = [];
-// 정답 배열
+// 問題の正解
 var anwserBox = [];
-/*
- * 
- * var tAnwser = {
-				"sceneNum" : ""
-				"answer"
-				
-			 };
-*/
-// 이전 width
-var oldWidth;
-var fPercent;
-// 마우스 위치
+
+// マウスの位置
 var mouseX = 0;
 var mouseY = 0;
+
+// Elementサイズ調節のための変更前の値
 var xWPointOld = 0;
 var yHPointOld = 0;
-// 선택된 scene
+
+// 選択している scene Element
 var sScene;
-//***********************************************************************************//
+
 $(document).ready(function(){
-	console.log("hello world");
-	/* console 목록
-	console.log("https://developer.mozilla.org/ko/docs/Web/API/Console");
-	//console.table();
-	console.time();
-	//console.timeStamp();
-	console.timeEnd();
-	console.trace();
-	console.warn("warn");
-	console.error("error");
-	console.assert(false);
-	console.count();
-	console.count();
-	var d = {"11":"22"};
-	console.dir(d);
-	*/
+	/** テキストと問題を追加するポップアップ **/
+	$('.btn-popup').click(function(){
+		var $href = $(this).attr('href');
+		layer_popup($href,$(this));
+		return false;
+	});
+	//問題の項目追加
+	$("#examplePlus").on("click",function(){
+		if($(".example").length < 3){
+			$("#exampleBase").append("<input class='example' type='text'>");
+		}else{
+			alert("너무 많습니다.");
+		}
+		return false;
+	});
+	//問題の項目削除
+	$("#exampleMinus").on("click",function(){
+		if($(".example").length > $(".anwser").length){
+			$(".example").last().remove();
+		}else{
+			alert("정답보다 적을 수는 없습니다.");
+		}
+		return false;
+	});
 	
-	//첫 챕터 넣기;
+	//テキストと問題を区分します。
+	$("#qOnOff").on("click",function(){
+		if($("#qOnOff").prop("checked")){
+			$("#questionBase").show();
+		}else{
+			$("#questionBase").hide();
+		}
+	});
+	
+	//ポップアップ閉めます。
+	$("#layer").find('#btnClose').click(function(){
+		closePop();
+		return false;
+	});
+	
+	//テキストと問題を同録します。
+	$("#layer").find('#addObjTxtBtn').click(function(){
+		if(addObjTxt()){
+			closePop();
+		};
+		return false;
+	});
+	
+	//テキストと問題を消します。
+	$("#layer").find('#btnDelet').click(function(){
+		var objId = $("#popObjID").val();
+		objDelete(objId);
+		
+		$(anwserBox).each(function(index,anwsers){
+			if(anwsers.obj_id == objId){
+				anwserBox.splice(index,1);
+			}
+		});
+		
+		$(exampleBox).each(function(index,example){
+			if(example.objId == objId){
+				exampleBox.splice(index,1);
+			}
+		});
+		
+		//選択初期化
+		selectClear();
+		//sceneのリスト再設定
+		sceneViewList();
+		//objectのリスト再設定
+		objViewList();
+		//画面を再設定
+		changeScreen();
+		//ポップアップ閉めます
+		closePop();
+		return false;
+	});
+	/******************************************/
+	
+	//初のチャプターを設定します。
 	screenSet();
-	/*fairyTale init*/
+	//z indexを設定します。
 	fIndexSet();
+	//画面サイズを再調整します。
 	resize();
+	
+	//技本レイヤー 設定
 	$(".fairyTale").css(
 		{
 			  "background-size": "cover"
-			, "background" : "url('./images/backimg.png')"
+			//, "background" : "url('./images/backimg.png')"
 		}
 	);
+	//技本レイヤー background-size設定
 	var size = $(".fairyTale").width() + "px " + $(".fairyTale").height() + "px"
 	$(".fairyTale").css( "background-size", size);
 	
-	
-	//z-index set
-	/*/fairyTale init*/
-	
-	//move object
+	//マウス制御
 	$(".fairyTale").mousemove(function(events){
-		//select check
-		
-		//클릭하고 있는 상태라면 움직임
+		//クリックしている場合は移動
 		if(ckMovement){
-		
-			//크기 조절
-			if(ctrlSet || shiftSet){
+			//サイズ調節
+			if(shiftSet){
 				var xWPoint = events.pageX - $(selectTarget).offset().left - (mouseX);
 				var width = parseInt($(selectTarget).width()) + parseInt(xWPoint - xWPointOld);
+				var yHPoint = events.pageY - $(selectTarget).offset().top - (mouseY);
+				var height = parseInt($(selectTarget).height()) + parseInt(yHPoint - yHPointOld);
+				$(selectTarget).css(
+					{
+						  "width"		: width
+						, "height"		: height
+						, "word-break"	: "break-all"
+					}
+				);
+				yHPointOld = yHPoint;
 				
-				if(shiftSet){
-					var yHPoint = events.pageY - $(selectTarget).offset().top - (mouseY);
-					var height = parseInt($(selectTarget).height()) + parseInt(yHPoint - yHPointOld);
-					//var fontSize = $(selectTarget).css("font-size") ;
-					
-					console.log("white-space : "+ $(selectTarget).css("white-space"));
-					//유동적 증감
-					$(selectTarget).css(
-						{
-							  "width"		: width
-							, "height"		: height
-							//, "white-space"	: "normal"
-							, "word-break"	: "break-all"
-						}
-					);
-					yHPointOld = yHPoint;
-				}else{
-					var height = parseInt($(selectTarget).height()) + parseInt(xWPoint - xWPointOld);
-					/*
-					var selectHeight = $(selectTarget).height();
-					var selectWidth = $(selectTarget).width();
-					var selectHeight = selectHeight + (selectHeight * 0.01);
-					var selectWidth = selectWidth + (selectWidth * 0.01);
-					*/
-					
-					//비율증감
-					$(selectTarget).css(
-						{
-							  "width"		: width
-							, "height"		: height
-							//, "white-space"	: "normal"
-							, "word-break"	: "break-all"
-						}
-					);
-				}
-				
+				//選択案内ボックスサイズ調節
 				$("#fElementTarget").css(
 					{
 						  "width" : $(selectTarget).width()
 						, "height": $(selectTarget).height()
-						//, "white-space"	: "normal"
 						, "word-break"	: "break-all"
 					}
 				);
 			
 				xWPointOld = xWPoint;
 				
-				//객체 크기 setting
+				//サイズ情報保存
 				setWHLT(selectTarget);
 				return false;
 			}
 			
-			//fairyTale
+			// 技本レイヤーの座標をセーブします。
 			var FT = getBTWN(".fairyTale");
 			
-			// check element
+			// 選択されたレイヤーで対象を探します。
 			if((FT.TWMin <= events.pageX && FT.TWMax >= events.pageX)
 				&& (FT.THMin <= events.pageY && FT.THMax >= events.pageY)){
-				
-				//그림중앙
-				//var x = $(selectTarget).width() / 2;
-				//var y = $(selectTarget).height() / 2;
 				
 				//click point
 				var xPoint = events.pageX - FT.$target.offset().left - (mouseX);
 				var yPoint = events.pageY - FT.$target.offset().top - (mouseY);
 				
-				//movement
+				//対象を移動します。
 				fMovement(xPoint,yPoint,0);
 				return false;
 			}else{
+				//選択初期化
 				selectClear();
 				return false;
 			};
 		};
 	});
 	
-	// %%체크
+	// 問題に正答を入れ場合％％を利用してエリアを区分します。
+	/*
+	例
+	問題:今日は%%です。
+	正答:日曜日
+	項目:日曜日,月曜日,火曜日
+	*/
 	$("#objText").on("change", function(){
 		var content = $("#objText").val();
 		var check = content.match(/%%/g);
@@ -205,69 +244,55 @@ $(document).ready(function(){
 	});
 	
 	$(".fairyTale").mouseup(function(events){
-		//선택해제
-		//클릭하고 있는 상태였다면 해지
+		//選択解約
 		if(ckMovement){
 			ckMovement = false;
-			//selectClear();
 			return false;
 		}
 	});
 	
-	//chapterPrev
-	$("#chapterPrev").on("click",chapterPrev);
-	$("#chapterNext").on("click",chapterNext);
-	
-	//sceneSet scene 저장
+	//scene情報保存
 	$("#sceneSet").on("click",sceneSet);
 	
-	//sceneSet scene 저장
+	//童話情報保存
 	$("#saveChapterBtn").on("click",saveChapterBtn);
 	
 	//layer radio event
 	$("input[name='layer']").on("click",selectClear);
 	
-	//layer radio event
+	//画面を再設定
 	$("#screensView").on("change",changeScreen);
 	
 	//img file upload click
 	$("#imgFileBtn").on("click",function(){$("#fileUp").click();});
 	
-	//Back Ground file upload click
+	//BackGround file upload click
 	$("#BGIBtn").on("click",function(){$("#backGroundUp").click();});
 	
 	//Chapter file upload click
 	$("#CIBtn").on("click",function(){$("#ChapterUp").click();});
 	
-	//스크린 추가
+	//Screen追加
 	$("#addScreen").on("click",addScreen);
 	
-	//스크린 삭제
+	//Screen削除
 	$("#delScreen").on("click",delScreen);
 	
-	//scene을 다음 스크린에 복사
+	//sceneを次のscreenにコピーします。
 	$("#cNextScreen").on("click",cNextScreen);
 	
-	//select object
+	//Elementを選択する
 	$(".fairyTale").mousedown(function(events){
 		$($(".move.group"+layerSelector()).children().get().reverse()).each(function(index,element){
 			
-			//크기 변경 변수 초기화
+			//初期化
 			xWPointOld = 0;
 			yHPointOld = 0;
 			
-			//선택해지 있어야 하나?
-			/*
-			if(ctrlSet){
-				selectClear();	
-				return false;
-			}
-			*/
-			
-			//element
+			//elementの座標をセーブします。
 			var ele = getBTWN(element);
 			
-			//마우스 위치 계산
+			// マウス座標
 			mouseX = events.pageX - ele.$target.offset().left;
 			mouseY = events.pageY - ele.$target.offset().top;
 			
@@ -290,9 +315,9 @@ $(document).ready(function(){
 		});
 	});
 	
-	//add new layer
+	//新しいレイヤー登録
 	$("#addLayer").on("click",layerAdd);
-	
+	//レイヤー削除
 	$("#delLayer").on("click", function(){
 		var lastNum = $(".move").length;
 		
@@ -323,10 +348,10 @@ $(document).ready(function(){
 		return false;
 	});
 	
-	//오브젝트 사용
+	//選択したオブジェクトをスクリーンで使用
 	$("#addObjectBtn").on("click", addObject);
 	
-	//object delete
+	//オブジェクト削除
 	$("#objCheckBtn").on("click", objCheck);
 	
 	//keypad set
@@ -371,13 +396,6 @@ $(document).ready(function(){
 			}
 			
 			switch(keydown){
-				//keypad
-				/*	폰트 크기
-				case 107 :
-					var fontSize = Number.parseInt($(selectTarget).css("font-size"));
-					$(selectTarget).css("font-size",(fontSize + 1) + "px").css("white-space","normal");
-					break;
-				 */
 				case 104 : fMovement("+=0","-="+keyAniVal,0);
 					break;
 				case 98 : fMovement("+=0","+="+keyAniVal,0);
@@ -395,9 +413,6 @@ $(document).ready(function(){
 				case 97 : fMovement("-="+keyAniVal,"+="+keyAniVal,0);
 					break;
 				case 101 : 
-					//var centerX = $(".fairyTale").offset().left + (($(".fairyTale").width() / 2) - ($(selectTarget).width() / 2));
-					//var centerY = $(".fairyTale").offset().top + (($(".fairyTale").height() / 2) - ($(selectTarget).height() / 2));
-					
 					var centerX = (($(".fairyTale").width() / 2) - ($(selectTarget).width() / 2));
 					var centerY = (($(".fairyTale").height() / 2) - ($(selectTarget).height() / 2));
 					
@@ -406,10 +421,9 @@ $(document).ready(function(){
 				case 46 :
 					//Delete key
 					sceneDelete(selectTarget);
-					
-					//selectTarget.remove();
+					//選択初期化
 					selectClear();
-					//object view
+					//objectのリスト再設定
 					objViewList();
 					break;
 			}
@@ -435,11 +449,11 @@ $(document).ready(function(){
 		}
 	});
 	
-	//Json데이터 넣기
+	//昔のデーターがあったらロードします。
 	initJson();
 });
 //***********************************************************************************//
-//레이어 추가
+//新しいレイヤー登録
 function layerAdd(){
 	//레이어 생성
 	var move = document.createElement("div");
@@ -450,10 +464,10 @@ function layerAdd(){
 	
 	$(".fairyTale").append(move,effect);
 	
-	//총레이어 수 업데이트
+	//レイヤーの総数 upload
 	chapter.maxLayer = newNum;
 	
-	//라디오 버튼 생성
+	//ラジオボタン生成
 	var newLayer = document.createElement("input");
 	var span = document.createElement("span");
 	$(newLayer).attr("type","radio");
@@ -463,7 +477,7 @@ function layerAdd(){
 	$(span).append("&nbsp;Layer"+newNum+"&nbsp;");
 	$(".layerSelector").append(span);
 	
-	resize();
+	//resize();
 	fIndexSet();
 	
 	//selectClear event
@@ -472,16 +486,14 @@ function layerAdd(){
 	//green box
 	greenBox();
 }
-//스크린 변경
+
+//Screen 再表現
 function changeScreen(){
 	var screenNum = screenSelector();
 	console.log("screenNum : " + screenNum);
 	//layer 전부 초기화
 	$(".layer").html("");
 	$($(chapter.screen).get(screenNum).scene).each(function(index,scene){
-		//console.log(screenNum + ": scene : " + JSON.stringify(scene));
-		//다시그려야함
-		//scene.objId
 		$(objList).each(function(index,obj){
 			if(obj.objId == scene.objId){
 				if(obj.objType == "img"){
@@ -489,23 +501,16 @@ function changeScreen(){
 				}else if(obj.objType == "text" ||  obj.objType == "question"){
 					addTxtObject(obj.obj,obj.objType,scene);
 				};
-				/*
-				addImgObject(obj.obj,null,obj.view,obj.objId);
-				addTxtObject(obj.obj,question,null,obj.objId);
-				*/
 			};
 		});
 	});
-	//스크린 번호
-	//$("#screensView").html("Screens " + (Number(screenNum) + 1));
-	//선택 초기화;
+	//選択初期化
 	selectClear();
-	//뷰리스트
+	//sceneのリスト再設定
 	sceneViewList();
-	
 };
 
-//div 범위
+//divの座標
 function getBTWN(target){
 	var $target = $(target);
 	// target width
@@ -519,26 +524,19 @@ function getBTWN(target){
 	return {$target,TWMin,TWMax,THMin,THMax};
 }
 
-//add object 
-// 오브젝트 사용
+//オブジェクト 追加
 function addObject(){
-	console.log("!!asdasdas");
 	$(".objCheck").each(function(index,check){
 		if($(check).prop('checked')){
-			console.log("!!check " + $(check).val());
 			$(objList).each(function(index,obj){
 				if(obj.objId == $(check).val()){
-					console.log("!!obj " + obj);
 					switch(obj.objType){
 						//keyAniVal reSet
 						case "img" :
 							console.log("!!img");
-							//addImgObject (file,scene,view,objId)
 							addImgObject(obj.obj,null,obj.view,obj.objId);
 							break;
 						case "text" : case "question" :
-							console.log("!!text");
-							//addTxtObject(value,question,scene,objId)
 							var question = false;
 							if(obj.objType == "question"){
 								question = true;
@@ -550,13 +548,13 @@ function addObject(){
 			});
 		};
 	});
-	//view set
+	//objectのリスト再設定
 	objViewList();
 	
 	return false;
 };
 
-//selected obj clear
+//選択初期化
 function selectClear(){
 	selectTarget = null;
 	$("#fElementTarget").remove();
@@ -570,7 +568,7 @@ function selectClear(){
 	//green box
 	greenBox();
 }
-//오브젝트 삭제
+//オブジェクト削除確認
 function objCheck(){
 	var tf = confirm("정말 삭제하시겠습니까? 관련된 모든 객체는 삭제됩니다.");
 	if(tf){
@@ -579,18 +577,18 @@ function objCheck(){
 				objDelete($(check).val());
 			};
 		});
-		//선택 초기화;
+		//選択初期化
 		selectClear();
-		//뷰리스트
+		//sceneのリスト再設定
 		sceneViewList();
-		//object view
+		//objectのリスト再設定
 		objViewList();
-		//다시그려
+		//画面を再設定
 		changeScreen();
 	};
 	return false;
 };
-//object delete
+//オブジェクト削除
 function objDelete(delObjNum){
 	$(chapter.screen).each(function(index,screen){
 		var maxScene = screen.scene.length - 1;
@@ -632,7 +630,7 @@ function objDelete(delObjNum){
 	});
 }
 
-//selected group green box
+//選択可能なオブジェクト表示
 function greenBox(element){
 	//초기화
 	$(".fEdit").html("");
@@ -656,11 +654,8 @@ function greenBox(element){
 	});
 }
 
-//movement 객체 움직임
+//対象を移動します
 function fMovement(xPoint,yPoint,speed) {
-	//img setting
-	//$(selectTarget).css("position", "absolute");
-	
 	$(selectTarget).animate({ "left" : xPoint+"px" , "top" : yPoint+"px" }, speed);
 	$("#fElementTarget").animate({ "left" : xPoint+"px" , "top" : yPoint+"px" }, speed);
 	
@@ -668,7 +663,7 @@ function fMovement(xPoint,yPoint,speed) {
 	setWHLT(selectTarget);
 }
 
-//layerSelector
+//選択されたレイヤー数字リターン
 function layerSelector(){
 	var groupNum = 0;
 	$("input[name='layer']").each(function(index,layer){
@@ -683,22 +678,8 @@ function layerSelector(){
 $(window).resize(resize);
 function resize() {
 
-	//기준 비율
-	
+	//基準
 	var wWidth = $("#editTable").width() * 0.75 - 50;
-	//var wWidth = $(window).width() * 0.5 - 50;
-	//var $wHeight = $(window).height() * 0.7 - 50;
-	//console.log("window size: " + $wWidth + " / " + $wHeight);
-	
-	//CSS 미디어 쿼리 사용가능
-	//console.log("배경크기 = w2560 x h1440 >> 1.77778:1");
-	
-	var ff;
-	if(oldWidth != null){
-		fPercent = wWidth / oldWidth;
-		ff = wWidth - oldWidth;
-	}
-	oldWidth = wWidth;
 	
 	// fairyTale view resize set!!
 	$(".fairyTale").css(
@@ -710,10 +691,6 @@ function resize() {
 	var size = $(".fairyTale").width() + "px " + $(".fairyTale").height() + "px"
 	$(".fairyTale").css( "background-size", size);
 	
-	//*layer 통합
-	// move resize set!!
-	// effect resize set!!
-	// fEdit resize set!!
 	$(".layer").css(
 		{
 			  "width" : wWidth 
@@ -722,11 +699,11 @@ function resize() {
 		}
 	);
 	
-	//다시그려
+	//画面を再設定
 	changeScreen();
 };
 
-// z-index set
+//Div（レイヤー）にzindexを設定します。
 function fIndexSet(){
 	$(".move").each(function(index){
 		var gIndex = index + 1;
@@ -768,7 +745,7 @@ function fIndexSet(){
 	});
 };
 
-//image file push
+//imageをServerに登録します。
 function imgFilePut(files,check){
 	//새 이미지
 	var formData = new FormData();
@@ -813,7 +790,7 @@ function imgFilePut(files,check){
 	});
 };
 
-//add image
+//imageを登録します。
 function addImgObject (file,scene,view,objId){
 	
 	var image = new Image();
@@ -854,10 +831,7 @@ function addImgObject (file,scene,view,objId){
 		var layerGroupNum = (scene == null ? layerSelector() : scene.layerNum);
 		var sceneNum ="";
 		if(scene == null){
-			// 기존 scene 정보가 없다면 새로 등록
-			//초기화playAnimateSet(target,screenNum,objId,layerNum,animate,time,latency)
-			//appear 첫번째는 나타나는 이벤트만
-			//두번째 scene에는 이동및 없어지는 이벤트만
+			//scene情報がなければ新たに登録
 			sceneNum = playAnimateSet(this,screenSelector(),objId,layerGroupNum,"fadeIn",0,0);
 		}else{
 			//복사해온 것 sceneNum 지정
@@ -875,18 +849,14 @@ function addImgObject (file,scene,view,objId){
 		greenBox(this);
 		//scene view
 		sceneViewList();
-		//object view
+		//objectのリスト再設定
 		objViewList();
-		console.log("!! 왜 안먹지");
 		//객체 크기 json setting
 		setWHLT(selectTarget);
 	};
-
 };
 
-//object push objList
-/*!! 주의 !! objMaxNum()의 실행 순서에의 해 오류가 발생할 수 있으니
-  마지막에 실행하던가 검증하여 정확히 입력하도록하자 !!*/
+//object push objList ObjectをobjListに登録します。
 function objPush(objType,obj,view){
 	var objId = objMaxNum();
 	objList.push({
@@ -901,15 +871,13 @@ function objPush(objType,obj,view){
 	
 	return objId;
 };
-//챕터
-//chapter{ screen : {{scene,scene}} , {{scene,scene}} }, img }
 
-//장면추가
-//scene push screen
+//scene push screen 
+//screenにsceneを追加
 function playAnimateSet(target,screenNum,objId,layerNum,animate,time,latency){
 	var sceneNum = screenNum + "_" + objId + "_" + sceneMaxNum(screenNum,objId);
 	var scene = {
-					//sceneNumber 스크린번호 _ 오브젝트아이디 _ 스크린에 쌓인 고유번호
+					//sceneNumber スクリーン番号 _ オブジェクトID _ スクリーンに載せられた固有番号
 					  "sceneNum"	: sceneNum
 					//적용 오브젝트
 					, "objId"		: objId
@@ -930,39 +898,10 @@ function playAnimateSet(target,screenNum,objId,layerNum,animate,time,latency){
 				}
 	//새로추가
 	$(chapter.screen).get(screenNum).scene.push(scene);
-	
-	//추가한 screen 다음 screen 존재하는 경우 다음 screen에 scene추가 animate = "fadeOut"으로 추가하자
-	/*
-	var $nextScreen = $(chapter.screen).get(parseInt(screenNum)+1);
-	if($nextScreen != null){
-		//Deep copy *
-		var clone = deepCopy(scene);
-		clone.animate = "fadeOut";
-		$nextScreen.scene.push(clone);
-		//* Deep copy
-	};
-	*/
 	return sceneNum;
 };
 
-//다음 챕터
-function chapterNext(){
-	console.log("다음");
-}
-//이전 챕터
-function chapterPrev(){
-	console.log("이전");
-}
-
-//다음 챕터
-function chapterNext(){
-	console.log("다음");
-}
-//이전 챕터
-function chapterPrev(){
-	console.log("이전");
-}
-//objList objId Max Number 오브젝트의 최대값
+//objList objId Max Number オブジェクトの最大値
 function objMaxNum(){
 	var maxNum = 0;
 	if(objList.length != 0){
@@ -975,14 +914,12 @@ function objMaxNum(){
 	return maxNum;
 };
 
-//screen Max Number 같은 스크린에 같은 오브젝트의 최대값
+//screen Max Number 同じスクリーンに同じオブジェクトの最大値
 function sceneMaxNum(screenNum,objId){
 	var maxNum = 0;
 	if($(chapter.screen).get(screenNum).scene.length != 0){
 		$($(chapter.screen).get(screenNum).scene).each(function(index,scene){
 			var sceneArry = scene.sceneNum.split("_");
-			//스크린번호(0) _ 오브젝트아이디(1) _ 스크린에 쌓인 고유번호(2)
-			//console.log("scene : " + sceneArry[0] + " / "+ sceneArry[1] + " / "+ sceneArry[2]);
 			if(sceneArry[0] == screenNum){
 				if(sceneArry[1] == objId){
 					if(parseInt(sceneArry[2]) >= maxNum){
@@ -995,7 +932,7 @@ function sceneMaxNum(screenNum,objId){
 	return maxNum;
 };
 
-//view div set objList 
+//objectのリスト再設定
 function objViewList(){
 	var putInfo = "";
 	
@@ -1024,7 +961,7 @@ function objViewList(){
 	$("#objList").html(putInfo);
 	
 	if(event){
-		//팝업 클릭 이벤트
+		//ポップアップ·クリック·イベント
 		$('.btn-popup').click(function(){
 			var $href = $(this).attr('href');
 			layer_popup($href,$(this));
@@ -1033,7 +970,7 @@ function objViewList(){
 	}
 };
 
-//add object text
+//テキストと問題を有効性検査と同録と修整します。
 function addObjTxt(){
 	if($("#objText").val().length < 1){
 		alert("글을 입력하세요.");
@@ -1097,7 +1034,7 @@ function addObjTxt(){
 		};
 	
 	}else{
-		//수정
+		//修整
 		objId = $("#popObjID").val();
 		
 		$(objList).each(function(index,obj){
@@ -1160,35 +1097,18 @@ function addObjTxt(){
 		}
 	}
 	
-	//뷰리스트
+	//sceneのリスト再設定
 	sceneViewList();
-	//object view
+	//objectのリスト再設定
 	objViewList();
-	//다시그려
+	//画面を再設定
 	changeScreen();
 	//팝업 닫기
 	closePop();
 	return true;
-	////////여기여기
-	/*
-	$("input[name='object']").each(function(index,object){
-		if($(object).prop('checked')){
-			//Text object
-			if($(object).val() == "text"){
-				addTxtObject($("#objText").val());
-				//add objList
-				objPush("text",$("#objText").val());
-				//view set
-				objViewList();
-			}
-			return false;
-		}
-	});
-	*/
 };
 
-//텍스트 넣기 (문제)
-// add text object
+// add text object　テキストと問題を同録します。
 function addTxtObject(value,question,scene,objId){
 	var span = document.createElement("span");
 	if(scene == null){ // 기본 scene 정보가 없다면
@@ -1254,13 +1174,13 @@ function addTxtObject(value,question,scene,objId){
 	
 	$(".move.group"+layerGroupNum).append(span);
 	
-	//객체 선택
+	//Elementを選択します。
 	selectTarget = span;
 	//green box
 	greenBox(span);
 	//scene view
 	sceneViewList();
-	//object view
+	//objectのリスト再設定
 	objViewList();
 	//객체 크기 json setting
 	setWHLT(span);
@@ -1268,7 +1188,7 @@ function addTxtObject(value,question,scene,objId){
 	return objId;
 }
 
-//선택된 scene
+//scene 情報表示
 function sceneInfoSet(scene){
 	//선택
 	sScene = scene;
@@ -1283,7 +1203,7 @@ function sceneInfoSet(scene){
 	$("#height").val(scene.height);
 }
 
-//입력 scene
+//scene指定
 function sceneSet(){
 	sScene.objId = $("#sObjId").val();
 	sScene.time = $("#sTime").val();
@@ -1299,7 +1219,7 @@ function sceneSet(){
 	greenBox(selectTarget);
 }
 
-//선택된 객체에 scene 정보적용
+//選択されたオブジェクトに scene 情報適用
 function setSScene(targetObj,sceneInfo){
 	var ftWidth		= $(".fairyTale").width();
 	var ftHeigth	= $(".fairyTale").height();
@@ -1316,34 +1236,28 @@ function setSScene(targetObj,sceneInfo){
 }
 
 
-//선택된 화면
+//選択画面番号
 function screenSelector(){
 	var screenNum = $("#screensView").val();
 	return screenNum;
 }
 
-//화면 추가 스크린
-//screens push chapterSet
+//scene追加
 function screenSet(scene){
-	//console.warn("문제 screen을 만들어야함 \n chapter{ screens : [screen : {{scene,scene}} , {{scene,scene}} }, img } \n chapter :" + chapter.size);
-	//var sceneNumber = chapter.length;
 	chapter.screen.push({
 						  "scene"		: scene==null ? [] : scene
-						//, "clickEvent"	: null
 					});
 };
-//Deep copy 복사
-function deepCopy(obj){
-	
 
-	console.log("deepCopy :" + $(obj).length);
-	
+//Deep copy
+function deepCopy(obj){
 	//Deep copy *
 	var clone = JSON.parse(JSON.stringify(obj));
 	return clone;
 	//* Deep copy
 }
-//추가 복사 스크린
+
+//Screen 複写
 function addScreen(){
 	//Deep copy *
 	var clone = deepCopy($(chapter.screen).get(screenSelector()).scene);
@@ -1357,27 +1271,15 @@ function addScreen(){
 	//option 추가;
 	var newNum = $(chapter.screen).length;
 	addTagScreen(newNum);
-	/*라디오 버튼 생성
-	var newLayer = document.createElement("input");
-	var span = document.createElement("span");
-	$(newLayer).attr("type","radio");
-	$(newLayer).attr("name","screen");
-	$(newLayer).val(newNum-1);
-	$(newLayer).on("click",changeScreen);
-	$(newLayer).prop('checked',true);
-	$(span).append(newLayer);
-	$(span).append("스크린"+newNum);
-	$(".screenSelector").append(span);
 	
-	*/
-	//스크린 변경
+	//画面を再設定
 	changeScreen();
 	
 	return false;
 }
-//option태그 추가
+
+//option 追加
 function addTagScreen(newNum){
-	
 	var option = document.createElement("option");
 	$(option).val(newNum-1);
 	$(option).append("Screen "+newNum);
@@ -1385,27 +1287,24 @@ function addTagScreen(newNum){
 	$("#screensView").append(option);
 }
 
-//스크린 삭제
+//screen 削除
 function delScreen(){
 	var length =  $(chapter.screen).length;
 	
 	if(!(length > 1)){alert("최소 하나의 스크린은 존재하여야 합니다.");return false;};
 	var tf = confirm("마지막 스크린을 삭제 합니다.\n관련된 모든 객체는 삭제됩니다.");
 	if(!tf){return false;};
-	
-	
 	chapter.screen.splice(length-1,1);
-	
 	$("#screensView").children("option").last().remove();
 	$("#screensView").children("option").last().prop("selected","selected");
 	
-	//스크린 변경
+	//画面を再設定
 	changeScreen();
 	
 	return false;
 }
 
-//scene을 다음 스크린에 복사
+//sceneを次のscreenにコピーします。
 function cNextScreen(){
 	var sceneNum = null;
 	//선택된 radio 버튼
@@ -1451,11 +1350,11 @@ function cNextScreen(){
 	}
 }
 
-//scene 선택
+//scene 選択
 function changeScene(element){
 	console.log("sceneNum");
-	//objId img 와 radio 구분
-	//selectTarget 선택	
+	//objId img と radio 区分
+	//selectTarget 選択	
 	if($(element).is("img")||$(element).is("span")){
 		selectTarget = element;
 	}else{
@@ -1469,22 +1368,13 @@ function changeScene(element){
 		}); 
 	};
 	
-	//scene 선택
+	//scene 選択
 	$("input[name='scene']").each(function(index,sRadio){
 		if($(sRadio).data("sceneNum") == $(selectTarget).data("sceneNum")){
 			$(sRadio).prop('checked',true);
 			return false;
 		}
 	});
-	
-	//set info 정보넣기
-	//console.log("selectTarget :" + selectTarget + ", screenSelector() :" + screenSelector());
-	//console.log("sceness>>>>>> :" + JSON.stringify($(chapter.screen).get(screenSelector()).scene));
-	//console.log("$(selectTarget).data('objId') : " + $(selectTarget).data("objId")); 
-	//$(selectTarget).data("objId") 아니라 sceneNum 가져와야함
-	//퐁당퐁당 삽입할경우 중간값이 없는 상태에서 objId가 오닌깐 오류남
-	//console.error("오류난다 아 몰라.......... 고쳐라좀"); 고쳤다
-	
 	sceneInfoSet(targetScene($(selectTarget).data("sceneNum")));
 	
 	//children green box;
@@ -1523,7 +1413,7 @@ function sceneViewList(){
 	$("input[name='scene']").on("click",changeScene);
 }
 
-//width height left top setting 객체 크기
+//element サイズ情報
 function setWHLT(target){
 	
 	//데이터 넣기
@@ -1534,23 +1424,14 @@ function setWHLT(target){
 			scene.left		= ($(target).position().left / $(".fairyTale").width() * 100).toFixed(1);
 			scene.top		= ($(target).position().top / $(".fairyTale").height() * 100).toFixed(1);
 			
-			console.log("scene : " + scene);
 			//scene 정보 표시
 			sceneInfoSet(scene);
 			return false;
 		};
 	});
-	/*
-	console.log("=============="+$(target).data("objId")+"============");
-	console.log("width : " + target.width / $(".fairyTale").width());
-	console.log("height : " + target.height / $(".fairyTale").height());
-	console.log("left : " + $(target).position().left / $(".fairyTale").width());
-	console.log("top : " + $(target).position().top / $(".fairyTale").height());
-	console.log("==========================");
-	*/
 }
 
-//sceneNum 조건의 scene 가져오기
+//該当番号のsceneを持ってくる
 function targetScene(sceneNum){
 	var returnScene = null;
 	$($(chapter.screen).get(screenSelector()).scene).each(function(index,scene){
@@ -1562,42 +1443,7 @@ function targetScene(sceneNum){
 	return returnScene;
 }
 
-/*
-function editdata(){
-	//$("#chapter").val(JSON.stringify(chapter));
-	$("#objList").val(objList[0]);
-	console.log("objList[0] : " + JSON.stringify(objList[0]));
-	
-	var form = new FormData(document.getElementById('editForm'));
-	$.ajax({
-				  url		: "./editdata"
-				, method	: "post"
-				, processData: false
-				//, contentType: false
-				, type		: "multipart/mixed"
-				, data		: form
-				//, dataType	: 'text'
-				, contentType	: 'application/json; charset=UTF-8'
-				, success	: function (response) {
-					console.log(response + " : 아리가또네");
-				}
-	});
-}
-
-//submitEdit
-function submitEdit(){
-	$("#chapter").val(JSON.stringify(chapter));
-	//$("#objList").val(objList);
-}
-*/
-
-function jsonView(){
-	$("#chapterJsonView").val(JSON.stringify(chapter));
-	$("#objListJsonView").val(JSON.stringify(objList));
-	$("#exampleBoxJsonView").val(JSON.stringify(exampleBox));
-	$("#anwserBoxJsonView").val(JSON.stringify(anwserBox));
-}
-
+//童話をセーブします。
 function saveFairy(){
 	$("#saveChapter").val(JSON.stringify(chapter));
 	$("#saveObjList").val(JSON.stringify(objList));
@@ -1606,6 +1452,7 @@ function saveFairy(){
 	return true;
 }
 
+// scene削除
 function sceneDelete(target){
 	var scenes = $(chapter.screen).get(screenSelector()).scene; 
 	
@@ -1618,33 +1465,30 @@ function sceneDelete(target){
 	});
 	//타겟 삭제
 	$(target).remove();
-	//뷰리스트
+	//sceneのリスト再設定
 	sceneViewList();
-	//object view
+	//objectのリスト再設定
 	objViewList();
 	//children green box;
 	greenBox();
 }
 
 
-//json set
+//昔の童話をロードします。
 function setJson(chapterJson,objListJson,exampleJson,anwserJson){
 	//오브젝트
 	if(objListJson.length > 0){
 		
-		//objList = JSON.parse(objListJson);
 		objList = objListJson;
-		//object view
+		//objectのリスト再設定
 		objViewList();
 	}
 	//보기
 	if(exampleJson.length > 0){
-		//exampleBox = JSON.parse(exampleJson);
 		exampleBox = exampleJson;
 	}
 	//답변
 	if(anwserJson.length > 0){
-		//anwserBox = JSON.parse(anwserJson);
 		anwserBox = anwserJson;
 	}
 	//챕터
@@ -1666,9 +1510,9 @@ function setJson(chapterJson,objListJson,exampleJson,anwserJson){
 		
 		//green box
 		greenBox();
-		//뷰리스트
+		//sceneのリスト再設定
 		sceneViewList();
-		//다시 그려
+		//画面を再設定
 		changeScreen();
 		//백그라운드
 		var background = "";
@@ -1683,6 +1527,122 @@ function setJson(chapterJson,objListJson,exampleJson,anwserJson){
 	}
 }
 
+//童話をセーブします。
 function saveChapterBtn(){
 	$("#saveFairy").submit();
+}
+
+//ポップアップ設定
+function layer_popup(el,$element){
+	// #layer수행번호
+	if(el.substr(6) == 1){
+		//登録
+		$("#btnDelet").hide();
+		$("#addObjTxtBtn").html('Register');
+		$("#popObjID").val('');
+		$("#objText").val('');
+		$(".anwser").each(function(index,anwser){
+			//전부 삭제
+			$(anwser).remove();
+		});
+		$("#anwserBase").append("<input class='anwser' type='text'>");
+		$(".example").each(function(index,example){
+			//전부 삭제
+			$(example).remove();
+		});
+		$("#exampleBase").append("<input class='example' type='text'>");
+		$("#qOnOff").prop("checked",false);
+		$("#questionBase").hide();
+	}else{
+		//修整
+		$("#btnDelet").show();
+		$("#addObjTxtBtn").html('Modify');
+		$(objList).each(function(index,obj){
+			if(obj.objId == el.substr(7)){
+				$("#objText").val(obj.obj);
+				if(obj.objType == "text"){
+					$("#qOnOff").prop("checked",false);
+					$("#questionBase").hide();
+				}else{
+					$("#qOnOff").prop("checked",true);
+					$("#questionBase").show();
+				}
+			}
+		});
+		
+		$("#popObjID").val(el.substr(7));
+		
+		//全体削除
+		$(".anwser").each(function(index,anwser){
+			$(anwser).remove();
+		});
+		var anwserCheck = true;
+		$(anwserBox).each(function(index,anwsers){
+			if(anwsers.obj_id == el.substr(7)){
+				anwserCheck = false;
+				console.log(anwsers.answer);
+				var anwsplit = anwsers.answer.split("_");
+				console.log(anwsplit.length);
+				$(anwsplit).each(function(index,answer){
+					console.log(answer);
+					$("#anwserBase").append("<input class='anwser' type='text' value="+answer+">");
+				})
+			}
+		});
+		if(anwserCheck){
+			$("#anwserBase").append("<input class='anwser' type='text'>");
+		}
+		
+		//全体削除
+		$(".example").each(function(index,example){
+			$(example).remove();
+		});
+		var exampleCheck = true; 
+		$(exampleBox).each(function(index,example){
+			if(example.objId == el.substr(7)){
+				exampleCheck = false;
+				if(example.answer0){
+					$("#exampleBase").append("<input class='example' type='text' value="+example.answer0+">");
+				}
+				if(example.answer1){
+					$("#exampleBase").append("<input class='example' type='text' value="+example.answer1+">");
+				}
+				if(example.answer2){
+					$("#exampleBase").append("<input class='example' type='text' value="+example.answer2+">");
+				}
+			}
+		});
+		
+		if(exampleCheck){
+			$("#exampleBase").append("<input class='example' type='text'>");
+		}
+	}
+	
+	var $el = $(el.substr(0,6));				//레이어의 id를 $el 변수에 저장
+	var isDim = $el.prev().hasClass('dimBg');	//dimmed 레이어를 감지하기 위한 boolean 변수
+	
+	isDim ? $('.dim-layer').fadeIn() : $el.fadeIn();
+	
+	var  $elWidth  = $el.outerWidth()
+	  	,$elHeight = $el.outerHeight()
+	  	,docWidth  = $(document).width()
+	  	,docHeight = $(document).height();
+	
+	// 画面の中央にレイヤーを示す
+	if ($elHeight < docHeight || $elWidth < docWidth) {
+	    $el.css({
+	    	  marginTop : (-$elHeight/2)-55
+	    	, marginLeft: -$elWidth/2
+	    })
+	} else {
+		$el.css({top: 0, left: 0});
+	}
+	
+	
+};
+
+//ポップアップ閉めます。
+function closePop(){
+	var isDim = $("#layer").prev().hasClass('dimBg');	//dimmed 레이어를 감지하기 위한 boolean 변수
+	isDim ? $('.dim-layer').fadeOut() : $("#layer").fadeOut();
 }
