@@ -31,7 +31,7 @@
 <link rel="apple-touch-icon-precomposed"
 	href="images/ico/apple-touch-icon-57-precomposed.png">
 
-<!-- 팝업 css -->
+<!-- ポップアップ css -->
 <style type="text/css">
 	b {
 		color : #a5732a;
@@ -91,30 +91,18 @@
 	  padding-top: 35px;
 	}
 </style>
-<!-- 팝업 css -->
+<!-- ポップアップ css -->
 
-<!-- editor css -->
+<!-- editor css // -->
 <style>
 	.fairyTale{
 		border:1px solid #a5732c;
 	}
-	/* 
-	.move{
-		border:1px solid rad;
-	}
-	.effect{
-		border:1px solid blue;
-	}
-	.fEdit{
-		border:1px solid green;
-	}
-	 */
 </style>
 
 <script src="resources/jquery-3.3.1.min.js"></script>
 <script src="resources/js/editor.js"></script>
-
-<!-- editor css -->
+<!-- // editor css -->
 
 </head>
 <body>
@@ -218,7 +206,7 @@
 						<div class="user-data m-b-30">
 							<div class="sidebar blog-sidebar">
 								<div class="sidebar-item  recent">
-								<%-- 본문위치 --%>
+<%-------------------------------- 本文 // ------------------------------------%>
 									<table id="editTable" class="table" style="table-layout:fixed">
 										<thead>
 											<tr>
@@ -237,7 +225,6 @@
 											</tr>
 											<tr>
 												<td colspan="2">
-												<!-- <i class="fa fa-film"> <span id="screensView">Screens 1</span></i> -->
 												<i class="fa fa-film"></i>
 												<select id="screensView" name="screen">
 													<option value="0">Screen 1</option>
@@ -355,7 +342,7 @@
 											</tr>
 										</tbody>
 									</table>
-								<%-- /본문위치 --%>
+<%-------------------------------- // 本文 ------------------------------------%>
 								</div>
 							</div>
 						</div>
@@ -410,7 +397,7 @@
 			</div>
 		</div>
 	</footer>
-	<!-- 팝업 HTML -->
+<!--------------- ポップアップ HTML // --------------->
 	<div class="dim-layer">
 	    <div class="dimBg"></div>
 	    <div id="layer" class="pop-layer">
@@ -467,7 +454,7 @@
 	        </div>
 	    </div>
 	</div>
-	<!-- /팝업 HTML -->
+<!--------------- // ポップアップ HTML --------------->
 	
 	<!--/#footer-->
 	<script type="text/javascript" src="js/jquery.js"></script>
@@ -476,7 +463,6 @@
 	<script type="text/javascript" src="js/wow.min.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
 	
-	<!-- 팝업 스크립트 -->
 	<script type="text/javascript">
 		//昔の童話をロードします。
 		function initJson(){

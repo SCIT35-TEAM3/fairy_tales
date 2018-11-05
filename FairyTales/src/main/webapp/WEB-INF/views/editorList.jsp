@@ -31,7 +31,7 @@
 <link rel="apple-touch-icon-precomposed"
 	href="images/ico/apple-touch-icon-57-precomposed.png">
 
-<!-- 팝업 css -->
+<!-- ポップアップ css -->
 <style type="text/css">
 	.pop-layer .pop-container {
 	  padding: 20px 25px;
@@ -83,7 +83,7 @@
 	  line-height: 25px;
 	}
 </style>
-<!-- 팝업 css -->
+<!-- ポップアップ css -->
 
 </head>
 <body>
@@ -93,13 +93,6 @@
 			<div class="row">
 				<div class="col-sm-12 overflow">
 					<div class="social-icons pull-right">
-						<!-- <ul class="nav nav-pills">
-                            <li><a href=""><i class="fa fa-facebook"></i></a></li>
-                            <li><a href=""><i class="fa fa-twitter"></i></a></li>
-                            <li><a href=""><i class="fa fa-google-plus"></i></a></li>
-                            <li><a href=""><i class="fa fa-dribbble"></i></a></li>
-                            <li><a href=""><i class="fa fa-linkedin"></i></a></li>
-                        </ul> -->
 					</div>
 				</div>
 			</div>
@@ -187,6 +180,7 @@
 						<div class="user-data m-b-30">
 							<div class="sidebar blog-sidebar">
 								<div class="sidebar-item  recent">
+<%-------------------------------- 本文 // ------------------------------------%>
 									<h3>동화 리스트</h3>
 									<table class="table text-center">
 										<thead>
@@ -244,34 +238,7 @@
 									</div>
 									<c:if test="${sessionScope.user_level eq '1'}">
 									</c:if>
-									<%--<<<페이징>>>
-									<div class="blog-pagination">
-										<ul class="pagination">
-											<li><a
-												href="board_1to1?currentPage=${navi.currentPage - navi.pagePerGroup}&searchItem=${searchItem}&searchWord=${searchWord}">◁</a></li>
-											<li><a
-												href="board_1to1?currentPage=${navi.currentPage-1}&searchItem=${searchItem}&searchWord=${searchWord}">◁</a></li>
-
-											<c:forEach var="page" begin="${navi.startPageGroup}"
-												end="${navi.totalPageCount}">
-
-												<c:if test="${page==currentPage}">
-													<li class="active">${page}</li>&nbsp;
-												</c:if>
-
-												<c:if test="${page!=currentPage}">
-													<li><a
-														href="board_1to1?currentPage=${page}&searchItem=${searchItem}&searchWord=${searchWord}">${page}
-													</a></li>&nbsp;
-												</c:if>
-											</c:forEach>
-											<li><a
-												href="board_1to1?currentPage=${navi.currentPage+1}&searchItem=${searchItem}&searchWord=${searchWord}">▷</a></li>
-											<li><a
-												href="board_1to1?currentPage=${navi.currentPage+navi.pagePerGroup}&searchItem=${searchItem}&searchWord=${searchWord}">▷▷</a></li>
-										</ul>
-									</div>
-									--%>
+<%-------------------------------- // 本文 ------------------------------------%>
 								</div>
 							</div>
 						</div>
@@ -328,7 +295,7 @@
 			</div>
 		</div>
 	</footer>
-	<!-- 팝업 HTML -->
+<!--------------- ポップアップ HTML // --------------->
 	<div class="dim-layer">
 	    <div class="dimBg"></div>
 	    <div id="layer" class="pop-layer">
@@ -391,7 +358,7 @@
 	        </div>
 	    </div>
 	</div>
-	<!-- /팝업 HTML -->
+<!--------------- // ポップアップ HTML --------------->
 	
 	<!--/#footer-->
 	<script type="text/javascript" src="js/jquery.js"></script>
@@ -400,7 +367,7 @@
 	<script type="text/javascript" src="js/wow.min.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
 	
-	<!-- 팝업 스크립트 -->
+	<!-- ポップアップ 스크립트 // -->
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$('.btn-popup').click(function(){
@@ -443,7 +410,7 @@
 			  	,docWidth  = $(document).width()
 			  	,docHeight = $(document).height();
 			
-			// 화면의 중앙에 레이어를 띄운다.
+			// 中央に出力
 			if ($elHeight < docHeight || $elWidth < docWidth) {
 			    $el.css({
 			    	  marginTop : -$elHeight/2
@@ -469,7 +436,7 @@
 			});
 		};
 		
-		//저장 수정
+		//貯蔵 / 修整
 		function insertFt(){
 			var fpk	= $("#fpk").val();
 			var flevel = $("#flevel").val();
@@ -492,7 +459,7 @@
 			});
 		}
 		
-		//삭제
+		//削除
 		function deleteFt(){
 			var fpk	= $("#fpk").val();
 			if(fpk == ''){
@@ -512,5 +479,6 @@
 			});
 		}
 	</script>
+	<!-- // ポップアップ 스크립트 -->
 </body>
 </html>

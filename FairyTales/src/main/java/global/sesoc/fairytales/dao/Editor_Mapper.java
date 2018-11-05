@@ -7,30 +7,30 @@ import global.sesoc.fairytales.dto.Fairytales;
 import global.sesoc.fairytales.dto.Question;
 
 /**
- * 동화
+ * 童話
  * @author Hyunil
  *
  */
 public interface Editor_Mapper {
 	
-	//동화 넣기
+	// 童話 登録
 	public int insert_editor(Fairytales fairytales);
-	//동화 가져오기 전체
+	// 童話 全体ロード
 	public List<Fairytales> selectFairytales();
-	//동화 가져오기
+	// 童話 ロード
 	public Fairytales selectFairytales(Fairytales fairy_pk);
-	//동화 수정
+	// 童話 修整
 	public int update_editor(Fairytales fairytales);
-	//동화 삭제
+	// 童話 削除
 	public int delete_editor(Integer fairy_pk);
-	//문제 삭제
+	// 問題 削除
 	public int delete_question(Question question);
-	//문제 삽입
+	// 問題 登録
 	public int insert_question(Question question);
-	//문제 수정
+	// 問題 修整
 	public int update_question(Question question);
 	
-	//고급동화 가져오기
+	//童話ロードTestコード
 	public List<Fairytales> selectFairytalesC3();
 	
 }

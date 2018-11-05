@@ -31,60 +31,6 @@
 <link rel="apple-touch-icon-precomposed"
 	href="images/ico/apple-touch-icon-57-precomposed.png">
 
-<!-- 팝업 css -->
-<style type="text/css">
-	.pop-layer .pop-container {
-	  padding: 20px 25px;
-	}
-	
-	.pop-layer {
-	  display: none;
-	  position: absolute;
-	  top: 50%;
-	  left: 50%;
-	  width: 410px;
-	  height: auto;
-	  background-color: #fff;
-	  border: 5px solid #a5732c;
-	  z-index: 10;
-	}
-	
-	.dim-layer {
-	  display: none;
-	  position: fixed;
-	  _position: absolute;
-	  top: 0;
-	  left: 0;
-	  width: 100%;
-	  height: 100%;
-	  z-index: 100;
-	}
-	
-	.dim-layer .dimBg {
-	  position: absolute;
-	  top: 0;
-	  left: 0;
-	  width: 100%;
-	  height: 100%;
-	  background: #000;
-	  opacity: .5;
-	  filter: alpha(opacity=50);
-	}
-	
-	.dim-layer .pop-layer {
-	  display: block;
-	}
-	
-	a.btn-layer {
-	  display: inline-block;
-	  height: 30px;
-	  padding: 0 14px 0;
-	  font-size: 13px;
-	  line-height: 25px;
-	}
-</style>
-<!-- 팝업 css -->
-
 </head>
 <body>
 	<!--header-->
@@ -93,13 +39,6 @@
 			<div class="row">
 				<div class="col-sm-12 overflow">
 					<div class="social-icons pull-right">
-						<!-- <ul class="nav nav-pills">
-                            <li><a href=""><i class="fa fa-facebook"></i></a></li>
-                            <li><a href=""><i class="fa fa-twitter"></i></a></li>
-                            <li><a href=""><i class="fa fa-google-plus"></i></a></li>
-                            <li><a href=""><i class="fa fa-dribbble"></i></a></li>
-                            <li><a href=""><i class="fa fa-linkedin"></i></a></li>
-                        </ul> -->
 					</div>
 				</div>
 			</div>
@@ -155,10 +94,8 @@
 							<li><a href="login ">Login</a></li>
 							<li><a href="join ">Join</a></li>
 						</c:if>
-
 					</ul>
 				</div>
-
 			</div>
 		</div>
 	</header>
@@ -187,7 +124,7 @@
 						<div class="user-data m-b-30">
 							<div class="sidebar blog-sidebar">
 								<div class="sidebar-item  recent">
-									<!-- <h3>동화 챕터 추가</h3> -->
+<%-------------------------------- 本文 // ------------------------------------%>
 									<div id="chapters">
 										<h1 class="text-center"><b>${fairytales.fairy_name}</b></h1><br>
 										<h3></h3><br/><br/>
@@ -201,6 +138,7 @@
 											</div>
 										</c:forEach>
 									</div>
+<%-------------------------------- // 本文 ------------------------------------%>
 								</div>
 							</div>
 						</div>

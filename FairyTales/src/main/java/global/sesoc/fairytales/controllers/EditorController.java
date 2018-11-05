@@ -31,7 +31,7 @@ import global.sesoc.fairytales.util.FileService;
 
 /**
  * 
- * @author Hyunil 에디터 컨트롤러
+ * @author Hyunil エディター·コントローラ
  */
 
 @Controller
@@ -40,13 +40,10 @@ public class EditorController {
 	@Autowired
 	Editor_Repository repository;
 	
-	/*/ 임시 저장소 폐쇠
-	static final String FT_TEMP_PATH = "/FairyTales/TEMP/";
-	*/
-	// 저장소
+	// セーブ位置
 	static final String FT_UPLOAD_PATH = "/FairyTales/";
 	
-	//동화 전체 리스트
+	//童話の全リスト
 	@RequestMapping(value = "/editorList", method = RequestMethod.GET)
 	public String editorList(Model model) {
 		
@@ -55,11 +52,11 @@ public class EditorController {
 		return "editorList";
 	}
 	
-	//동화 챕터리스트 리스트
+	//童話チャプターの全リスト
 	@RequestMapping(value = "/editorAdd", method = RequestMethod.GET)
 	public String editorAdd(Integer fpk, Model model) {
 		
-		//넘어온 pk가 없을경우
+		//pk値がない場合
 		if(fpk == null) {
 			return "redirect:/editorList";
 		}
@@ -72,7 +69,7 @@ public class EditorController {
 		return "editorAdd";
 	}
 	
-	//에디터
+	//editor
 	@RequestMapping(value = "/editor", method = RequestMethod.GET)
 	public String editor(Integer fpk, Integer chapter, Model model) {
 		Fairytales fairytales = new Fairytales();
@@ -84,6 +81,7 @@ public class EditorController {
 		model.addAttribute("fpk", fpk);
 		model.addAttribute("chapter", chapter);
 		
+		//json変換
 		String chapterJson = FileService.readJson(FT_UPLOAD_PATH + fpk + "/" + chapter + "/chapter.json");
 		String objListJson = FileService.readJson(FT_UPLOAD_PATH + fpk + "/" + chapter + "/objList.json");
 		String exampleJson = FileService.readJson(FT_UPLOAD_PATH + fpk + "/" + chapter + "/example.json");
@@ -94,12 +92,10 @@ public class EditorController {
 		model.addAttribute("getExample",exampleJson);
 		model.addAttribute("getAnwser",anwserJson);
 		
-		System.out.println("chapterJson" + chapterJson);
-		
 		return "editor";
 	}
 	
-	// 이미지 저장
+	// イメージ セーブ
 	@ResponseBody
 	@RequestMapping(value = "/editdata", method = RequestMethod.POST, produces = "text/plain;charset=utf-8")
 	public String editdata(MultipartHttpServletRequest multi) {
@@ -120,24 +116,13 @@ public class EditorController {
 		return save_file;
 	}
 	
-	/*@RequestMapping(value = "/saveFairy", method = RequestMethod.POST)
-	public String saveFairy(String fpkNum, String chapterNum,String chapter,String objList,String exampleBox,String anwserBox){
-		FileService.saveJson(chapter,FT_UPLOAD_PATH + fpkNum + "/" + chapterNum + "/chapter.json");
-		FileService.saveJson(objList,FT_UPLOAD_PATH + fpkNum + "/" + chapterNum +  "/objList.json");
-		FileService.saveJson(exampleBox,FT_UPLOAD_PATH + fpkNum + "/" + chapterNum +  "/example.json");
-		FileService.saveJson(anwserBox,FT_UPLOAD_PATH + fpkNum + "/" + chapterNum +  "/anwser.json");
-		
-		return "redirect:/";
-	}*/
-	
+	//設定Json セーブ
 	@RequestMapping(value = "/saveFairy", method = RequestMethod.POST)
 	public String saveFairy(String questionType, String fpkNum, String chapterNum,String chapter,String objList,String exampleBox,String anwserBox){
-		System.out.println("fpkNum : " + fpkNum + " chapterNum :" + chapterNum);
 		FileService.saveJson(chapter,FT_UPLOAD_PATH + fpkNum + "/" + chapterNum + "/chapter.json");
 		FileService.saveJson(objList,FT_UPLOAD_PATH + fpkNum + "/" + chapterNum +  "/objList.json");
 		FileService.saveJson(exampleBox,FT_UPLOAD_PATH + fpkNum + "/" + chapterNum +  "/example.json");
 		FileService.saveJson(anwserBox,FT_UPLOAD_PATH + fpkNum + "/" + chapterNum +  "/anwser.json");
-		System.out.println("anwserBox : " + anwserBox);
 		ObjectMapper mapper = new ObjectMapper();
 		
 		try {
@@ -145,7 +130,6 @@ public class EditorController {
 			List<Question> qt = mapper.readValue(anwserBox, new TypeReference<List<Question>>(){});
 			
 			String notIn = "";
-			
 			
 			//주의점 정답은 _ 가 안들어가도록 // 동화 setQuestion_type은 동화 타입이 바뀌면 바뀌도록 해야하는데..
 			for(int i = 0; i < qt.size(); ++i) {
@@ -168,7 +152,7 @@ public class EditorController {
 				}
 				notIn += qt.get(i).getObj_id();
 			}
-			System.out.println(notIn);
+			
 			Question delQt = new Question();			
 			delQt.setFairy_pk(Integer.parseInt(fpkNum));
 			delQt.setChapter(Integer.parseInt(chapterNum));
@@ -188,16 +172,17 @@ public class EditorController {
 		
 		return "redirect:/editorList";
 	}
-	//동화 생성
+	
+	//童話情報DB情報/修整
 	@RequestMapping(value = "/inFT", method = RequestMethod.POST)
 	public @ResponseBody String inFT(@RequestBody  Fairytales fairytales)  {
 		
 		int key = 0;
 		if(fairytales.getFairy_pk() != null) {
-			System.out.println("update");
+			//System.out.println("update");
 			key = repository.update_editor(fairytales);
 		}else {
-			System.out.println("insert");
+			//System.out.println("insert");
 			key = repository.insert_editor(fairytales);
 		}
 		
@@ -208,7 +193,7 @@ public class EditorController {
 		
 		return re;
 	}
-	//동화 생성
+	//童話情報DB削除
 	@RequestMapping(value = "/deleteFT", method = RequestMethod.POST)
 	public @ResponseBody String deleteFT(Integer fpk)  {
 		int key = repository.delete_editor(fpk);
@@ -219,7 +204,8 @@ public class EditorController {
 		}
 		return re;
 	}
-	//이미지 보기
+	
+	// イメージを見せる
 	@RequestMapping(value = "/image", method = RequestMethod.GET, produces = "image/jpg")
 	public @ResponseBody byte[] getFile(String tmpImg,Integer fpk, Integer chapter)  {
 		if(tmpImg == null || tmpImg.equals("")) {
@@ -228,9 +214,7 @@ public class EditorController {
 		String imgName[] = tmpImg.split("\\.");
 		
 	    try {
-	        // Retrieve image from the classpath.
-	    	//InputStream is = this.getClass().getResourceAsStream(FT_UPLOAD_PATH + tmpImg); 
-	        
+	        // Path設定
 	    	String getPath = FT_UPLOAD_PATH + "/" + tmpImg;
 	    	if(fpk != null) {
 	    		getPath = FT_UPLOAD_PATH + fpk + "/" + chapter + "/" + tmpImg;
@@ -241,14 +225,11 @@ public class EditorController {
 				path.mkdirs();
 			}
 	        
-			System.out.println("path : " + path);
-	        // Prepare buffered image.
+			//イメージ アウトプット
 	        BufferedImage img = ImageIO.read(path);
 
-	        // Create a byte array output stream.
 	        ByteArrayOutputStream bao = new ByteArrayOutputStream();
-
-	        // Write to output stream
+	        
 	        ImageIO.write(img, imgName[imgName.length-1] , bao);
 
 	        return bao.toByteArray();
